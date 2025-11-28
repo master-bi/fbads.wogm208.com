@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>正在為您連線官方入口...</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #202127 0, #050508 45%, #000 100%);
+      color: #f8f5ff;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 16px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 26px;
+      padding: 22px 20px 24px;
+      background: linear-gradient(145deg, #141520, #050509);
+      overflow: hidden;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+      isolation: isolate;
+    }
+
+    /* 外框金色線條 */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 215, 128, 0.45), transparent 40%),
+        linear-gradient(315deg, transparent 60%, rgba(255, 246, 196, 0.28));
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* 背景細格線 */
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.02) 0,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+      mix-blend-mode: soft-light;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* 發光掃描線 */
+    .scan-line {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 50%,
+                  rgba(255, 235, 175, 0.03) 0,
+                  transparent 55%);
+      mix-blend-mode: screen;
+      animation: scan-move 4.5s linear infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes scan-move {
+      0%   { transform: translateX(-40%) skewX(-18deg); opacity: 0.0; }
+      20%  { opacity: 0.9; }
+      60%  { opacity: 0.9; }
+      100% { transform: translateX(60%) skewX(-18deg); opacity: 0; }
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .logo-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 30%, #fff, #c5c5c5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #111;
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.7),
+                  0 0 18px rgba(255, 222, 150, 0.75);
+      animation: logo-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes logo-pulse {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.7),
+                    0 0 12px rgba(255, 222, 150, 0.45);
+      }
+      50% {
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.9),
+                    0 0 24px rgba(255, 243, 194, 0.9);
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text-main {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .region-pill {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: linear-gradient(135deg, rgba(255, 226, 150, 0.16), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 0 0 1px rgba(255, 224, 158, 0.35),
+                  0 0 12px rgba(255, 204, 102, 0.45);
+      color: #ffefc4;
+    }
+
+    .region-pill-flag {
+      font-size: 14px;
+    }
+
+    .region-pill-reason {
+      opacity: .8;
+    }
+
+    .status {
+      margin-bottom: 16px;
+      margin-top: 6px;
+    }
+
+    .status-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .status-sub {
+      font-size: 13px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    /* Loader 區塊 */
+    .loader-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 22px 0 14px;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-top-color: #ffd66b;
+      border-right-color: #ffefba;
+      animation: spin 900ms linear infinite;
+      box-shadow: 0 0 18px rgba(255, 214, 107, 0.5);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    /* 進度條 */
+    .progress-bar {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-inner {
+      position: absolute;
+      inset: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #ffdd82, #ffeebb, #ffffff);
+      box-shadow: 0 0 18px rgba(255, 214, 107, 0.7);
+      animation: progress-fill 5s ease-out forwards;
+    }
+
+    @keyframes progress-fill {
+      0%   { transform: scaleX(0.18); }
+      25%  { transform: scaleX(0.4); }
+      50%  { transform: scaleX(0.65); }
+      75%  { transform: scaleX(0.9); }
+      100% { transform: scaleX(1); }
+    }
+
+    .progress-label {
+      font-size: 12px;
+      opacity: 0.7;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 12px;
+      opacity: 0.63;
+      line-height: 1.5;
+    }
+
+    .manual-btn {
+      margin-top: 18px;
+      width: 100%;
+      border-radius: 999px;
+      padding: 12px 16px;
+      border: none;
+      cursor: pointer;
+      background: radial-gradient(circle at 30% 0, #fff8d4, #ffcf61, #b78628);
+      color: #000;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .manual-btn span.icon {
+      font-size: 16px;
+    }
+
+    .manual-btn:active {
+      transform: translateY(1px);
+      box-shadow:
+        0 9px 20px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px 18px 22px;
+      }
+      .logo-text-main {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+      <div class="scan-line"></div>
+
+      <div class="logo-row">
+        <div class="logo-dot">XC</div>
+        <div class="logo-text">
+          <div class="logo-text-main">XC 官方跳轉中心</div>
+          <div class="logo-text-sub">為你連線最近且穩定的遊戲入口</div>
+          <div class="region-pill" id="regionPill" style="display:none;">
+            <span class="region-pill-flag" id="regionFlag">🌐</span>
+            <span id="regionLabel">預設節點</span>
+            <span class="region-pill-reason" id="regionReason">偵測中...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="status">
+        <div class="status-title" id="statusTitle">正在為你偵測地區...</div>
+        <div class="status-sub" id="statusSub">
+          我們會依照你的 <strong>IP 地區與語系</strong>，
+          自動導向最近的 OFA168 官方註冊頁，請稍候數秒。
+        </div>
+      </div>
+
+      <div class="loader-row">
+        <div class="spinner"></div>
+        <div class="loader-text" id="loaderText">
+          建立加密連線中，請保持網路穩定，不要關閉此視窗。
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-inner"></div>
+      </div>
+      <div class="progress-label">
+        <span>連線初始化</span>
+        <span id="progressHint">0%</span>
+      </div>
+
+      <div class="hint" id="hintText">
+        通常會在 <strong>3–6 秒內</strong> 自動完成跳轉；
+        若超過 10 秒仍未跳轉，你可以點擊下方按鈕手動前往官方入口。
+      </div>
+
+      <button class="manual-btn" id="manualBtn" style="display:none;">
+        <span class="icon">↪</span>
+        <span id="manualBtnLabel">手動前往預設入口</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // === 目的地設定：依國家代碼分流 ===
+    const DESTS = {
+      TW: "https://ag223.gm89.net/login?id=register",
+      HK: "https://fbads.ds88hk.net/login?id=register",
+      MY: "https://fbads.ofa168my.com/login?id=register",
+      KH: "https://fbads.ofa88kh.com/login?id=register",
+    };
+
+    // 沒有匹配到時的預設備援
+    const FALLBACK = DESTS.TW;
+
+    const statusTitle  = document.getElementById("statusTitle");
+    const statusSub    = document.getElementById("statusSub");
+    const loaderText   = document.getElementById("loaderText");
+    const hintText     = document.getElementById("hintText");
+    const manualBtn    = document.getElementById("manualBtn");
+    const manualLabel  = document.getElementById("manualBtnLabel");
+    const progressHint = document.getElementById("progressHint");
+
+    const regionPill   = document.getElementById("regionPill");
+    const regionFlag   = document.getElementById("regionFlag");
+    const regionLabel  = document.getElementById("regionLabel");
+    const regionReason = document.getElementById("regionReason");
+
+    // 假進度條數字，只是視覺提示
+    let fakeProgress = 0;
+    const progressTimer = setInterval(() => {
+      fakeProgress = Math.min(100, fakeProgress + 7);
+      progressHint.textContent = fakeProgress + "%";
+      if (fakeProgress >= 100) clearInterval(progressTimer);
+    }, 350);
+
+    // 把原本網址上的 query string 一起帶到目標網址
+    function buildUrlWithParams(base) {
+      const qs = window.location.search;
+      if (!qs || qs === "?") return base;
+      return base + (base.includes("?") ? "&" : "?") + qs.substring(1);
+    }
+
+    // 顯示偵測到的節點 + 國旗
+    function updateRegionPill(code, byText, countryNameFallback) {
+      const map = {
+        TW: {flag:"🇹🇼", label:"台灣節點"},
+        HK: {flag:"🇭🇰", label:"香港節點"},
+        MY: {flag:"🇲🇾", label:"馬來西亞節點"},
+        KH: {flag:"🇰🇭", label:"柬埔寨節點"},
+      };
+      const info = map[code] || {flag:"🌐", label: countryNameFallback || "預設節點"};
+
+      regionFlag.textContent  = info.flag;
+      regionLabel.textContent = info.label;
+      regionReason.textContent = byText;
+      regionPill.style.display = "inline-flex";
+    }
+
+    // 語系判斷備援
+    function chooseByLanguage(defaultCode) {
+      const lang = (navigator.language || "").toLowerCase();
+
+      if (lang.includes("zh-hk") || lang.includes("zh-mo")) return "HK";
+      if (lang.includes("ms") || lang.includes("my"))       return "MY";
+      if (lang.includes("km"))                             return "KH";
+      if (lang.includes("zh-tw") || lang.includes("zh-hant")) return "TW";
+
+      return defaultCode;
+    }
+
+    function redirectTo(targetCode, reason) {
+      const base = DESTS[targetCode] || FALLBACK;
+      const url  = buildUrlWithParams(base);
+
+      statusTitle.textContent = "即將前往「" + targetCode + "」官方入口...";
+      loaderText.textContent  = "完成路由選擇（" + reason + "），正在帶你前往安全連線頁面。";
+      fakeProgress = 96;
+      progressHint.textContent = "96%";
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 600);
+    }
+
+    function showManual(targetCode) {
+      const base = DESTS[targetCode] || FALLBACK;
+      const url  = buildUrlWithParams(base);
+
+      manualLabel.textContent = "手動前往「" + targetCode + "」官方入口";
+      manualBtn.style.display = "flex";
+      manualBtn.onclick = () => {
+        window.location.href = url;
+      };
+    }
+
+    // fetch 加 timeout，避免卡死
+    function fetchWithTimeout(resource, options = {}) {
+      const { timeout = 3000 } = options;
+
+      return Promise.race([
+        fetch(resource, options),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("timeout")), timeout)
+        )
+      ]);
+    }
+
+    async function detectAndRedirect() {
+      let chosenCode = "TW";
+
+      try {
+        const res = await fetchWithTimeout("https://ipapi.co/json/", { timeout: 3000 });
+        const data = await res.json();
+        const cc   = (data.country || data.country_code || "").toUpperCase();
+
+        // 先看 IP 國家
+        if (cc === "TW") chosenCode = "TW";
+        else if (cc === "HK") chosenCode = "HK";
+        else if (cc === "MY") chosenCode = "MY";
+        else if (cc === "KH") chosenCode = "KH";
+        else {
+          // 不在四個國家的話，用語系判斷
+          chosenCode = chooseByLanguage("TW");
+        }
+
+        const countryName = data.country_name || cc || "未知地區";
+
+        statusSub.textContent =
+          "已偵測到你的地區為「" + countryName +
+          "」，正在為你選擇最適合的遊戲入口...";
+        updateRegionPill(chosenCode, "依 IP / 語系判斷", countryName);
+
+        redirectTo(chosenCode, "IP / 語系判斷");
+      } catch (err) {
+        console.error(err);
+
+        // API 掛掉或 timeout：只用語系判斷，最後 fallback TW
+        chosenCode = chooseByLanguage("TW");
+        statusTitle.textContent = "地區偵測服務暫時無法連線";
+        statusSub.textContent   = "將使用你的瀏覽器語系，為你選擇預設入口。";
+        loaderText.textContent  = "使用備援模式跳轉中，請稍候。";
+
+        updateRegionPill(chosenCode, "備援模式判斷");
+
+        setTimeout(() => {
+          redirectTo(chosenCode, "備援判斷");
+        }, 1200);
+      }
+
+      // 超過 8 秒還沒跳轉，就顯示手動按鈕
+      setTimeout(() => {
+        showManual(chosenCode);
+        hintText.textContent =
+          "若畫面長時間停留在此頁，你可以點擊按鈕手動前往官方入口。";
+      }, 8000);
+    }
+
+    detectAndRedirect();
+  </script>
+</body>
+</html>
