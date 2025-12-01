@@ -20,20 +20,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* 🔹 電腦背景圖 */
       background: url("bg-pc.jpg") center top no-repeat;
       background-size: cover;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
                    "Segoe UI", system-ui, sans-serif;
     }
 
-    /* 專門調整按鈕上下位置 */
+    /* 按鈕上下位置 */
     .center-wrapper {
       width: 100%;
       text-align: center;
-      margin-top: 250px;   /* 🔥 桌機按鈕位置（往下：加大數字，往上：減少數字） */
+      margin-top: 250px;
     }
 
+    /* 🔥 動態黑金按鈕 */
     .cta-btn {
       display: inline-block;
       padding: 14px 50px;
@@ -43,32 +43,52 @@
       letter-spacing: 4px;
       font-weight: 600;
       color: #f9e5a5;
+
       background: linear-gradient(135deg, #000000, #222222);
       border: 2px solid #d9b566;
+
+      /* 外框光暈 */
       box-shadow:
-        0 0 20px rgba(0, 0, 0, 0.6),
-        0 0 12px rgba(255, 215, 0, 0.4);
-      transition: all 0.18s ease-out;
+        0 0 25px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.2);
+
+      /* 呼吸放大動畫 + 金光閃爍 */
+      animation: pulse 2.2s infinite ease-in-out,
+                 shine 2.8s infinite ease-in-out;
     }
 
-    .cta-btn:hover,
-    .cta-btn:active {
-      transform: translateY(-2px);
+    /* 滑過效果 */
+    .cta-btn:hover {
+      transform: scale(1.08);
       box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.7),
-        0 0 16px rgba(255, 215, 0, 0.6);
+        0 0 35px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.3);
     }
 
-    /* 🔹 手機 / 平板版 */
+    /* 🔥 放大縮小（呼吸動畫） */
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    /* 🔥 金色亮度閃爍 */
+    @keyframes shine {
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(1.3); }
+      100% { filter: brightness(1); }
+    }
+
+    /* 🔹 手機版 */
     @media (max-width: 768px) {
       body {
-        background-image: url("bg-mobile.jpg"); /* 手機封面 */
+        background-image: url("bg-mobile.jpg");
         background-position: center top;
         background-size: cover;
       }
 
       .center-wrapper {
-        margin-top: 180px;  /* 🔥 手機按鈕位置（可自行改） */
+        margin-top: 180px;
       }
 
       .cta-btn {
@@ -79,12 +99,10 @@
     }
   </style>
 </head>
+
 <body>
   <div class="center-wrapper">
-    <a
-      class="cta-btn"
-      href="https://ag223.gm89.net/login?id=register"
-    >
+    <a class="cta-btn" href="https://ag223.gm89.net/login?id=register">
       點擊註冊
     </a>
   </div>
