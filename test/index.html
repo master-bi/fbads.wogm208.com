@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MT百家 - 一站式娛樂平台</title>
 
-  <!-- 可自行修改 SEO -->
+  <!-- SEO -->
   <meta name="description" content="MT百家台妹荷官，全網最豪華的一站式娛樂平台。真人、電子、棋牌、彩票、體育、直播、商城應有盡有。">
 
   <style>
@@ -20,17 +20,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* 🔹 電腦版背景圖：請換成你的電腦版圖片檔名 */
+      /* 🔹 電腦背景圖 */
       background: url("bg-pc.jpg") center top no-repeat;
       background-size: cover;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
                    "Segoe UI", system-ui, sans-serif;
     }
 
-    /* 置中按鈕外層容器（預留之後要加其他東西也方便） */
+    /* 專門調整按鈕上下位置 */
     .center-wrapper {
       width: 100%;
       text-align: center;
+      margin-top: 150px;   /* 🔥 桌機按鈕位置（往下：加大數字，往上：減少數字） */
     }
 
     .cta-btn {
@@ -58,13 +59,16 @@
         0 0 16px rgba(255, 215, 0, 0.6);
     }
 
-    /* 🔹 手機 / 平板：自動換成手機版背景圖 + 微調按鈕大小 */
+    /* 🔹 手機 / 平板版 */
     @media (max-width: 768px) {
       body {
-        /* 請換成你的手機版圖片檔名 */
-        background-image: url("bg-mobile.jpg");
+        background-image: url("bg-mobile.jpg"); /* 手機封面 */
         background-position: center top;
         background-size: cover;
+      }
+
+      .center-wrapper {
+        margin-top: 260px;  /* 🔥 手機按鈕位置（可自行改） */
       }
 
       .cta-btn {
