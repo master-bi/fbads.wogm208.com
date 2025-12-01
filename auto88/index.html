@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>歡樂互動娛樂平台</title>
+
+  <!-- 預設 SEO（會再用 JS 依語系覆蓋） -->
+  <meta name="description" content="MT百家台妹荷官，全網最豪華的一站式娛樂平台。真人、電子、棋牌、彩票、體育、直播、商城應有盡有。">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", system-ui, sans-serif;
+      transition: background-image 0.3s ease-out;
+    }
+
+    /* 按鈕上下位置 */
+    .center-wrapper {
+      width: 100%;
+      text-align: center;
+      margin-top: 350px;
+    }
+
+    /* 🔥 動態黑金按鈕 */
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 50px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 22px;
+      letter-spacing: 4px;
+      font-weight: 600;
+      color: #f9e5a5;
+      background: linear-gradient(135deg, #000000, #222222);
+      border: 2px solid #d9b566;
+
+      box-shadow:
+        0 0 25px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.2);
+
+      animation: pulse 2.2s infinite ease-in-out,
+                 shine 2.8s infinite ease-in-out;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.08);
+      box-shadow:
+        0 0 35px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.3);
+    }
+
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shine {
+      0%   { filter: brightness(1); }
+      50%  { filter: brightness(1.3); }
+      100% { filter: brightness(1); }
+    }
+
+    @media (max-width: 768px) {
+      .center-wrapper { margin-top: 180px; }
+      .cta-btn {
+        font-size: 18px;
+        padding: 12px 38px;
+        letter-spacing: 3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center-wrapper">
+    <a class="cta-btn" id="ctaBtn" href="#">
+      點擊註冊
+    </a>
+  </div>
+
+  <script>
+    /* ===============================
+       按鈕文字、TITLE、DESCRIPTION 多語系
+    ================================ */
+    const langTexts = {
+      "zh-TW": { button: "點擊註冊" },
+      "zh-HK": { button: "點擊註冊" },
+      "zh-MO": { button: "點擊註冊" },
+      "zh-CN": { button: "点击注册" },
+      "zh":    { button: "點擊註冊" },
+      "yue":   { button: "撳呢度註冊" },
+      "zh-yue":{ button: "撳呢度註冊" },
+
+      "en": { button: "Register Now" },
+      "ms": { button: "Daftar Sekarang" },
+      "km": { button: "ចុះឈ្មោះ" },
+      "vi": { button: "Đăng ký ngay" },
+      "th": { button: "สมัครสมาชิก" },
+      "hi": { button: "पंजीकरण करें" },
+      "id": { button: "Daftar Sekarang" }
+    };
+
+    /* ===============================
+       判斷 UI 語系 → 套背景圖
+       中文全部用中文圖
+       高棉用高棉圖
+       其他全部英文
+    ================================ */
+    function detectUiLang() {
+      let raw = (navigator.language || "en").toLowerCase();
+
+      if (
+        raw.startsWith("zh") ||
+        raw.startsWith("yue") ||
+        raw === "zh-yue"
+      ) {
+        return "zh"; // 中文 → 中文背景
+      }
+
+      if (raw.startsWith("km")) return "km"; // 高棉
+
+      return "en"; // 其他語系 → 英文背景
+    }
+
+    function applyBackground(uiLang) {
+      const isMobile = window.innerWidth <= 768;
+      let img = "";
+
+      if (uiLang === "zh") {
+        img = isMobile ? "bg-mobile-zh.jpg" : "bg-pc-zh.jpg";
+      } else if (uiLang === "km") {
+        img = isMobile ? "bg-mobile-km.jpg" : "bg-pc-km.jpg";
+      } else {
+        img = isMobile ? "bg-mobile-en.jpg" : "bg-pc-en.jpg";
+      }
+
+      document.body.style.backgroundImage = `url("${img}")`;
+    }
+
+    /* ===============================
+       語系 → 按鈕文字
+    ================================ */
+    function pickTextLang() {
+      let raw = (navigator.language || "en").toLowerCase();
+
+      if (langTexts[raw]) return raw;
+
+      const base = raw.split("-")[0];
+      return langTexts[base] ? base : "en"; // 找不到用英文
+    }
+
+    /* ===============================
+       IP → 跳轉網址
+    ================================ */
+    let userCountry = null;
+
+    fetch("https://ipapi.co/json/")
+      .then(r => r.json())
+      .then(d => userCountry = d.country_code)
+      .catch(() => userCountry = null);
+
+    function getCountryUrl(code) {
+      switch (code) {
+        case "TW": return "https://ag223.gm89.net/login?id=register";
+        case "HK": return "https://fbads.ds88hk.net/login?id=register";
+        case "MY": return "https://fbads.ofa168my.com/login?id=register";
+        case "KH": return "https://fbads.ofa88kh.com/login?id=register";
+        default:   return "https://fbads.ofa168my.com/login?id=register";
+      }
+    }
+
+    /* ===============================
+       初始化
+    ================================ */
+    (function init() {
+      const uiLang = detectUiLang();
+      const textLang = pickTextLang();
+      const btn = document.getElementById("ctaBtn");
+
+      // 按鈕文字
+      btn.innerText = langTexts[textLang].button;
+
+      // 套背景
+      applyBackground(uiLang);
+
+      // 手機旋轉補救
+      window.addEventListener("resize", () => applyBackground(uiLang));
+
+      // 點擊跳轉
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        const url = getCountryUrl(userCountry);
+        window.location.href = url;
+      });
+    })();
+  </script>
+
+</body>
+</html>
