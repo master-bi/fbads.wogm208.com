@@ -41,7 +41,7 @@
       cursor: pointer;
     }
 
-    /* 🔥 下拉後的選單字體（你要求調黑色） */
+    /* 下拉選單字體顏色 */
     .lang-switcher option {
       color: #000 !important;
       background: #fff !important;
@@ -82,7 +82,10 @@
       left: -150%;
       width: 60%;
       height: 200%;
-      background: linear-gradient(120deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.7) 50%,rgba(255,255,255,0) 100%);
+      background: linear-gradient(120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.7) 50%,
+        rgba(255,255,255,0) 100%);
       transform: skewX(-20deg);
       animation: shimmer 2.8s infinite ease-in-out;
     }
@@ -132,11 +135,11 @@
     /* 語系文案 */
     const langTexts = {
       "zh-TW":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供豐富多樣的直播、互動遊戲、休閒娛樂，一站式優質體驗。"},
-      "zh-HK":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多樣化嘅直播互動娛樂。" },
-      "zh-MO":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多元直播互動與遊戲娛樂。" },
+      "zh-HK":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多樣化嘅直播互動娛樂。"},
+      "zh-MO":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多元直播互動與遊戲娛樂。"},
       "zh-CN":{button:"点击注册",title:"娱乐直播互动平台",desc:"娱乐直播互动平台，提供直播、互动游戏与多样娱乐内容。"},
-      "zh":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，一站式直播娛樂選擇。" },
-      "yue":{button:"撳呢度註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，直播互動一應俱全。" },
+      "zh":   {button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，一站式直播娛樂選擇。"},
+      "yue":  {button:"撳呢度註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，直播互動一應俱全。"},
 
       "en":{button:"Register Now",title:"Interactive Live Entertainment Platform",desc:"Live entertainment, interactive shows and more."},
       "ms":{button:"Daftar Sekarang",title:"Platform Hiburan Siaran Langsung",desc:"Hiburan langsung dan permainan interaktif."},
@@ -147,57 +150,57 @@
       "id":{button:"Daftar Sekarang",title:"Platform Hiburan Live Interaktif",desc:"Hiburan live dan permainan interaktif."}
     };
 
-    const zhKeys=["zh-TW","zh-HK","zh-MO","zh-CN","zh","yue"];
+    const zhKeys = ["zh-TW","zh-HK","zh-MO","zh-CN","zh","yue","zh-yue"];
 
     function detectBrowserLangRaw(){
       return (navigator.language || "en").toLowerCase();
     }
 
     function normalizeBrowserToLangKey(){
-      const raw=detectBrowserLangRaw();
-      if(raw.startsWith("zh-tw"))return"zh-TW";
-      if(raw.startsWith("zh-hk"))return"zh-HK";
-      if(raw.startsWith("zh-mo"))return"zh-MO";
-      if(raw.startsWith("zh-cn"))return"zh-CN";
-      if(raw==="yue")return"yue";
-      if(raw.startsWith("zh"))return"zh";
-      const base=raw.split("-")[0];
-      return langTexts[base]?base:"en";
+      const raw = detectBrowserLangRaw();
+      if(raw.startsWith("zh-tw")) return "zh-TW";
+      if(raw.startsWith("zh-hk")) return "zh-HK";
+      if(raw.startsWith("zh-mo")) return "zh-MO";
+      if(raw.startsWith("zh-cn")) return "zh-CN";
+      if(raw === "yue" || raw === "zh-yue") return "yue";
+      if(raw.startsWith("zh")) return "zh";
+      const base = raw.split("-")[0];
+      return langTexts[base] ? base : "en";
     }
 
     function loadInitialLang(){
-      const stored=localStorage.getItem("preferredLang")||"auto";
-      document.getElementById("langSelect").value=stored;
-      return stored==="auto"?normalizeBrowserToLangKey():stored;
+      const stored = localStorage.getItem("preferredLang") || "auto";
+      document.getElementById("langSelect").value = stored;
+      return stored === "auto" ? normalizeBrowserToLangKey() : stored;
     }
 
     function getUiLangByTextLang(key){
-      if(zhKeys.includes(key))return"zh";
-      if(key==="km")return"km";
-      return"en";
+      if(zhKeys.includes(key)) return "zh";
+      if(key === "km") return "km";
+      return "en";
     }
 
     function applyBackground(uiLang){
-      const isMobile=window.innerWidth<=768;
-      let img="";
-      if(uiLang==="zh") img=isMobile?"bg-mobile-zh.jpg":"bg-pc-zh.jpg";
-      else if(uiLang==="km") img=isMobile?"bg-mobile-km.jpg":"bg-pc-km.jpg";
-      else img=isMobile?"bg-mobile-en.jpg":"bg-pc-en.jpg";
-      document.body.style.backgroundImage=`url("${img}")`;
+      const isMobile = window.innerWidth <= 768;
+      let img = "";
+      if(uiLang === "zh")      img = isMobile ? "bg-mobile-zh.jpg" : "bg-pc-zh.jpg";
+      else if(uiLang === "km") img = isMobile ? "bg-mobile-km.jpg" : "bg-pc-km.jpg";
+      else                     img = isMobile ? "bg-mobile-en.jpg" : "bg-pc-en.jpg";
+      document.body.style.backgroundImage = `url("${img}")`;
     }
 
     function applyLanguage(langKey){
-      const data=langTexts[langKey]||langTexts["en"];
-      document.getElementById("ctaBtn").innerText=data.button;
-      document.title=data.title;
+      const data = langTexts[langKey] || langTexts["en"];
+      document.getElementById("ctaBtn").innerText = data.button;
+      document.title = data.title;
       document.querySelector('meta[name="description"]').setAttribute("content",data.desc);
     }
 
-    let userCountry=null;
+    let userCountry = null;
     fetch("https://ipapi.co/json/")
-      .then(r=>r.json())
-      .then(d=>userCountry=d.country_code)
-      .catch(()=>userCountry=null);
+      .then(r => r.json())
+      .then(d => userCountry = d.country_code)
+      .catch(() => userCountry = null);
 
     function urlByCountryOrLang(country,lang){
       const TW="https://ag223.gm89.net/login?id=register";
@@ -206,38 +209,43 @@
       const KH="https://fbads.ofa88kh.com/login?id=register";
       if(country){
         switch(country){
-          case"TW":return TW;
-          case"HK":return HK;
-          case"MY":return MY;
-          case"KH":return KH;
-          default:return MY;
+          case "TW": return TW;
+          case "HK": return HK;
+          case "MY": return MY;
+          case "KH": return KH;
+          default:   return MY;
         }
       }
-      if(zhKeys.includes(lang))return TW;
-      if(lang==="ms"||lang==="id")return MY;
-      if(lang==="km")return KH;
+      if(zhKeys.includes(lang)) return TW;
+      if(lang === "ms" || lang === "id") return MY;
+      if(lang === "km") return KH;
       return MY;
     }
 
     (function init(){
-      let currentLang=loadInitialLang();
-      let currentUiLang=getUiLangByTextLang(currentLang);
+      let currentLang   = loadInitialLang();                 // 文字語系
+      let currentUiLang = getUiLangByTextLang(currentLang);  // 背景圖語系（zh / en / km）
 
       applyLanguage(currentLang);
-      applyBackground(currentUiLng:=currentUiLang);
+      applyBackground(currentUiLang);
 
-      window.addEventListener("resize",()=>applyBackground(currentUiLng));
+      // 視窗大小變化時，依照目前 UI 語系重新套背景
+      window.addEventListener("resize", () => applyBackground(currentUiLang));
 
-      document.getElementById("ctaBtn").addEventListener("click",e=>{
+      const ctaBtn = document.getElementById("ctaBtn");
+      ctaBtn.addEventListener("click", e => {
         e.preventDefault();
-        window.location.href=urlByCountryOrLang(userCountry,currentLang);
+        window.location.href = urlByCountryOrLang(userCountry,currentLang);
       });
 
-      document.getElementById("langSelect").addEventListener("change",()=>{
-        const value=document.getElementById("langSelect").value;
-        localStorage.setItem("preferredLang",value);
-        currentLang=value==="auto"?normalizeBrowserToLangKey():value;
-        currentUiLang=getUiLangByTextLang(currentLang);
+      const langSelect = document.getElementById("langSelect");
+      langSelect.addEventListener("change", () => {
+        const value = langSelect.value;
+        localStorage.setItem("preferredLang", value);
+
+        currentLang   = value === "auto" ? normalizeBrowserToLangKey() : value;
+        currentUiLang = getUiLangByTextLang(currentLang);
+
         applyLanguage(currentLang);
         applyBackground(currentUiLang);
       });
