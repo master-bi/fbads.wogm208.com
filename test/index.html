@@ -11,12 +11,29 @@
 
     body {
       min-height: 100vh;
+      background: #000;   /* 頁面底色，背景圖改貼在 .hero 上 */
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* 整個 KV 區塊（背景圖在這裡） */
+    .hero {
       position: relative;
+      width: 100%;
+      max-width: 480px;     /* 可調：桌機最大寬 */
+      margin: 0 auto;
       background-position: center top;
       background-repeat: no-repeat;
       background-size: cover;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", system-ui, sans-serif;
-      transition: background-image 0.3s ease-out;
+    }
+
+    /* 用 padding-top 固定圖片比例（這裡先用 16:9，可自己調） */
+    .hero::before {
+      content: "";
+      display: block;
+      padding-top: 177.78%; /* 16:9 手機長圖大概是 1920/1080 ≈ 177.78% */
     }
 
     /* 語言切換 */
@@ -41,18 +58,17 @@
       cursor: pointer;
     }
 
-    /* 下拉選單字體顏色 */
     .lang-switcher option {
       color: #000 !important;
       background: #fff !important;
     }
 
-    /* 💥💥💥 電腦版按鈕位置：top: 350px 就是按鈕距離圖片上方的距離 */
+    /* ⭐ 按鈕容器：絕對定位在圖片上（相對 .hero） */
     .center-wrapper {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
-      top: 500px;   /* 💥 電腦版按鈕位置在這裡調整 */
+      top: 72%;           /* 💥 桌機 & 手機共用：按鈕在圖片高度的 72% 位置，可自己調整 */
+      transform: translate(-50%, -50%);
       width: 100%;
       text-align: center;
       pointer-events: none;
@@ -100,39 +116,48 @@
     @keyframes shine { 0%{filter:brightness(1);}50%{filter:brightness(1.25);}100%{filter:brightness(1);} }
     @keyframes shimmer { 0%{left:-150%;}100%{left:150%;} }
 
-    /* 💥💥💥 手機版按鈕位置：top: 180px */
-    @media (max-width: 768px) {
-      .center-wrapper {
-        top: 480px;   /* 💥 手機版按鈕位置在這裡調整 */
+    @media (min-width: 769px) {
+      /* 桌機版可以用另一個比例（例如橫圖），自行調整 */
+      .hero::before {
+        padding-top: 56.25%; /* 16:9 橫版，自己看實際圖片調整 */
       }
-      .cta-btn { font-size:18px; padding:12px 38px; letter-spacing:3px; }
+
+      .center-wrapper {
+        top: 70%;  /* 桌機上按鈕在圖片高度 70% 位置 */
+      }
+    }
+
+    @media (max-width: 768px) {
       .lang-switcher { top:10px; right:10px; padding:4px 8px; }
       .lang-switcher select { font-size:12px; }
+      .cta-btn { font-size:18px; padding:12px 38px; letter-spacing:3px; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="lang-switcher">
-    <select id="langSelect">
-      <option value="auto">🌐 Auto</option>
-      <option value="zh-TW">🌐 中文（繁體）</option>
-      <option value="zh-CN">🌐 中文（簡體）</option>
-      <option value="zh-HK">🌐 中文（香港）</option>
-      <option value="yue">🌐 粵語</option>
-      <option value="en">🌐 English</option>
-      <option value="ms">🌐 Bahasa Melayu</option>
-      <option value="km">🌐 ភាសាខ្មែរ</option>
-      <option value="vi">🌐 Tiếng Việt</option>
-      <option value="th">🌐 ภาษาไทย</option>
-      <option value="hi">🌐 हिन्दी</option>
-      <option value="id">🌐 Bahasa Indonesia</option>
-    </select>
-  </div>
+  <div class="hero" id="heroBg">
+    <div class="lang-switcher">
+      <select id="langSelect">
+        <option value="auto">🌐 Auto</option>
+        <option value="zh-TW">🌐 中文（繁體）</option>
+        <option value="zh-CN">🌐 中文（簡體）</option>
+        <option value="zh-HK">🌐 中文（香港）</option>
+        <option value="yue">🌐 粵語</option>
+        <option value="en">🌐 English</option>
+        <option value="ms">🌐 Bahasa Melayu</option>
+        <option value="km">🌐 ភាសាខ្មែរ</option>
+        <option value="vi">🌐 Tiếng Việt</option>
+        <option value="th">🌐 ภาษาไทย</option>
+        <option value="hi">🌐 हिन्दी</option>
+        <option value="id">🌐 Bahasa Indonesia</option>
+      </select>
+    </div>
 
-  <div class="center-wrapper">
-    <a class="cta-btn" id="ctaBtn" href="#">點擊註冊</a>
+    <div class="center-wrapper">
+      <a class="cta-btn" id="ctaBtn" href="#">點擊註冊</a>
+    </div>
   </div>
 
   <script>
@@ -184,13 +209,14 @@
       return "en";
     }
 
+    // 改成設定 .hero 的背景圖，不再貼在 body 上
     function applyBackground(uiLang){
       const isMobile = window.innerWidth <= 768;
       let img = "";
       if(uiLang === "zh")      img = isMobile ? "bg-mobile-zh.jpg" : "bg-pc-zh.jpg";
       else if(uiLang === "km") img = isMobile ? "bg-mobile-km.jpg" : "bg-pc-km.jpg";
       else                     img = isMobile ? "bg-mobile-en.jpg" : "bg-pc-en.jpg";
-      document.body.style.backgroundImage = `url("${img}")`;
+      document.getElementById("heroBg").style.backgroundImage = `url("${img}")`;
     }
 
     function applyLanguage(langKey){
@@ -227,13 +253,12 @@
     }
 
     (function init(){
-      let currentLang   = loadInitialLang();                 // 文字語系
-      let currentUiLang = getUiLangByTextLang(currentLang);  // 背景圖語系（zh / en / km）
+      let currentLang   = loadInitialLang();                 
+      let currentUiLang = getUiLangByTextLang(currentLang);  
 
       applyLanguage(currentLang);
       applyBackground(currentUiLang);
 
-      // 視窗大小變化時，依照目前 UI 語系重新套背景
       window.addEventListener("resize", () => applyBackground(currentUiLang));
 
       const ctaBtn = document.getElementById("ctaBtn");
