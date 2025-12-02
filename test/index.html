@@ -19,6 +19,7 @@
       transition: background-image 0.3s ease-out;
     }
 
+    /* 語言切換 */
     .lang-switcher {
       position: absolute;
       top: 14px;
@@ -38,6 +39,12 @@
       font-size: 13px;
       outline: none;
       cursor: pointer;
+    }
+
+    /* 🔥 下拉後的選單字體（你要求調黑色） */
+    .lang-switcher option {
+      color: #000 !important;
+      background: #fff !important;
     }
 
     .center-wrapper {
@@ -85,22 +92,9 @@
       box-shadow:0 0 35px rgba(255, 215, 0, 0.6),0 0 60px rgba(255, 215, 0, 0.3);
     }
 
-    @keyframes pulse {
-      0% { transform:scale(1); }
-      50% { transform:scale(1.06); }
-      100% { transform:scale(1); }
-    }
-
-    @keyframes shine {
-      0% { filter:brightness(1); }
-      50% { filter:brightness(1.25); }
-      100% { filter:brightness(1); }
-    }
-
-    @keyframes shimmer {
-      0% { left:-150%; }
-      100% { left:150%; }
-    }
+    @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.06);}100%{transform:scale(1);} }
+    @keyframes shine { 0%{filter:brightness(1);}50%{filter:brightness(1.25);}100%{filter:brightness(1);} }
+    @keyframes shimmer { 0%{left:-150%;}100%{left:150%;} }
 
     @media (max-width: 768px) {
       .center-wrapper { top:180px; }
@@ -135,136 +129,68 @@
   </div>
 
   <script>
+    /* 語系文案 */
     const langTexts = {
-      "zh-TW": {
-        button:"點擊註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供豐富多樣的直播、互動遊戲、休閒娛樂，一站式優質體驗。"
-      },
-      "zh-HK": {
-        button:"點擊註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供豐富多樣嘅直播互動、遊戲娛樂，一站式優質體驗。"
-      },
-      "zh-MO": {
-        button:"點擊註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供多元直播互動與休閒遊戲，一站式娛樂選擇。"
-      },
-      "zh-CN": {
-        button:"点击注册",
-        title:"娱乐直播互动平台",
-        desc:"娱乐直播互动平台，提供多样直播、互动游戏与休闲娱乐，一站式优质体验。"
-      },
-      "zh": {
-        button:"點擊註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供直播互動、休閒遊戲與多元娛樂內容，一站式享受。"
-      },
-      "yue": {
-        button:"撳呢度註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供多款直播互動、遊戲娛樂，一站式頂級體驗。"
-      },
-      "zh-yue": {
-        button:"撳呢度註冊",
-        title:"娛樂直播互動平台",
-        desc:"娛樂直播互動平台，提供多款直播互動、遊戲娛樂，一站式頂級體驗。"
-      },
-      "en": {
-        button:"Register Now",
-        title:"Interactive Live Entertainment Platform",
-        desc:"Live entertainment, interactive shows, casual games, and more — all in one premium platform."
-      },
-      "ms": {
-        button:"Daftar Sekarang",
-        title:"Platform Hiburan Siaran Langsung",
-        desc:"Platform hiburan siaran langsung dengan interaksi, permainan santai dan pengalaman satu tempat."
-      },
-      "km": {
-        button:"ចុះឈ្មោះ",
-        title:"វេទិកាកំសាន្តផ្សាយផ្ទាល់",
-        desc:"វេទិកាកំសាន្តផ្សាយផ្ទាល់ និងល្បែងអន្តរកម្មជាច្រើន ក្នុងទីតាំងតែមួយ។"
-      },
-      "vi": {
-        button:"Đăng ký ngay",
-        title:"Nền tảng Giải trí Trực tiếp Tương tác",
-        desc:"Giải trí trực tiếp, tương tác và trò chơi đa dạng — tất cả trong một nền tảng."
-      },
-      "th": {
-        button:"สมัครสมาชิก",
-        title:"แพลตฟอร์มถ่ายทอดสดเชิงโต้ตอบ",
-        desc:"ความบันเทิงถ่ายทอดสด เกมโต้ตอบ และกิจกรรมต่าง ๆ ครบจบในแพลตฟอร์มเดียว."
-      },
-      "hi": {
-        button:"पंजीकरण करें",
-        title:"लाइव इंटरएक्टिव मनोरंजन प्लेटफ़ॉर्म",
-        desc:"लाइव मनोरंजन, इंटरएक्टिव शो और कैज़ुअल गेम — सब एक ही जगह।"
-      },
-      "id": {
-        button:"Daftar Sekarang",
-        title:"Platform Hiburan Live Interaktif",
-        desc:"Hiburan live, interaksi, dan berbagai permainan dalam satu platform."
-      }
+      "zh-TW":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供豐富多樣的直播、互動遊戲、休閒娛樂，一站式優質體驗。"},
+      "zh-HK":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多樣化嘅直播互動娛樂。" },
+      "zh-MO":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多元直播互動與遊戲娛樂。" },
+      "zh-CN":{button:"点击注册",title:"娱乐直播互动平台",desc:"娱乐直播互动平台，提供直播、互动游戏与多样娱乐内容。"},
+      "zh":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，一站式直播娛樂選擇。" },
+      "yue":{button:"撳呢度註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，直播互動一應俱全。" },
+
+      "en":{button:"Register Now",title:"Interactive Live Entertainment Platform",desc:"Live entertainment, interactive shows and more."},
+      "ms":{button:"Daftar Sekarang",title:"Platform Hiburan Siaran Langsung",desc:"Hiburan langsung dan permainan interaktif."},
+      "km":{button:"ចុះឈ្មោះ",title:"វេទិកាកំសាន្តផ្សាយផ្ទាល់",desc:"កម្សាន្តផ្សាយផ្ទាល់ និងល្បែងអន្តរកម្ម។"},
+      "vi":{button:"Đăng ký ngay",title:"Nền tảng Giải trí Trực tiếp Tương tác",desc:"Giải trí trực tiếp và trò chơi tương tác."},
+      "th":{button:"สมัครสมาชิก",title:"แพลตฟอร์มถ่ายทอดสดเชิงโต้ตอบ",desc:"ความบันเทิงถ่ายทอดสดและเกมโต้ตอบ."},
+      "hi":{button:"पंजीकरण करें",title:"लाइव इंटरएक्टिव मनोरंजन प्लेटफ़ॉर्म",desc:"लाइव मनोरंजन और इंटरएक्टिव शो।"},
+      "id":{button:"Daftar Sekarang",title:"Platform Hiburan Live Interaktif",desc:"Hiburan live dan permainan interaktif."}
     };
 
-    const zhKeys = ["zh-TW","zh-HK","zh-MO","zh-CN","zh","yue","zh-yue"];
+    const zhKeys=["zh-TW","zh-HK","zh-MO","zh-CN","zh","yue"];
 
     function detectBrowserLangRaw(){
       return (navigator.language || "en").toLowerCase();
     }
 
     function normalizeBrowserToLangKey(){
-      const raw = detectBrowserLangRaw();
-      if (raw.startsWith("zh-tw")) return "zh-TW";
-      if (raw.startsWith("zh-hk")) return "zh-HK";
-      if (raw.startsWith("zh-mo")) return "zh-MO";
-      if (raw.startsWith("zh-cn")) return "zh-CN";
-      if (raw==="yue" || raw==="zh-yue") return "yue";
-      if (raw.startsWith("zh")) return "zh";
-
-      const base = raw.split("-")[0];
-      if (langTexts[base]) return base;
-      return "en";
+      const raw=detectBrowserLangRaw();
+      if(raw.startsWith("zh-tw"))return"zh-TW";
+      if(raw.startsWith("zh-hk"))return"zh-HK";
+      if(raw.startsWith("zh-mo"))return"zh-MO";
+      if(raw.startsWith("zh-cn"))return"zh-CN";
+      if(raw==="yue")return"yue";
+      if(raw.startsWith("zh"))return"zh";
+      const base=raw.split("-")[0];
+      return langTexts[base]?base:"en";
     }
 
     function loadInitialLang(){
-      const stored = localStorage.getItem("preferredLang") || "auto";
-      const select = document.getElementById("langSelect");
-      select.value = stored;
-      if (stored === "auto") return normalizeBrowserToLangKey();
-      return stored;
+      const stored=localStorage.getItem("preferredLang")||"auto";
+      document.getElementById("langSelect").value=stored;
+      return stored==="auto"?normalizeBrowserToLangKey():stored;
     }
 
     function getUiLangByTextLang(key){
-      if (zhKeys.includes(key)) return "zh";
-      if (key==="km") return "km";
-      return "en";
+      if(zhKeys.includes(key))return"zh";
+      if(key==="km")return"km";
+      return"en";
     }
 
     function applyBackground(uiLang){
-      const isMobile = window.innerWidth <= 768;
+      const isMobile=window.innerWidth<=768;
       let img="";
-
-      if (uiLang==="zh"){
-        img = isMobile ? "bg-mobile-zh.jpg" : "bg-pc-zh.jpg";
-      } else if (uiLang==="km"){
-        img = isMobile ? "bg-mobile-km.jpg" : "bg-pc-km.jpg";
-      } else {
-        img = isMobile ? "bg-mobile-en.jpg" : "bg-pc-en.jpg";
-      }
-
-      document.body.style.backgroundImage = `url("${img}")`;
+      if(uiLang==="zh") img=isMobile?"bg-mobile-zh.jpg":"bg-pc-zh.jpg";
+      else if(uiLang==="km") img=isMobile?"bg-mobile-km.jpg":"bg-pc-km.jpg";
+      else img=isMobile?"bg-mobile-en.jpg":"bg-pc-en.jpg";
+      document.body.style.backgroundImage=`url("${img}")`;
     }
 
     function applyLanguage(langKey){
-      const data = langTexts[langKey] || langTexts["en"];
-      const btn = document.getElementById("ctaBtn");
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if(btn) btn.innerText = data.button;
-      document.title = data.title;
-      if(metaDesc) metaDesc.setAttribute("content", data.desc);
-      document.documentElement.lang = langKey;
+      const data=langTexts[langKey]||langTexts["en"];
+      document.getElementById("ctaBtn").innerText=data.button;
+      document.title=data.title;
+      document.querySelector('meta[name="description"]').setAttribute("content",data.desc);
     }
 
     let userCountry=null;
@@ -280,42 +206,38 @@
       const KH="https://fbads.ofa88kh.com/login?id=register";
       if(country){
         switch(country){
-          case "TW": return TW;
-          case "HK": return HK;
-          case "MY": return MY;
-          case "KH": return KH;
-          default:   return MY;
+          case"TW":return TW;
+          case"HK":return HK;
+          case"MY":return MY;
+          case"KH":return KH;
+          default:return MY;
         }
       }
-      if(zhKeys.includes(lang)) return TW;
-      if(lang==="ms" || lang==="id") return MY;
-      if(lang==="km") return KH;
+      if(zhKeys.includes(lang))return TW;
+      if(lang==="ms"||lang==="id")return MY;
+      if(lang==="km")return KH;
       return MY;
     }
 
     (function init(){
-      let currentLang = loadInitialLang();
-      let currentUiLang = getUiLangByTextLang(currentLang);
+      let currentLang=loadInitialLang();
+      let currentUiLang=getUiLangByTextLang(currentLang);
 
       applyLanguage(currentLang);
-      applyBackground(currentUiLang);
+      applyBackground(currentUiLng:=currentUiLang);
 
-      window.addEventListener("resize",()=>applyBackground(currentUiLang));
+      window.addEventListener("resize",()=>applyBackground(currentUiLng));
 
-      const btn=document.getElementById("ctaBtn");
-      if(btn){
-        btn.addEventListener("click",e=>{
-          e.preventDefault();
-          const target=urlByCountryOrLang(userCountry,currentLang);
-          window.location.href=target;
-        });
-      }
+      document.getElementById("ctaBtn").addEventListener("click",e=>{
+        e.preventDefault();
+        window.location.href=urlByCountryOrLang(userCountry,currentLang);
+      });
 
       document.getElementById("langSelect").addEventListener("change",()=>{
         const value=document.getElementById("langSelect").value;
         localStorage.setItem("preferredLang",value);
-        currentLang = value==="auto" ? normalizeBrowserToLangKey() : value;
-        currentUiLang = getUiLangByTextLang(currentLang);
+        currentLang=value==="auto"?normalizeBrowserToLangKey():value;
+        currentUiLang=getUiLangByTextLang(currentLang);
         applyLanguage(currentLang);
         applyBackground(currentUiLang);
       });
