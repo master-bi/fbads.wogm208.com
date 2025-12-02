@@ -3,300 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>娛樂直播互動平台</title>
-  <meta name="description" content="娛樂直播互動平台，提供豐富多樣的直播、互動遊戲、休閒娛樂，一站式優質體驗。">
-
+  <title>Fireworks Demo</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      min-height: 100vh;
-      position: relative;
-      /* 🔹 預設先用桌機中文背景 */
-      background: url("bg-pc-zh.jpg") center top no-repeat;
-      background-size: cover;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-                   "Segoe UI", system-ui, sans-serif;
-      transition: background-image 0.3s ease-out;
-    }
-
-    /* 語言切換 */
-    .lang-switcher {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 10;
-      background: rgba(0,0,0,0.6);
-      border-radius: 999px;
-      padding: 6px 10px;
-      border: 1px solid rgba(217,181,102,0.8);
-      backdrop-filter: blur(5px);
-    }
-
-    .lang-switcher select {
-      background: transparent;
-      border: none;
-      color: #f9e5a5;
-      font-size: 13px;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .lang-switcher option {
-      color: #000 !important;
-      background: #fff !important;
-    }
-
-    /* ⭐⭐ 桌機按鈕位置：改這個 top 數字 ⭐⭐ */
-    .center-wrapper {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 500px;  /* ← 桌機按鈕距離「圖片上緣」的距離，越大越往下 */
-      width: 100%;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .cta-btn {
-      pointer-events: auto;
-      position: relative;
-      display: inline-block;
-      padding: 14px 50px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 22px;
-      letter-spacing: 4px;
-      font-weight: 600;
-      color: #f9e5a5;
-      background: linear-gradient(135deg, #000000, #222222);
-      border: 2px solid #d9b566;
-      box-shadow:
-        0 0 25px rgba(255, 215, 0, 0.4),
-        0 0 40px rgba(255, 215, 0, 0.2);
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       overflow: hidden;
-      animation: pulse 2.2s infinite ease-in-out,
-                 shine 2.8s infinite ease-in-out;
+      background: #050510; /* 深色背景比較好看 */
     }
 
-    .cta-btn::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -150%;
-      width: 60%;
-      height: 200%;
-      background: linear-gradient(
-        120deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.7) 50%,
-        rgba(255,255,255,0) 100%
-      );
-      transform: skewX(-20deg);
-      animation: shimmer 2.8s infinite ease-in-out;
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
-    .cta-btn:hover {
-      transform: scale(1.06);
-      box-shadow:
-        0 0 35px rgba(255, 215, 0, 0.6),
-        0 0 60px rgba(255, 215, 0, 0.3);
-    }
-
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.06); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes shine {
-      0%   { filter: brightness(1); }
-      50%  { filter: brightness(1.25); }
-      100% { filter: brightness(1); }
-    }
-
-    @keyframes shimmer {
-      0%   { left: -150%; }
-      100% { left: 150%; }
-    }
-
-    /* ⭐⭐ 手機版：背景圖 + 按鈕位置在這裡改 ⭐⭐ */
-    @media (max-width: 768px) {
-      body {
-        background-image: url("bg-mobile-zh.jpg"); /* 預設手機中文圖 */
-        background-position: center top;
-        background-size: cover;
-      }
-
-      .center-wrapper {
-        top: 470px;  /* ← 手機按鈕距離圖片上緣，越大越往下 */
-      }
-
-      .cta-btn {
-        font-size: 18px;
-        padding: 12px 38px;
-        letter-spacing: 3px;
-      }
-
-      .lang-switcher {
-        top: 10px;
-        right: 10px;
-        padding: 4px 8px;
-      }
-
-      .lang-switcher select {
-        font-size: 12px;
-      }
+    /* 你可以放自己的內容在上面 */
+    .content {
+      position: relative;
+      z-index: 10;
+      color: #fff;
+      text-align: center;
+      margin-top: 40vh;
+      font-size: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      pointer-events: none; /* 不擋點擊 */
     }
   </style>
 </head>
-
 <body>
+  <canvas id="fireworks"></canvas>
 
-  <div class="lang-switcher">
-    <select id="langSelect">
-      <option value="auto">🌐 Auto</option>
-      <option value="zh-TW">🌐 中文（繁體）</option>
-      <option value="zh-CN">🌐 中文（簡體）</option>
-      <option value="zh-HK">🌐 中文（香港）</option>
-      <option value="yue">🌐 粵語</option>
-      <option value="en">🌐 English</option>
-      <option value="ms">🌐 Bahasa Melayu</option>
-      <option value="km">🌐 ភាសាខ្មែរ</option>
-      <option value="vi">🌐 Tiếng Việt</option>
-      <option value="th">🌐 ภาษาไทย</option>
-      <option value="hi">🌐 हिन्दी</option>
-      <option value="id">🌐 Bahasa Indonesia</option>
-    </select>
-  </div>
-
-  <div class="center-wrapper">
-    <a class="cta-btn" id="ctaBtn" href="#">點擊註冊</a>
+  <div class="content">
+    烟火特效示範<br>（點擊畫面也會放煙火）
   </div>
 
   <script>
-    /* 語系文案 */
-    const langTexts = {
-      "zh-TW":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供豐富多樣的直播、互動遊戲、休閒娛樂，一站式優質體驗。"},
-      "zh-HK":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多樣化嘅直播互動娛樂。"},
-      "zh-MO":{button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，提供多元直播互動與遊戲娛樂。"},
-      "zh-CN":{button:"点击注册",title:"娱乐直播互动平台",desc:"娱乐直播互动平台，提供直播、互动游戏与多样娱乐内容。"},
-      "zh":   {button:"點擊註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，一站式直播娛樂選擇。"},
-      "yue":  {button:"撳呢度註冊",title:"娛樂直播互動平台",desc:"娛樂直播互動平台，直播互動一應俱全。"},
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
 
-      "en":{button:"Register Now",title:"Interactive Live Entertainment Platform",desc:"Live entertainment, interactive shows and more."},
-      "ms":{button:"Daftar Sekarang",title:"Platform Hiburan Siaran Langsung",desc:"Hiburan langsung dan permainan interaktif."},
-      "km":{button:"ចុះឈ្មោះ",title:"វេទិកាកំសាន្តផ្សាយផ្ទាល់",desc:"កម្សាន្តផ្សាយផ្ទាល់ និងល្បែងអន្តរកម្ម។"},
-      "vi":{button:"Đăng ký ngay",title:"Nền tảng Giải trí Trực tiếp Tương tác",desc:"Giải trí trực tiếp và trò chơi tương tác."},
-      "th":{button:"สมัครสมาชิก",title:"แพลตฟอร์มถ่ายทอดสดเชิงโต้ตอบ",desc:"ความบันเทิงถ่ายทอดสดและเกมโต้ตอบ."},
-      "hi":{button:"पंजीकरण करें",title:"लाइव इंटरएक्टिव मनोरंजन प्लेटफ़ॉर्म",desc:"लाइव मनोरंजन और इंटरएक्टिव शो।"},
-      "id":{button:"Daftar Sekarang",title:"Platform Hiburan Live Interaktif",desc:"Hiburan live dan permainan interaktif."}
-    };
-
-    const zhKeys = ["zh-TW","zh-HK","zh-MO","zh-CN","zh","yue","zh-yue"];
-
-    function detectBrowserLangRaw(){
-      return (navigator.language || "en").toLowerCase();
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.scale(dpr, dpr);
     }
+    resize();
+    window.addEventListener("resize", resize);
 
-    function normalizeBrowserToLangKey(){
-      const raw = detectBrowserLangRaw();
-      if(raw.startsWith("zh-tw")) return "zh-TW";
-      if(raw.startsWith("zh-hk")) return "zh-HK";
-      if(raw.startsWith("zh-mo")) return "zh-MO";
-      if(raw.startsWith("zh-cn")) return "zh-CN";
-      if(raw === "yue" || raw === "zh-yue") return "yue";
-      if(raw.startsWith("zh")) return "zh";
-      const base = raw.split("-")[0];
-      return langTexts[base] ? base : "en";
-    }
+    const fireworks = [];
+    const particles = [];
+    const gravity = 0.05;
+    const colors = ["#ff4b8b", "#ffd93b", "#40c9ff", "#9d7bff", "#ff7f50", "#00ffa3"];
 
-    function loadInitialLang(){
-      const stored = localStorage.getItem("preferredLang") || "auto";
-      document.getElementById("langSelect").value = stored;
-      return stored === "auto" ? normalizeBrowserToLangKey() : stored;
-    }
-
-    function getUiLangByTextLang(key){
-      if(zhKeys.includes(key)) return "zh";
-      if(key === "km") return "km";
-      return "en";
-    }
-
-    function applyBackground(uiLang){
-      const isMobile = window.innerWidth <= 768;
-      let img = "";
-
-      if(uiLang === "zh") {
-        img = isMobile ? "bg-mobile-zh.jpg" : "bg-pc-zh.jpg";
-      } else if(uiLang === "km") {
-        img = isMobile ? "bg-mobile-km.jpg" : "bg-pc-km.jpg";
-      } else {
-        img = isMobile ? "bg-mobile-en.jpg" : "bg-pc-en.jpg";
+    class Firework {
+      constructor(x, y, targetY, color) {
+        this.x = x;
+        this.y = canvas.height / (window.devicePixelRatio || 1);
+        this.targetY = targetY;
+        this.speed = -7 - Math.random() * 3;
+        this.color = color;
+        this.done = false;
       }
-
-      document.body.style.backgroundImage = `url("${img}")`;
-    }
-
-    function applyLanguage(langKey){
-      const data = langTexts[langKey] || langTexts["en"];
-      document.getElementById("ctaBtn").innerText = data.button;
-      document.title = data.title;
-      document.querySelector('meta[name="description"]').setAttribute("content",data.desc);
-    }
-
-    let userCountry = null;
-    fetch("https://ipapi.co/json/")
-      .then(r => r.json())
-      .then(d => userCountry = d.country_code)
-      .catch(() => userCountry = null);
-
-    function urlByCountryOrLang(country,lang){
-      const TW="https://ag223.gm89.net/login?id=register";
-      const HK="https://fbads.ds88hk.net/login?id=register";
-      const MY="https://fbads.ofa168my.com/login?id=register";
-      const KH="https://fbads.ofa88kh.com/login?id=register";
-      if(country){
-        switch(country){
-          case "TW": return TW;
-          case "HK": return HK;
-          case "MY": return MY;
-          case "KH": return KH;
-          default:   return MY;
+      update() {
+        this.y += this.speed;
+        this.speed += gravity * 0.3;
+        if (this.y <= this.targetY) {
+          this.explode();
+          this.done = true;
+        }
+        this.draw();
+      }
+      explode() {
+        const count = 60 + Math.random() * 40;
+        for (let i = 0; i < count; i++) {
+          const angle = (Math.PI * 2 * i) / count;
+          const speed = 2 + Math.random() * 3;
+          particles.push(new Particle(this.x, this.y, angle, speed, this.color));
         }
       }
-      if(zhKeys.includes(lang)) return TW;
-      if(lang === "ms" || lang === "id") return MY;
-      if(lang === "km") return KH;
-      return MY;
+      draw() {
+        ctx.save();
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
     }
 
-    (function init(){
-      let currentLang   = loadInitialLang();                
-      let currentUiLang = getUiLangByTextLang(currentLang); 
+    class Particle {
+      constructor(x, y, angle, speed, color) {
+        this.x = x;
+        this.y = y;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.alpha = 1;
+        this.friction = 0.98;
+        this.color = color;
+      }
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= 0.015 + Math.random() * 0.01;
+      }
+      draw() {
+        if (this.alpha <= 0) return;
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
 
-      applyLanguage(currentLang);
-      applyBackground(currentUiLang);
+    function launchRandomFirework() {
+      const w = window.innerWidth;
+      const x = 80 + Math.random() * (w - 160);
+      const h = window.innerHeight;
+      const targetY = 80 + Math.random() * (h * 0.5);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      fireworks.push(new Firework(x, targetY, targetY, color));
+    }
 
-      window.addEventListener("resize", () => applyBackground(currentUiLang));
+    // 點擊也放煙火
+    canvas.addEventListener("click", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const targetY = e.clientY - rect.top;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      fireworks.push(new Firework(x, targetY, targetY, color));
+    });
 
-      document.getElementById("ctaBtn").addEventListener("click", e => {
-        e.preventDefault();
-        window.location.href = urlByCountryOrLang(userCountry,currentLang);
-      });
+    let lastTime = 0;
+    function animate(timestamp) {
+      requestAnimationFrame(animate);
 
-      document.getElementById("langSelect").addEventListener("change", () => {
-        const value = document.getElementById("langSelect").value;
-        localStorage.setItem("preferredLang", value);
+      const delta = timestamp - lastTime;
+      if (delta > 80) { // 控制自動發射頻率
+        launchRandomFirework();
+        lastTime = timestamp;
+      }
 
-        currentLang   = value === "auto" ? normalizeBrowserToLangKey() : value;
-        currentUiLang = getUiLangByTextLang(currentLang);
+      // 做一點殘影效果
+      ctx.fillStyle = "rgba(5, 5, 16, 0.25)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        applyLanguage(currentLang);
-        applyBackground(currentUiLang);
-      });
-    })();
+      // 更新煙火
+      for (let i = fireworks.length - 1; i >= 0; i--) {
+        fireworks[i].update();
+        if (fireworks[i].done) fireworks.splice(i, 1);
+      }
+
+      // 更新粒子
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].alpha <= 0) particles.splice(i, 1);
+      }
+    }
+
+    requestAnimationFrame(animate);
   </script>
-
 </body>
 </html>
