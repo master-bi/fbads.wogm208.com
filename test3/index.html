@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>爆分攻略落地頁 - 最終優化版</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:#000;
+      color:#fff;
+      min-height:100vh;
+      padding-bottom:120px;
+      font-family:-apple-system, BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+      display:flex;
+      justify-content:center;
+    }
+
+    .page {
+      width:100%;
+      max-width:430px; 
+      margin:0 auto;
+    }
+
+    /* 輪播基本設定 */
+    .carousel-wrapper {
+      width:100%;
+      margin:0 auto 10px auto;
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      background:#000;
+    }
+
+    .carousel-inner {
+      display:flex;
+      transition:transform 0.4s ease;
+    }
+
+    .carousel-slide {
+      flex-shrink:0;
+    }
+
+    .carousel-slide img {
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .carousel-dots {
+      position:absolute;
+      left:50%;
+      bottom:8px;
+      transform:translateX(-50%);
+      display:flex;
+      gap:6px;
+      z-index:10;
+    }
+
+    .carousel-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.4);
+    }
+
+    .carousel-dot.active { background:#fff; }
+
+    /* 背景圖 */
+    .main-bg {
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* 底部固定按鈕 */
+    .fixed-btn {
+      position:fixed;
+      left:50%;
+      bottom:16px;
+      transform:translateX(-50%);
+      z-index:9999;
+      text-decoration:none;
+      animation:breathing 2.5s ease-in-out infinite;
+      transition:transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .fixed-btn img {
+      width:90vw;
+      max-width:360px;
+      display:block;
+    }
+
+    @keyframes breathing {
+      0%{transform:translateX(-50%) scale(1);}
+      50%{transform:translateX(-50%) scale(1.08);}
+      100%{transform:translateX(-50%) scale(1);}
+    }
+
+    .fixed-btn:active {
+      transform:translateX(-50%) scale(0.92);
+      filter:brightness(1.2);
+      animation:none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- 輪播，第一張直接放 HTML，最快 -->
+    <div class="carousel-wrapper">
+      <div id="carousel-inner" class="carousel-inner">
+
+        <!-- 第一張優先載入 -->
+        <div class="carousel-slide">
+          <img 
+            src="bn/001.jpg"
+            alt="banner 1"
+            width="430"
+            height="240"
+            fetchpriority="low"
+          >
+        </div>
+
+      </div>
+
+      <div id="carousel-dots" class="carousel-dots">
+        <div class="carousel-dot active"></div>
+      </div>
+    </div>
+
+    <!-- 背景容器：先放 bg01，其餘用 JS 依序接在下面 -->
+    <div id="bg-container">
+      <img 
+        src="img/bg.webp"
+        alt="爆分攻略落地頁區塊 1"
+        class="main-bg"
+        width="430"
+        height="1600"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </div>
+
+  </div>
+
+  <!-- 底部按鈕 -->
+  <a href="https://fbads88.gm89.net/login?id=register" class="fixed-btn">
+    <img src="img/button.png" alt="領取攻略" width="360" height="120">
+  </a>
+
+  <script>
+    (function(){
+      const REGISTER_URL = "https://fbads88.gm89.net/login?id=register";
+
+      /* 輪播：第二張之後的圖（目前你說只有到 002） */
+      const EXTRA_BANNERS = [
+        "bn/002.jpg"
+      ];
+
+
+      const inner = document.getElementById("carousel-inner");
+      const dots = document.getElementById("carousel-dots");
+      const bgContainer = document.getElementById("bg-container");
+
+      let index = 0;
+      let timer = null;
+      let slideWidth = 0;
+
+      /* --------- 輪播區 --------- */
+
+      function initExtraSlides(){
+        EXTRA_BANNERS.forEach((src, idx)=>{
+
+          const slide = document.createElement("div");
+          slide.className = "carousel-slide";
+
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "banner " + (idx+2);
+          img.loading = "lazy";
+          img.width = 430;
+          img.height = 240;
+
+          slide.appendChild(img);
+          inner.appendChild(slide);
+
+          const dot = document.createElement("div");
+          dot.className = "carousel-dot";
+          dots.appendChild(dot);
+        });
+
+        updateWidth();
+        window.addEventListener("resize", updateWidth);
+        startAuto();
+      }
+
+      function updateWidth(){
+        slideWidth = document.querySelector(".carousel-wrapper").clientWidth;
+        const slides = inner.children;
+        for(let i=0;i<slides.length;i++){
+          slides[i].style.width = slideWidth+"px";
+        }
+        inner.style.width = slideWidth * inner.children.length + "px";
+        updateSlide();
+      }
+
+      function updateSlide(){
+        inner.style.transform = "translateX(" + (-index * slideWidth) + "px)";
+        [...dots.children].forEach((d,i)=>{
+          d.classList.toggle("active", i===index);
+        });
+      }
+
+      function next(){
+        index = (index + 1) % inner.children.length;
+        updateSlide();
+      }
+
+      function startAuto(){
+        timer = setInterval(next, 3000);
+      }
+
+      /* --------- 背景按順序接續載入 --------- */
+
+      function initExtraBackgrounds(){
+        EXTRA_BACKGROUNDS.forEach(function(src, idx){
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "爆分攻略落地頁區塊 " + (idx + 2);
+          img.className = "main-bg";
+          img.loading = "lazy";
+          img.width = 430;
+          img.height = 1600;
+          bgContainer.appendChild(img);
+        });
+      }
+
+      /* 先啟動輪播的額外圖片，再把背景其餘區塊接上 */
+      initExtraSlides();
+      initExtraBackgrounds();
+
+    })();
+  </script>
+
+</body>
+</html>
