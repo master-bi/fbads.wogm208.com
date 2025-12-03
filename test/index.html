@@ -24,29 +24,36 @@
       display:block;
     }
 
-    /* 輪播區塊：寬度跟背景一樣 */
-    .carousel-wrapper {
-      width: 100%;
-      max-width: 520px;
-      margin: 0 auto 8px auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .carousel-inner {
-      display:flex;
-      width:100%;
-      transition:transform 0.4s ease;
-    }
-    .carousel-slide {
-      min-width:100%;
-      flex-shrink:0;
-    }
-    .carousel-slide img {
-      width:100%;
-      height:auto;
-      display:block;
-    }
+/* 輪播區塊固定高度，避免圖片太高導致跑版 */
+.carousel-wrapper {
+  width: 100%;
+  max-width: 520px;
+  height: 240px;            /* ★ 你要的固定高度 */
+  margin: 0 auto 8px auto;
+  position: relative;
+  overflow: hidden;         /* ★ 裁切超出的圖片 */
+  border-radius: 12px;
+}
+
+.carousel-inner {
+  display: flex;
+  height: 100%;             /* ★ 讓輪播內容高度 100% */
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;             /* ★ 每張圖的容器跟輪播高度一致 */
+  flex-shrink: 0;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* ★ 讓圖片不變形、自動裁切 */
+  display: block;
+}
+
     .carousel-dots {
       position:absolute;
       left:50%;
