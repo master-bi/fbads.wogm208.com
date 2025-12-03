@@ -12,6 +12,8 @@
       font-family:-apple-system, BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
       display:flex; justify-content:center;
     }
+
+    /* 整體寬度限制 750 */
     .page {
       width:100%;
       max-width:750px;
@@ -60,9 +62,12 @@
     }
     .carousel-dot.active { background:#fff; }
 
-    /* 背景圖 */
+    /* 背景圖寬度固定 750，高度自動 */
     .main-bg {
-      width:100%; height:auto; display:block;
+      width:750px;
+      height:auto;
+      display:block;
+      margin:0 auto;
     }
 
     /* 底部固定按鈕 */
