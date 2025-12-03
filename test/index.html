@@ -7,93 +7,79 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background:#000;
-      color:#fff;
-      min-height:100vh;
+      background:#000; color:#fff; min-height:100vh;
       padding-bottom:120px;
-      font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", system-ui, sans-serif;
+      font-family:-apple-system, BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+      display:flex; justify-content:center;
     }
     .page {
       width:100%;
-      max-width:520px;
+      max-width:750px;
       margin:0 auto;
     }
-    .page img.main-bg {
-      width:100%;
-      height:auto;
-      display:block;
+
+    /* 固定 750x344 輪播框 */
+    .carousel-wrapper {
+      width:750px;
+      height:344px;
+      margin:0 auto 10px auto;
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      background:#000;
     }
-
-/* 輪播區塊固定高度，避免圖片太高導致跑版 */
-.carousel-wrapper {
-  width: 100%;
-  max-width: 520px;
-  height: 240px;            /* ★ 你要的固定高度 */
-  margin: 0 auto 8px auto;
-  position: relative;
-  overflow: hidden;         /* ★ 裁切超出的圖片 */
-  border-radius: 12px;
-}
-
-.carousel-inner {
-  display: flex;
-  height: 100%;             /* ★ 讓輪播內容高度 100% */
-  transition: transform 0.4s ease;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  height: 100%;             /* ★ 每張圖的容器跟輪播高度一致 */
-  flex-shrink: 0;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        /* ★ 讓圖片不變形、自動裁切 */
-  display: block;
-}
+    .carousel-inner {
+      display:flex;
+      width:100%;
+      height:100%;
+      transition:transform 0.4s ease;
+    }
+    .carousel-slide {
+      width:750px;
+      height:344px;
+      flex-shrink:0;
+    }
+    .carousel-slide img {
+      width:750px;
+      height:344px;
+      display:block;
+      object-fit:cover;
+    }
 
     .carousel-dots {
       position:absolute;
-      left:50%;
-      bottom:6px;
+      left:50%; bottom:8px;
       transform:translateX(-50%);
-      display:flex;
-      gap:4px;
-      z-index:5;
+      display:flex; gap:6px;
+      z-index:10;
     }
     .carousel-dot {
-      width:6px;
-      height:6px;
+      width:8px; height:8px;
       border-radius:50%;
       background:rgba(255,255,255,0.4);
     }
-    .carousel-dot.active {
-      background:#fff;
+    .carousel-dot.active { background:#fff; }
+
+    /* 背景圖 */
+    .main-bg {
+      width:100%; height:auto; display:block;
     }
 
     /* 底部固定按鈕 */
     .fixed-btn {
-      position:fixed;
-      left:50%;
-      bottom:16px;
+      position:fixed; left:50%; bottom:16px;
       transform:translateX(-50%);
-      z-index:9999;
-      text-decoration:none;
-      animation: breathing 2.5s ease-in-out infinite;
-      transition: transform 0.15s ease, filter 0.15s ease;
+      z-index:9999; text-decoration:none;
+      animation:breathing 2.5s ease-in-out infinite;
+      transition:transform 0.15s ease, filter 0.15s ease;
     }
     .fixed-btn img {
-      width:90vw;
-      max-width:360px;
-      height:auto;
-      display:block;
+      width:90vw; max-width:360px; display:block;
     }
     @keyframes breathing {
-      0% { transform:translateX(-50%) scale(1); }
-      50% { transform:translateX(-50%) scale(1.08); }
-      100% { transform:translateX(-50%) scale(1); }
+      0%{transform:translateX(-50%) scale(1);}
+      50%{transform:translateX(-50%) scale(1.08);}
+      100%{transform:translateX(-50%) scale(1);}
     }
     .fixed-btn:active {
       transform:translateX(-50%) scale(0.92);
@@ -104,137 +90,102 @@
 </head>
 <body>
   <div class="page">
-
-    <!-- 頂部輪播 -->
     <div id="banner-carousel" class="carousel-wrapper">
       <div id="carousel-inner" class="carousel-inner"></div>
       <div id="carousel-dots" class="carousel-dots"></div>
     </div>
 
-    <!-- 背景圖 -->
-    <img src="img/bg.png" alt="爆分攻略落地頁" class="main-bg">
+    <img src="img/bg.png" class="main-bg">
   </div>
 
-  <!-- 底部固定呼吸按鈕 -->
   <a href="https://fbads88.gm89.net/login?id=register" class="fixed-btn">
-    <img src="img/button.png" alt="領取爆分攻略">
+    <img src="img/button.png">
   </a>
 
   <script>
-    (function() {
-      const REGISTER_URL = "https://fbads88.gm89.net/login?id=register";
-      const MAX_BANNERS = 20;
+    (function(){
+      const URL = "https://fbads88.gm89.net/login?id=register";
+      const MAX = 20;
       const PREFIX = "bn/";
-      const carouselWrapper = document.getElementById("banner-carousel");
       const inner = document.getElementById("carousel-inner");
-      const dotsWrap = document.getElementById("carousel-dots");
+      const dots = document.getElementById("carousel-dots");
+      const wrap = document.getElementById("banner-carousel");
 
-      let banners = [];
+      let imgs = [];
       let pending = 0;
-      let currentIndex = 0;
-      let autoTimer = null;
-      let touchStartX = null;
-      let isSwiping = false;
+      let index = 0;
+      let timer = null;
+      let startX = null;
+      let swipe = false;
 
-      function loadBanners() {
-        for (let i = 1; i <= MAX_BANNERS; i++) {
-          const num = String(i).padStart(3, "0");
-          const src = PREFIX + num + ".png";
+      function load(){
+        for(let i=1;i<=MAX;i++){
+          const n = String(i).padStart(3,"0");
+          const src = PREFIX+n+".png";
           pending++;
-          const img = new Image();
-          img.onload = function(){ banners.push(src); checkDone(); };
-          img.onerror = function(){ checkDone(); };
-          img.src = src;
+          const im = new Image();
+          im.onload = ()=>{ imgs.push(src); check(); };
+          im.onerror = ()=>{ check(); };
+          im.src = src;
         }
       }
 
-      function checkDone() {
+      function check(){
         pending--;
-        if (pending === 0) {
-          if (banners.length === 0) {
-            carouselWrapper.style.display = "none";
-          } else {
-            initCarousel();
-          }
+        if(pending===0){
+          if(imgs.length===0){ wrap.style.display="none"; }
+          else init();
         }
       }
 
-      function initCarousel() {
-        banners.forEach(function(src, idx) {
+      function init(){
+        imgs.forEach((src,i)=>{
           const slide = document.createElement("div");
-          slide.className = "carousel-slide";
-          const img = document.createElement("img");
-          img.src = src;
-          img.alt = "banner " + (idx + 1);
-          slide.appendChild(img);
+          slide.className="carousel-slide";
+          const im = document.createElement("img");
+          im.src = src;
+          slide.appendChild(im);
           inner.appendChild(slide);
 
-          const dot = document.createElement("div");
-          dot.className = "carousel-dot" + (idx === 0 ? " active" : "");
-          dotsWrap.appendChild(dot);
+          const d = document.createElement("div");
+          d.className="carousel-dot"+(i===0?" active":"");
+          dots.appendChild(d);
         });
 
-        carouselWrapper.addEventListener("click", function() {
-          if (!isSwiping) window.location.href = REGISTER_URL;
-        });
+        wrap.addEventListener("click", ()=>{ if(!swipe) location.href=URL; });
 
-        carouselWrapper.addEventListener("touchstart", function(e) {
-          if (e.touches.length === 1) {
-            touchStartX = e.touches[0].clientX;
-            isSwiping = false;
+        wrap.addEventListener("touchstart", e=>{
+          startX = e.touches[0].clientX;
+          swipe = false;
+        });
+        wrap.addEventListener("touchmove", e=>{
+          const dx = e.touches[0].clientX - startX;
+          if(Math.abs(dx)>10) swipe = true;
+        });
+        wrap.addEventListener("touchend", e=>{
+          const dx = e.changedTouches[0].clientX - startX;
+          if(swipe && Math.abs(dx)>40){
+            if(dx<0) next();
+            else prev();
           }
+          restart();
         });
 
-        carouselWrapper.addEventListener("touchmove", function(e) {
-          if (!touchStartX) return;
-          const dx = e.touches[0].clientX - touchStartX;
-          if (Math.abs(dx) > 10) isSwiping = true;
-        });
-
-        carouselWrapper.addEventListener("touchend", function(e) {
-          if (!touchStartX) return;
-          const dx = e.changedTouches[0].clientX - touchStartX;
-
-          if (isSwiping && Math.abs(dx) > 40) {
-            if (dx < 0) nextSlide();
-            else prevSlide();
-          }
-          touchStartX = null;
-          restartAuto();
-        });
-
-        startAuto();
+        start();
       }
 
-      function updateCarousel() {
-        inner.style.transform = "translateX(" + (-currentIndex * 100) + "%)";
-        const dots = dotsWrap.children;
-        for (let i = 0; i < dots.length; i++) {
-          dots[i].classList.toggle("active", i === currentIndex);
-        }
+      function update(){
+        inner.style.transform = "translateX(" + (-index*750) + "px)";
+        [...dots.children].forEach((d,i)=>d.classList.toggle("active", i===index));
       }
 
-      function nextSlide() {
-        if (banners.length <= 1) return;
-        currentIndex = (currentIndex + 1) % banners.length;
-        updateCarousel();
-      }
+      function next(){ index=(index+1)%imgs.length; update(); }
+      function prev(){ index=(index-1+imgs.length)%imgs.length; update(); }
 
-      function prevSlide() {
-        if (banners.length <= 1) return;
-        currentIndex = (currentIndex - 1 + banners.length) % banners.length;
-        updateCarousel();
-      }
+      function start(){ timer=setInterval(next,3000); }
+      function restart(){ clearInterval(timer); start(); }
 
-      function startAuto() {
-        autoTimer = setInterval(nextSlide, 3000);
-      }
-      function restartAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(nextSlide, 3000);
-      }
-
-      loadBanners();
+      load();
     })();
   </script>
 </body>
