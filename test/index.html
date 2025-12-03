@@ -10,7 +10,7 @@
       background:#000;
       color:#fff;
       min-height:100vh;
-      padding-bottom:120px; /* 預留底部按鈕空間 */
+      padding-bottom:120px;
       font-family:-apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", system-ui, sans-serif;
     }
     .page {
@@ -24,13 +24,14 @@
       display:block;
     }
 
-    /* 輪播區塊 */
+    /* 輪播區塊：寬度跟背景一樣 */
     .carousel-wrapper {
-      width:100%;
-      margin:0 auto 8px auto;
-      position:relative;
-      overflow:hidden;
-      border-radius:12px;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 8px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
     }
     .carousel-inner {
       display:flex;
@@ -40,7 +41,6 @@
     .carousel-slide {
       min-width:100%;
       flex-shrink:0;
-      position:relative;
     }
     .carousel-slide img {
       width:100%;
@@ -97,17 +97,18 @@
 </head>
 <body>
   <div class="page">
-    <!-- 置頂輪播圖 -->
+
+    <!-- 頂部輪播 -->
     <div id="banner-carousel" class="carousel-wrapper">
       <div id="carousel-inner" class="carousel-inner"></div>
       <div id="carousel-dots" class="carousel-dots"></div>
     </div>
 
-    <!-- 原本的長背景圖 -->
+    <!-- 背景圖 -->
     <img src="img/bg.png" alt="爆分攻略落地頁" class="main-bg">
   </div>
 
-  <!-- 固定在螢幕下緣的呼吸按鈕 -->
+  <!-- 底部固定呼吸按鈕 -->
   <a href="https://fbads88.gm89.net/login?id=register" class="fixed-btn">
     <img src="img/button.png" alt="領取爆分攻略">
   </a>
@@ -115,8 +116,8 @@
   <script>
     (function() {
       const REGISTER_URL = "https://fbads88.gm89.net/login?id=register";
-      const MAX_BANNERS = 20;          // 最多嘗試掃描 20 張
-      const PREFIX = "bn/";            // 圖片資料夾
+      const MAX_BANNERS = 20;
+      const PREFIX = "bn/";
       const carouselWrapper = document.getElementById("banner-carousel");
       const inner = document.getElementById("carousel-inner");
       const dotsWrap = document.getElementById("carousel-dots");
@@ -128,20 +129,14 @@
       let touchStartX = null;
       let isSwiping = false;
 
-      // 掃描 bn/001.png ~ bn/020.png
       function loadBanners() {
         for (let i = 1; i <= MAX_BANNERS; i++) {
           const num = String(i).padStart(3, "0");
           const src = PREFIX + num + ".png";
           pending++;
           const img = new Image();
-          img.onload = function() {
-            banners.push(src);
-            checkDone();
-          };
-          img.onerror = function() {
-            checkDone();
-          };
+          img.onload = function(){ banners.push(src); checkDone(); };
+          img.onerror = function(){ checkDone(); };
           img.src = src;
         }
       }
@@ -150,7 +145,6 @@
         pending--;
         if (pending === 0) {
           if (banners.length === 0) {
-            // 沒有任何圖，直接隱藏輪播區
             carouselWrapper.style.display = "none";
           } else {
             initCarousel();
@@ -159,7 +153,6 @@
       }
 
       function initCarousel() {
-        // 建立 slide
         banners.forEach(function(src, idx) {
           const slide = document.createElement("div");
           slide.className = "carousel-slide";
@@ -174,43 +167,32 @@
           dotsWrap.appendChild(dot);
         });
 
-        // 點擊整個輪播區塊 -> 跳轉
         carouselWrapper.addEventListener("click", function() {
-          if (!isSwiping) {
-            window.location.href = REGISTER_URL;
-          }
+          if (!isSwiping) window.location.href = REGISTER_URL;
         });
 
-        // 手機滑動切換
         carouselWrapper.addEventListener("touchstart", function(e) {
-          if (e.touches && e.touches.length === 1) {
+          if (e.touches.length === 1) {
             touchStartX = e.touches[0].clientX;
             isSwiping = false;
           }
         });
 
         carouselWrapper.addEventListener("touchmove", function(e) {
-          if (!touchStartX || !e.touches || e.touches.length !== 1) return;
+          if (!touchStartX) return;
           const dx = e.touches[0].clientX - touchStartX;
-          if (Math.abs(dx) > 10) {
-            isSwiping = true;
-          }
+          if (Math.abs(dx) > 10) isSwiping = true;
         });
 
         carouselWrapper.addEventListener("touchend", function(e) {
           if (!touchStartX) return;
-          const endX = (e.changedTouches && e.changedTouches[0].clientX) || touchStartX;
-          const dx = endX - touchStartX;
+          const dx = e.changedTouches[0].clientX - touchStartX;
 
           if (isSwiping && Math.abs(dx) > 40) {
             if (dx < 0) nextSlide();
             else prevSlide();
-          } else {
-            // 位移不大，當作點擊交給 click handler
           }
-
           touchStartX = null;
-          // 重啟自動輪播
           restartAuto();
         });
 
@@ -218,8 +200,7 @@
       }
 
       function updateCarousel() {
-        const offset = -currentIndex * 100;
-        inner.style.transform = "translateX(" + offset + "%)";
+        inner.style.transform = "translateX(" + (-currentIndex * 100) + "%)";
         const dots = dotsWrap.children;
         for (let i = 0; i < dots.length; i++) {
           dots[i].classList.toggle("active", i === currentIndex);
@@ -239,14 +220,10 @@
       }
 
       function startAuto() {
-        if (autoTimer) clearInterval(autoTimer);
-        autoTimer = setInterval(nextSlide, 3000); // 3 秒換一張
+        autoTimer = setInterval(nextSlide, 3000);
       }
-
       function restartAuto() {
-        if (autoTimer) {
-          clearInterval(autoTimer);
-        }
+        clearInterval(autoTimer);
         autoTimer = setInterval(nextSlide, 3000);
       }
 
