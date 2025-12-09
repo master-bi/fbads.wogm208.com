@@ -14,8 +14,8 @@
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
       display:flex;
       justify-content:center;
-      /* 預留：內容 + 底部橫幅高度(1080:140) + 一點間距 */
-      padding:16px 12px calc((100vw * 140 / 1080) + 32px);
+      /* 預留給內容 + 底部只露出 24px 的橫幅 */
+      padding:16px 12px 80px;
     }
 
     .page{width:100%;max-width:480px}
@@ -117,11 +117,11 @@
       filter:drop-shadow(0 8px 18px rgba(0,0,0,0.9));
     }
 
-    /* 右側懸浮 CTA */
+    /* 右側懸浮 CTA（SEO 風格膠囊） */
     .float-cta{
       position:fixed;
       right:16px;
-      bottom:calc((100vw * 140 / 1080) + 24px); /* 剛好在橫幅上方一點 */
+      bottom:120px; /* 固定在只露出 24px 橫幅的上方 */
       z-index:30;
     }
     .btn-float{
@@ -155,12 +155,12 @@
       white-space:nowrap;
     }
 
-    /* 底部固定橫幅：1080x140 比例 */
+    /* 底部固定橫幅：用原圖，只有上緣約 24px 露出，其餘溢出在螢幕外面 */
     .bottom-bar-wrap{
       position:fixed;
       left:0;
       right:0;
-      bottom:0;
+      bottom:calc(24px - (100vw * 140 / 1080)); /* 圖片高度 - 24px 在螢幕外，僅上方 24px 露出 */
       z-index:20;
       display:flex;
       justify-content:center;
@@ -171,7 +171,7 @@
     }
     .bottom-bar-inner img{
       width:100%;
-      height:auto; /* 依照原始 1080x140 比例等比縮放 */
+      height:auto; /* 使用原圖比例 1080x140，不裁剪、不壓扁 */
       display:block;
     }
 
@@ -287,7 +287,7 @@
     </button>
   </div>
 
-  <!-- 底部固定橫幅 1080x140 -->
+  <!-- 底部固定橫幅：原圖，只有上面約 24px 露出 -->
   <div class="bottom-bar-wrap">
     <div class="bottom-bar-inner">
       <img src="img/bottom-banner.png" alt="OFA168 Bottom Banner" />
