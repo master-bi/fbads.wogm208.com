@@ -118,37 +118,33 @@ body{
   z-index:30;
 }
 .btn-float{
-  position:relative;
-  width:72px;
-  height:72px;
-  border-radius:50%;
   border:none;
-  background:radial-gradient(circle at 30% 0%,#fff9d4 0,#ffe78a 35%,#ffbf24 70%,#b56a00 100%);
-  box-shadow:0 12px 26px rgba(0,0,0,0.96),0 0 22px rgba(255,210,0,0.8);
+  border-radius:999px;
+  padding:11px 22px;
+  background:linear-gradient(135deg,#ffeaa0,#ffd45b,#ffb800);
+  box-shadow:0 10px 24px rgba(0,0,0,0.95),0 0 16px rgba(255,210,0,0.85);
   cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  animation:floatPulse 2s ease-in-out infinite;
+  gap:6px;
 }
-.btn-float-inner{
-  text-align:center;
-  color:#3b2600;
-  font-weight:800;
+.btn-float-icon{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:1px solid rgba(59,38,0,0.2);
+  background:rgba(59,38,0,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size:11px;
-  letter-spacing:0.06em;
-  line-height:1.1;
 }
-.btn-float-inner span.icon{
-  display:block;
-  font-size:18px;
-  margin-bottom:2px;
-}
-@keyframes floatPulse{
-  0%{transform:translateY(0) scale(1);box-shadow:0 12px 26px rgba(0,0,0,0.96),0 0 22px rgba(255,210,0,0.7);}
-  50%{transform:translateY(-2px) scale(1.05);box-shadow:0 16px 32px rgba(0,0,0,0.98),0 0 26px rgba(255,220,80,0.95);}
-  100%{transform:translateY(0) scale(1);box-shadow:0 12px 26px rgba(0,0,0,0.96),0 0 22px rgba(255,210,0,0.7);}
+.btn-float-text{
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:0.16em;
+  color:#3b2600;
 }
 
 /* 底部固定橫條 */
@@ -156,7 +152,7 @@ body{
   position:fixed;
   left:0;
   right:0;
-  bottom:env(safe-area-inset-bottom);
+  bottom:0;
   z-index:20;
   display:flex;
   justify-content:center;
@@ -166,9 +162,12 @@ body{
   width:100%;
   max-width:480px;
   pointer-events:auto; /* 保留橫條本身可點擊 */
+  background:#7b001e; /* 與橫條接近的底色，故意往下延伸 */
+  padding-bottom:calc(18px + env(safe-area-inset-bottom));
 }
 .bottom-bar-inner img{
   width:100%;
+  display:block;
   display:block;
 }
 
@@ -277,10 +276,8 @@ body{
 <!-- 右側懸浮 CTA 按鈕 -->
 <div class="float-cta">
   <button class="btn-float" onclick="go()">
-    <div class="btn-float-inner">
-      <span class="icon">★</span>
-      <span>立即</span><br/><span>註冊</span>
-    </div>
+    <div class="btn-float-icon">★</div>
+    <div class="btn-float-text">立即註冊</div>
   </button>
 </div>
 
