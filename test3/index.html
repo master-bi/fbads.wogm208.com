@@ -161,22 +161,25 @@
   position:fixed;
   left:0;
   right:0;
-  bottom:calc(24px - (100vw * 140 / 1080)); /* 露出24px */
-  z-index:20;
+  bottom:calc(24px - (100vw * 140 / 1080)); /* 只露出24px，其餘在螢幕外 */
+  z-index:9999;
   display:flex;
   justify-content:center;
-  overflow:visible; /* allow overflow */
+  overflow:visible !important;   /* 允許橫幅往下超出螢幕 */
+  pointer-events:none;           /* 不擋中間內容滑動 */
 }
 
     .bottom-bar-inner{
-      width:100%;
-      max-width:480px;
-    }
+  width:100%;
+  overflow:visible !important;   /* 內容允許外溢 */
+  max-width:none !important;     /* 解除 480px 限制 */
+}
     .bottom-bar-inner img{
-      width:100%;
-      height:auto; /* 使用原圖比例 1080x140，不裁剪、不壓扁 */
-      display:block;
-    }
+  width:100%;
+  height:auto;
+  display:block;
+  pointer-events:auto;           /* 保持橫幅可點擊 */
+}
 
     /* 影片預覽 Overlay */
     .video-overlay{
