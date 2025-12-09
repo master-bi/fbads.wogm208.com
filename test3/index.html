@@ -1,335 +1,344 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OFA168 官方登入</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  margin:0;
-  background:linear-gradient(to bottom,#17002b 0,#0b0016 45%,#7b001e 100%);
-  color:#fff;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
-  display:flex;
-  justify-content:center;
-  /* 下面預留給橫幅區域 */
-  padding:16px 12px 92px;
-}
-.page{width:100%;max-width:480px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OFA168 官方登入</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
 
-/* HERO：星空人物 */
-.hero{
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,0.9);
-}
-.hero img{width:100%;display:block}
+    body{
+      margin:0;
+      background:linear-gradient(to bottom,#17002b 0,#0b0016 45%,#7b001e 100%);
+      color:#ffffff;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+      display:flex;
+      justify-content:center;
+      /* 預留：內容 + 底部橫幅高度(1080:140) + 一點間距 */
+      padding:16px 12px calc((100vw * 140 / 1080) + 32px);
+    }
 
-/* 共用區塊 */
-.section{margin-top:20px}
-.card{
-  background:rgba(15,0,30,0.92);
-  padding:16px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 12px 30px rgba(0,0,0,0.9);
-}
+    .page{width:100%;max-width:480px}
 
-/* 金色影片卡 */
-.gold{
-  background:#f0d088;
-  color:#3b2200;
-  border-radius:18px;
-  padding:14px;
-}
-.gold-title{
-  font-size:16px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-.gold-desc{
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:8px;
-}
-.gold video{
-  width:100%;
-  border-radius:14px;
-  cursor:pointer;
-}
+    /* HERO */
+    .hero{
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.9);
+    }
+    .hero img{width:100%;display:block}
 
-/* 遊戲卡片 */
-.game{
-  border-radius:18px;
-  overflow:hidden;
-  background:#1a0035;
-  box-shadow:0 10px 26px rgba(0,0,0,0.95);
-  margin-bottom:12px;
-}
-.game-top{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  padding:12px;
-}
-.game-txt{flex:1}
-.game-title{
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:4px;
-}
-.game-sub{
-  font-size:12px;
-  opacity:0.85;
-}
-.game-girl img{
-  width:95px;
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,0.9));
-}
-.game-foot{
-  background:#0a001f;
-  padding:10px;
-  font-size:12px;
-  opacity:0.9;
-}
+    .section{margin-top:20px}
+    .card{
+      background:rgba(15,0,30,0.92);
+      padding:16px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 12px 30px rgba(0,0,0,0.9);
+    }
 
-/* 牌照區 */
-.license{text-align:center;font-size:13px}
-.lic-icon{
-  width:80px;
-  height:80px;
-  border-radius:22px;
-  margin:0 auto 10px;
-  background:radial-gradient(circle at top,#23d882,#005c42);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  font-weight:900;
-  box-shadow:0 10px 24px rgba(0,0,0,0.9);
-}
+    /* 金色影片卡 */
+    .gold{
+      background:#f0d088;
+      color:#3b2200;
+      border-radius:18px;
+      padding:14px;
+    }
+    .gold-title{
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .gold-desc{
+      font-size:12px;
+      line-height:1.6;
+      margin-bottom:8px;
+    }
+    .gold video{
+      width:100%;
+      border-radius:14px;
+      cursor:pointer;
+    }
 
-/* 浮動 CTA 按鈕（右側固定） */
-.float-cta{
-  position:fixed;
-  right:16px;
-  bottom:140px; /* 橫幅上方一點 */
-  z-index:30;
-}
-.btn-float{
-  border:none;
-  border-radius:999px;
-  padding:11px 22px;
-  background:linear-gradient(135deg,#ffeaa0,#ffd45b,#ffb800);
-  box-shadow:0 10px 24px rgba(0,0,0,0.95),0 0 16px rgba(255,210,0,0.85);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-}
-.btn-float-icon{
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  border:1px solid rgba(59,38,0,0.2);
-  background:rgba(59,38,0,0.08);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:11px;
-}
-.btn-float-text{
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:0.16em;
-  color:#3b2600;
-}
+    /* 遊戲卡片 */
+    .game{
+      border-radius:18px;
+      overflow:hidden;
+      background:#1a0035;
+      box-shadow:0 10px 26px rgba(0,0,0,0.95);
+      margin-bottom:12px;
+    }
+    .game-top{
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      padding:12px;
+    }
+    .game-txt{flex:1}
+    .game-title{
+      font-size:15px;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .game-sub{
+      font-size:12px;
+      opacity:0.85;
+    }
+    .game-girl img{
+      width:95px;
+      filter:drop-shadow(0 6px 12px rgba(0,0,0,0.9));
+    }
+    .game-foot{
+      background:#0a001f;
+      padding:10px;
+      font-size:12px;
+      opacity:0.9;
+    }
 
-/* 底部固定橫條 */
-.bottom-bar-wrap{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:20;
-  display:flex;
-  justify-content:center;
-  pointer-events:none; /* 讓中間內容可以滑 */
-}
-.bottom-bar-inner{
-  width:100%;
-  max-width:480px;
-  pointer-events:auto; /* 保留橫條本身可點擊 */
-  background:linear-gradient(to right,#000000 0,#1a0008 25%,#7b001e 100%);
-  padding-bottom:22px;
-}
-.bottom-bar-inner img{
-  width:100%;
-  display:block;
-  display:block;
-}
+    /* 牌照區 */
+    .license{text-align:center;font-size:13px}
+    .lic-icon{
+      width:80px;
+      height:80px;
+      border-radius:22px;
+      margin:0 auto 10px;
+      background:radial-gradient(circle at top,#23d882,#005c42);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:32px;
+      font-weight:900;
+      box-shadow:0 10px 24px rgba(0,0,0,0.9);
+    }
 
-/* 影片預覽 overlay */
-.video-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.92);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:40;
-}
-.video-overlay video{
-  width:100%;
-  max-width:480px;
-}
-.video-overlay-close{
-  position:absolute;
-  top:14px;
-  right:14px;
-  font-size:26px;
-  cursor:pointer;
-}
-</style>
+    /* VIP 卡 */
+    .vip-img{
+      width:65%;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.9));
+    }
+
+    /* 右側懸浮 CTA */
+    .float-cta{
+      position:fixed;
+      right:16px;
+      bottom:calc((100vw * 140 / 1080) + 24px); /* 剛好在橫幅上方一點 */
+      z-index:30;
+    }
+    .btn-float{
+      border:none;
+      border-radius:999px;
+      padding:11px 22px;
+      background:linear-gradient(135deg,#ffeaa0,#ffd45b,#ffb800);
+      box-shadow:0 10px 24px rgba(0,0,0,0.95),0 0 16px rgba(255,210,0,0.85);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+    }
+    .btn-float-icon{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:1px solid rgba(59,38,0,0.2);
+      background:rgba(59,38,0,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+    }
+    .btn-float-text{
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:0.16em;
+      color:#3b2600;
+      white-space:nowrap;
+    }
+
+    /* 底部固定橫幅：1080x140 比例 */
+    .bottom-bar-wrap{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:20;
+      display:flex;
+      justify-content:center;
+    }
+    .bottom-bar-inner{
+      width:100%;
+      max-width:480px;
+    }
+    .bottom-bar-inner img{
+      width:100%;
+      height:auto; /* 依照原始 1080x140 比例等比縮放 */
+      display:block;
+    }
+
+    /* 影片預覽 Overlay */
+    .video-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.92);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:40;
+    }
+    .video-overlay video{
+      width:100%;
+      max-width:480px;
+    }
+    .video-overlay-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      font-size:26px;
+      cursor:pointer;
+    }
+  </style>
 </head>
 <body>
-<div class="page">
+  <div class="page">
 
-  <!-- HERO：星空 + 人物 -->
-  <section class="hero">
-    <img src="img/girls.png" alt="OFA168 Girls">
-  </section>
+    <!-- HERO：星空人物 -->
+    <section class="hero">
+      <img src="img/girls.png" alt="OFA168 Girls" />
+    </section>
 
-  <!-- 金色影片卡：點擊可放大預覽且有聲音 -->
-  <section class="section card gold">
-    <div class="gold-title">OFA168 年度主題影片</div>
-    <div class="gold-desc">點擊影片可放大預覽並開啟聲音，感受完整節奏與氛圍。</div>
-    <video id="thumbVideo" src="video/promo.mp4" autoplay muted loop playsinline></video>
-  </section>
-
-  <!-- 遊戲卡片：1.OFA 真人 2.GR 電子 3.各式體育 -->
-  <section class="section card">
-    <div style="text-align:center;font-size:18px;font-weight:700;margin-bottom:6px;">量身打造的娛樂宇宙</div>
-    <div style="text-align:center;font-size:12px;opacity:0.85;margin-bottom:14px;">
-      精選真人、電子與體育三大館別，自由切換玩法。
-    </div>
-
-    <!-- 1 OFA 真人 -->
-    <div class="game">
-      <div class="game-top">
-        <div class="game-txt">
-          <div class="game-title">OFA 真人娛樂館</div>
-          <div class="game-sub">專業荷官即時發牌，多桌同時下注，還原實體賭場臨場感。</div>
-        </div>
-        <div class="game-girl"><img src="img/girls.png" alt="Live"></div>
+    <!-- 金色影片卡 -->
+    <section class="section card gold">
+      <div class="gold-title">OFA168 年度主題影片</div>
+      <div class="gold-desc">
+        點擊影片可放大預覽並開啟聲音，感受完整節奏與氛圍。
       </div>
-      <div class="game-foot">支援百家樂、輪盤、龍虎等多款真人遊戲，畫面流暢不卡頓。</div>
-    </div>
+      <video id="thumbVideo" src="video/promo.mp4" autoplay muted loop playsinline></video>
+    </section>
 
-    <!-- 2 GR 電子 -->
-    <div class="game">
-      <div class="game-top">
-        <div class="game-txt">
-          <div class="game-title">GR 電子老虎機</div>
-          <div class="game-sub">人氣 GR 電子廠牌，多主題機台、買免費與高倍數特效一次滿足。</div>
-        </div>
-        <div class="game-girl"><img src="img/girls.png" alt="GR Slots"></div>
+    <!-- 遊戲卡片 -->
+    <section class="section card">
+      <div style="text-align:center;font-size:18px;font-weight:700;margin-bottom:6px;">量身打造的娛樂宇宙</div>
+      <div style="text-align:center;font-size:12px;opacity:0.85;margin-bottom:14px;">
+        精選真人、電子與體育三大館別，自由切換玩法。
       </div>
-      <div class="game-foot">從經典到新款特效機種，隨時都有翻倍機會。</div>
-    </div>
 
-    <!-- 3 各式體育 -->
-    <div class="game">
-      <div class="game-top">
-        <div class="game-txt">
-          <div class="game-title">各式體育賽事</div>
-          <div class="game-sub">足球、籃球、電競等多種賽事盤口，支援即時比分與串流資訊。</div>
+      <!-- 1 OFA 真人 -->
+      <div class="game">
+        <div class="game-top">
+          <div class="game-txt">
+            <div class="game-title">OFA 真人娛樂館</div>
+            <div class="game-sub">專業荷官即時發牌，多桌同時下注，還原實體賭場臨場感。</div>
+          </div>
+          <div class="game-girl"><img src="img/girls.png" alt="Live" /></div>
         </div>
-        <div class="game-girl"><img src="img/girls.png" alt="Sports"></div>
+        <div class="game-foot">支援百家樂、輪盤、龍虎等多款真人遊戲，畫面流暢不卡頓。</div>
       </div>
-      <div class="game-foot">跟著比賽節奏下注，享受每一場精彩對決。</div>
-    </div>
-  </section>
 
-  <!-- 牌照 / 安全 -->
-  <section class="section card license">
-    <div class="lic-icon">✔</div>
-    <div style="font-weight:700;">正規遊戲許可 · 360° 安全防護</div>
-    <div style="opacity:0.85;margin-top:6px;">
-      多重加密與嚴謹風控守護每位玩家，提款流程穩定、出款迅速。
-    </div>
-  </section>
+      <!-- 2 GR 電子 -->
+      <div class="game">
+        <div class="game-top">
+          <div class="game-txt">
+            <div class="game-title">GR 電子老虎機</div>
+            <div class="game-sub">人氣 GR 電子廠牌，多主題機台、買免費與高倍數特效一次滿足。</div>
+          </div>
+          <div class="game-girl"><img src="img/girls.png" alt="GR Slots" /></div>
+        </div>
+        <div class="game-foot">從經典到新款特效機種，隨時都有翻倍機會。</div>
+      </div>
 
-  <!-- VIP 區 -->
-  <section class="section card" style="text-align:center;">
-    <div style="font-size:16px;font-weight:700;margin-bottom:6px;">VIP 專屬禮遇</div>
-    <div style="font-size:12px;opacity:0.85;margin-bottom:10px;">
-      多層級 VIP 自動升等，返水提升、專屬客服管家，活動優先邀請。
-    </div>
-    <img src="img/girls.png" style="width:65%;filter:drop-shadow(0 8px 18px rgba(0,0,0,0.9));" alt="VIP Girls">
-  </section>
+      <!-- 3 各式體育 -->
+      <div class="game">
+        <div class="game-top">
+          <div class="game-txt">
+            <div class="game-title">各式體育賽事</div>
+            <div class="game-sub">足球、籃球、電競等多種賽事盤口，支援即時比分與串流資訊。</div>
+          </div>
+          <div class="game-girl"><img src="img/girls.png" alt="Sports" /></div>
+        </div>
+        <div class="game-foot">跟著比賽節奏下注，享受每一場精彩對決。</div>
+      </div>
+    </section>
 
-</div>
+    <!-- 牌照 / 安全 -->
+    <section class="section card license">
+      <div class="lic-icon">✔</div>
+      <div style="font-weight:700;">正規遊戲許可 · 360° 安全防護</div>
+      <div style="opacity:0.85;margin-top:6px;">
+        多重加密與嚴謹風控守護每位玩家，提款流程穩定、出款迅速。
+      </div>
+    </section>
 
-<!-- 右側懸浮 CTA 按鈕 -->
-<div class="float-cta">
-  <button class="btn-float" onclick="go()">
-    <div class="btn-float-icon">★</div>
-    <div class="btn-float-text">立即註冊</div>
-  </button>
-</div>
+    <!-- VIP 區 -->
+    <section class="section card" style="text-align:center;">
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px;">VIP 專屬禮遇</div>
+      <div style="font-size:12px;opacity:0.85;margin-bottom:10px;">
+        多層級 VIP 自動升等，返水提升、專屬客服管家，活動優先邀請。
+      </div>
+      <img src="img/girls.png" class="vip-img" alt="VIP Girls" />
+    </section>
 
-<!-- 底部固定橫條 -->
-<div class="bottom-bar-wrap">
-  <div class="bottom-bar-inner">
-    <img src="img/bottom-bar.png" alt="OFA168 Bottom Bar">
   </div>
-</div>
 
-<!-- 影片放大預覽 Overlay -->
-<div class="video-overlay" id="videoOverlay">
-  <div class="video-overlay-close" id="videoClose">✕</div>
-  <video id="previewVideo" src="video/promo.mp4" controls playsinline></video>
-</div>
+  <!-- 右側懸浮 CTA 按鈕 -->
+  <div class="float-cta">
+    <button class="btn-float" onclick="go()">
+      <div class="btn-float-icon">★</div>
+      <div class="btn-float-text">立即註冊</div>
+    </button>
+  </div>
 
-<script>
-function go(){
-  window.location.href="https://fbads.ofa88kh.com/login?id=register";
-}
+  <!-- 底部固定橫幅 1080x140 -->
+  <div class="bottom-bar-wrap">
+    <div class="bottom-bar-inner">
+      <img src="img/bottom-banner.png" alt="OFA168 Bottom Banner" />
+    </div>
+  </div>
 
-// 影片點擊放大預覽（可開聲音）
-const thumbVideo = document.getElementById('thumbVideo');
-const overlay = document.getElementById('videoOverlay');
-const previewVideo = document.getElementById('previewVideo');
-const closeBtn = document.getElementById('videoClose');
+  <!-- 影片放大預覽 Overlay -->
+  <div class="video-overlay" id="videoOverlay">
+    <div class="video-overlay-close" id="videoClose">✕</div>
+    <video id="previewVideo" src="video/promo.mp4" controls playsinline></video>
+  </div>
 
-if(thumbVideo && overlay && previewVideo){
-  thumbVideo.addEventListener('click', function(){
-    overlay.style.display='flex';
-    previewVideo.currentTime = thumbVideo.currentTime || 0;
-    previewVideo.muted = false;
-    previewVideo.play().catch(function(){});
-  });
-
-  function closeOverlay(){
-    overlay.style.display='none';
-    previewVideo.pause();
-  }
-
-  overlay.addEventListener('click', function(e){
-    if(e.target === overlay){
-      closeOverlay();
+  <script>
+    function go(){
+      window.location.href="https://fbads.ofa88kh.com/login?id=register";
     }
-  });
-  if(closeBtn){
-    closeBtn.addEventListener('click', function(e){
-      e.stopPropagation();
-      closeOverlay();
-    });
-  }
-}
-</script>
+
+    // 影片點擊放大預覽（可開聲音）
+    const thumbVideo = document.getElementById('thumbVideo');
+    const overlay = document.getElementById('videoOverlay');
+    const previewVideo = document.getElementById('previewVideo');
+    const closeBtn = document.getElementById('videoClose');
+
+    if(thumbVideo && overlay && previewVideo){
+      thumbVideo.addEventListener('click', function(){
+        overlay.style.display='flex';
+        try{
+          previewVideo.currentTime = thumbVideo.currentTime || 0;
+        }catch(e){}
+        previewVideo.muted = false;
+        previewVideo.play().catch(function(){});
+      });
+
+      function closeOverlay(){
+        overlay.style.display='none';
+        previewVideo.pause();
+      }
+
+      overlay.addEventListener('click', function(e){
+        if(e.target === overlay){
+          closeOverlay();
+        }
+      });
+
+      if(closeBtn){
+        closeBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          closeOverlay();
+        });
+      }
+    }
+  </script>
 </body>
 </html>
