@@ -13,8 +13,8 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
   display:flex;
   justify-content:center;
-  /* 下面預留給橫幅 + 安全區域 */
-  padding:16px 12px calc(72px + env(safe-area-inset-bottom));
+  /* 下面預留給橫幅區域 */
+  padding:16px 12px 92px;
 }
 .page{width:100%;max-width:480px}
 
@@ -114,7 +114,7 @@ body{
 .float-cta{
   position:fixed;
   right:16px;
-  bottom:calc(140px + env(safe-area-inset-bottom)); /* 橫幅上方一點 */
+  bottom:140px; /* 橫幅上方一點 */
   z-index:30;
 }
 .btn-float{
@@ -162,8 +162,8 @@ body{
   width:100%;
   max-width:480px;
   pointer-events:auto; /* 保留橫條本身可點擊 */
-  background:#7b001e; /* 與橫條接近的底色，故意往下延伸 */
-  padding-bottom:calc(18px + env(safe-area-inset-bottom));
+  background:linear-gradient(to right,#000000 0,#1a0008 25%,#7b001e 100%);
+  padding-bottom:22px;
 }
 .bottom-bar-inner img{
   width:100%;
