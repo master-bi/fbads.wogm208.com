@@ -156,15 +156,18 @@
     }
 
     /* 底部固定橫幅：用原圖，只有上緣約 24px 露出，其餘溢出在螢幕外面 */
-    .bottom-bar-wrap{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:calc(12px - (100vw * 140 / 1080)); /* 圖片高度 - 24px 在螢幕外，僅上方 24px 露出 */
-      z-index:20;
-      display:flex;
-      justify-content:center;
-    }
+    
+.bottom-bar-wrap{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:calc(24px - (100vw * 140 / 1080)); /* 露出24px */
+  z-index:20;
+  display:flex;
+  justify-content:center;
+  overflow:visible; /* allow overflow */
+}
+
     .bottom-bar-inner{
       width:100%;
       max-width:480px;
