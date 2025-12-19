@@ -2,439 +2,351 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>雄厚 - 官方入口</title>
-  <meta name="description" content="安全前往 雄厚 官方平台的入口頁面。" />
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ✅ 連結預覽（不顯示在頁面） -->
+  <title>雄厚 - 值得信賴的遊戲平台</title>
+  <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://fbads.wogm208.com/ofa918" />
+
+  <!-- ✅ Open Graph（FB/LINE/Telegram 等） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="雄厚 - 值得信賴的遊戲平台" />
+  <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
+  <meta property="og:url" content="https://fbads.wogm208.com/ofa918" />
+  <meta property="og:image" content="https://fbads.wogm208.com/ofa918/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ✅ Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="雄厚 - 值得信賴的遊戲平台" />
+  <meta name="twitter:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
+  <meta name="twitter:image" content="https://fbads.wogm208.com/ofa918/assets/og-image.png" />
 
   <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    :root{
+      --gold:#ff8800;
+      --gold2:#ffb45a;
+      --shadow: 0 18px 60px rgba(255,136,0,0.16);
+      --glow: 0 0 28px rgba(255,136,0,0.28), 0 0 70px rgba(255,136,0,0.10);
+      --radius: 22px;
     }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-      background:
-        radial-gradient(circle at 15% 0%, #402107 0, transparent 55%),
-        radial-gradient(circle at 85% 100%, #1d0b02 0, #080301 55%, #000000 100%);
-      color:#fff3e5;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content:'';
-      position:fixed;
-      inset:-40%;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,165,0,0.28) 0, transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(255,120,0,0.2) 0, transparent 55%);
-      opacity:0.9;
-      z-index:-2;
-      animation:bgFloat 18s linear infinite alternate;
-    }
-    @keyframes bgFloat {
-      0%   { transform:translate3d(0,0,0) scale(1); }
-      50%  { transform:translate3d(0,8px,0) scale(1.03); }
-      100% { transform:translate3d(0,-8px,0) scale(1.02); }
-    }
-
-    .page {
-      width: 100%;
-      max-width: 520px;
-    }
-
-    .card {
-      position:relative;
-      width:100%;
-      padding:22px 18px 22px;
-      border-radius:20px;
-      background:
-        linear-gradient(135deg, rgba(38,18,5,0.97), rgba(20,8,2,0.98)),
-        radial-gradient(circle at top, rgba(214,135,40,0.8), transparent 60%);
-      border:1px solid rgba(255,190,120,0.95);
-      box-shadow:
-        0 0 0 1px rgba(255,145,60,0.38),
-        0 18px 38px rgba(0,0,0,0.9);
-      overflow:hidden;
-    }
-
-    .card::before {
-      content:'';
-      position:absolute;
-      inset:-1px;
-      border-radius:inherit;
-      border:1px solid rgba(255,200,120,0.4);
-      box-shadow:
-        0 0 22px rgba(255,145,60,0.5),
-        0 0 40px rgba(0,0,0,1);
-      opacity:0.4;
-      pointer-events:none;
-    }
-
-    .notice-bar {
-      position:relative;
-      z-index:1;
-      margin:-4px auto 10px;
-      padding:6px 12px;
-      display:inline-flex;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      background: radial-gradient(1200px 900px at 50% -10%, rgba(255,136,0,0.16), transparent 60%),
+                  radial-gradient(900px 700px at 20% 110%, rgba(255,136,0,0.10), transparent 55%),
+                  #000;
+      color:#fff;
+      display:flex;
       align-items:center;
-      gap:6px;
-      border-radius:999px;
-      background:
-        linear-gradient(90deg, rgba(72,32,6,0.95), rgba(255,170,70,0.98), rgba(72,32,6,0.95));
-      box-shadow:
-        0 0 12px rgba(255,176,80,0.95),
-        0 0 26px rgba(0,0,0,0.9);
-      color:#2a1203;
-      font-size:11px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.12em;
+      justify-content:center;
+      padding: 18px 14px;
+      padding-bottom: calc(18px + env(safe-area-inset-bottom));
+      padding-top: calc(18px + env(safe-area-inset-top));
     }
-    .notice-dot {
-      width:7px;
-      height:7px;
-      border-radius:999px;
-      background:#ffb347;
-      box-shadow:0 0 8px rgba(255,179,71,0.95);
-      animation:pulseDot 1.4s ease-in-out infinite;
+    .stage{
+      width:min(440px, 100%);
+      aspect-ratio: 9 / 16;
+      max-height: calc(100vh - 36px);
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
     }
-    @keyframes pulseDot {
-      0%,100% { transform:scale(1); opacity:1; }
-      50%     { transform:scale(1.4); opacity:0.6; }
-    }
-
-    .logo-frame {
-      position:relative;
-      z-index:1;
-      margin:6px auto 14px;
-      padding:10px 14px;
-      border-radius:16px;
-      background:
-        radial-gradient(circle at top, rgba(83,40,9,0.95), rgba(30,12,3,0.98));
-      border:1px solid rgba(255,210,150,0.98);
-      box-shadow:
-        0 0 24px rgba(255,190,120,0.98),
-        0 10px 26px rgba(0,0,0,0.95);
-    }
-    .logo-frame::before {
-      content:'';
-      position:absolute;
-      inset:-1px;
-      border-radius:inherit;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.2), transparent 45%, rgba(255,170,90,0.28));
-      mix-blend-mode:screen;
-      opacity:0.55;
-      pointer-events:none;
-    }
-
-    .logo {
-      display:block;
-      margin:0 auto;
-      width:72%;
-      max-width:260px;
-      height:auto;
-      filter:drop-shadow(0 0 10px rgba(0,0,0,0.9));
-    }
-
-    h1 {
-      position:relative;
-      z-index:1;
-      font-size:18px;
-      margin:10px 0 6px;
-      color:#fff3e5;
-      font-weight:800;
-      line-height:1.5;
-      text-shadow:0 0 8px rgba(0,0,0,0.85);
-    }
-
-    p {
-      position:relative;
-      z-index:1;
-      margin:4px 0;
-      color:#ffe1c4;
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .sub {
-      position:relative;
-      z-index:1;
-      margin-top:6px;
-      font-size:12px;
-      color:#ffd2a1;
-      line-height:1.4;
-    }
-
-    .card-glow {
-      position:absolute;
-      left:50%;
-      bottom:-42px;
-      width:170%;
-      max-width:760px;
-      height:120px;
-      background:radial-gradient(ellipse at center, rgba(255,160,60,0.4) 0, transparent 65%);
-      transform:translateX(-50%);
-      z-index:0;
-      pointer-events:none;
-    }
-
-    .btn-enter {
-      position:relative;
-      z-index:1;
-      margin:20px auto 0;
-      display:block;
-      width:82%;
-      padding:13px 0;
-      border-radius:999px;
-      border:1px solid rgba(255,205,145,0.95);
-      background:linear-gradient(120deg,#ffb347,#ff8a2b,#ff6a00);
-      color:#2b1405;
-      font-size:15px;
-      font-weight:700;
-      text-decoration:none;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      text-align:center;
-      box-shadow:
-        0 0 20px rgba(255,155,60,0.95),
-        0 10px 26px rgba(0,0,0,0.98);
+    .card{
+      background: linear-gradient(180deg, rgba(16,16,16,0.86), rgba(0,0,0,0.66));
+      border: 1px solid rgba(255,136,0,0.55);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow), var(--glow);
       overflow:hidden;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.18s ease,
-        filter 0.18s ease;
+      position:relative;
     }
-    .btn-enter::before {
-      content:'';
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(135deg, rgba(255,180,90,0.38), rgba(154,123,47,0.08), rgba(255,180,90,0.20));
+      filter: blur(18px);
+      opacity: 0.35;
+      pointer-events:none;
+    }
+    .card > *{ position:relative; }
+
+    .logoWrap{ display:flex; justify-content:center; padding: 18px 14px; }
+    .logo{
+      height:72px;          /* 固定高度（與大老爺版一致） */
+      width:auto;           /* 寬度依比例自動 */
+      max-width:88%;
+      margin:0 auto;
+      display:block;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .promo{ padding: 14px; display:flex; flex-direction:column; gap: 12px; }
+    .promoTitle{
+      text-align:center;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--gold2);
+      font-size: 15px;
+    }
+    .promoRule{
+      width: 86px;
+      height: 2px;
+      margin: 8px auto 0;
+      background: linear-gradient(90deg, transparent, rgba(255,180,90,0.95), transparent);
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+
+    .videoWrap{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,136,0,0.35);
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    video{
+      width:100%;
+      height:100%;
+      object-fit: contain;
+      display:block;
+      background:#000;
+    }
+
+    .ctaWrap{ margin-top: auto; padding: 0 14px 28px; }
+    .cta{
+      margin-top: 8px;
+
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 18px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,210,122,0.75);
+      background: linear-gradient(135deg, rgba(242,210,122,0.98), rgba(214,178,90,0.92), rgba(154,123,47,0.92));
+      color: rgba(0,0,0,0.92);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.4px;
+      cursor:pointer;
+      text-decoration:none;
+      box-shadow: 0 18px 50px rgba(214,178,90,0.22), 0 0 34px rgba(214,178,90,0.16);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+    .cta small{ font-weight: 900; font-size: 14px; opacity: 0.88; }
+
+    @media (max-height: 680px){
+      .cta{
+      margin-top: 8px;
+
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 18px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,210,122,0.75);
+      background: linear-gradient(135deg, rgba(242,210,122,0.98), rgba(214,178,90,0.92), rgba(154,123,47,0.92));
+      color: rgba(0,0,0,0.92);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.4px;
+      cursor:pointer;
+      text-decoration:none;
+      box-shadow: 0 18px 50px rgba(214,178,90,0.22), 0 0 34px rgba(214,178,90,0.16);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+      .promoTitle{ font-size: 14.5px; }
+    }
+  
+    .cta{
+      margin-top: 8px;
+
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 18px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,210,122,0.75);
+      background: linear-gradient(135deg, rgba(242,210,122,0.98), rgba(214,178,90,0.92), rgba(154,123,47,0.92));
+      color: rgba(0,0,0,0.92);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.4px;
+      cursor:pointer;
+      text-decoration:none;
+      box-shadow: 0 18px 50px rgba(214,178,90,0.22), 0 0 34px rgba(214,178,90,0.16);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+    .cta::after{
+      content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(
-        120deg,
-        rgba(255,255,255,0.5),
-        transparent 40%,
-        transparent 60%,
-        rgba(255,255,255,0.25)
-      );
-      transform:translateX(-120%);
-      opacity:0;
+      border-radius: 16px;
       pointer-events:none;
-      transition:transform 0.6s ease, opacity 0.3s ease;
+      opacity:0;
+      box-shadow: 0 0 0 0 rgba(255,180,90,0.0);
+      transition: opacity .18s ease;
     }
-    .btn-enter:hover {
-      transform:translateY(-1px);
-      box-shadow:
-        0 0 26px rgba(255,180,90,1),
-        0 12px 30px rgba(0,0,0,1);
-      filter:brightness(1.06);
+    .cta:active{
+      transform: translateY(1px) scale(0.99);
+      filter: brightness(0.98);
     }
-    .btn-enter:hover::before {
+    .cta:active::after{
       opacity:1;
-      transform:translateX(140%);
     }
-    .btn-enter:active {
-      transform:translateY(0);
-      box-shadow:
-        0 0 18px rgba(255,150,70,0.9),
-        0 8px 20px rgba(0,0,0,1);
-      filter:brightness(0.97);
+    .ripple{
+      position:absolute;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      pointer-events:none;
+      background: rgba(255,255,255,0.35);
+      mix-blend-mode: overlay;
+      animation: ripple .55s ease-out forwards;
+    }
+    @keyframes ripple{
+      from{ width:0; height:0; opacity:0.55; }
+      to{ width:520px; height:520px; opacity:0; }
     }
 
-    @media (max-width: 360px) {
-      .card {
-        padding:18px 14px 18px;
-      }
-      h1 {
-        font-size:16px;
-      }
-      p {
-        font-size:13px;
-      }
-      .btn-enter {
-        font-size:14px;
-        padding:12px 0;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <main class="stage">
     <section class="card">
-      <div class="card-glow"></div>
-
-      <div class="notice-bar">
-        <span class="notice-dot"></span>
-        <span id="t-bar">連線提示</span>
+      <div class="logoWrap">
+        <img class="logo" src="assets/LOGO.png" alt="雄厚 LOGO" loading="eager" decoding="async" />
       </div>
-
-      <div class="logo-frame">
-        <img class="logo" src="./ofa918-logo-300.png" alt="Logo">
-      </div>
-
-      <h1 id="t-title">親愛的用戶您好，已為您尋找到安全路線。</h1>
-      <p id="t-desc">點擊下方按鈕即可前往官方平台。</p>
-      <div id="t-sub" class="sub">
-        建議您確認連結來源為官方管道，並妥善保管帳號資訊，以保障您的使用安全。
-      </div>
-
-      <a id="enterBtn" class="btn-enter" href="#">進入官網</a>
     </section>
+
+    <section class="card promo">
+      <div>
+        <div class="promoTitle" id="t_promo">最新優惠</div>
+        <div class="promoRule" aria-hidden="true"></div>
+      </div>
+
+      <div class="videoWrap" aria-label="promo video 1:1">
+        <video id="promoVideo" src="assets/promo.mp4" playsinline muted autoplay loop controls preload="metadata"></video>
+      </div>
+    </section>
+
+    <div class="ctaWrap">
+      <a class="cta" id="ctaBtn" href="https://xx168.ofa918.net/login?id=register" target="_blank" rel="noopener noreferrer">
+        <span id="t_cta_main">立即加入</span> <small id="t_cta_sub">領取168體驗金</small>
+      </a>
+    </div>
+  
+    <div class="note" style="text-align:center;font-size:12px;color:rgba(255,255,255,0.55);padding:10px 14px 0;">
+      © <span id="year"></span> 雄厚 All Rights Reserved.
+    </div>
+
   </main>
 
   <script>
-    const OFFICIAL_URL = 'https://xx168.ofa918.net/login?id=register';
+    // iOS autoplay fix
+    (function(){
+      const v = document.getElementById("promoVideo");
+      if(!v) return;
+      const tryPlay = () => v.play().catch(()=>{});
+      document.addEventListener("touchstart", tryPlay, { once:true, passive:true });
+      document.addEventListener("click", tryPlay, { once:true });
+    }());
 
+    // ===== i18n (auto detect language) =====
     const I18N = {
-      'en': {
-        htmlLang: 'en',
-        titleTag: '雄厚 - Official Entry',
-        metaDesc: 'Safe entry page to the official 雄厚 platform.',
-        bar: 'Connection Info',
-        h1: 'Dear user, we have found a secure route for you.',
-        p:  'Click the button below to proceed to the official platform.',
-        sub:'Please make sure the link comes from an official channel and keep your account information protected.',
-        btn:'Enter Website',
-        alt:'Logo'
-      },
-      'zh-Hant': {
-        htmlLang: 'zh-Hant',
-        titleTag: '雄厚 - 官方入口',
-        metaDesc: '安全前往 雄厚 官方平台的入口頁面。',
-        bar: '連線提示',
-        h1: '親愛的用戶您好，已為您尋找到安全路線。',
-        p:  '點擊下方按鈕即可前往官方平台。',
-        sub:'建議您確認連結來源為官方管道，並妥善保管帳號資訊，以保障您的使用安全。',
-        btn:'進入官網',
-        alt:'標誌'
-      },
-      'zh-Hans': {
-        htmlLang: 'zh-CN',
-        titleTag: '雄厚 - 官方入口',
-        metaDesc: '安全前往 雄厚 官方平台的入口页面。',
-        bar: '连接提示',
-        h1: '亲爱的用户您好，已为您寻找到了安全线路。',
-        p:  '点击下方按钮即可前往官方平台。',
-        sub:'建议您确认链接来源为官方渠道，并妥善保管账号信息，以保障您的使用安全。',
-        btn:'进入官网',
-        alt:'标志'
-      },
-      'yue': {
-        htmlLang: 'zh-HK',
-        titleTag: '雄厚 - 官方入口',
-        metaDesc: '安全前往 雄厚 官方平台嘅入口頁。',
-        bar: '連線提示',
-        h1: '親愛嘅用戶您好，已為你搵到安全路徑。',
-        p:  '撳下面個按鈕即可前往官方平台。',
-        sub:'建議你確認連結係由官方渠道取得，並妥善保管帳號資料，以保障使用安全。',
-        btn:'進入官網',
-        alt:'標誌'
-      },
-      'km': {
-        htmlLang: 'km',
-        titleTag: '雄厚 - ច្រកចូលផ្លូវការ',
-        metaDesc: 'ទំព័រនេះជួយអ្នកចូលទៅវេទិកាផ្លូវការ 雄厚 ដោយសុវត្ថិភាព។',
-        bar: 'ព័ត៌មានការតភ្ជាប់',
-        h1:'អ្នកប្រើដែលគួរឱ្យគោរព សូមជំរាបថា យើងបានរកឃើញផ្លូវដែលមានសុវត្ថិភាពសម្រាប់អ្នកហើយ។',
-        p:'សូមចុចប៊ូតុងខាងក្រោម ដើម្បីចូលទៅកាន់វេទិកាផ្លូវការ។',
-        sub:'សូមប្រាកដថាតំណភ្ជាប់បានមកពីបណ្តាញផ្លូវការ ហើយការពារព័ត៌មានគណនីរបស់អ្នកឲ្យបានល្អ។',
-        btn:'ចូលទៅវេទិកាផ្លូវការ',
-        alt:'ឡូហ្គោ'
-      },
-      'vi': {
-        htmlLang: 'vi',
-        titleTag: '雄厚 - Cổng truy cập chính thức',
-        metaDesc: 'Trang này giúp bạn truy cập an toàn đến nền tảng chính thức 雄厚.',
-        bar: 'Thông tin kết nối',
-        h1:'Quý khách thân mến, chúng tôi đã tìm được tuyến kết nối an toàn dành cho bạn.',
-        p:'Hãy nhấn nút bên dưới để chuyển đến nền tảng chính thức.',
-        sub:'Vui lòng đảm bảo liên kết được lấy từ kênh chính thức và giữ kín thông tin tài khoản của bạn.',
-        btn:'Vào trang chính',
-        alt:'Biểu trưng'
-      },
-      'th': {
-        htmlLang: 'th',
-        titleTag: '雄厚 - ทางเข้าอย่างเป็นทางการ',
-        metaDesc: 'หน้านี้ช่วยให้คุณเข้าสู่แพลตฟอร์มอย่างเป็นทางการของ 雄厚 ได้อย่างปลอดภัย.',
-        bar: 'ข้อมูลการเชื่อมต่อ',
-        h1:'เรียนผู้ใช้ที่เคารพ ขณะนี้เราได้เตรียมเส้นทางที่ปลอดภัยสำหรับคุณแล้ว',
-        p:'กรุณาคลิกปุ่มด้านล่างเพื่อไปยังแพลตฟอร์มอย่างเป็นทางการ.',
-        sub:'โปรดตรวจสอบให้แน่ใจว่าลิงก์มาจากช่องทางอย่างเป็นทางการ และเก็บรักษาข้อมูลบัญชีของคุณให้ปลอดภัย.',
-        btn:'เข้าสู่เว็บไซต์',
-        alt:'โลโก้'
-      },
-      'ms': {
-        htmlLang: 'ms',
-        titleTag: '雄厚 - Pintu masuk rasmi',
-        metaDesc: 'Halaman ini membantu anda ke platform rasmi 雄厚 dengan selamat.',
-        bar: 'Maklumat Sambungan',
-        h1:'Pengguna yang dihargai, kami telah menemui laluan yang selamat untuk anda.',
-        p:'Klik butang di bawah untuk ke platform rasmi.',
-        sub:'Sila pastikan pautan ini datang daripada saluran rasmi dan lindungi maklumat akaun anda dengan baik.',
-        btn:'Masuk Laman Rasmi',
-        alt:'Logo'
-      }
+      "zh-Hant": { promo:"最新優惠", ctaMain:"立即加入", ctaSub:"領取168體驗金" },
+      "zh-Hans": { promo:"最新优惠", ctaMain:"立即加入", ctaSub:"领取168体验金" },
+      "zh-HK":   { promo:"最新優惠", ctaMain:"立即加入", ctaSub:"領取168體驗金" },
+      "yue":     { promo:"最新優惠", ctaMain:"即刻加入", ctaSub:"領取168體驗金" },
+      "en":      { promo:"Latest Offer", ctaMain:"Join Now", ctaSub:"Get 168 Trial Bonus" },
+      "ms":      { promo:"Promosi Terkini", ctaMain:"Sertai Sekarang", ctaSub:"Dapatkan Bonus Cubaan 168" },
+      "km":      { promo:"ប្រូម៉ូសិនថ្មីៗ", ctaMain:"ចូលរួមឥឡូវនេះ", ctaSub:"ទទួលបានប្រាក់សាកល្បង 168" },
+      "vi":      { promo:"Ưu đãi mới nhất", ctaMain:"Tham gia ngay", ctaSub:"Nhận 168 tiền trải nghiệm" },
+      "ja":      { promo:"最新特典", ctaMain:"今すぐ参加", ctaSub:"168 体験ボーナスを受け取る" },
+      "th":      { promo:"โปรล่าสุด", ctaMain:"เข้าร่วมเลย", ctaSub:"รับโบนัสทดลอง 168" },
+      "fil":     { promo:"Pinakabagong Promo", ctaMain:"Sumali Na", ctaSub:"Kunin ang 168 Trial Bonus" }
     };
 
-    function pickLocale() {
-      const prefs = (navigator.languages && navigator.languages.length
-        ? navigator.languages
-        : [navigator.language || 'en']
-      ).map(l => (l || '').toLowerCase());
+    function pickLang(){
+      const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+      const raw = (langs[0] || "en").toLowerCase();
 
-      for (const lang of prefs) {
-        if (lang.startsWith('zh-hk') || lang.startsWith('zh-mo') || lang.includes('yue')) return 'yue';
-        if (lang.startsWith('zh-tw') || lang.includes('hant')) return 'zh-Hant';
-        if (lang.startsWith('zh-cn') || lang.startsWith('zh-sg') || lang.includes('hans')) return 'zh-Hans';
-        if (lang.startsWith('km'))  return 'km';
-        if (lang.startsWith('vi'))  return 'vi';
-        if (lang.startsWith('th'))  return 'th';
-        if (lang.startsWith('ms'))  return 'ms';
-        if (lang.startsWith('en'))  return 'en';
+      if (raw.startsWith("zh-hk") || raw.includes("hant-hk")) return "zh-HK";
+      if (raw.startsWith("yue")) return "yue";
+      if (raw.startsWith("zh")) {
+        if (raw.includes("hans") || raw.includes("cn") || raw.includes("sg")) return "zh-Hans";
+        if (raw.includes("hant") || raw.includes("tw") || raw.includes("hk") || raw.includes("mo")) return "zh-Hant";
+        return "zh-Hant";
       }
-      return 'en';
+      if (raw.startsWith("en")) return "en";
+      if (raw.startsWith("ms")) return "ms";
+      if (raw.startsWith("km")) return "km";
+      if (raw.startsWith("vi")) return "vi";
+      if (raw.startsWith("ja")) return "ja";
+      if (raw.startsWith("th")) return "th";
+      if (raw.startsWith("fil") || raw.startsWith("tl")) return "fil";
+      return "en";
     }
 
-    function applyI18n(dict) {
-      document.documentElement.lang = dict.htmlLang || 'en';
-      document.title = dict.titleTag || document.title;
-
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta && dict.metaDesc) meta.content = dict.metaDesc;
-
-      const bar = document.getElementById('t-bar');
-      const h1  = document.getElementById('t-title');
-      const p   = document.getElementById('t-desc');
-      const sub = document.getElementById('t-sub');
-      const btn = document.getElementById('enterBtn');
-      const logo= document.querySelector('.logo');
-
-      if (bar) bar.textContent = dict.bar;
-      if (h1)  h1.textContent  = dict.h1;
-      if (p)   p.textContent   = dict.p;
-      if (sub) sub.textContent = dict.sub;
-      if (btn) btn.textContent = dict.btn;
-      if (logo)logo.alt        = dict.alt;
-
-      const extra = window.location.search.replace(/^\?/, '');
-      const sep = OFFICIAL_URL.includes('?') ? '&' : '?';
-      const target = extra ? (OFFICIAL_URL + sep + extra) : OFFICIAL_URL;
-      if (btn) btn.href = target;
+    function applyLang(key){
+      const t = I18N[key] || I18N.en;
+      document.getElementById("t_promo").textContent = t.promo;
+      document.getElementById("t_cta_main").textContent = t.ctaMain;
+      document.getElementById("t_cta_sub").textContent = t.ctaSub;
+      document.documentElement.setAttribute("lang", key);
     }
 
-    const locale = pickLocale();
-    applyI18n(I18N[locale] || I18N.en);
+    applyLang(pickLang());
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+  
+    // ===== Touch feedback (ripple + haptic) =====
+    (function(){
+      const btn = document.getElementById("ctaBtn");
+      if(!btn) return;
+
+      const haptic = () => {
+        if (navigator.vibrate) navigator.vibrate(12);
+      };
+
+      const ripple = (ev) => {
+        const rect = btn.getBoundingClientRect();
+        const x = (ev.touches && ev.touches[0]) ? ev.touches[0].clientX : ev.clientX;
+        const y = (ev.touches && ev.touches[0]) ? ev.touches[0].clientY : ev.clientY;
+
+        const s = document.createElement("span");
+        s.className = "ripple";
+        s.style.left = (x - rect.left) + "px";
+        s.style.top  = (y - rect.top) + "px";
+        btn.appendChild(s);
+        setTimeout(() => s.remove(), 650);
+      };
+
+      btn.addEventListener("touchstart", (e)=>{ haptic(); ripple(e); }, { passive:true });
+      btn.addEventListener("mousedown", (e)=>{ ripple(e); });
+      btn.addEventListener("click", ()=>{ haptic(); });
+    })();
+
   </script>
 </body>
 </html>
