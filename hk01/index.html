@@ -176,6 +176,37 @@
       color: rgba(255,255,255,0.55);
       padding: 0 14px 10px;
     }
+/* ===== CTA 呼吸動畫（放大縮小＋亮度）===== */
+.cta{
+  transform-origin: center;
+  animation: ctaBreath 1.8s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+/* 點擊時暫停呼吸，避免跟你原本 active 打架 */
+.cta:active{
+  animation-play-state: paused;
+}
+
+@keyframes ctaBreath{
+  0%, 100%{
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50%{
+    transform: scale(1.045);
+    filter: brightness(1.06);
+  }
+}
+
+/* 系統減少動效：自動停用 */
+@media (prefers-reduced-motion: reduce){
+  .cta{
+    animation: none !important;
+    filter: none !important;
+  }
+}
+/* ===== CTA 呼吸動畫 END ===== */
 
     @media (max-height: 680px){
       .cta{ padding: 16px 16px; font-size: 20px; }
