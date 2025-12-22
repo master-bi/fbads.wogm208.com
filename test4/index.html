@@ -58,7 +58,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap: 16px;
     }
 
@@ -87,6 +87,15 @@
       align-items:center;
       flex:1;
       min-height: 0;
+    }
+
+
+    .carouselBox{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width: min(440px, 92vw);
     }
 
     .carousel{
@@ -128,6 +137,7 @@
 
     
     
+    
     .dots{
       width: fit-content;
       margin: 12px auto 0;
@@ -141,6 +151,7 @@
       border: 1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(6px);
     }
+    
     
     
     .dot{
@@ -279,14 +290,17 @@
     }
   
     
+    
     .footer{
-      margin-top: 16px;
-      padding: 16px 8px calc(24px + var(--safe-bottom));
+      margin-top: 12px;
+      padding: 6px 8px calc(16px + var(--safe-bottom));
       font-size: 12px;
       color: rgba(255,255,255,.45);
       text-align: center;
       line-height: 1.6;
+      width: 100%;
     }
+        
     
 
   </style>
@@ -301,17 +315,18 @@
     </div>
 
     <div class="mid">
-      <section class="carousel" aria-label="輪播圖片">
+      <div class="carouselBox">
+        <section class="carousel" aria-label="輪播圖片">
         <div class="slide active"><img src="./img/slide1.jpeg" alt="活動圖 1" /></div>
         <div class="slide"><img src="./img/slide2.jpeg" alt="活動圖 2" /></div>
         <div class="slide"><img src="./img/slide3.jpeg" alt="活動圖 3" /></div>
 </section>
-
         <div class="dots" aria-hidden="true">
           <span class="dot on"></span>
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
+      </div>
     </div>
 
     <div class="bottom">
@@ -322,6 +337,11 @@
         </div>
       </a>
     </div>
+
+    <footer class="footer">
+      © 2025 大老爺 All Rights Reserved.
+    </footer>
+
   </main>
 
   <script>
@@ -549,10 +569,5 @@
       requestAnimationFrame(frame);
     })();
   </script>
-
-  <footer class="footer">
-    © 2025 大老爺 All Rights Reserved.
-  </footer>
-
 </body>
 </html>
