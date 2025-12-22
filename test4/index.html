@@ -1,534 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>大老爺 - 值得您信賴的遊戲平台</title>
-  <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#000000" />
-  <link rel="canonical" href="https://fbads.wogm208.com/gm88" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="大老爺 - 值得您信賴的遊戲平台" />
-  <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta property="og:url" content="https://fbads.wogm208.com/gm88" />
-
-  <style>
-    :root{
-      --safe-top: env(safe-area-inset-top, 0px);
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --safe-left: env(safe-area-inset-left, 0px);
-      --safe-right: env(safe-area-inset-right, 0px);
-      --gold1: #f7d26a;
-      --gold2: #d7a73b;
-      --gold3: #8a5b12;
-      --txt: #f5f5f5;
-    }
-
-    *{ box-sizing:border-box; }
-    html, body { height: 100%; }
-    body{
-      margin:0;
-      background:#000;
-      color:var(--txt);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
-      overflow-x:hidden;
-    }
-
-    /* Fireworks canvas behind everything */
-    #fw{
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events:none;
-      display:block;
-    }
-
-    .wrap{
-      position: relative;
-      z-index: 1;
-      min-height: 100svh;
-      padding-top: calc(14px + var(--safe-top));
-      padding-bottom: calc(18px + var(--safe-bottom));
-      padding-left: calc(14px + var(--safe-left));
-      padding-right: calc(14px + var(--safe-right));
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:space-between;
-      gap: 16px;
-    }
-
-    .top{
-      width: min(680px, 100%);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding-top: 2px;
-    }
-    .logo{
-      width: min(520px, 92vw);
-      height:auto;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.85));
-      user-select:none;
-      -webkit-user-drag:none;
-    }
-
-    .mid{
-      width: 100%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex:1;
-      min-height: 0;
-    }
-
-    .carousel{
-      width: min(440px, 92vw);
-      aspect-ratio: 1 / 1;
-      border-radius: 18px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:
-        0 14px 44px rgba(0,0,0,.75),
-        0 0 0 1px rgba(255,255,255,.08) inset;
-      background: rgba(255,255,255,.02);
-      backdrop-filter: blur(2px);
-    }
-    .slide{
-      position:absolute;
-      inset:0;
-      opacity:0;
-      transform: scale(1.01);
-      transition: opacity 520ms ease, transform 520ms ease;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px;
-    }
-    .slide.active{
-      opacity:1;
-      transform: scale(1.0);
-    }
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit: contain; /* do not distort */
-      image-rendering: auto;
-      user-select:none;
-      -webkit-user-drag:none;
-      filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
-    }
-
-    .dots{
-      position:absolute;
-      left:50%;
-      bottom:10px;
-      transform:translateX(-50%);
-      display:flex;
-      gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(6px);
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(255,255,255,.35);
-      box-shadow: 0 0 0 1px rgba(0,0,0,.35) inset;
-      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
-    }
-    .dot.on{
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 0 16px rgba(247,210,106,.45);
-      transform: scale(1.22);
-    }
-
-    .bottom{
-      width: min(520px, 94vw);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding-bottom: 6px;
-    }
-
-    a.btn{
-      position: relative;
-      width: 100%;
-      text-decoration:none;
-      border-radius: 18px;
-      padding: 14px 16px;
-      background: linear-gradient(180deg, var(--gold1), var(--gold2) 48%, var(--gold3));
-      color: #1b1202;
-      box-shadow:
-        0 10px 28px rgba(0,0,0,.55),
-        0 0 28px rgba(247,210,106,.26),
-        0 0 0 1px rgba(255,255,255,.28) inset;
-      transform: translateZ(0);
-      will-change: transform, box-shadow, filter;
-      overflow:hidden;
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-      animation: breathe 1.55s ease-in-out infinite;
-    }
-    @keyframes breathe{
-      0%, 100%{ transform: translateY(0) scale(1.0); filter: brightness(1.0); }
-      50%{ transform: translateY(-1px) scale(1.015); filter: brightness(1.06); }
-    }
-    a.btn:active{
-      animation: none;
-      transform: scale(0.985);
-      filter: brightness(0.98);
-      box-shadow:
-        0 6px 18px rgba(0,0,0,.55),
-        0 0 18px rgba(247,210,106,.18),
-        0 0 0 1px rgba(255,255,255,.22) inset;
-    }
-
-    /* glossy sweep */
-    a.btn::before{
-      content:"";
-      position:absolute;
-      inset:-40% -30%;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
-      transform: translateX(-60%) rotate(12deg);
-      animation: sweep 2.6s ease-in-out infinite;
-      opacity:.65;
-      pointer-events:none;
-    }
-    @keyframes sweep{
-      0%{ transform: translateX(-60%) rotate(12deg); opacity:0; }
-      25%{ opacity:.7; }
-      55%{ transform: translateX(60%) rotate(12deg); opacity:.65; }
-      100%{ transform: translateX(60%) rotate(12deg); opacity:0; }
-    }
-
-    /* ripple */
-    .ripple{
-      position:absolute;
-      border-radius:50%;
-      transform: translate(-50%, -50%);
-      pointer-events:none;
-      background: rgba(255,255,255,.55);
-      mix-blend-mode: soft-light;
-      animation: ripple 520ms ease-out forwards;
-    }
-    @keyframes ripple{
-      from{ width: 0px; height: 0px; opacity:.85; }
-      to{ width: 420px; height: 420px; opacity:0; }
-    }
-
-    .btnText{
-      position:relative;
-      z-index:1;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:4px;
-      text-align:center;
-      line-height:1.05;
-    }
-    .btnBig{
-      font-weight: 900;
-      letter-spacing: .5px;
-      font-size: clamp(22px, 5.3vw, 30px);
-      text-shadow: 0 2px 0 rgba(255,255,255,.25);
-    }
-    .btnSmall{
-      font-weight: 800;
-      opacity:.92;
-      font-size: clamp(12px, 3.4vw, 14px);
-    }
-
-    /* subtle vignette */
-    .vignette{
-      position: fixed;
-      inset: 0;
-      pointer-events:none;
-      z-index: 0;
-      background:
-        radial-gradient(80% 60% at 50% 35%, rgba(255,255,255,.06), transparent 52%),
-        radial-gradient(100% 80% at 50% 85%, rgba(247,210,106,.05), transparent 55%),
-        radial-gradient(120% 120% at 50% 50%, transparent 45%, rgba(0,0,0,.68));
-    }
-
-    /* prevent iOS overscroll white */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:#000;
-      z-index:-2;
-    }
-
-    /* Accessibility: reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      a.btn, a.btn::before{ animation:none !important; }
-      .slide{ transition:none !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大老爺 - 值得您信賴的遊戲平台</title>
+<meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！">
+<link rel="canonical" href="https://fbads.wogm208.com/gm88">
+<style>
+html,body{margin:0;padding:0;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont}
+.container{max-width:420px;margin:auto;text-align:center;padding:20px}
+.logo img{max-width:180px;margin:10px auto}
+.carousel{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:12px;background:#000}
+.carousel img{width:100%;height:100%;object-fit:contain;display:none}
+.carousel img.active{display:block}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:#555}
+.dot.active{background:gold}
+.cta{margin:26px auto;padding:16px 20px;border-radius:50px;background:linear-gradient(135deg,#f5d37a,#c79a2d);
+color:#000;font-weight:bold;box-shadow:0 0 20px rgba(255,215,0,.8);animation:pulse 2s infinite;text-decoration:none;display:inline-block}
+.cta small{display:block;font-size:12px}
+@keyframes pulse{0%{box-shadow:0 0 10px gold}50%{box-shadow:0 0 30px gold}100%{box-shadow:0 0 10px gold}}
+.firework{position:fixed;top:-300px;left:0;width:100%;height:100%;pointer-events:none}
+</style>
 </head>
 <body>
-  <canvas id="fw" aria-hidden="true"></canvas>
-  <div class="vignette" aria-hidden="true"></div>
+<canvas class="firework"></canvas>
+<div class="container">
+  <div class="logo"><img src="img/logo.jpeg"></div>
+  <div class="carousel">
+    <img src="img/slide1.jpeg" class="active">
+    <img src="img/slide2.jpeg">
+    <img src="img/slide3.jpeg">
+  </div>
+  <div class="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <a href="https://ag223.gm1788.net/login?id=register" class="cta">
+    點擊註冊
+    <small>立即領取168體驗金</small>
+  </a>
+</div>
+<script>
+let idx=0;
+const imgs=document.querySelectorAll('.carousel img');
+const dots=document.querySelectorAll('.dot');
+setInterval(()=>{
+ imgs[idx].classList.remove('active');
+ dots[idx].classList.remove('active');
+ idx=(idx+1)%imgs.length;
+ imgs[idx].classList.add('active');
+ dots[idx].classList.add('active');
+},3000);
 
-  <main class="wrap">
-    <div class="top">
-      <img class="logo" src="./img/logo.jpeg" alt="大老爺 LOGO" />
-    </div>
-
-    <div class="mid">
-      <section class="carousel" aria-label="輪播圖片">
-        <div class="slide active"><img src="./img/slide1.jpeg" alt="活動圖 1" /></div>
-        <div class="slide"><img src="./img/slide2.jpeg" alt="活動圖 2" /></div>
-        <div class="slide"><img src="./img/slide3.jpeg" alt="活動圖 3" /></div>
-
-        <div class="dots" aria-hidden="true">
-          <span class="dot on"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </section>
-    </div>
-
-    <div class="bottom">
-      <a class="btn" id="cta" href="https://ag223.gm1788.net/login?id=register" rel="noopener">
-        <div class="btnText">
-          <div class="btnBig" id="btnBig">點擊註冊</div>
-          <div class="btnSmall" id="btnSmall">立即領取168體驗金</div>
-        </div>
-      </a>
-    </div>
-  </main>
-
-  <script>
-    // ---------- Language auto-detect ----------
-    (function(){
-      const map = {
-        "zh-Hant": { big:"點擊註冊", small:"立即領取168體驗金" },           // 繁中
-        "zh-Hans": { big:"点击注册",   small:"立即领取168体验金" },         // 简中
-        "zh-HK":   { big:"立即註冊",   small:"即刻領取168體驗金" },         // 香港繁中
-        "yue":     { big:"即刻註冊",   small:"即刻拎168體驗金" },           // 粵語（口語）
-        "en":      { big:"Register Now", small:"Claim 168 Trial Bonus" },
-        "ms":      { big:"Daftar Sekarang", small:"Tuntut Bonus Percubaan 168" }, // 馬來語
-        "km":      { big:"ចុះឈ្មោះឥឡូវនេះ", small:"ទទួលប្រាក់សាកល្បង 168" },   // 高棉文
-        "th":      { big:"สมัครตอนนี้", small:"รับโบนัสทดลอง 168" },         // 泰文
-        "vi":      { big:"Đăng ký ngay", small:"Nhận thưởng trải nghiệm 168" }, // 越南文
-        "ja":      { big:"今すぐ登録", small:"168体験ボーナスを受け取る" },     // 日文
-        "id":      { big:"Daftar Sekarang", small:"Klaim Bonus Uji Coba 168" },  // 印尼文
-        "tl":      { big:"Magparehistro Ngayon", small:"Kunin ang 168 Trial Bonus" }, // 菲律賓文( Tagalog )
-        "fil":     { big:"Magparehistro Ngayon", small:"Kunin ang 168 Trial Bonus" }
-      };
-
-      const langs = (navigator.languages && navigator.languages.length)
-        ? navigator.languages
-        : [navigator.language || "en"];
-
-      function norm(l){
-        if(!l) return "";
-        const s = String(l).toLowerCase();
-        // yue / cantonese hints
-        if(s.includes("yue")) return "yue";
-        // HK Traditional
-        if(s === "zh-hk" || s.startsWith("zh-hk")) return "zh-HK";
-        // Traditional
-        if(s === "zh-hant" || s.includes("hant")) return "zh-Hant";
-        if(s.startsWith("zh-tw") || s.startsWith("zh-mo")) return "zh-Hant";
-        // Simplified
-        if(s === "zh-cn" || s === "zh-sg" || s.includes("hans")) return "zh-Hans";
-        // others
-        if(s.startsWith("en")) return "en";
-        if(s.startsWith("ms")) return "ms";
-        if(s.startsWith("km")) return "km";
-        if(s.startsWith("th")) return "th";
-        if(s.startsWith("vi")) return "vi";
-        if(s.startsWith("ja")) return "ja";
-        if(s.startsWith("id")) return "id";
-        if(s.startsWith("tl")) return "tl";
-        if(s.startsWith("fil")) return "fil";
-        return "";
-      }
-
-      let chosen = null;
-      for(const l of langs){
-        const k = norm(l);
-        if(k && map[k]){ chosen = map[k]; break; }
-      }
-      if(!chosen) chosen = map["en"];
-
-      document.documentElement.lang = (chosen === map["zh-Hant"]) ? "zh-Hant" : "en";
-      document.getElementById("btnBig").textContent = chosen.big;
-      document.getElementById("btnSmall").textContent = chosen.small;
-    })();
-
-    // ---------- Carousel (3 seconds) ----------
-    (function(){
-      const slides = Array.from(document.querySelectorAll(".slide"));
-      const dots = Array.from(document.querySelectorAll(".dot"));
-      let i = 0;
-      function show(n){
-        slides[i].classList.remove("active");
-        dots[i].classList.remove("on");
-        i = (n + slides.length) % slides.length;
-        slides[i].classList.add("active");
-        dots[i].classList.add("on");
-      }
-      let t = setInterval(()=>show(i+1), 3000);
-
-      // optional: tap to next
-      const car = document.querySelector(".carousel");
-      car.addEventListener("click", ()=>{
-        clearInterval(t);
-        show(i+1);
-        t = setInterval(()=>show(i+1), 3000);
-      }, {passive:true});
-    })();
-
-    // ---------- Button ripple feedback ----------
-    (function(){
-      const btn = document.getElementById("cta");
-      btn.addEventListener("pointerdown", (e)=>{
-        const r = btn.getBoundingClientRect();
-        const x = (e.clientX ?? (r.left + r.width/2)) - r.left;
-        const y = (e.clientY ?? (r.top + r.height/2)) - r.top;
-        const span = document.createElement("span");
-        span.className = "ripple";
-        span.style.left = x + "px";
-        span.style.top = y + "px";
-        btn.appendChild(span);
-        setTimeout(()=>span.remove(), 600);
-      });
-    })();
-
-    // ---------- Fireworks background ----------
-    (function(){
-      const canvas = document.getElementById("fw");
-      const ctx = canvas.getContext("2d", { alpha: true });
-      let w = 0, h = 0, dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-
-      function resize(){
-        w = Math.floor(window.innerWidth);
-        h = Math.floor(window.innerHeight);
-        canvas.width  = Math.floor(w * dpr);
-        canvas.height = Math.floor(h * dpr);
-        canvas.style.width = w + "px";
-        canvas.style.height = h + "px";
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-      }
-      resize();
-      window.addEventListener("resize", resize, {passive:true});
-
-      const rand = (a,b)=>a+Math.random()*(b-a);
-
-      // Palette (gold + warm + cool accents)
-      const colors = [
-        [247,210,106], [255,210,150], [255,255,255],
-        [255,120,80], [160,220,255], [205,120,255]
-      ];
-
-      const sparks = [];
-      const shells = [];
-
-      function addShell(){
-        const x = rand(w*0.1, w*0.9);
-        const y = h + 10;
-        const vx = rand(-0.6, 0.6);
-        const vy = rand(-9.6, -12.6);
-        const col = colors[(Math.random()*colors.length)|0];
-        shells.push({x,y,vx,vy,col,life:0,peak: rand(h*0.18, h*0.45)});
-      }
-
-      function explode(s){
-        const count = (Math.random() < 0.25) ? 90 : 64;
-        for(let i=0;i<count;i++){
-          const ang = Math.random()*Math.PI*2;
-          const spd = rand(2.0, 6.2);
-          sparks.push({
-            x: s.x, y: s.y,
-            vx: Math.cos(ang)*spd + rand(-0.4,0.4),
-            vy: Math.sin(ang)*spd + rand(-0.4,0.4),
-            col: s.col,
-            life: 0,
-            ttl: rand(38, 62),
-            size: rand(1.2, 2.2),
-            drag: rand(0.975, 0.988)
-          });
-        }
-      }
-
-      let last = performance.now();
-      function frame(now){
-        const dt = Math.min(32, now - last);
-        last = now;
-
-        // clear with slight trail
-        ctx.fillStyle = "rgba(0,0,0,0.22)";
-        ctx.fillRect(0,0,w,h);
-
-        // add shells occasionally (tuned for mobile)
-        if(shells.length < 3 && Math.random() < 0.045) addShell();
-
-        // update shells
-        for(let i=shells.length-1;i>=0;i--){
-          const s = shells[i];
-          s.life += dt;
-          s.x += s.vx * (dt/16);
-          s.y += s.vy * (dt/16);
-          s.vy += 0.22 * (dt/16); // gravity
-
-          // draw shell
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(${s.col[0]},${s.col[1]},${s.col[2]},0.85)`;
-          ctx.arc(s.x, s.y, 2.0, 0, Math.PI*2);
-          ctx.fill();
-
-          // explode at peak
-          if(s.y <= s.peak || s.vy > -1.2){
-            explode(s);
-            shells.splice(i,1);
-          }
-        }
-
-        // update sparks
-        for(let i=sparks.length-1;i>=0;i--){
-          const p = sparks[i];
-          p.life += dt/16;
-          p.vx *= p.drag;
-          p.vy *= p.drag;
-          p.vy += 0.09; // gravity
-          p.x += p.vx;
-          p.y += p.vy;
-
-          const alpha = Math.max(0, 1 - (p.life / p.ttl));
-          if(alpha <= 0 || p.y > h + 40){
-            sparks.splice(i,1);
-            continue;
-          }
-
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(${p.col[0]},${p.col[1]},${p.col[2]},${alpha})`;
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-          ctx.fill();
-
-          // glow
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(${p.col[0]},${p.col[1]},${p.col[2]},${alpha*0.18})`;
-          ctx.arc(p.x, p.y, p.size*3.2, 0, Math.PI*2);
-          ctx.fill();
-        }
-
-        requestAnimationFrame(frame);
-      }
-
-      // start
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0,0,w,h);
-      requestAnimationFrame(frame);
-    })();
-  </script>
+// simple fireworks higher burst
+const c=document.querySelector('.firework'),x=c.getContext('2d');
+function resize(){c.width=innerWidth;c.height=innerHeight}
+resize();addEventListener('resize',resize);
+setInterval(()=>{
+ x.clearRect(0,0,c.width,c.height);
+ x.beginPath();
+ x.arc(Math.random()*c.width,Math.random()*c.height*0.35,3,0,Math.PI*2);
+ x.fillStyle='gold';x.fill();
+},350);
+</script>
 </body>
 </html>
