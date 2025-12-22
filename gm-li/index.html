@@ -190,9 +190,10 @@ function launch(){
   rockets.push({
     x: Math.random() * W,
     y: H + 20,
-    vy: -8 - Math.random() * 3,
+    vy: -10 - Math.random() * 2,   // 稍微加強上升力
     vx: (Math.random() - 0.5) * 1.2,
-    explodeY: H * 0.1, // ← 改這裡
+    explodeY: H * 0.1,
+    fuse: 50,                      // ⭐ 新增：保證會爆
     color: colors[Math.floor(Math.random() * colors.length)]
   });
 }
@@ -230,24 +231,26 @@ function launch(){
       if (Math.random() < 0.08) launch();
 
       // rockets
-      for (let i=rockets.length-1;i>=0;i--) {
-        const p = rockets[i];
-                p.x += p.vx * (dt/16);
-        p.y += p.vy * (dt/16);
-        p.vy += 0.12 * (dt/16);
+for (let i=rockets.length-1;i>=0;i--) {
+  const p = rockets[i];
+  p.x += p.vx * (dt/16);
+  p.y += p.vy * (dt/16);
+  p.vy += 0.12 * (dt/16);
+  p.fuse--; // ⭐ 新增
 
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.85;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
+  // 畫火箭
+  ctx.fillStyle = p.color;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
+  ctx.fill();
 
-        if (p.y < p.explodeY) {
-          explode(p);
-          rockets.splice(i,1);
-        }
-      }
+  // ⭐ 關鍵：高度 OR fuse 其中一個成立就爆
+  if (p.y < p.explodeY || p.fuse <= 0) {
+    explode(p);
+    rockets.splice(i,1);
+  }
+}
+
 
       // sparks
       for (let i=sparks.length-1;i>=0;i--) {
