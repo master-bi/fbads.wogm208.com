@@ -248,7 +248,7 @@
       ctx.fillStyle = "rgba(255,255,255,0.045)";
       for (let i=0;i<4;i++) ctx.fillRect(rand(0,W), rand(0,H), 1, 1);
 
-      if (Math.random() < 0.08) launch();
+      if (Math.random() < 0.05) launch();
 
       // rockets
       for (let i=rockets.length-1;i>=0;i--) {
@@ -358,7 +358,7 @@
       ctx.fillStyle = "rgba(0,0,0,0.20)";
       ctx.fillRect(0,0,W,H);
 
-      if (Math.random() < 0.12) launch();
+      if (Math.random() < 0.05) launch();
 
       for (let i=rockets.length-1;i>=0;i--) {
         const p = rockets[i];
