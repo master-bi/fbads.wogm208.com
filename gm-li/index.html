@@ -191,7 +191,7 @@
         x: rand(W*0.1, W*0.9),
         y: H + 12,
         vx: rand(-0.8,0.8),
-        vy: rand(-7.6,-5.8),
+        vy: rand(-9.2,-7.6),
         t: 0,
         explodeAt: rand(40, 62),
         color: colors[(Math.random()*colors.length)|0]
@@ -228,7 +228,7 @@
       ctx.fillStyle = "rgba(255,255,255,0.045)";
       for (let i=0;i<4;i++) ctx.fillRect(rand(0,W), rand(0,H), 1, 1);
 
-      if (Math.random() < 0.085) launch();
+      if (Math.random() < 0.12) launch();
 
       // rockets
       for (let i=rockets.length-1;i>=0;i--) {
@@ -236,7 +236,7 @@
         p.t += dt/16;
         p.x += p.vx * (dt/16);
         p.y += p.vy * (dt/16);
-        p.vy += 0.20 * (dt/16);
+        p.vy += 0.14 * (dt/16);
 
         ctx.fillStyle = p.color;
         ctx.globalAlpha = 0.85;
@@ -245,7 +245,7 @@
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (p.t > p.explodeAt || p.y < H*0.28) {
+        if (p.t > p.explodeAt || p.y < H*0.18) {
           explode(p);
           rockets.splice(i,1);
         }
