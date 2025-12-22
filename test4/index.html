@@ -123,19 +123,19 @@
       filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
     }
 
+    
     .dots{
-      position:absolute;
-      left:50%;
-      bottom:-12px;
-      transform:translateX(-50%);
       display:flex;
+      justify-content:center;
       gap:8px;
+      margin-top:12px;
       padding: 6px 10px;
       border-radius: 999px;
       background: rgba(0,0,0,.35);
       border: 1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(6px);
     }
+    
     .dot{
       width:8px;height:8px;border-radius:999px;
       background: rgba(255,255,255,.35);
@@ -270,6 +270,15 @@
       a.btn, a.btn::before{ animation:none !important; }
       .slide{ transition:none !important; }
     }
+  
+    .footer{
+      padding: 10px 8px calc(14px + var(--safe-bottom));
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      line-height: 1.6;
+    }
+
   </style>
 </head>
 <body>
@@ -286,13 +295,13 @@
         <div class="slide active"><img src="./img/slide1.jpeg" alt="活動圖 1" /></div>
         <div class="slide"><img src="./img/slide2.jpeg" alt="活動圖 2" /></div>
         <div class="slide"><img src="./img/slide3.jpeg" alt="活動圖 3" /></div>
+</section>
 
         <div class="dots" aria-hidden="true">
           <span class="dot on"></span>
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
-      </section>
     </div>
 
     <div class="bottom">
@@ -530,5 +539,10 @@
       requestAnimationFrame(frame);
     })();
   </script>
+
+  <footer class="footer">
+    © 2025 大老爺 All Rights Reserved.
+  </footer>
+
 </body>
 </html>
