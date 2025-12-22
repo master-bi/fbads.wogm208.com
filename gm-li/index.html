@@ -73,10 +73,8 @@
     .topSpace{
       height: 24%;
       min-height: 140px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(18,18,18,.30), rgba(0,0,0,.05));
-      border: 1px solid rgba(255,255,255,.06);
-      backdrop-filter: blur(6px);
+      background: transparent;
+      border: none;
     }
 
     /* 1:1 hero image full width, crop left/right to fit phone */
@@ -181,6 +179,17 @@
     resize();
     window.addEventListener("resize", resize);
 
+    
+    // calculate image top boundary (explode above hero image)
+    const stage = document.querySelector('.stage');
+    const hero = document.querySelector('.heroWrap');
+    function getImageTopY(){
+      const r = hero.getBoundingClientRect();
+      return Math.max(40, r.top - 20);
+    }
+    let imageTopY = getImageTopY();
+    window.addEventListener('resize', ()=> imageTopY = getImageTopY());
+
     const rockets = [];
     const sparks = [];
     const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
@@ -245,7 +254,7 @@
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (p.t > p.explodeAt || p.y < H*0.10) {
+        if (p.t > p.explodeAt || p.y < imageTopY) {
           explode(p);
           rockets.splice(i,1);
         }
