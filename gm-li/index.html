@@ -44,6 +44,7 @@
       padding-bottom: calc(16px + env(safe-area-inset-bottom));
       padding-top: calc(16px + env(safe-area-inset-top));
       overflow:hidden;
+      position:relative;
     }
 
     /* Full background fireworks canvas */
@@ -81,6 +82,7 @@
     .heroWrap{
       border-radius: var(--radius);
       overflow:hidden;
+      position:relative;
       border: 1px solid rgba(255,255,255,.08);
       background:#000;
       width:100%;
@@ -179,17 +181,6 @@
     resize();
     window.addEventListener("resize", resize);
 
-    
-    // calculate image top boundary (explode above hero image)
-    const stage = document.querySelector('.stage');
-    const hero = document.querySelector('.heroWrap');
-    function getImageTopY(){
-      const r = hero.getBoundingClientRect();
-      return Math.max(40, r.top - 200);
-    }
-    let imageTopY = getImageTopY();
-    window.addEventListener('resize', ()=> imageTopY = getImageTopY());
-
     const rockets = [];
     const sparks = [];
     const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
@@ -200,9 +191,8 @@
         x: rand(W*0.1, W*0.9),
         y: H + 12,
         vx: rand(-0.8,0.8),
-        vy: rand(-7.4,-6.4),
-        t: 0,
-        explodeAt: rand(40, 62),
+        vy: rand(-8.6,-7.2),
+        explodeY: rand(H*0.06, H*0.18),
         color: colors[(Math.random()*colors.length)|0]
       });
     }
@@ -242,10 +232,9 @@
       // rockets
       for (let i=rockets.length-1;i>=0;i--) {
         const p = rockets[i];
-        p.t += dt/16;
-        p.x += p.vx * (dt/16);
+                p.x += p.vx * (dt/16);
         p.y += p.vy * (dt/16);
-        p.vy += 0.10 * (dt/16);
+        p.vy += 0.12 * (dt/16);
 
         ctx.fillStyle = p.color;
         ctx.globalAlpha = 0.85;
@@ -254,7 +243,7 @@
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (p.t > p.explodeAt || p.y < imageTopY) {
+        if (p.y < p.explodeY) {
           explode(p);
           rockets.splice(i,1);
         }
