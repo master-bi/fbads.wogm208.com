@@ -36,7 +36,7 @@ function launch(){
     vx: rand(-0.5,0.5),
     vy: rand(-12,-9),          // stronger lift
     g:  rand(0.06,0.10),       // lighter gravity
-    explodeY: rand(H*0.12, H*0.30),
+    explodeY: rand(H*0.01, H*0.08),
     fuse: rand(38, 62),        // GUARANTEE explode even if height calc feels off
     color: colors[(Math.random()*colors.length)|0]
   });
