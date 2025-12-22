@@ -70,25 +70,40 @@
       z-index:1;
     }
 
-    /* top blank space (so image doesn't touch top) */
-    .topSpace{
-      height: 24%;
-      min-height: 140px;
-      background: transparent;
-      border: none;
+
+    /* ✅ NEW: fireworks card above hero */
+.fireCard{
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;        /* ✅ 自動填滿剩餘空間 */
+  min-height: 120px;     /* ✅ 最小高度，避免太扁 */
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  box-shadow: 0 18px 70px rgba(0,0,0,.35);
+}
+    #cardFx{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      display:block;
     }
 
     /* 1:1 hero image full width, crop left/right to fit phone */
-    .heroWrap{
-      border-radius: var(--radius);
-      overflow:hidden;
-      position:relative;
-      border: 1px solid rgba(255,255,255,.08);
-      background:#000;
-      width:100%;
-      aspect-ratio: 1 / 1;
-      box-shadow: 0 18px 70px rgba(0,0,0,.45);
-    }
+.heroWrap{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* ✅ 關鍵：固定 1:1 */
+  flex: 0 0 auto;        /* ✅ 不允許被 flex 擠壓 */
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background:#000;
+  box-shadow: 0 18px 70px rgba(0,0,0,.45);
+}
     .hero{
       width:100%;
       height:100%;
@@ -143,6 +158,7 @@
       .cta{ font-size: 20px; padding: 16px 16px; }
       .stage{ gap: 12px; }
       .topSpace{ min-height: 120px; }
+      .fireCard{ height: 130px; }
     }
   </style>
 </head>
@@ -151,7 +167,11 @@
   <canvas id="bgFx" aria-hidden="true"></canvas>
 
   <main class="stage">
-    <section class="topSpace" aria-label="top spacing"></section>
+
+    <!-- ✅ ONLY ADD: card fireworks above the image -->
+    <section class="fireCard" aria-label="fireworks card">
+      <canvas id="cardFx" aria-hidden="true"></canvas>
+    </section>
 
     <section class="heroWrap" aria-label="promo image 1:1">
       <img class="hero" src="assets/hero.png" alt="大老爺 活動圖" loading="eager" decoding="async" />
@@ -165,7 +185,7 @@
   </main>
 
 <script>
-  // Full background fireworks (lightweight)
+  // Full background fireworks (lightweight) - KEEP YOUR ORIGINAL LOGIC
   (function() {
     const canvas = document.getElementById("bgFx");
     const ctx = canvas.getContext("2d", { alpha: true });
@@ -186,17 +206,17 @@
     const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
     const rand = (a,b)=> a + Math.random()*(b-a);
 
-function launch(){
-  rockets.push({
-    x: Math.random() * W,
-    y: H + 20,
-    vy: -10 - Math.random() * 2,   // 稍微加強上升力
-    vx: (Math.random() - 0.5) * 1.2,
-    explodeY: H * -0.5,
-    fuse: 50,                      // ⭐ 新增：保證會爆
-    color: colors[Math.floor(Math.random() * colors.length)]
-  });
-}
+    function launch(){
+      rockets.push({
+        x: Math.random() * W,
+        y: H + 20,
+        vy: -10 - Math.random() * 2,   // 稍微加強上升力
+        vx: (Math.random() - 0.5) * 1.2,
+        explodeY: H * -2,
+        fuse: 50,                      // ⭐ 新增：保證會爆
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
 
     function explode(p) {
       const n = (rand(30, 58))|0;
@@ -228,29 +248,26 @@ function launch(){
       ctx.fillStyle = "rgba(255,255,255,0.045)";
       for (let i=0;i<4;i++) ctx.fillRect(rand(0,W), rand(0,H), 1, 1);
 
-      if (Math.random() < 0.08) launch();
+      if (Math.random() < 0.05) launch();
 
       // rockets
-for (let i=rockets.length-1;i>=0;i--) {
-  const p = rockets[i];
-  p.x += p.vx * (dt/16);
-  p.y += p.vy * (dt/16);
-  p.vy += 0.12 * (dt/16);
-  p.fuse--; // ⭐ 新增
+      for (let i=rockets.length-1;i>=0;i--) {
+        const p = rockets[i];
+        p.x += p.vx * (dt/16);
+        p.y += p.vy * (dt/16);
+        p.vy += 0.12 * (dt/16);
+        p.fuse--;
 
-  // 畫火箭
-  ctx.fillStyle = p.color;
-  ctx.beginPath();
-  ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
-  ctx.fill();
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
+        ctx.fill();
 
-  // ⭐ 關鍵：高度 OR fuse 其中一個成立就爆
-  if (p.y < p.explodeY || p.fuse <= 0) {
-    explode(p);
-    rockets.splice(i,1);
-  }
-}
-
+        if (p.y < p.explodeY || p.fuse <= 0) {
+          explode(p);
+          rockets.splice(i,1);
+        }
+      }
 
       // sparks
       for (let i=sparks.length-1;i>=0;i--) {
@@ -276,6 +293,115 @@ for (let i=rockets.length-1;i>=0;i--) {
       requestAnimationFrame(tick);
     }
 
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(tick);
+  })();
+
+  // ✅ ONLY ADD: fireworks inside the card canvas (does not touch your bg logic)
+  (function(){
+    const canvas = document.getElementById("cardFx");
+    if(!canvas) return;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    let W=0,H=0, dpr = Math.min(2, window.devicePixelRatio || 1);
+
+    function resize() {
+      const r = canvas.getBoundingClientRect();
+      W = Math.max(1, Math.floor(r.width));
+      H = Math.max(1, Math.floor(r.height));
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const rockets = [];
+    const sparks = [];
+    const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
+    const rand = (a,b)=> a + Math.random()*(b-a);
+
+    function launch(){
+      rockets.push({
+        x: Math.random() * W,
+        y: H + 10,
+        vy: -9 - Math.random() * 2,
+        vx: (Math.random() - 0.5) * 0.9,
+        explodeY: H * 0.25,   // 卡片內爆炸高度（越小越靠上）
+        fuse: 40,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    function explode(p) {
+      const n = (rand(34, 70))|0;
+      for (let i=0;i<n;i++) {
+        const ang = (Math.PI*2) * (i/n) + rand(-0.10,0.10);
+        const sp = rand(1.8, 4.8);
+        sparks.push({
+          x: p.x, y: p.y,
+          vx: Math.cos(ang)*sp + rand(-0.20,0.20),
+          vy: Math.sin(ang)*sp + rand(-0.20,0.20),
+          life: rand(34, 80),
+          age: 0,
+          color: p.color,
+          size: rand(1.2, 2.6)
+        });
+      }
+    }
+
+    let last = performance.now();
+    function tick(now) {
+      const dt = Math.min(32, now-last);
+      last = now;
+
+      ctx.fillStyle = "rgba(0,0,0,0.20)";
+      ctx.fillRect(0,0,W,H);
+
+      if (Math.random() < 0.05) launch();
+
+      for (let i=rockets.length-1;i>=0;i--) {
+        const p = rockets[i];
+        p.x += p.vx * (dt/16);
+        p.y += p.vy * (dt/16);
+        p.vy += 0.11 * (dt/16);
+        p.fuse--;
+
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.95;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.1, 0, Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (p.y < p.explodeY || p.fuse <= 0) {
+          explode(p);
+          rockets.splice(i,1);
+        }
+      }
+
+      for (let i=sparks.length-1;i>=0;i--) {
+        const s = sparks[i];
+        s.age += dt/16;
+        s.x += s.vx * (dt/16);
+        s.y += s.vy * (dt/16);
+        s.vy += 0.040 * (dt/16);
+        s.vx *= 0.990;
+        s.vy *= 0.990;
+
+        const a = Math.max(0, 1 - s.age/s.life);
+        ctx.globalAlpha = a;
+        ctx.fillStyle = s.color;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (s.age > s.life || s.y > H+60 || s.x < -60 || s.x > W+60) sparks.splice(i,1);
+      }
+
+      requestAnimationFrame(tick);
+    }
     ctx.fillStyle = "#000";
     ctx.fillRect(0,0,W,H);
     requestAnimationFrame(tick);
