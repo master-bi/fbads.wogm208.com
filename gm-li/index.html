@@ -43,8 +43,21 @@
       padding: 16px 14px;
       padding-bottom: calc(16px + env(safe-area-inset-bottom));
       padding-top: calc(16px + env(safe-area-inset-top));
+      overflow:hidden;
     }
 
+    /* Full background fireworks canvas */
+    #bgFx{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      width:100vw;
+      height:100vh;
+      pointer-events:none;
+      background:#000;
+    }
+
+    /* Content */
     .stage{
       width:min(460px, 100%);
       aspect-ratio: 9 / 16;
@@ -52,27 +65,18 @@
       display:flex;
       flex-direction:column;
       gap: 14px;
+      position:relative;
+      z-index:1;
     }
 
-    /* Top fireworks area */
-    .fx{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(18,18,18,.72), rgba(0,0,0,.55));
-      border: 1px solid rgba(255,255,255,.08);
-      overflow:hidden;
-      position:relative;
+    /* top blank space (so image doesn't touch top) */
+    .topSpace{
       height: 24%;
       min-height: 140px;
-    }
-    #bgFx{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      display:block;
-    }
-    .fxOverlay{
-      position:absolute; inset:0;
-      pointer-events:none;
-      background: radial-gradient(700px 360px at 50% 20%, rgba(255,255,255,.10), transparent 60%);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(18,18,18,.30), rgba(0,0,0,.05));
+      border: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(6px);
     }
 
     /* 1:1 hero image full width, crop left/right to fit phone */
@@ -83,11 +87,12 @@
       background:#000;
       width:100%;
       aspect-ratio: 1 / 1;
+      box-shadow: 0 18px 70px rgba(0,0,0,.45);
     }
     .hero{
       width:100%;
       height:100%;
-      object-fit: cover; /* 讓左右切齊螢幕 */
+      object-fit: cover;
       display:block;
     }
 
@@ -137,36 +142,16 @@
     @media (max-height: 700px){
       .cta{ font-size: 20px; padding: 16px 16px; }
       .stage{ gap: 12px; }
-      .fx{ min-height: 120px; }
+      .topSpace{ min-height: 120px; }
     }
-  
-    /* Background fireworks canvas */
-    #bgFx{
-      position:fixed;
-      inset:0;
-      z-index:0;
-      width:100vw;
-      height:100vh;
-      background:#000;
-    }
-    .stage{
-      position:relative;
-      z-index:1;
-    }
-</style>
-
+  </style>
 </head>
 
 <body>
+  <canvas id="bgFx" aria-hidden="true"></canvas>
+
   <main class="stage">
-    <!-- BG FIREWORKS -->
-<canvas id="bgFx"></canvas>
-<!-- END BG FIREWORKS -->
-<!-- removed fx card -->
-<section class="fx" style="display:none">
-      <canvas id="bgFx"></canvas>
-      <div class="fxOverlay" aria-hidden="true"></div>
-    </section>
+    <section class="topSpace" aria-label="top spacing"></section>
 
     <section class="heroWrap" aria-label="promo image 1:1">
       <img class="hero" src="assets/hero.png" alt="大老爺 活動圖" loading="eager" decoding="async" />
@@ -180,16 +165,15 @@
   </main>
 
 <script>
-  // Fireworks (lightweight canvas)
+  // Full background fireworks (lightweight)
   (function() {
     const canvas = document.getElementById("bgFx");
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     let W=0,H=0, dpr = Math.min(2, window.devicePixelRatio || 1);
 
     function resize() {
-      const r = canvas.getBoundingClientRect();
-      W = Math.max(1, Math.floor(r.width));
-      H = Math.max(1, Math.floor(r.height));
+      W = Math.max(1, Math.floor(window.innerWidth));
+      H = Math.max(1, Math.floor(window.innerHeight));
       canvas.width = Math.floor(W * dpr);
       canvas.height = Math.floor(H * dpr);
       ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -204,29 +188,29 @@
 
     function launch() {
       rockets.push({
-        x: rand(W*0.15, W*0.85),
-        y: H + 10,
-        vx: rand(-0.6,0.6),
-        vy: rand(-6.8,-5.2),
+        x: rand(W*0.1, W*0.9),
+        y: H + 12,
+        vx: rand(-0.8,0.8),
+        vy: rand(-7.6,-5.8),
         t: 0,
-        explodeAt: rand(38, 55),
+        explodeAt: rand(40, 62),
         color: colors[(Math.random()*colors.length)|0]
       });
     }
 
     function explode(p) {
-      const n = (rand(26, 46))|0;
+      const n = (rand(30, 58))|0;
       for (let i=0;i<n;i++) {
-        const ang = (Math.PI*2) * (i/n) + rand(-0.08,0.08);
-        const sp = rand(1.6, 3.6);
+        const ang = (Math.PI*2) * (i/n) + rand(-0.10,0.10);
+        const sp = rand(1.8, 4.4);
         sparks.push({
           x: p.x, y: p.y,
-          vx: Math.cos(ang)*sp + rand(-0.2,0.2),
-          vy: Math.sin(ang)*sp + rand(-0.2,0.2),
-          life: rand(28, 52),
+          vx: Math.cos(ang)*sp + rand(-0.25,0.25),
+          vy: Math.sin(ang)*sp + rand(-0.25,0.25),
+          life: rand(34, 70),
           age: 0,
           color: p.color,
-          size: rand(1.2, 2.2)
+          size: rand(1.2, 2.4)
         });
       }
     }
@@ -236,16 +220,15 @@
       const dt = Math.min(32, now-last);
       last = now;
 
-      // trail fade
+      // fade trail
       ctx.fillStyle = "rgba(0,0,0,0.22)";
       ctx.fillRect(0,0,W,H);
 
-      // subtle stars
-      ctx.fillStyle = "rgba(255,255,255,0.06)";
-      for (let i=0;i<2;i++) ctx.fillRect(rand(0,W), rand(0,H*0.7), 1, 1);
+      // sparse stars
+      ctx.fillStyle = "rgba(255,255,255,0.045)";
+      for (let i=0;i<4;i++) ctx.fillRect(rand(0,W), rand(0,H), 1, 1);
 
-      // launch cadence
-      if (Math.random() < 0.06) launch();
+      if (Math.random() < 0.085) launch();
 
       // rockets
       for (let i=rockets.length-1;i>=0;i--) {
@@ -253,16 +236,16 @@
         p.t += dt/16;
         p.x += p.vx * (dt/16);
         p.y += p.vy * (dt/16);
-        p.vy += 0.18 * (dt/16);
+        p.vy += 0.20 * (dt/16);
 
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.9;
+        ctx.globalAlpha = 0.85;
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (p.t > p.explodeAt || p.y < H*0.25) {
+        if (p.t > p.explodeAt || p.y < H*0.28) {
           explode(p);
           rockets.splice(i,1);
         }
@@ -286,7 +269,7 @@
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (s.age > s.life || s.y > H+30 || s.x < -30 || s.x > W+30) sparks.splice(i,1);
+        if (s.age > s.life || s.y > H+60 || s.x < -60 || s.x > W+60) sparks.splice(i,1);
       }
 
       requestAnimationFrame(tick);
