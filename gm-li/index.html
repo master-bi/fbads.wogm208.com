@@ -1,161 +1,295 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>大老爺 - 值得您信任的平台</title>
-<meta name="description" content="即刻起登入即領簽到獎，趕緊添加大老爺白白申請！">
-<style>
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  height:100%;
-  background:#000;
-  overflow:hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-/* Fireworks background */
-#fireworks{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-}
+  <title>大老爺 - 值得您信任的平台</title>
+  <meta name="description" content="即刻起登入即領簽到獎，趕緊添加大老爺白白申請！" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://fbads.wogm208.com/gm-li/" />
 
-/* Content layer */
-.stage{
-  position:relative;
-  z-index:1;
-  height:100vh;
-  aspect-ratio:9/16;
-  max-width:460px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-  padding:16px;
-  box-sizing:border-box;
-}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="大老爺 - 值得您信任的平台" />
+  <meta property="og:description" content="即刻起登入即領簽到獎，趕緊添加大老爺白白申請！" />
+  <meta property="og:url" content="https://fbads.wogm208.com/gm-li/" />
+  <meta property="og:image" content="https://fbads.wogm208.com/gm-li/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fbads.wogm208.com/gm-li/assets/og-image.png" />
 
-.hero{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:18px;
-}
+  <style>
+    :root{
+      --bg:#000;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.55);
+      --radius:22px;
 
-/* CTA */
-.cta{
-  width:100%;
-  padding:18px 0;
-  text-align:center;
-  font-size:22px;
-  font-weight:800;
-  color:#fff;
-  text-decoration:none;
-  border-radius:18px;
-  background:linear-gradient(135deg,#06C755,#1fe27a);
-  box-shadow:0 0 25px rgba(6,199,85,.45);
-  animation:breath 1.8s ease-in-out infinite;
-}
+      --line:#06C755;
+      --line2:#1fe27a;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 16px 14px;
+      padding-bottom: calc(16px + env(safe-area-inset-bottom));
+      padding-top: calc(16px + env(safe-area-inset-top));
+      overflow:hidden;
+    }
 
-@keyframes breath{
-  0%,100%{transform:scale(1); filter:brightness(1);}
-  50%{transform:scale(1.06); filter:brightness(1.1);}
-}
+    /* Full background fireworks canvas */
+    #bgFx{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      width:100vw;
+      height:100vh;
+      pointer-events:none;
+      background:#000;
+    }
 
-.footer{
-  font-size:12px;
-  color:rgba(255,255,255,.55);
-  text-align:center;
-}
-</style>
+    /* Content */
+    .stage{
+      width:min(460px, 100%);
+      aspect-ratio: 9 / 16;
+      max-height: calc(100vh - 32px);
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+      position:relative;
+      z-index:1;
+    }
+
+    /* top blank space (so image doesn't touch top) */
+    .topSpace{
+      height: 24%;
+      min-height: 140px;
+      background: transparent;
+      border: none;
+    }
+
+    /* 1:1 hero image full width, crop left/right to fit phone */
+    .heroWrap{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background:#000;
+      width:100%;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 18px 70px rgba(0,0,0,.45);
+    }
+    .hero{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* CTA */
+    .cta{
+      margin-top:auto;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 18px 18px;
+      border-radius: 18px;
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing:.2px;
+      color: rgba(255,255,255,.96);
+      background: linear-gradient(135deg, var(--line), var(--line2));
+      box-shadow: 0 18px 46px rgba(6,199,85,.22), 0 0 22px rgba(31,226,122,.20);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+      transform-origin:center;
+      animation: ctaBreath 1.8s ease-in-out infinite;
+      will-change: transform, filter;
+    }
+    .cta:active{
+      animation-play-state: paused;
+      transform: scale(.985);
+      filter: brightness(.98);
+    }
+    @keyframes ctaBreath{
+      0%,100%{ transform: scale(1); filter: brightness(1); }
+      50%{ transform: scale(1.045); filter: brightness(1.06); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .cta{ animation:none !important; filter:none !important; }
+    }
+
+    .footer{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      padding: 4px 6px 0;
+    }
+
+    @media (max-height: 700px){
+      .cta{ font-size: 20px; padding: 16px 16px; }
+      .stage{ gap: 12px; }
+      .topSpace{ min-height: 120px; }
+    }
+  </style>
 </head>
+
 <body>
+  <canvas id="bgFx" aria-hidden="true"></canvas>
 
-<canvas id="fireworks"></canvas>
+  <main class="stage">
+    <section class="topSpace" aria-label="top spacing"></section>
 
-<div class="stage">
-  <img class="hero" src="assets/hero.png" alt="活動圖">
-  <a class="cta" href="https://lin.ee/kGFQel1" target="_blank">加好友領簽到</a>
-  <div class="footer">© <span id="year"></span> 大老爺娛樂平台 All Rights Reserved.</div>
-</div>
+    <section class="heroWrap" aria-label="promo image 1:1">
+      <img class="hero" src="assets/hero.png" alt="大老爺 活動圖" loading="eager" decoding="async" />
+    </section>
+
+    <a class="cta" href="https://lin.ee/kGFQel1" target="_blank" rel="noopener noreferrer">
+      加好友領簽到
+    </a>
+
+    <div class="footer">© <span id="year"></span> 大老爺娛樂平台 All Rights Reserved. 本網站僅供娛樂交流使用，請理性參與。</div>
+  </main>
 
 <script>
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-let W,H,dpr=Math.min(2,window.devicePixelRatio||1);
+  // Full background fireworks (lightweight)
+  (function() {
+    const canvas = document.getElementById("bgFx");
+    const ctx = canvas.getContext("2d", { alpha: true });
+    let W=0,H=0, dpr = Math.min(2, window.devicePixelRatio || 1);
 
-function resize(){
-  W=window.innerWidth; H=window.innerHeight;
-  canvas.width=W*dpr; canvas.height=H*dpr;
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-resize(); window.addEventListener('resize',resize);
+    function resize() {
+      W = Math.max(1, Math.floor(window.innerWidth));
+      H = Math.max(1, Math.floor(window.innerHeight));
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
 
-const rockets=[], sparks=[];
-const colors=['#ff4d4d','#ffd166','#06c755','#4dd0ff','#b388ff'];
+    
+    // calculate image top boundary (explode above hero image)
+    const stage = document.querySelector('.stage');
+    const hero = document.querySelector('.heroWrap');
+    function getImageTopY(){
+      const r = hero.getBoundingClientRect();
+      return Math.max(40, r.top - 200);
+    }
+    let imageTopY = getImageTopY();
+    window.addEventListener('resize', ()=> imageTopY = getImageTopY());
 
-function launch(){
-  rockets.push({
-    x:Math.random()*W,
-    y:H+20,
-    vy:-8-Math.random()*3,
-    vx:(Math.random()-.5)*1.2,
-    explodeY:Math.random()*H*0.2+H*0.05,
-    color:colors[Math.floor(Math.random()*colors.length)]
-  });
-}
+    const rockets = [];
+    const sparks = [];
+    const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
+    const rand = (a,b)=> a + Math.random()*(b-a);
 
-function explode(r){
-  for(let i=0;i<50;i++){
-    const a=Math.random()*Math.PI*2;
-    const s=Math.random()*3+1.5;
-    sparks.push({
-      x:r.x,y:r.y,
-      vx:Math.cos(a)*s,
-      vy:Math.sin(a)*s,
-      life:40+Math.random()*30,
-      age:0,
-      color:r.color
-    });
-  }
-}
+    function launch() {
+      rockets.push({
+        x: rand(W*0.1, W*0.9),
+        y: H + 12,
+        vx: rand(-0.8,0.8),
+        vy: rand(-7.4,-6.4),
+        t: 0,
+        explodeAt: rand(40, 62),
+        color: colors[(Math.random()*colors.length)|0]
+      });
+    }
 
-function tick(){
-  ctx.fillStyle='rgba(0,0,0,.2)';
-  ctx.fillRect(0,0,W,H);
+    function explode(p) {
+      const n = (rand(30, 58))|0;
+      for (let i=0;i<n;i++) {
+        const ang = (Math.PI*2) * (i/n) + rand(-0.10,0.10);
+        const sp = rand(1.8, 4.4);
+        sparks.push({
+          x: p.x, y: p.y,
+          vx: Math.cos(ang)*sp + rand(-0.25,0.25),
+          vy: Math.sin(ang)*sp + rand(-0.25,0.25),
+          life: rand(34, 70),
+          age: 0,
+          color: p.color,
+          size: rand(1.2, 2.4)
+        });
+      }
+    }
 
-  if(Math.random()<0.08) launch();
+    let last = performance.now();
+    function tick(now) {
+      const dt = Math.min(32, now-last);
+      last = now;
 
-  for(let i=rockets.length-1;i>=0;i--){
-    const r=rockets[i];
-    r.x+=r.vx; r.y+=r.vy;
-    r.vy+=0.12;
-    ctx.fillStyle=r.color;
-    ctx.beginPath(); ctx.arc(r.x,r.y,2.2,0,Math.PI*2); ctx.fill();
-    if(r.y<=r.explodeY){ explode(r); rockets.splice(i,1); }
-  }
+      // fade trail
+      ctx.fillStyle = "rgba(0,0,0,0.22)";
+      ctx.fillRect(0,0,W,H);
 
-  for(let i=sparks.length-1;i>=0;i--){
-    const s=sparks[i];
-    s.x+=s.vx; s.y+=s.vy;
-    s.vy+=0.05; s.age++;
-    ctx.globalAlpha=1-s.age/s.life;
-    ctx.fillStyle=s.color;
-    ctx.beginPath(); ctx.arc(s.x,s.y,2,0,Math.PI*2); ctx.fill();
-    ctx.globalAlpha=1;
-    if(s.age>s.life) sparks.splice(i,1);
-  }
-  requestAnimationFrame(tick);
-}
-tick();
-document.getElementById('year').textContent=new Date().getFullYear();
+      // sparse stars
+      ctx.fillStyle = "rgba(255,255,255,0.045)";
+      for (let i=0;i<4;i++) ctx.fillRect(rand(0,W), rand(0,H), 1, 1);
+
+      if (Math.random() < 0.08) launch();
+
+      // rockets
+      for (let i=rockets.length-1;i>=0;i--) {
+        const p = rockets[i];
+        p.t += dt/16;
+        p.x += p.vx * (dt/16);
+        p.y += p.vy * (dt/16);
+        p.vy += 0.10 * (dt/16);
+
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.85;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.2, 0, Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (p.t > p.explodeAt || p.y < imageTopY) {
+          explode(p);
+          rockets.splice(i,1);
+        }
+      }
+
+      // sparks
+      for (let i=sparks.length-1;i>=0;i--) {
+        const s = sparks[i];
+        s.age += dt/16;
+        s.x += s.vx * (dt/16);
+        s.y += s.vy * (dt/16);
+        s.vy += 0.045 * (dt/16);
+        s.vx *= 0.992;
+        s.vy *= 0.992;
+
+        const a = Math.max(0, 1 - s.age/s.life);
+        ctx.globalAlpha = a;
+        ctx.fillStyle = s.color;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (s.age > s.life || s.y > H+60 || s.x < -60 || s.x > W+60) sparks.splice(i,1);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(tick);
+  })();
+
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
