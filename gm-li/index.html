@@ -186,16 +186,16 @@
     const colors = ["#ff4d4d","#ffd166","#06c755","#4dd0ff","#b388ff","#ff7aff"];
     const rand = (a,b)=> a + Math.random()*(b-a);
 
-    function launch() {
-      rockets.push({
-        x: rand(W*0.1, W*0.9),
-        y: H + 12,
-        vx: rand(-0.8,0.8),
-        vy: rand(-8.6,-7.2),
-        explodeY: 20,
-        color: colors[(Math.random()*colors.length)|0]
-      });
-    }
+function launch(){
+  rockets.push({
+    x: Math.random() * W,
+    y: H + 20,
+    vy: -8 - Math.random() * 3,
+    vx: (Math.random() - 0.5) * 1.2,
+    explodeY: 20, // 👈 改這裡一定會動
+    color: colors[Math.floor(Math.random() * colors.length)]
+  });
+}
 
     function explode(p) {
       const n = (rand(30, 58))|0;
