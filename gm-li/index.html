@@ -64,7 +64,7 @@
       height: 24%;
       min-height: 140px;
     }
-    #fxCanvas{
+    #bgFx{
       position:absolute; inset:0;
       width:100%; height:100%;
       display:block;
@@ -139,13 +139,32 @@
       .stage{ gap: 12px; }
       .fx{ min-height: 120px; }
     }
-  </style>
+  
+    /* Background fireworks canvas */
+    #bgFx{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      width:100vw;
+      height:100vh;
+      background:#000;
+    }
+    .stage{
+      position:relative;
+      z-index:1;
+    }
+</style>
+
 </head>
 
 <body>
   <main class="stage">
-    <section class="fx" aria-label="fireworks">
-      <canvas id="fxCanvas"></canvas>
+    <!-- BG FIREWORKS -->
+<canvas id="bgFx"></canvas>
+<!-- END BG FIREWORKS -->
+<!-- removed fx card -->
+<section class="fx" style="display:none">
+      <canvas id="bgFx"></canvas>
       <div class="fxOverlay" aria-hidden="true"></div>
     </section>
 
@@ -157,13 +176,13 @@
       加好友領簽到
     </a>
 
-    <div class="footer">© <span id="year"></span> 大老爺</div>
+    <div class="footer">© <span id="year"></span> 大老爺娛樂平台 All Rights Reserved. 本網站僅供娛樂交流使用，請理性參與。</div>
   </main>
 
 <script>
   // Fireworks (lightweight canvas)
   (function() {
-    const canvas = document.getElementById("fxCanvas");
+    const canvas = document.getElementById("bgFx");
     const ctx = canvas.getContext("2d");
     let W=0,H=0, dpr = Math.min(2, window.devicePixelRatio || 1);
 
