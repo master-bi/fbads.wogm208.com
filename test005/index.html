@@ -4,9 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>大老爺 - 值得信賴的遊戲平台</title>
-<meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。">
+<meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。">
+
 <style>
-:root{--gold1:#FFE8A8;--gold2:#FFD24D;--gold3:#D9A514;--line:#06C755;--text:#111827;--muted:#6b7280;--shadow:0 12px 36px rgba(0,0,0,.12);--radius:18px;--maxw:1080px}
+:root{
+  --gold1:#FFE8A8;
+  --gold2:#FFD24D;
+  --gold3:#D9A514;
+  --line:#06C755;
+  --text:#111827;
+  --muted:#6b7280;
+  --shadow:0 12px 36px rgba(0,0,0,.12);
+  --radius:18px;
+  --maxw:1080px;
+}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
 .topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18)}
@@ -35,18 +46,21 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
 .card{display:flex;gap:14px}
 .gameLogo{width:72px;height:72px;object-fit:contain}
-.meta p{margin:0;color:var(--muted)}
+.meta h3{margin:0 0 4px}
+.meta p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
 .offers{display:grid;gap:10px}
 @media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
 .offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
 .bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18)}
 .bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex;gap:12px}
 .cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}
-.cta.gold{flex:3;background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3))}
+.cta.gold{flex:3;background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));color:#fff;font-size:20px;position:relative}
+.cta.gold small{position:absolute;right:16px;font-size:13px;color:#7a4f00}
 .cta.line{flex:1;background:var(--line);color:#fff}
 </style>
 </head>
 <body>
+
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand"><img src="./img/logo.webp"></div>
@@ -61,27 +75,47 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
     </div>
   </div>
 </header>
+
 <main>
   <div class="carousel"><div class="slides" id="slides">
     <div class="slide"><img src="./img/banner1.webp"></div>
     <div class="slide"><img src="./img/banner2.webp"></div>
     <div class="slide"><img src="./img/banner3.webp"></div>
   </div></div>
+
   <div class="marquee"><div class="marquee-track" id="marquee">
     <span>恭喜 09***58469 領取紅利【168】</span>
     <span>恭喜 09***64518 領取紅利【1,000】</span>
     <span>恭喜 09***84595 電子贏分【38,452】</span>
+    <span>恭喜 09***15431 領取紅利【5,888】</span>
+    <span>恭喜 09***65842 電子贏分【50,985】</span>
+    <span>恭喜 09***54894 電子贏分【112,397】</span>
+    <span>恭喜 09***78568 領取紅利【5,000】</span>
+    <span>恭喜 09***99852 電子贏分【12,859】</span>
+    <span>恭喜 09***36951 電子贏分【253,381】</span>
+    <span>恭喜 09***25619 領取紅利【5,888】</span>
   </div></div>
+
   <section class="section">
     <div class="section-head"><span>熱門推薦</span></div>
     <div class="section-box">
       <div class="grid">
-        <div class="card"><img class="gameLogo" src="./img/game-mt-live.webp"><div class="meta"><h3>MT真人</h3><p>真實互動</p></div></div>
-        <div class="card"><img class="gameLogo" src="./img/game-mt-elec.webp"><div class="meta"><h3>MT電子</h3><p>玩法多</p></div></div>
-        <div class="card"><img class="gameLogo" src="./img/game-beauty.webp"><div class="meta"><h3>美女直播廳</h3><p>高互動</p></div></div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-mt-live.webp">
+          <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p></div>
+        </div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-mt-elec.webp">
+          <div class="meta"><h3>MT電子</h3><p>多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p></div>
+        </div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-beauty.webp">
+          <div class="meta"><h3>美女直播廳</h3><p>即時互動聊天，娛樂氛圍滿滿，陪你輕鬆玩、開心聊。</p></div>
+        </div>
       </div>
     </div>
   </section>
+
   <section class="section">
     <div class="section-head"><span>優惠專區</span></div>
     <div class="section-box">
@@ -89,16 +123,22 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
         <div class="offer">註冊就送168體驗金</div>
         <div class="offer">登入簽到即送196</div>
         <div class="offer">首存即享100%回饋</div>
+        <div class="offer">聖誕節儲值送5888</div>
+        <div class="offer">全民普發加碼5000</div>
+        <div class="offer">百家樂包賠 返水大升級</div>
+        <div class="offer">USDT儲值回饋無上限</div>
       </div>
     </div>
   </section>
 </main>
+
 <nav class="bottombar">
   <div class="bottombar-inner">
-    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
+    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊<small>領取168</small></a>
     <a class="cta line" href="https://lin.ee/xla4vX0" target="_blank">聯繫客服</a>
   </div>
 </nav>
+
 <script>
 const btn=document.getElementById('menuBtn');
 const panel=document.getElementById('menuPanel');
@@ -107,4 +147,5 @@ document.onclick=()=>panel.style.display='none';
 let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
 const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
 </script>
-</body></html>
+</body>
+</html>
