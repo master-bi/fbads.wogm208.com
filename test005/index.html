@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>大老爺 - 值得信賴的遊戲平台</title>
 
-  <!-- 用來給社群/預覽讀取（不顯示在頁面上） -->
+  <!-- 只給讀取網址預覽用（不顯示在頁面上） -->
   <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
   <meta property="og:title" content="大老爺 - 值得信賴的遊戲平台" />
   <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
@@ -18,16 +18,15 @@
       --text:#111827;
       --muted:#6b7280;
 
-      /* 金色要更「金」一點 */
-      --gold1:#FFE08A;
-      --gold2:#FFC93A;
+      /* 更亮更金 */
+      --gold1:#FFE8A8;
+      --gold2:#FFD24D;
       --gold3:#D9A514;
 
       /* LINE 官方綠 */
       --line:#06C755;
 
-      --stroke: rgba(217,165,20,.28);
-      --stroke2: rgba(217,165,20,.42);
+      --stroke: rgba(217,165,20,.18);
       --shadow: 0 16px 60px rgba(17,24,39,.10);
 
       --maxw: 1080px;
@@ -63,7 +62,7 @@
       height:var(--topH);
       background: rgba(255,255,255,.90);
       backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(217,165,20,.18);
+      border-bottom:1px solid rgba(217,165,20,.16);
     }
     .topbar:after{
       content:"";
@@ -82,16 +81,14 @@
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      min-width:0;
       user-select:none;
     }
-    .brand img{ width:38px; height:38px; object-fit:contain; }
-    .brand .name{ font-weight:900; letter-spacing:.6px; }
+    .brand img{ width:40px; height:40px; object-fit:contain; }
 
     .menuWrap{ position:relative; }
     .menuBtn{
       appearance:none;
-      border:1px solid var(--stroke2);
+      border:1px solid rgba(217,165,20,.35);
       background:#fff;
       height:40px;
       padding:0 12px;
@@ -111,7 +108,7 @@
       position:absolute; left:0; right:0;
       height:2px; border-radius:99px;
       background: linear-gradient(90deg, var(--gold3), var(--gold2));
-      box-shadow: 0 0 14px rgba(255,201,58,.22);
+      box-shadow: 0 0 14px rgba(255,210,77,.22);
     }
     .hamburger span:nth-child(1){ top:0; }
     .hamburger span:nth-child(2){ top:5px; opacity:.85; }
@@ -121,7 +118,7 @@
       position:absolute; right:0; top:48px;
       width:220px;
       background:#fff;
-      border:1px solid rgba(217,165,20,.28);
+      border:1px solid rgba(217,165,20,.24);
       border-radius: 16px;
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -141,119 +138,66 @@
       text-decoration:none;
       color:var(--text);
       font-weight:800;
-      border-bottom:1px solid rgba(217,165,20,.14);
+      border-bottom:1px solid rgba(217,165,20,.12);
       background:#fff;
     }
     .menuItem:last-child{ border-bottom:none; }
     .menuItem:hover{ background: rgba(217,165,20,.08); }
-    .dot{ width:10px; height:10px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow:0 0 14px rgba(255,201,58,.25); }
+    .dot{ width:10px; height:10px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow:0 0 14px rgba(255,210,77,.25); }
     .dot.green{ background: linear-gradient(180deg,#66ffad,var(--line)); box-shadow:0 0 14px rgba(6,199,85,.28); }
 
     /* ===== Layout ===== */
     main{
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 16px 16px calc(var(--bottomH) + 22px);
+      padding: 0 16px calc(var(--bottomH) + 22px);
     }
 
-    /* ===== Carousel ===== */
-    .hero{
-      border:1px solid rgba(217,165,20,.22);
-      border-radius: var(--r);
-      overflow:hidden;
-      background:#fff;
-      box-shadow: var(--shadow);
-    }
+    /* ===== Carousel（不要框框、不要點點） ===== */
     .carousel{
-      position:relative;
       width:100%;
       aspect-ratio: 1920 / 865;
       background:#fff;
+      overflow:hidden;
+      /* 保留圓角可改：你若要完全直角，把這行刪掉 */
+      border-radius: var(--r);
+      margin-top: 16px;
     }
     .slides{
-      position:absolute; inset:0;
+      height:100%;
       display:flex;
-      transition: transform .5s ease;
+      transition: transform .55s ease;
       will-change: transform;
     }
     .slide{ min-width:100%; height:100%; }
     .slide img{
       width:100%; height:100%;
-      object-fit: cover; /* 不要大跑版：固定滿版 */
+      object-fit: cover;
       display:block;
       background: transparent;
     }
 
-    .carousel-ui{
-      position:absolute;
-      left:12px; right:12px; bottom:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      pointer-events:none;
-    }
-    .dots{
-      display:flex; gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.82);
-      border:1px solid rgba(217,165,20,.18);
-      backdrop-filter: blur(8px);
-      pointer-events:auto;
-    }
-    .dots button{
-      width:10px; height:10px;
-      border-radius:50%;
-      border:none;
-      background: rgba(17,24,39,.18);
-      cursor:pointer;
-      padding:0;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .dots button.active{
-      background: linear-gradient(180deg,var(--gold1),var(--gold2));
-      box-shadow: 0 0 16px rgba(255,201,58,.35);
-      transform: scale(1.12);
-    }
-    .navBtns{ display:flex; gap:10px; pointer-events:auto; }
-    .navBtn{
-      width:40px; height:40px;
-      border-radius: 999px;
-      border:1px solid rgba(217,165,20,.22);
-      background: rgba(255,255,255,.82);
-      backdrop-filter: blur(8px);
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
-    }
-    .navBtn:hover{ transform: translateY(-1px); border-color: rgba(217,165,20,.50); box-shadow: 0 12px 26px rgba(217,165,20,.16); }
-    .navBtn:active{ transform: translateY(0) scale(.99); }
-    .chev{
-      width:10px; height:10px;
-      border-right:2px solid var(--gold3);
-      border-bottom:2px solid var(--gold3);
-      transform: rotate(135deg);
-    }
-    .chev.r{ transform: rotate(-45deg); }
-
-    /* ===== Marquee (不超出螢幕) ===== */
+    /* ===== Marquee（不讓頁面變超寬） ===== */
     .marquee{
       margin-top: 14px;
       border:1px solid rgba(217,165,20,.22);
       border-radius: 14px;
       background:#fff;
-      overflow:hidden; /* 這行是關鍵：不會超出畫面 */
+      overflow:hidden;              /* 關鍵：永遠不會跑出畫面 */
       box-shadow: 0 10px 30px rgba(217,165,20,.10);
     }
+    .marquee-inner{
+      width:100%;
+      overflow:hidden;
+    }
     .marquee-track{
-      display:flex;
-      width:max-content;
-      gap: 30px;
+      display:inline-flex;          /* inline-flex 避免撐爆頁面寬度 */
+      align-items:center;
+      gap: 26px;
       padding: 12px 14px;
-      animation: scroll 24s linear infinite;
+      white-space: nowrap;
       will-change: transform;
+      animation: scroll 24s linear infinite;
     }
     .marquee:hover .marquee-track{ animation-play-state: paused; }
     @keyframes scroll{
@@ -261,8 +205,9 @@
       to{ transform: translateX(-50%); }
     }
     .marquee-item{
-      display:flex; align-items:center; gap:10px;
-      white-space: nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
       font-weight:800;
       font-size: 14px;
     }
@@ -272,13 +217,12 @@
       padding:4px 10px;
       border-radius: 999px;
       border:1px solid rgba(217,165,20,.30);
-      background: rgba(255,201,58,.14);
+      background: rgba(255,210,77,.14);
       color: #8a6b22;
       font-weight:900;
-      letter-spacing:.2px;
     }
 
-    /* ===== Section cards ===== */
+    /* ===== Section ===== */
     .section{
       margin-top: 18px;
       padding: 16px;
@@ -287,37 +231,30 @@
       background:#fff;
       box-shadow: var(--shadow);
     }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr;
-      gap:12px;
+      gap:14px;
     }
     @media(min-width: 720px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
+
+    /* 遊戲卡：LOGO 大一點、不要框框 */
     .card{
-      border:1px solid rgba(217,165,20,.18);
-      border-radius: 16px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(255,201,58,.10), transparent 60%);
       display:flex;
-      gap:12px;
+      gap:14px;
       align-items:flex-start;
-      box-shadow: 0 12px 30px rgba(217,165,20,.10);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .2s ease;
+      padding: 10px 6px;
     }
-    .card:hover{ transform: translateY(-2px); border-color: rgba(217,165,20,.35); box-shadow: 0 18px 44px rgba(217,165,20,.14); }
-    .logoBox{
-      width:46px; height:46px;
-      border-radius: 14px;
-      border:1px solid rgba(217,165,20,.20);
-      background:#fff;
-      display:grid;
-      place-items:center;
-      overflow:hidden;
+    .gameLogo{
+      width:72px;
+      height:72px;
+      object-fit: contain;
       flex:0 0 auto;
-      box-shadow: 0 12px 24px rgba(217,165,20,.12);
+      /* 不要框框：不設 border/background */
+      filter: drop-shadow(0 10px 18px rgba(17,24,39,.10));
     }
-    .logoBox img{ width:100%; height:100%; object-fit:contain; padding:6px; display:block; }
-    .meta h3{ margin:0 0 4px; font-size: 15.5px; letter-spacing:.2px; }
+    .meta h3{ margin:0 0 4px; font-size: 16px; letter-spacing:.2px; }
     .meta p{ margin:0; font-size: 13.5px; color: var(--muted); line-height:1.45; }
 
     .offers{
@@ -340,7 +277,7 @@
       font-size: 14px;
     }
     .offer:hover{ transform: translateY(-2px); border-color: rgba(217,165,20,.32); box-shadow: 0 16px 36px rgba(217,165,20,.12); }
-    .spark{ width:12px; height:12px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow: 0 0 16px rgba(255,201,58,.35); }
+    .spark{ width:12px; height:12px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow: 0 0 16px rgba(255,210,77,.35); }
 
     .footer{
       margin-top: 16px;
@@ -356,7 +293,7 @@
       height: var(--bottomH);
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(217,165,20,.18);
+      border-top: 1px solid rgba(217,165,20,.16);
       z-index:60;
     }
     .bottombar:before{
@@ -375,7 +312,6 @@
       justify-content:space-between;
     }
 
-    /* 你說的「左邊框框」：這次完全不放 icon/框框 */
     .cta{
       position:relative;
       flex:1;
@@ -396,16 +332,15 @@
     }
     .cta:active{ transform: scale(.985); }
 
-    /* 呼吸＋發光 */
     .cta.gold{
       color:#1b1406;
       background: linear-gradient(180deg, var(--gold1), var(--gold2) 55%, var(--gold3));
-      box-shadow: 0 14px 40px rgba(255,201,58,.28);
+      box-shadow: 0 14px 40px rgba(255,210,77,.30);
       animation: breatheGold 1.7s ease-in-out infinite;
     }
     @keyframes breatheGold{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(255,201,58,0)); }
-      50%{ filter: drop-shadow(0 0 14px rgba(255,201,58,.55)); }
+      0%,100%{ filter: drop-shadow(0 0 0 rgba(255,210,77,0)); }
+      50%{ filter: drop-shadow(0 0 14px rgba(255,210,77,.58)); }
     }
 
     .cta.line{
@@ -416,10 +351,9 @@
     }
     @keyframes breatheLine{
       0%,100%{ filter: drop-shadow(0 0 0 rgba(6,199,85,0)); }
-      50%{ filter: drop-shadow(0 0 14px rgba(6,199,85,.52)); }
+      50%{ filter: drop-shadow(0 0 14px rgba(6,199,85,.54)); }
     }
 
-    /* 點擊回饋（波紋） */
     .ripple{
       position:absolute;
       border-radius:999px;
@@ -440,12 +374,11 @@
 <body>
   <div class="bg-lines" aria-hidden="true"></div>
 
-  <!-- Top Bar（你說不見了：這次保留且固定） -->
+  <!-- Top Bar：LOGO 旁邊不寫字 -->
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand" title="大老爺">
         <img src="./img/logo.webp" alt="大老爺 Logo">
-        <div class="name">大老爺</div>
       </div>
 
       <div class="menuWrap">
@@ -467,51 +400,45 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="carousel" id="carousel">
-        <div class="slides" id="slides">
-          <div class="slide"><img src="./img/banner1.webp" alt="輪播圖 1"></div>
-          <div class="slide"><img src="./img/banner2.webp" alt="輪播圖 2"></div>
-          <div class="slide"><img src="./img/banner3.webp" alt="輪播圖 3"></div>
-        </div>
-
-        <div class="carousel-ui">
-          <div class="dots" id="dots" aria-label="輪播指示點"></div>
-          <div class="navBtns">
-            <button class="navBtn" id="prevBtn" aria-label="上一張"><span class="chev"></span></button>
-            <button class="navBtn" id="nextBtn" aria-label="下一張"><span class="chev r"></span></button>
-          </div>
-        </div>
+    <!-- 輪播：不顯示點點 / 不顯示任何框框 UI -->
+    <div class="carousel" id="carousel">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="./img/banner1.webp" alt="輪播圖 1"></div>
+        <div class="slide"><img src="./img/banner2.webp" alt="輪播圖 2"></div>
+        <div class="slide"><img src="./img/banner3.webp" alt="輪播圖 3"></div>
       </div>
-    </section>
+    </div>
 
+    <!-- 跑馬燈：不會再把整個頁面撐超寬 -->
     <div class="marquee" aria-label="即時跑馬燈">
-      <div class="marquee-track" id="marqueeTrack">
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***58469 領取紅利【168】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***64518 領取紅利【1,000】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***84595 電子贏分【38,452】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***15431 領取紅利【5,888】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***65842 電子贏分【50,985】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***54894 電子贏分【112,397】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***78568 領取紅利【5,000】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***99852 電子贏分【12,859】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***36951 電子贏分【253,381】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***25619 領取紅利【5,888】</div>
+      <div class="marquee-inner">
+        <div class="marquee-track" id="marqueeTrack">
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***58469 領取紅利【168】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***64518 領取紅利【1,000】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***84595 電子贏分【38,452】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***15431 領取紅利【5,888】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***65842 電子贏分【50,985】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***54894 電子贏分【112,397】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***78568 領取紅利【5,000】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***99852 電子贏分【12,859】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***36951 電子贏分【253,381】</div>
+          <div class="marquee-item"><span class="badge">恭喜</span> 09***25619 領取紅利【5,888】</div>
+        </div>
       </div>
     </div>
 
     <section class="section">
       <div class="grid">
         <div class="card">
-          <div class="logoBox"><img src="./img/game-mt-live.webp" alt="MT真人"></div>
+          <img class="gameLogo" src="./img/game-mt-live.webp" alt="MT真人">
           <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏絲滑超帶感。</p></div>
         </div>
         <div class="card">
-          <div class="logoBox"><img src="./img/game-mt-elec.webp" alt="MT電子"></div>
+          <img class="gameLogo" src="./img/game-mt-elec.webp" alt="MT電子">
           <div class="meta"><h3>MT電子</h3><p>畫面順、玩法多，驚喜連爆，一玩停不下來。</p></div>
         </div>
         <div class="card">
-          <div class="logoBox"><img src="./img/game-beauty.webp" alt="美女直播廳"></div>
+          <img class="gameLogo" src="./img/game-beauty.webp" alt="美女直播廳">
           <div class="meta"><h3>美女直播廳</h3><p>高互動氛圍感，輕鬆娛樂，越玩越上頭。</p></div>
         </div>
       </div>
@@ -534,8 +461,8 @@
 
   <nav class="bottombar" aria-label="底部操作列">
     <div class="bottombar-inner">
-      <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">立即註冊</a>
-      <a class="cta line" href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">聯繫客服</a>
+      <a class="cta gold" id="btnRegister" href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">立即註冊</a>
+      <a class="cta line" id="btnLine" href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">聯繫客服</a>
     </div>
   </nav>
 
@@ -553,7 +480,7 @@
     document.addEventListener('click', ()=> closeMenu());
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
 
-    // ===== Ripple for CTA + controls =====
+    // ===== Ripple for CTA =====
     function addRipple(el){
       el.addEventListener('click', (e)=>{
         const rect = el.getBoundingClientRect();
@@ -565,68 +492,31 @@
         setTimeout(()=> r.remove(), 650);
       }, {passive:true});
     }
-    document.querySelectorAll('.cta,.navBtn,.menuBtn,.dots button').forEach(addRipple);
+    document.querySelectorAll('.cta').forEach(addRipple);
 
-    // ===== Carousel =====
+    // ===== Carousel (auto + swipe; no dots/ui) =====
     const slidesEl = document.getElementById('slides');
-    const dotsEl = document.getElementById('dots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     const total = slidesEl.children.length;
     let index = 0;
-    let timer = null;
 
-    function buildDots(){
-      dotsEl.innerHTML='';
-      for(let i=0;i<total;i++){
-        const b=document.createElement('button');
-        b.type='button';
-        b.addEventListener('click',(e)=>{ e.stopPropagation(); go(i,true); });
-        dotsEl.appendChild(b);
-      }
-    }
-    function syncDots(){
-      [...dotsEl.children].forEach((b,i)=> b.classList.toggle('active', i===index));
-    }
-    function go(i,user=false){
-      index=(i+total)%total;
+    function go(i){
+      index = (i + total) % total;
       slidesEl.style.transform = `translateX(${-index*100}%)`;
-      syncDots();
-      if(user) restartAuto();
     }
-    function next(){ go(index+1,true); }
-    function prev(){ go(index-1,true); }
-    function startAuto(){ timer=setInterval(()=> go(index+1,false), 4500); }
-    function stopAuto(){ if(timer) clearInterval(timer); timer=null; }
-    function restartAuto(){ stopAuto(); startAuto(); }
-
-    prevBtn.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
-    nextBtn.addEventListener('click', (e)=>{ e.stopPropagation(); next(); });
+    setInterval(()=> go(index+1), 4500);
 
     const carousel = document.getElementById('carousel');
-    carousel.addEventListener('mouseenter', stopAuto);
-    carousel.addEventListener('mouseleave', startAuto);
-
-    // swipe
     let startX=0, dx=0, touching=false;
-    carousel.addEventListener('touchstart',(e)=>{touching=true; startX=e.touches[0].clientX; dx=0; stopAuto();},{passive:true});
+    carousel.addEventListener('touchstart',(e)=>{touching=true; startX=e.touches[0].clientX; dx=0;},{passive:true});
     carousel.addEventListener('touchmove',(e)=>{ if(!touching) return; dx=e.touches[0].clientX-startX; },{passive:true});
     carousel.addEventListener('touchend',()=>{
       touching=false;
-      if(Math.abs(dx)>40){ dx<0 ? next() : prev(); }
-      else restartAuto();
+      if(Math.abs(dx)>40){ dx<0 ? go(index+1) : go(index-1); }
     });
 
-    buildDots(); go(0); startAuto();
-
-    // ===== Marquee seamless =====
+    // ===== Marquee seamless (只複製內容，不改 parent 寬度，避免撐爆) =====
     const track = document.getElementById('marqueeTrack');
-    const clone = track.cloneNode(true);
-    clone.setAttribute('aria-hidden','true');
-    track.parentElement.appendChild(clone);
-    track.parentElement.style.display='flex';
-    track.parentElement.style.width='max-content';
-    track.parentElement.style.gap='30px';
+    track.innerHTML += track.innerHTML;
   </script>
 </body>
 </html>
