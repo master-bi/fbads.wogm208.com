@@ -57,7 +57,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 .grid{display:grid;gap:14px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
 .card{display:flex;gap:14px}
-.gameLogo{width:72px;height:72px;object-fit:contain}
+.gameLogo{width:96px;height:96px;object-fit:contain;position:relative}
 .meta p{margin:0;color:var(--muted);line-height:1.5}
 
 .offers{display:grid;gap:10px}
@@ -119,18 +119,25 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
     <div class="section-head"><span>熱門推薦</span></div>
     <div class="section-box">
       <div class="grid">
-        <div class="card">
-          <img class="gameLogo" src="./img/game-mt-live.webp">
-          <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p></div>
-        </div>
-        <div class="card">
-          <img class="gameLogo" src="./img/game-mt-elec.webp">
-          <div class="meta"><h3>MT電子</h3><p>多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p></div>
-        </div>
-        <div class="card">
-          <img class="gameLogo" src="./img/game-beauty.webp">
-          <div class="meta"><h3>美女直播廳</h3><p>即時互動聊天，娛樂氛圍滿滿，陪你輕鬆玩、開心聊。</p></div>
-        </div>
+        
+
+
+<div class="card">
+  <div style="position:relative">
+    <img class="gameLogo" src="./img/card-girl.gif">
+    <img src="./img/game-beauty.webp" style="
+      position:absolute;
+      top:-6px; right:-6px;
+      width:32px; height:32px;
+      background:#fff;
+      border-radius:8px;
+      padding:2px;
+      box-shadow:0 4px 10px rgba(0,0,0,.25);
+    ">
+  </div>
+  <div class="meta">
+    <h3>美女直播廳</h3>
+
       </div>
     </div>
   </section>
