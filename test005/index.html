@@ -7,10 +7,9 @@
 <title>大老爺 - 值得信賴的遊戲平台</title>
 <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。">
 
-<!-- Open Graph / 預覽（方案 A：完整版） -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="大老爺 - 值得信賴的遊戲平台">
-<meta property="og:description" content="超多熱門玩法，真人、電子、直播一次滿足。立即加入領取新會員體驗好禮！">
+<meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。">
 <meta property="og:url" content="https://fbads.wogm208.com/gm88">
 <meta property="og:image" content="https://fbads.wogm208.com/gm88/og.jpg">
 
@@ -24,79 +23,59 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
 
-/* ===== TOP BAR ===== */
 .topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18);z-index:50}
 .topbar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
 .brand img{height:40px}
-
-/* Menu A: fixed panel */
 .menuBtn{height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(217,165,20,.35);background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
 .hamburger{width:18px;height:12px;position:relative}
 .hamburger span{position:absolute;left:0;right:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
 .hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:5px}.hamburger span:nth-child(3){bottom:0}
 
 .menuPanel{
-  position:fixed; /* 關鍵修正 */
-  top:64px; right:16px;
-  width:220px;background:#fff;border:1px solid rgba(217,165,20,.22);
-  border-radius:14px;box-shadow:var(--shadow);display:none;z-index:9999
+  position:fixed;top:64px;right:16px;width:220px;background:#fff;
+  border:1px solid rgba(217,165,20,.22);border-radius:14px;
+  box-shadow:var(--shadow);display:none;z-index:9999
 }
 .menuPanel a{display:block;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:800}
 
-/* ===== LAYOUT ===== */
 main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 
-/* ===== CAROUSEL ===== */
 .carousel{margin-top:16px;width:100%;aspect-ratio:1920/865;overflow:hidden}
 .slides{display:flex;height:100%;transition:.5s}
 .slide{min-width:100%}.slide img{width:100%;height:100%;object-fit:cover}
 
-/* ===== MARQUEE ===== */
 .marquee{margin-top:14px;overflow:hidden;border:1px solid rgba(217,165,20,.22);border-radius:14px}
 .marquee-track{display:inline-flex;gap:26px;padding:12px 16px;white-space:nowrap;animation:scroll 24s linear infinite}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ===== SECTION ===== */
 .section{margin-top:28px}
 .section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .section-head span{font-weight:900;color:#8a6b22}
 .section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold2),transparent)}
 .section-box{border:1px solid rgba(217,165,20,.22);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
 
-/* ===== GAMES ===== */
 .grid{display:grid;gap:14px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
 .card{display:flex;gap:14px}
 .gameLogo{width:72px;height:72px;object-fit:contain}
 .meta p{margin:0;color:var(--muted);line-height:1.5}
 
-/* ===== OFFERS ===== */
 .offers{display:grid;gap:10px}
 @media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
 .offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
 
-/* ===== BOTTOM CTA ===== */
 .bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
-.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex;gap:12px}
+.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
 .cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none;transition:.25s}
-/* Button effects B: breathe + glow */
 .cta.gold{
-  flex:3;color:#fff;font-size:20px;position:relative;
+  flex:1;color:#fff;font-size:22px;position:relative;
   background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
   animation:breathe 1.8s ease-in-out infinite
 }
 .cta.gold small{position:absolute;right:16px;font-size:13px;color:#7a4f00}
-.cta.line{
-  flex:1;background:var(--line);color:#fff;
-  animation:breatheLine 1.8s ease-in-out infinite
-}
 @keyframes breathe{
   0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
   50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
-}
-@keyframes breatheLine{
-  0%,100%{box-shadow:0 0 0 rgba(6,199,85,0)}
-  50%{box-shadow:0 0 18px rgba(6,199,85,.55)}
 }
 </style>
 </head>
@@ -113,7 +92,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 
 <div class="menuPanel" id="menuPanel">
   <a href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
-  <a href="https://lin.ee/xla4vX0" target="_blank">聯繫客服</a>
+  <a href="https://lin.ee/kGFQel1" target="_blank">聯繫客服</a>
 </div>
 
 <main>
@@ -127,15 +106,31 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
     <span>恭喜 09***58469 領取紅利【168】</span>
     <span>恭喜 09***64518 領取紅利【1,000】</span>
     <span>恭喜 09***84595 電子贏分【38,452】</span>
+    <span>恭喜 09***15431 領取紅利【5,888】</span>
+    <span>恭喜 09***65842 電子贏分【50,985】</span>
+    <span>恭喜 09***54894 電子贏分【112,397】</span>
+    <span>恭喜 09***78568 領取紅利【5,000】</span>
+    <span>恭喜 09***99852 電子贏分【12,859】</span>
+    <span>恭喜 09***36951 電子贏分【253,381】</span>
+    <span>恭喜 09***25619 領取紅利【5,888】</span>
   </div></div>
 
   <section class="section">
     <div class="section-head"><span>熱門推薦</span></div>
     <div class="section-box">
       <div class="grid">
-        <div class="card"><img class="gameLogo" src="./img/game-mt-live.webp"><div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏流暢、畫面細膩。</p></div></div>
-        <div class="card"><img class="gameLogo" src="./img/game-mt-elec.webp"><div class="meta"><h3>MT電子</h3><p>多元機台任你選，轉場順暢不卡頓。</p></div></div>
-        <div class="card"><img class="gameLogo" src="./img/game-beauty.webp"><div class="meta"><h3>美女直播廳</h3><p>即時互動聊天，娛樂氛圍滿滿。</p></div></div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-mt-live.webp">
+          <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p></div>
+        </div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-mt-elec.webp">
+          <div class="meta"><h3>MT電子</h3><p>多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p></div>
+        </div>
+        <div class="card">
+          <img class="gameLogo" src="./img/game-beauty.webp">
+          <div class="meta"><h3>美女直播廳</h3><p>即時互動聊天，娛樂氛圍滿滿，陪你輕鬆玩、開心聊。</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -147,6 +142,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
         <div class="offer">註冊就送168體驗金</div>
         <div class="offer">登入簽到即送196</div>
         <div class="offer">首存即享100%回饋</div>
+        <div class="offer">聖誕節儲值送5888</div>
+        <div class="offer">全民普發加碼5000</div>
         <div class="offer">百家樂包賠 返水大升級</div>
         <div class="offer">USDT儲值回饋無上限</div>
       </div>
@@ -157,7 +154,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 <nav class="bottombar">
   <div class="bottombar-inner">
     <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊<small>領取168</small></a>
-    <a class="cta line" href="https://lin.ee/xla4vX0" target="_blank">聯繫客服</a>
   </div>
 </nav>
 
