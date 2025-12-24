@@ -5,880 +5,236 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>大老爺 - 值得信賴的遊戲平台</title>
 
+  <!-- SEO / Link Preview -->
   <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="canonical" href="https://fbads.wogm208.com/gm88" />
-
-  <meta property="og:type" content="website" />
   <meta property="og:title" content="大老爺 - 值得信賴的遊戲平台" />
   <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta property="og:url" content="https://fbads.wogm208.com/gm88" />
 
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #121212;
-      --muted: #6b7280;
-      --gold: #caa14a;
-      --gold2: #f3d58a;
-      --goldDeep:#8a6b22;
-      --lineGreen:#22c55e;
-      --card:#ffffff;
-      --shadow: 0 18px 60px rgba(17,24,39,.10);
-      --stroke: rgba(202,161,74,.22);
-      --stroke2: rgba(202,161,74,.35);
-      --radius: 18px;
-      --maxw: 1060px;
-      --topH: 64px;
-      --bottomH: 78px;
+      --gold-main:#FFD56A;
+      --gold-deep:#E6B84E;
+      --line-green:#06C755;
+      --text:#111;
+      --muted:#666;
+      --border:rgba(0,0,0,.08);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x:hidden;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:#fff;
+      color:var(--text);
     }
 
-    /* subtle gold grid lines */
-    .bg-lines{
-      position:fixed; inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(90deg, rgba(202,161,74,.06) 1px, transparent 1px) 0 0/36px 36px,
-        linear-gradient(0deg, rgba(202,161,74,.06) 1px, transparent 1px) 0 0/36px 36px;
-      opacity:.35;
-      mask-image: radial-gradient(70% 70% at 50% 20%, #000 0%, transparent 75%);
-    }
-
-    /* Top bar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      height:var(--topH);
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--stroke);
-    }
-    .topbar::after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:-1px; height:2px;
-      background: linear-gradient(90deg, transparent, rgba(202,161,74,.55), transparent);
-      opacity:.9;
-    }
-    .topbar-inner{
-      max-width: var(--maxw);
-      height:100%;
-      margin:0 auto;
-      padding:0 16px;
+    /* ===== TOP BAR ===== */
+    header{
+      height:64px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      padding:0 16px;
+      border-bottom:1px solid var(--border);
     }
-    .brand{
-      display:flex; align-items:center; gap:10px; min-width:0;
-      user-select:none;
-    }
-    .brand img{
-      width:38px; height:38px; object-fit:contain;
-      filter: drop-shadow(0 6px 12px rgba(202,161,74,.25));
-    }
-    .brand .title{
-      font-weight:800;
-      letter-spacing:.5px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+    header img{height:36px}
 
-    .menu-btn{
-      appearance:none;
-      border:1px solid var(--stroke2);
-      background: #fff;
-      color:var(--text);
-      height:40px;
-      padding:0 12px;
-      border-radius: 999px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-      box-shadow: 0 8px 26px rgba(202,161,74,.12);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .menu-btn:hover{
-      border-color: rgba(202,161,74,.55);
-      box-shadow: 0 10px 30px rgba(202,161,74,.18);
-      transform: translateY(-1px);
-    }
-    .menu-btn:active{ transform: translateY(0px) scale(.99); }
-    .hamburger{
-      width:18px; height:12px; position:relative;
-    }
-    .hamburger span{
-      position:absolute; left:0; right:0;
-      height:2px; border-radius:99px;
-      background: linear-gradient(90deg, var(--goldDeep), var(--gold));
-      box-shadow: 0 0 14px rgba(202,161,74,.25);
-    }
-    .hamburger span:nth-child(1){ top:0; }
-    .hamburger span:nth-child(2){ top:5px; opacity:.85; }
-    .hamburger span:nth-child(3){ bottom:0; }
-
-    /* Dropdown */
-    .dropdown{
-      position:relative;
-    }
-    .dropdown-panel{
-      position:absolute; right:0; top:48px;
-      width: 220px;
-      background:#fff;
-      border:1px solid var(--stroke2);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transform-origin: top right;
-      transform: scale(.98) translateY(-6px);
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .dropdown-panel.open{
-      opacity:1;
-      transform: scale(1) translateY(0);
-      pointer-events:auto;
-    }
-    .dropdown-item{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      padding:12px 12px;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      border-bottom:1px solid rgba(202,161,74,.12);
-      transition: background .15s ease, transform .15s ease;
-    }
-    .dropdown-item:last-child{ border-bottom:none; }
-    .dropdown-item:hover{ background: rgba(202,161,74,.08); }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      box-shadow: 0 0 14px rgba(202,161,74,.28);
-      flex:0 0 auto;
-    }
-    .dot.green{
-      background: linear-gradient(180deg, #67f2a2, var(--lineGreen));
-      box-shadow: 0 0 14px rgba(34,197,94,.30);
-    }
-
-    /* Layout */
-    main{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 18px 16px calc(var(--bottomH) + 24px);
-    }
-
-    .hero{
-      margin-top: 14px;
-      border: 1px solid var(--stroke2);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      background:#fff;
-    }
-
-    /* Carousel */
+    /* ===== CAROUSEL ===== */
     .carousel{
-      position:relative;
       width:100%;
-      aspect-ratio: 1920 / 865;
-      background:
-        radial-gradient(1200px 500px at 20% 10%, rgba(202,161,74,.18), transparent 55%),
-        radial-gradient(900px 420px at 90% 30%, rgba(202,161,74,.10), transparent 60%),
-        #fff;
+      aspect-ratio:1920/865;
+      overflow:hidden;
+      position:relative;
+      background:#fff;
     }
     .slides{
-      position:absolute; inset:0;
       display:flex;
-      transition: transform .5s ease;
-      will-change: transform;
-    }
-    .slide{
-      min-width:100%;
       height:100%;
-      position:relative;
+      transition:transform .5s ease;
     }
+    .slide{min-width:100%}
     .slide img{
       width:100%;
       height:100%;
-      object-fit: cover;
-      display:block;
-      background:#fff;
+      object-fit:contain;
     }
 
-    .carousel-ui{
-      position:absolute;
-      left:12px; right:12px; bottom:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      pointer-events:none;
-    }
-    .dots{
-      display:flex; gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(202,161,74,.18);
-      backdrop-filter: blur(8px);
-      pointer-events:auto;
-    }
-    .dots button{
-      width:10px; height:10px; border-radius:50%;
-      border:none;
-      background: rgba(17,24,39,.18);
-      cursor:pointer;
-      padding:0;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-    .dots button.active{
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      box-shadow: 0 0 16px rgba(202,161,74,.35);
-      transform: scale(1.12);
-    }
-
-    .navBtns{
-      display:flex; gap:10px;
-      pointer-events:auto;
-    }
-    .navBtn{
-      width:40px; height:40px;
-      border-radius: 999px;
-      border:1px solid rgba(202,161,74,.22);
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(8px);
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
-    }
-    .navBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(202,161,74,.45);
-      box-shadow: 0 12px 26px rgba(202,161,74,.16);
-    }
-    .navBtn:active{ transform: translateY(0) scale(.99); }
-    .chev{
-      width:10px; height:10px;
-      border-right:2px solid var(--goldDeep);
-      border-bottom:2px solid var(--goldDeep);
-      transform: rotate(135deg);
-    }
-    .chev.r{ transform: rotate(-45deg); }
-
-    /* Intro */
-    .intro{
-      padding: 16px 16px 18px;
-      border-top: 1px solid rgba(202,161,74,.18);
-      background:
-        linear-gradient(180deg, rgba(202,161,74,.06), transparent 60%);
-    }
-    .intro h1{
-      margin: 0 0 8px;
-      font-size: clamp(20px, 2.2vw, 26px);
-      letter-spacing: .3px;
-    }
-    .intro p{
-      margin:0;
-      color: var(--muted);
-      line-height:1.6;
-      font-size: 14.5px;
-    }
-
-    /* Marquee */
+    /* ===== MARQUEE ===== */
     .marquee{
-      margin: 14px 0 0;
-      border:1px solid rgba(202,161,74,.22);
-      border-radius: 14px;
-      background:#fff;
       overflow:hidden;
-      box-shadow: 0 10px 30px rgba(202,161,74,.10);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      background:#fff;
     }
-    .marquee .track{
+    .marquee-track{
       display:flex;
       width:max-content;
-      gap: 34px;
-      padding: 12px 14px;
-      animation: scroll 22s linear infinite;
-      will-change: transform;
+      animation:scroll 22s linear infinite;
+      padding:12px 0;
     }
-    .marquee:hover .track{ animation-play-state: paused; }
+    .marquee span{
+      margin:0 32px;
+      white-space:nowrap;
+      font-weight:600;
+      font-size:14px;
+    }
     @keyframes scroll{
-      from{ transform: translateX(0); }
-      to{ transform: translateX(-50%); }
-    }
-    .marquee-item{
-      display:flex; align-items:center; gap:10px;
-      white-space: nowrap;
-      font-weight:700;
-      font-size: 14px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      padding:4px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(202,161,74,.25);
-      background: rgba(202,161,74,.08);
-      color: var(--goldDeep);
-      font-weight:900;
-      letter-spacing:.2px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
     }
 
-    /* Sections */
-    .section{
-      margin-top: 18px;
-      padding: 16px;
-      border:1px solid rgba(202,161,74,.22);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .section::before{
-      content:"";
-      position:absolute;
-      inset:-80px -80px auto auto;
-      width: 240px; height: 240px;
-      background: radial-gradient(circle at 30% 30%, rgba(202,161,74,.22), transparent 60%);
-      transform: rotate(12deg);
-      pointer-events:none;
-    }
-    .section-title{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom: 12px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.3px;
-    }
-    .section-title .line{
-      flex:1;
-      height:1px;
-      background: linear-gradient(90deg, rgba(202,161,74,.45), transparent);
-      opacity:.85;
-    }
-
-    /* Game cards */
-    .grid{
+    /* ===== GAMES ===== */
+    .section{padding:20px 16px}
+    .games{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
     }
-    @media(min-width: 720px){
-      .grid{ grid-template-columns: 1fr 1fr 1fr; }
-    }
-    .card{
-      border:1px solid rgba(202,161,74,.18);
-      border-radius: 16px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(202,161,74,.06), transparent 55%);
-      box-shadow: 0 12px 30px rgba(202,161,74,.10);
+    .game{
       display:flex;
       gap:12px;
-      align-items:flex-start;
-      min-height: 92px;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .2s ease;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
     }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(202,161,74,.35);
-      box-shadow: 0 18px 44px rgba(202,161,74,.14);
+    .game img{
+      width:44px;height:44px;object-fit:contain
     }
-    .card .logoBox{
-      width:46px; height:46px;
-      border-radius: 14px;
-      border:1px solid rgba(202,161,74,.20);
-      background:#fff;
-      display:grid; place-items:center;
-      overflow:hidden;
-      flex:0 0 auto;
-      box-shadow: 0 12px 24px rgba(202,161,74,.12);
-    }
-    .card .logoBox img{
-      width:100%; height:100%;
-      object-fit: contain;
-      padding:6px;
-      display:block;
-    }
-    .card .meta h3{
-      margin:0 0 4px;
-      font-size: 15.5px;
-      letter-spacing:.2px;
-    }
-    .card .meta p{
-      margin:0;
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height:1.45;
-    }
+    .game h3{margin:0 0 4px;font-size:15px}
+    .game p{margin:0;font-size:13px;color:var(--muted)}
 
-    /* Offers */
+    /* ===== OFFERS ===== */
     .offers{
       display:grid;
-      grid-template-columns: 1fr;
       gap:10px;
-    }
-    @media(min-width: 720px){
-      .offers{ grid-template-columns: 1fr 1fr; }
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     }
     .offer{
-      border:1px solid rgba(202,161,74,.18);
-      border-radius: 16px;
-      padding: 12px 12px;
-      background:#fff;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      box-shadow: 0 12px 26px rgba(202,161,74,.08);
-      transition: transform .18s ease, border-color .2s ease, box-shadow .18s ease;
-    }
-    .offer:hover{
-      transform: translateY(-2px);
-      border-color: rgba(202,161,74,.32);
-      box-shadow: 0 16px 36px rgba(202,161,74,.12);
-    }
-    .offer .spark{
-      width:12px; height:12px; border-radius:50%;
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      box-shadow: 0 0 16px rgba(202,161,74,.35);
-      flex:0 0 auto;
-    }
-    .offer strong{
-      font-size: 14.2px;
-      letter-spacing:.1px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      font-weight:600;
+      font-size:14px;
     }
 
-    /* Bottom bar */
-    .bottombar{
-      position:fixed; left:0; right:0; bottom:0;
-      height: var(--bottomH);
-      background: rgba(255,255,255,.90);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--stroke);
-      z-index:60;
-    }
-    .bottombar::before{
-      content:"";
-      position:absolute; left:0; right:0; top:-1px; height:2px;
-      background: linear-gradient(90deg, transparent, rgba(202,161,74,.55), transparent);
-      opacity:.9;
-    }
-    .bottombar-inner{
-      max-width: var(--maxw);
-      height:100%;
-      margin:0 auto;
-      padding: 10px 16px 12px;
+    /* ===== BOTTOM CTA ===== */
+    .bottom{
+      position:fixed;
+      left:0;right:0;bottom:0;
+      padding:12px 16px;
       display:flex;
       gap:12px;
-      align-items:center;
-      justify-content:space-between;
+      background:#fff;
+      border-top:1px solid var(--border);
     }
-
-    /* Buttons (breathing + glow + click feedback ripple) */
-    .cta{
-      position:relative;
+    .btn{
       flex:1;
-      height: 52px;
-      border-radius: 16px;
+      height:52px;
+      border-radius:14px;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      font-weight: 900;
-      letter-spacing:.2px;
-      cursor:pointer;
-      text-decoration:none;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-      border: 1px solid transparent;
-      overflow:hidden;
-      transform: translateZ(0);
-      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .cta:active{ transform: scale(.985); }
-
-    .cta.gold{
-      color: #1b1406;
-      background: linear-gradient(180deg, var(--gold2), var(--gold));
-      box-shadow:
-        0 14px 40px rgba(202,161,74,.22),
-        0 0 0 1px rgba(255,255,255,.35) inset;
-      animation: breatheGold 1.8s ease-in-out infinite;
-    }
-    @keyframes breatheGold{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(202,161,74,0)); }
-      50%{ filter: drop-shadow(0 0 12px rgba(202,161,74,.45)); }
-    }
-
-    .cta.line{
-      color: #06210f;
-      background: linear-gradient(180deg, #7af7b1, var(--lineGreen));
-      box-shadow:
-        0 14px 40px rgba(34,197,94,.20),
-        0 0 0 1px rgba(255,255,255,.35) inset;
-      animation: breatheLine 1.8s ease-in-out infinite;
-    }
-    @keyframes breatheLine{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(34,197,94,0)); }
-      50%{ filter: drop-shadow(0 0 12px rgba(34,197,94,.42)); }
-    }
-
-    .cta .icon{
-      width:18px; height:18px;
-      border-radius:6px;
-      background: rgba(255,255,255,.35);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
-    }
-
-    .ripple{
-      position:absolute;
-      border-radius:999px;
-      transform: translate(-50%, -50%);
-      pointer-events:none;
-      opacity:.55;
-      background: rgba(255,255,255,.65);
-      mix-blend-mode: soft-light;
-      animation: ripple .55s ease-out forwards;
-    }
-    @keyframes ripple{
-      from{ width:0; height:0; opacity:.7; }
-      to{ width:520px; height:520px; opacity:0; }
-    }
-
-    /* Footer */
-    .footer{
-      margin-top: 16px;
-      text-align:center;
-      color: rgba(107,114,128,.9);
-      font-size: 12.5px;
-      padding: 14px 8px 0;
-    }
-
-    /* Small helper */
-    .small-note{
-      margin-top: 10px;
-      font-size: 12.5px;
-      color: rgba(107,114,128,.9);
-      line-height:1.55;
-    }
-    .kbd{
-      display:inline-block;
-      padding: 2px 7px;
-      border-radius: 8px;
-      border:1px solid rgba(202,161,74,.22);
-      background: rgba(202,161,74,.06);
-      color: var(--goldDeep);
       font-weight:800;
-      font-size: 12px;
+      text-decoration:none;
+      color:#000;
+      transition:transform .15s ease,box-shadow .15s ease;
+    }
+    .btn:active{transform:scale(.97)}
+
+    .btn-gold{
+      background:linear-gradient(180deg,var(--gold-main),var(--gold-deep));
+      box-shadow:0 8px 24px rgba(255,213,106,.45);
+    }
+    .btn-line{
+      background:var(--line-green);
+      color:#fff;
+      box-shadow:0 8px 24px rgba(6,199,85,.45);
+    }
+
+    footer{
+      text-align:center;
+      font-size:12px;
+      color:#999;
+      padding:16px 0 90px;
     }
   </style>
 </head>
-
 <body>
-  <div class="bg-lines" aria-hidden="true"></div>
 
-  <!-- Top Bar -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand" title="大老爺">
-        <img src="/img/logo.webp" alt="大老爺 Logo" onerror="this.style.display='none'">
-        <div class="title">大老爺</div>
-      </div>
+<header>
+  <img src="/img/logo.webp" alt="大老爺">
+</header>
 
-      <div class="dropdown">
-        <button class="menu-btn" id="menuBtn" aria-haspopup="true" aria-expanded="false">
-          <div class="hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          選單
-        </button>
+<div class="carousel" id="carousel">
+  <div class="slides" id="slides">
+    <div class="slide"><img src="/img/banner1.webp"></div>
+    <div class="slide"><img src="/img/banner2.webp"></div>
+    <div class="slide"><img src="/img/banner3.webp"></div>
+  </div>
+</div>
 
-        <div class="dropdown-panel" id="menuPanel" role="menu" aria-label="網站選單">
-          <a class="dropdown-item" role="menuitem"
-             href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">
-            <span class="dot"></span> 立即註冊
-          </a>
-          <a class="dropdown-item" role="menuitem"
-             href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">
-            <span class="dot green"></span> 聯繫客服
-          </a>
-        </div>
-      </div>
+<div class="marquee">
+  <div class="marquee-track" id="marquee">
+    <span>恭喜 09***58469 領取紅利【168】</span>
+    <span>恭喜 09***64518 領取紅利【1,000】</span>
+    <span>恭喜 09***84595 電子贏分【38,452】</span>
+    <span>恭喜 09***15431 領取紅利【5,888】</span>
+    <span>恭喜 09***65842 電子贏分【50,985】</span>
+    <span>恭喜 09***54894 電子贏分【112,397】</span>
+    <span>恭喜 09***78568 領取紅利【5,000】</span>
+    <span>恭喜 09***99852 電子贏分【12,859】</span>
+    <span>恭喜 09***36951 電子贏分【253,381】</span>
+    <span>恭喜 09***25619 領取紅利【5,888】</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="games">
+    <div class="game">
+      <img src="/img/game-mt-live.webp">
+      <div><h3>MT真人</h3><p>真實互動，臨場感十足</p></div>
     </div>
-  </header>
-
-  <main>
-    <!-- Hero: Carousel + Intro -->
-    <section class="hero">
-      <div class="carousel" id="carousel">
-        <div class="slides" id="slides">
-          <div class="slide"><img src="/img/banner1.webp" alt="輪播圖 1" /></div>
-          <div class="slide"><img src="/img/banner2.webp" alt="輪播圖 2" /></div>
-          <div class="slide"><img src="/img/banner3.webp" alt="輪播圖 3" /></div>
-        </div>
-
-        <div class="carousel-ui">
-          <div class="dots" id="dots" aria-label="輪播指示點"></div>
-          <div class="navBtns">
-            <button class="navBtn" id="prevBtn" aria-label="上一張"><span class="chev"></span></button>
-            <button class="navBtn" id="nextBtn" aria-label="下一張"><span class="chev r"></span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="intro">
-        <h1>大老爺 - 值得信賴的遊戲平台</h1>
-        <p>這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！</p>
-      </div>
-    </section>
-
-    <!-- Marquee -->
-    <div class="marquee" aria-label="即時跑馬燈">
-      <div class="track" id="marqueeTrack">
-        <!-- JS 會把內容複製一份，做無縫循環 -->
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***58469 領取紅利【168】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***64518 領取紅利【1,000】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***84595 電子贏分【38,452】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***15431 領取紅利【5,888】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***65842 電子贏分【50,985】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***54894 電子贏分【112,397】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***78568 領取紅利【5,000】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***99852 電子贏分【12,859】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***36951 電子贏分【253,381】</div>
-        <div class="marquee-item"><span class="badge">恭喜</span> 09***25619 領取紅利【5,888】</div>
-      </div>
+    <div class="game">
+      <img src="/img/game-mt-elec.webp">
+      <div><h3>MT電子</h3><p>高爆率玩法，節奏順暢</p></div>
     </div>
-
-    <!-- Games -->
-    <section class="section">
-      <div class="section-title">
-        <h2>熱門內容</h2>
-        <div class="line"></div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <div class="logoBox"><img src="/img/game-mt-live.webp" alt="MT真人 LOGO" onerror="this.style.display='none'"></div>
-          <div class="meta">
-            <h3>MT真人</h3>
-            <p>真實互動、節奏流暢，沉浸式體驗讓你每一局都更帶感。</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="logoBox"><img src="/img/game-mt-elec.webp" alt="MT電子 LOGO" onerror="this.style.display='none'"></div>
-          <div class="meta">
-            <h3>MT電子</h3>
-            <p>畫面絲滑、玩法多樣，驚喜連連，一玩就停不下來。</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="logoBox"><img src="/img/game-beauty.webp" alt="美女直播廳 LOGO" onerror="this.style.display='none'"></div>
-          <div class="meta">
-            <h3>美女直播廳</h3>
-            <p>高互動、氛圍感拉滿，陪你輕鬆娛樂、越玩越上頭。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="small-note">
-        小提示：如需改輪播圖比例，這裡已鎖定 <span class="kbd">1920×865</span> 的視覺比例（使用 <span class="kbd">aspect-ratio</span>），不同螢幕都能穩定顯示。
-      </div>
-    </section>
-
-    <!-- Offers -->
-    <section class="section">
-      <div class="section-title">
-        <h2>活動優惠</h2>
-        <div class="line"></div>
-      </div>
-
-      <div class="offers">
-        <div class="offer"><span class="spark"></span><strong>註冊就送168體驗金</strong></div>
-        <div class="offer"><span class="spark"></span><strong>登入簽到即送196</strong></div>
-        <div class="offer"><span class="spark"></span><strong>首存即享100%回饋</strong></div>
-        <div class="offer"><span class="spark"></span><strong>聖誕節儲值送5888</strong></div>
-        <div class="offer"><span class="spark"></span><strong>全民普發加碼5000</strong></div>
-        <div class="offer"><span class="spark"></span><strong>百家樂包賠 返水大升級</strong></div>
-        <div class="offer"><span class="spark"></span><strong>USDT儲值回饋無上限</strong></div>
-      </div>
-
-      <div class="footer">Copyright © 2025 大老爺 All Rights Reserved.</div>
-    </section>
-  </main>
-
-  <!-- Bottom Bar -->
-  <nav class="bottombar" aria-label="底部操作列">
-    <div class="bottombar-inner">
-      <a class="cta gold" id="btnRegister" href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true"></span>
-        立即註冊
-      </a>
-      <a class="cta line" id="btnLine" href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true"></span>
-        聯繫客服
-      </a>
+    <div class="game">
+      <img src="/img/game-beauty.webp">
+      <div><h3>美女直播廳</h3><p>高互動娛樂，氛圍滿分</p></div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <script>
-    // ===== Dropdown =====
-    const menuBtn = document.getElementById('menuBtn');
-    const menuPanel = document.getElementById('menuPanel');
+<section class="section">
+  <div class="offers">
+    <div class="offer">註冊就送168體驗金</div>
+    <div class="offer">登入簽到即送196</div>
+    <div class="offer">首存即享100%回饋</div>
+    <div class="offer">聖誕節儲值送5888</div>
+    <div class="offer">全民普發加碼5000</div>
+    <div class="offer">百家樂包賠 返水大升級</div>
+    <div class="offer">USDT儲值回饋無上限</div>
+  </div>
+</section>
 
-    function closeMenu(){
-      menuPanel.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }
-    function toggleMenu(){
-      const isOpen = menuPanel.classList.contains('open');
-      if (isOpen) closeMenu();
-      else {
-        menuPanel.classList.add('open');
-        menuBtn.setAttribute('aria-expanded', 'true');
-      }
-    }
-    menuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-    document.addEventListener('click', () => closeMenu());
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+<footer>Copyright © 2025 大老爺 All Rights Reserved.</footer>
 
-    // ===== Ripple click feedback for all CTA buttons =====
-    function addRipple(el){
-      el.addEventListener('click', (e) => {
-        // allow navigation; ripple just for feedback
-        const rect = el.getBoundingClientRect();
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.left = (e.clientX - rect.left) + 'px';
-        ripple.style.top  = (e.clientY - rect.top) + 'px';
-        el.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 650);
-      }, { passive: true });
-    }
-    document.querySelectorAll('.cta, .navBtn, .menu-btn, .dots button').forEach(addRipple);
+<div class="bottom">
+  <a class="btn btn-gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
+  <a class="btn btn-line" href="https://lin.ee/xla4vX0" target="_blank">聯繫客服</a>
+</div>
 
-    // ===== Carousel =====
-    const slidesEl = document.getElementById('slides');
-    const dotsEl = document.getElementById('dots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+<script>
+  const slides=document.getElementById('slides');
+  let i=0;
+  setInterval(()=>{
+    i=(i+1)%3;
+    slides.style.transform=`translateX(-${i*100}%)`;
+  },4500);
 
-    const total = slidesEl.children.length;
-    let index = 0;
-    let timer = null;
+  const m=document.getElementById('marquee');
+  m.innerHTML+=m.innerHTML;
+</script>
 
-    function buildDots(){
-      dotsEl.innerHTML = '';
-      for(let i=0;i<total;i++){
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('aria-label', `切換到第 ${i+1} 張`);
-        b.addEventListener('click', (e) => { e.stopPropagation(); go(i, true); });
-        dotsEl.appendChild(b);
-      }
-    }
-
-    function syncDots(){
-      [...dotsEl.children].forEach((b,i) => b.classList.toggle('active', i===index));
-    }
-
-    function go(i, userAction=false){
-      index = (i + total) % total;
-      slidesEl.style.transform = `translateX(${-index * 100}%)`;
-      syncDots();
-      if(userAction) restartAuto();
-    }
-
-    function next(){ go(index + 1, true); }
-    function prev(){ go(index - 1, true); }
-
-    function startAuto(){
-      timer = setInterval(() => {
-        index = (index + 1) % total;
-        go(index, false);
-      }, 4500);
-    }
-    function stopAuto(){
-      if(timer) clearInterval(timer);
-      timer = null;
-    }
-    function restartAuto(){
-      stopAuto();
-      startAuto();
-    }
-
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
-
-    // pause on hover (desktop)
-    const carousel = document.getElementById('carousel');
-    carousel.addEventListener('mouseenter', stopAuto);
-    carousel.addEventListener('mouseleave', startAuto);
-
-    // swipe (mobile)
-    let startX = 0, dx = 0, touching = false;
-    carousel.addEventListener('touchstart', (e) => {
-      touching = true;
-      startX = e.touches[0].clientX;
-      dx = 0;
-      stopAuto();
-    }, {passive:true});
-    carousel.addEventListener('touchmove', (e) => {
-      if(!touching) return;
-      dx = e.touches[0].clientX - startX;
-    }, {passive:true});
-    carousel.addEventListener('touchend', () => {
-      touching = false;
-      if(Math.abs(dx) > 40){
-        if(dx < 0) next();
-        else prev();
-      } else restartAuto();
-    });
-
-    buildDots();
-    go(0);
-    startAuto();
-
-    // ===== Marquee: duplicate content for seamless loop =====
-    const track = document.getElementById('marqueeTrack');
-    const clone = track.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    track.parentElement.appendChild(clone);
-    // Make both tracks appear as one long stream
-    track.parentElement.style.display = 'flex';
-    track.parentElement.style.width = 'max-content';
-    track.parentElement.style.gap = '34px';
-  </script>
 </body>
 </html>
