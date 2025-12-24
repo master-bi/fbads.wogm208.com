@@ -1,522 +1,293 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>大老爺 - 值得信賴的遊戲平台</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>大老爺 - 值得信賴的遊戲平台</title>
+<meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！">
 
-  <!-- 只給讀取網址預覽用（不顯示在頁面上） -->
-  <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta property="og:title" content="大老爺 - 值得信賴的遊戲平台" />
-  <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta property="og:url" content="https://fbads.wogm208.com/gm88" />
-  <meta name="theme-color" content="#ffffff" />
+<style>
+:root{
+  --gold1:#FFE8A8;
+  --gold2:#FFD24D;
+  --gold3:#D9A514;
+  --line:#06C755;
+  --text:#111827;
+  --muted:#6b7280;
+  --shadow:0 16px 48px rgba(0,0,0,.12);
+  --radius:18px;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#fff;
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-  <style>
-    :root{
-      --bg:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
+/* ===== TOP BAR ===== */
+.topbar{
+  position:sticky;
+  top:0;
+  height:64px;
+  z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(217,165,20,.18);
+}
+.topbar-inner{
+  max-width:var(--maxw);
+  height:100%;
+  margin:0 auto;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand img{
+  height:40px; /* 跟選單按鈕同高 */
+  width:auto;
+}
+.menuBtn{
+  height:40px;
+  padding:0 12px;
+  border-radius:999px;
+  border:1px solid rgba(217,165,20,.35);
+  background:#fff;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+.hamburger{width:18px;height:12px;position:relative}
+.hamburger span{
+  position:absolute;left:0;right:0;height:2px;border-radius:99px;
+  background:linear-gradient(90deg,var(--gold3),var(--gold2));
+}
+.hamburger span:nth-child(1){top:0}
+.hamburger span:nth-child(2){top:5px}
+.hamburger span:nth-child(3){bottom:0}
 
-      /* 更亮更金 */
-      --gold1:#FFE8A8;
-      --gold2:#FFD24D;
-      --gold3:#D9A514;
+/* ===== LAYOUT ===== */
+main{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 16px 110px;
+}
 
-      /* LINE 官方綠 */
-      --line:#06C755;
+/* ===== CAROUSEL ===== */
+.carousel{
+  margin-top:16px;
+  width:100%;
+  aspect-ratio:1920/865;
+  overflow:hidden;
+}
+.slides{display:flex;height:100%;transition:.5s}
+.slide{min-width:100%;height:100%}
+.slide img{width:100%;height:100%;object-fit:cover}
 
-      --stroke: rgba(217,165,20,.18);
-      --shadow: 0 16px 60px rgba(17,24,39,.10);
+/* ===== MARQUEE ===== */
+.marquee{
+  margin-top:14px;
+  overflow:hidden;
+  border:1px solid rgba(217,165,20,.22);
+  border-radius:14px;
+}
+.marquee-track{
+  display:inline-flex;
+  gap:26px;
+  padding:12px 16px;
+  white-space:nowrap;
+  animation:scroll 24s linear infinite;
+}
+@keyframes scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
-      --maxw: 1080px;
-      --topH: 64px;
-      --bottomH: 78px;
-      --r: 18px;
-    }
+/* ===== SECTION ===== */
+.section{
+  margin-top:22px;
+  border:1px solid rgba(217,165,20,.22);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.section-title{
+  padding:10px 14px;
+  font-weight:900;
+  font-size:14px;
+  color:#8a6b22;
+  background:linear-gradient(180deg,var(--gold1),var(--gold2));
+  border-bottom:1px solid rgba(217,165,20,.28);
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+.section-body{padding:16px}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased;
-      overflow-x:hidden;
-    }
+/* ===== GAMES ===== */
+.grid{
+  display:grid;
+  gap:14px;
+}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+.gameLogo{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+}
+.meta h3{margin:0 0 4px;font-size:16px}
+.meta p{margin:0;font-size:13.5px;color:var(--muted)}
 
-    /* 白底＋金色線條 */
-    .bg-lines{
-      position:fixed; inset:0; pointer-events:none;
-      background:
-        linear-gradient(90deg, rgba(217,165,20,.05) 1px, transparent 1px) 0 0/34px 34px,
-        linear-gradient(0deg, rgba(217,165,20,.05) 1px, transparent 1px) 0 0/34px 34px;
-      opacity:.35;
-      mask-image: radial-gradient(75% 75% at 50% 20%, #000 0%, transparent 72%);
-    }
+/* ===== OFFERS ===== */
+.offers{
+  display:grid;
+  gap:10px;
+}
+@media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
+.offer{
+  border:1px solid rgba(217,165,20,.18);
+  border-radius:14px;
+  padding:12px;
+  font-weight:800;
+}
 
-    /* ===== Topbar ===== */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      height:var(--topH);
-      background: rgba(255,255,255,.90);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(217,165,20,.16);
-    }
-    .topbar:after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:-1px; height:2px;
-      background: linear-gradient(90deg, transparent, rgba(217,165,20,.55), transparent);
-    }
-    .topbar-inner{
-      max-width: var(--maxw);
-      height:100%;
-      margin:0 auto;
-      padding:0 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      user-select:none;
-    }
-    .brand img{ width:40px; height:40px; object-fit:contain; }
-
-    .menuWrap{ position:relative; }
-    .menuBtn{
-      appearance:none;
-      border:1px solid rgba(217,165,20,.35);
-      background:#fff;
-      height:40px;
-      padding:0 12px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-      box-shadow: 0 10px 26px rgba(217,165,20,.14);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
-    }
-    .menuBtn:hover{ transform: translateY(-1px); border-color: rgba(217,165,20,.60); box-shadow: 0 14px 30px rgba(217,165,20,.18); }
-    .menuBtn:active{ transform: translateY(0) scale(.99); }
-
-    .hamburger{ width:18px; height:12px; position:relative; }
-    .hamburger span{
-      position:absolute; left:0; right:0;
-      height:2px; border-radius:99px;
-      background: linear-gradient(90deg, var(--gold3), var(--gold2));
-      box-shadow: 0 0 14px rgba(255,210,77,.22);
-    }
-    .hamburger span:nth-child(1){ top:0; }
-    .hamburger span:nth-child(2){ top:5px; opacity:.85; }
-    .hamburger span:nth-child(3){ bottom:0; }
-
-    .menuPanel{
-      position:absolute; right:0; top:48px;
-      width:220px;
-      background:#fff;
-      border:1px solid rgba(217,165,20,.24);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transform-origin: top right;
-      transform: translateY(-6px) scale(.98);
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .16s ease, transform .16s ease;
-    }
-    .menuPanel.open{
-      opacity:1; pointer-events:auto;
-      transform: translateY(0) scale(1);
-    }
-    .menuItem{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 12px;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:800;
-      border-bottom:1px solid rgba(217,165,20,.12);
-      background:#fff;
-    }
-    .menuItem:last-child{ border-bottom:none; }
-    .menuItem:hover{ background: rgba(217,165,20,.08); }
-    .dot{ width:10px; height:10px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow:0 0 14px rgba(255,210,77,.25); }
-    .dot.green{ background: linear-gradient(180deg,#66ffad,var(--line)); box-shadow:0 0 14px rgba(6,199,85,.28); }
-
-    /* ===== Layout ===== */
-    main{
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 16px calc(var(--bottomH) + 22px);
-    }
-
-    /* ===== Carousel（不要框框、不要點點） ===== */
-    .carousel{
-      width:100%;
-      aspect-ratio: 1920 / 865;
-      background:#fff;
-      overflow:hidden;
-      /* 保留圓角可改：你若要完全直角，把這行刪掉 */
-      border-radius: var(--r);
-      margin-top: 16px;
-    }
-    .slides{
-      height:100%;
-      display:flex;
-      transition: transform .55s ease;
-      will-change: transform;
-    }
-    .slide{ min-width:100%; height:100%; }
-    .slide img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      background: transparent;
-    }
-
-    /* ===== Marquee（不讓頁面變超寬） ===== */
-    .marquee{
-      margin-top: 14px;
-      border:1px solid rgba(217,165,20,.22);
-      border-radius: 14px;
-      background:#fff;
-      overflow:hidden;              /* 關鍵：永遠不會跑出畫面 */
-      box-shadow: 0 10px 30px rgba(217,165,20,.10);
-    }
-    .marquee-inner{
-      width:100%;
-      overflow:hidden;
-    }
-    .marquee-track{
-      display:inline-flex;          /* inline-flex 避免撐爆頁面寬度 */
-      align-items:center;
-      gap: 26px;
-      padding: 12px 14px;
-      white-space: nowrap;
-      will-change: transform;
-      animation: scroll 24s linear infinite;
-    }
-    .marquee:hover .marquee-track{ animation-play-state: paused; }
-    @keyframes scroll{
-      from{ transform: translateX(0); }
-      to{ transform: translateX(-50%); }
-    }
-    .marquee-item{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      font-size: 14px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      padding:4px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(217,165,20,.30);
-      background: rgba(255,210,77,.14);
-      color: #8a6b22;
-      font-weight:900;
-    }
-
-    /* ===== Section ===== */
-    .section{
-      margin-top: 18px;
-      padding: 16px;
-      border:1px solid rgba(217,165,20,.22);
-      border-radius: var(--r);
-      background:#fff;
-      box-shadow: var(--shadow);
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-    @media(min-width: 720px){ .grid{ grid-template-columns: 1fr 1fr 1fr; } }
-
-    /* 遊戲卡：LOGO 大一點、不要框框 */
-    .card{
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      padding: 10px 6px;
-    }
-    .gameLogo{
-      width:72px;
-      height:72px;
-      object-fit: contain;
-      flex:0 0 auto;
-      /* 不要框框：不設 border/background */
-      filter: drop-shadow(0 10px 18px rgba(17,24,39,.10));
-    }
-    .meta h3{ margin:0 0 4px; font-size: 16px; letter-spacing:.2px; }
-    .meta p{ margin:0; font-size: 13.5px; color: var(--muted); line-height:1.45; }
-
-    .offers{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
-    @media(min-width: 720px){ .offers{ grid-template-columns: 1fr 1fr; } }
-    .offer{
-      border:1px solid rgba(217,165,20,.18);
-      border-radius: 16px;
-      padding: 12px;
-      background:#fff;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      box-shadow: 0 12px 26px rgba(217,165,20,.08);
-      transition: transform .18s ease, border-color .2s ease, box-shadow .18s ease;
-      font-weight:900;
-      font-size: 14px;
-    }
-    .offer:hover{ transform: translateY(-2px); border-color: rgba(217,165,20,.32); box-shadow: 0 16px 36px rgba(217,165,20,.12); }
-    .spark{ width:12px; height:12px; border-radius:50%; background: linear-gradient(180deg,var(--gold1),var(--gold2)); box-shadow: 0 0 16px rgba(255,210,77,.35); }
-
-    .footer{
-      margin-top: 16px;
-      text-align:center;
-      color: rgba(107,114,128,.9);
-      font-size: 12.5px;
-      padding: 10px 8px 0;
-    }
-
-    /* ===== Bottom CTA ===== */
-    .bottombar{
-      position:fixed; left:0; right:0; bottom:0;
-      height: var(--bottomH);
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(217,165,20,.16);
-      z-index:60;
-    }
-    .bottombar:before{
-      content:"";
-      position:absolute; left:0; right:0; top:-1px; height:2px;
-      background: linear-gradient(90deg, transparent, rgba(217,165,20,.55), transparent);
-    }
-    .bottombar-inner{
-      max-width: var(--maxw);
-      height:100%;
-      margin:0 auto;
-      padding: 10px 16px 12px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .cta{
-      position:relative;
-      flex:1;
-      height: 52px;
-      border-radius: 16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      letter-spacing:.2px;
-      cursor:pointer;
-      text-decoration:none;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-      overflow:hidden;
-      transform: translateZ(0);
-      transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .cta:active{ transform: scale(.985); }
-
-    .cta.gold{
-      color:#1b1406;
-      background: linear-gradient(180deg, var(--gold1), var(--gold2) 55%, var(--gold3));
-      box-shadow: 0 14px 40px rgba(255,210,77,.30);
-      animation: breatheGold 1.7s ease-in-out infinite;
-    }
-    @keyframes breatheGold{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(255,210,77,0)); }
-      50%{ filter: drop-shadow(0 0 14px rgba(255,210,77,.58)); }
-    }
-
-    .cta.line{
-      color:#fff;
-      background: var(--line);
-      box-shadow: 0 14px 40px rgba(6,199,85,.24);
-      animation: breatheLine 1.7s ease-in-out infinite;
-    }
-    @keyframes breatheLine{
-      0%,100%{ filter: drop-shadow(0 0 0 rgba(6,199,85,0)); }
-      50%{ filter: drop-shadow(0 0 14px rgba(6,199,85,.54)); }
-    }
-
-    .ripple{
-      position:absolute;
-      border-radius:999px;
-      transform: translate(-50%, -50%);
-      pointer-events:none;
-      opacity:.55;
-      background: rgba(255,255,255,.70);
-      mix-blend-mode: soft-light;
-      animation: ripple .55s ease-out forwards;
-    }
-    @keyframes ripple{
-      from{ width:0; height:0; opacity:.75; }
-      to{ width:520px; height:520px; opacity:0; }
-    }
-  </style>
+/* ===== BOTTOM CTA ===== */
+.bottombar{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  height:78px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  border-top:1px solid rgba(217,165,20,.18);
+}
+.bottombar-inner{
+  max-width:var(--maxw);
+  height:100%;
+  margin:0 auto;
+  padding:10px 16px;
+  display:flex;
+  gap:12px;
+}
+.cta{
+  flex:1;
+  height:52px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  text-decoration:none;
+}
+.cta.gold{
+  background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
+  animation:breatheGold 1.7s infinite;
+}
+@keyframes breatheGold{
+  0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
+  50%{box-shadow:0 0 18px rgba(255,210,77,.6)}
+}
+.cta.line{
+  background:var(--line);
+  color:#fff;
+  animation:breatheLine 1.7s infinite;
+}
+@keyframes breatheLine{
+  0%,100%{box-shadow:0 0 0 rgba(6,199,85,0)}
+  50%{box-shadow:0 0 18px rgba(6,199,85,.6)}
+}
+</style>
 </head>
 
 <body>
-  <div class="bg-lines" aria-hidden="true"></div>
 
-  <!-- Top Bar：LOGO 旁邊不寫字 -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand" title="大老爺">
-        <img src="./img/logo.webp" alt="大老爺 Logo">
-      </div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><img src="./img/logo.webp" alt="大老爺"></div>
+    <button class="menuBtn">
+      <div class="hamburger"><span></span><span></span><span></span></div>
+      選單
+    </button>
+  </div>
+</header>
 
-      <div class="menuWrap">
-        <button class="menuBtn" id="menuBtn" aria-haspopup="true" aria-expanded="false">
-          <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
-          選單
-        </button>
-
-        <div class="menuPanel" id="menuPanel" role="menu" aria-label="網站選單">
-          <a class="menuItem" role="menuitem" href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">
-            <span class="dot"></span> 立即註冊
-          </a>
-          <a class="menuItem" role="menuitem" href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">
-            <span class="dot green"></span> 聯繫客服
-          </a>
-        </div>
-      </div>
+<main>
+  <div class="carousel">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="./img/banner1.webp"></div>
+      <div class="slide"><img src="./img/banner2.webp"></div>
+      <div class="slide"><img src="./img/banner3.webp"></div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <!-- 輪播：不顯示點點 / 不顯示任何框框 UI -->
-    <div class="carousel" id="carousel">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="./img/banner1.webp" alt="輪播圖 1"></div>
-        <div class="slide"><img src="./img/banner2.webp" alt="輪播圖 2"></div>
-        <div class="slide"><img src="./img/banner3.webp" alt="輪播圖 3"></div>
-      </div>
+  <div class="marquee">
+    <div class="marquee-track" id="marquee">
+      <span>恭喜 09***58469 領取紅利【168】</span>
+      <span>恭喜 09***64518 領取紅利【1,000】</span>
+      <span>恭喜 09***84595 電子贏分【38,452】</span>
+      <span>恭喜 09***15431 領取紅利【5,888】</span>
+      <span>恭喜 09***65842 電子贏分【50,985】</span>
     </div>
+  </div>
 
-    <!-- 跑馬燈：不會再把整個頁面撐超寬 -->
-    <div class="marquee" aria-label="即時跑馬燈">
-      <div class="marquee-inner">
-        <div class="marquee-track" id="marqueeTrack">
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***58469 領取紅利【168】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***64518 領取紅利【1,000】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***84595 電子贏分【38,452】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***15431 領取紅利【5,888】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***65842 電子贏分【50,985】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***54894 電子贏分【112,397】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***78568 領取紅利【5,000】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***99852 電子贏分【12,859】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***36951 電子贏分【253,381】</div>
-          <div class="marquee-item"><span class="badge">恭喜</span> 09***25619 領取紅利【5,888】</div>
-        </div>
-      </div>
-    </div>
-
-    <section class="section">
+  <section class="section">
+    <div class="section-title">熱門推薦</div>
+    <div class="section-body">
       <div class="grid">
         <div class="card">
-          <img class="gameLogo" src="./img/game-mt-live.webp" alt="MT真人">
-          <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿，節奏絲滑超帶感。</p></div>
+          <img class="gameLogo" src="./img/game-mt-live.webp">
+          <div class="meta"><h3>MT真人</h3><p>真實互動、臨場感拉滿</p></div>
         </div>
         <div class="card">
-          <img class="gameLogo" src="./img/game-mt-elec.webp" alt="MT電子">
-          <div class="meta"><h3>MT電子</h3><p>畫面順、玩法多，驚喜連爆，一玩停不下來。</p></div>
+          <img class="gameLogo" src="./img/game-mt-elec.webp">
+          <div class="meta"><h3>MT電子</h3><p>畫面順、玩法多、節奏快</p></div>
         </div>
         <div class="card">
-          <img class="gameLogo" src="./img/game-beauty.webp" alt="美女直播廳">
-          <div class="meta"><h3>美女直播廳</h3><p>高互動氛圍感，輕鬆娛樂，越玩越上頭。</p></div>
+          <img class="gameLogo" src="./img/game-beauty.webp">
+          <div class="meta"><h3>美女直播廳</h3><p>高互動娛樂、氛圍滿分</p></div>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="offers">
-        <div class="offer"><span class="spark"></span> 註冊就送168體驗金</div>
-        <div class="offer"><span class="spark"></span> 登入簽到即送196</div>
-        <div class="offer"><span class="spark"></span> 首存即享100%回饋</div>
-        <div class="offer"><span class="spark"></span> 聖誕節儲值送5888</div>
-        <div class="offer"><span class="spark"></span> 全民普發加碼5000</div>
-        <div class="offer"><span class="spark"></span> 百家樂包賠 返水大升級</div>
-        <div class="offer"><span class="spark"></span> USDT儲值回饋無上限</div>
-      </div>
-
-      <div class="footer">Copyright © 2025 大老爺 All Rights Reserved.</div>
-    </section>
-  </main>
-
-  <nav class="bottombar" aria-label="底部操作列">
-    <div class="bottombar-inner">
-      <a class="cta gold" id="btnRegister" href="https://ag223.gm1788.net/login?id=register" target="_blank" rel="noopener">立即註冊</a>
-      <a class="cta line" id="btnLine" href="https://lin.ee/xla4vX0" target="_blank" rel="noopener">聯繫客服</a>
     </div>
-  </nav>
+  </section>
 
-  <script>
-    // ===== Dropdown =====
-    const menuBtn = document.getElementById('menuBtn');
-    const menuPanel = document.getElementById('menuPanel');
-    function closeMenu(){ menuPanel.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }
-    function toggleMenu(){
-      const open = menuPanel.classList.contains('open');
-      if(open) closeMenu();
-      else { menuPanel.classList.add('open'); menuBtn.setAttribute('aria-expanded','true'); }
-    }
-    menuBtn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleMenu(); });
-    document.addEventListener('click', ()=> closeMenu());
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+  <section class="section">
+    <div class="section-title">優惠專區</div>
+    <div class="section-body">
+      <div class="offers">
+        <div class="offer">註冊就送168體驗金</div>
+        <div class="offer">登入簽到即送196</div>
+        <div class="offer">首存即享100%回饋</div>
+        <div class="offer">聖誕節儲值送5888</div>
+        <div class="offer">全民普發加碼5000</div>
+        <div class="offer">百家樂包賠 返水大升級</div>
+        <div class="offer">USDT儲值回饋無上限</div>
+      </div>
+    </div>
+  </section>
+</main>
 
-    // ===== Ripple for CTA =====
-    function addRipple(el){
-      el.addEventListener('click', (e)=>{
-        const rect = el.getBoundingClientRect();
-        const r = document.createElement('span');
-        r.className = 'ripple';
-        r.style.left = (e.clientX - rect.left) + 'px';
-        r.style.top  = (e.clientY - rect.top) + 'px';
-        el.appendChild(r);
-        setTimeout(()=> r.remove(), 650);
-      }, {passive:true});
-    }
-    document.querySelectorAll('.cta').forEach(addRipple);
+<nav class="bottombar">
+  <div class="bottombar-inner">
+    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
+    <a class="cta line" href="https://lin.ee/xla4vX0" target="_blank">聯繫客服</a>
+  </div>
+</nav>
 
-    // ===== Carousel (auto + swipe; no dots/ui) =====
-    const slidesEl = document.getElementById('slides');
-    const total = slidesEl.children.length;
-    let index = 0;
+<script>
+let i=0;
+setInterval(()=>{
+  const slides=document.getElementById('slides');
+  i=(i+1)%3;
+  slides.style.transform=`translateX(-${i*100}%)`;
+},4500);
+const m=document.getElementById('marquee');
+m.innerHTML+=m.innerHTML;
+</script>
 
-    function go(i){
-      index = (i + total) % total;
-      slidesEl.style.transform = `translateX(${-index*100}%)`;
-    }
-    setInterval(()=> go(index+1), 4500);
-
-    const carousel = document.getElementById('carousel');
-    let startX=0, dx=0, touching=false;
-    carousel.addEventListener('touchstart',(e)=>{touching=true; startX=e.touches[0].clientX; dx=0;},{passive:true});
-    carousel.addEventListener('touchmove',(e)=>{ if(!touching) return; dx=e.touches[0].clientX-startX; },{passive:true});
-    carousel.addEventListener('touchend',()=>{
-      touching=false;
-      if(Math.abs(dx)>40){ dx<0 ? go(index+1) : go(index-1); }
-    });
-
-    // ===== Marquee seamless (只複製內容，不改 parent 寬度，避免撐爆) =====
-    const track = document.getElementById('marqueeTrack');
-    track.innerHTML += track.innerHTML;
-  </script>
 </body>
 </html>
