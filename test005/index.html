@@ -70,7 +70,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 
 .grid{display:grid;gap:14px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
-.card{display:flex;gap:14px}
+.card{display:flex;gap:14px;align-items:center}
 
 .card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
 .gameHero{
@@ -101,7 +101,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
   background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
   animation:breathe 1.8s ease-in-out infinite
 }
-.cta.gold small{position:absolute;right:16px;font-size:13px;color:#7a4f00}
+.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:8px;}
 @keyframes breathe{
   0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
   50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
@@ -110,7 +110,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 body{padding-bottom:64px;}
 
 
-.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;}
+.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;;margin-top:4px}
 
 
 /* CTA label inline */
@@ -124,9 +124,13 @@ body{padding-bottom:64px;}
 .bottom-bar span{display:inline;line-height:1;}
 
 
+
 /* tighten gap between offers and footer */
-.section-box{margin-bottom:10px;}
-.site-footer{margin-top:8px;}
+.offers-section{padding-bottom:6px;}
+.offers-section .section-box{margin-bottom:0;}
+
+
+.cta{display:flex;flex-direction:row;gap:8px;white-space:nowrap;}
 
 </style>
 </head>
@@ -201,7 +205,7 @@ body{padding-bottom:64px;}
 
 
 
-  <section class="section">
+  <section class="section offers-section">
     <div class="section-head"><span>優惠專區</span></div>
     <div class="section-box">
       <div class="offers">
