@@ -73,7 +73,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 .card{display:flex;gap:14px}
 
 .card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
-.gameHero{width:140px;height:140px;object-fit:contain;display:block}
+.gameHero{width:96px;height:96px;object-fit:contain;display:block}
 .gameMini{
   position:absolute;top:-6px;right:-6px;
   width:32px;height:32px;
@@ -150,14 +150,14 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
         <div class="card">
           <img class="gameHero" src="./img/card-live.png" alt="真人">
           <div class="meta">
-            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="vertical-align:middle;margin-right:6px;;display:block;margin:0 0 6px 0;max-height:40px;height:32px;width:auto;"><strong style="font-weight:900;color:var(--text);">真人遊戲廳</strong>-真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p>
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="vertical-align:middle;margin-right:6px;;display:block;margin:0 0 6px 0;max-height:40px;height:40px;width:auto;"><strong style="font-weight:900;color:var(--text);">真人遊戲廳</strong>-真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p>
           </div>
         </div>
 
         <div class="card">
           <img class="gameHero" src="./img/card-elec.png" alt="電子">
           <div class="meta">
-            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="vertical-align:middle;margin-right:6px;;display:block;margin:0 0 6px 0;max-height:40px;height:32px;width:auto;"><strong style="font-weight:900;color:var(--text);">電子遊戲廳</strong>-多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p>
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="vertical-align:middle;margin-right:6px;;display:block;margin:0 0 6px 0;max-height:40px;height:40px;width:auto;"><strong style="font-weight:900;color:var(--text);">電子遊戲廳</strong>-多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p>
           </div>
         </div>
 
@@ -204,5 +204,10 @@ document.onclick=()=>panel.style.display='none';
 let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
 const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
 </script>
+
+<footer class="site-footer">
+  Copyright © 2025 大老爺 All Rights Reserved.
+</footer>
+
 </body>
 </html>
