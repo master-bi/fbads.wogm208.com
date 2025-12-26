@@ -95,13 +95,13 @@ main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 
 .bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
 .bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;}
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
 .cta.gold{
   flex:1;color:#fff;font-size:22px;position:relative;
   background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
   animation:breathe 1.8s ease-in-out infinite
-}
-.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:8px;}
+;justify-content:center;}
+.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:6px;}
 @keyframes breathe{
   0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
   50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
@@ -130,20 +130,11 @@ body{padding-bottom:64px;}
 .offers-section .section-box{margin-bottom:0;}
 
 
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;}
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
 
 
-.cta-main{
-  font-size:18px;
-  font-weight:700;
-  color:#000000;
-}
-.cta-sub{
-  font-size:12px;
-  font-weight:600;
-  color:#8b6a2b; /* dark gold */
-}
 
+.cta:active{transform:scale(.98)}
 </style>
 <link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
@@ -159,7 +150,7 @@ body{padding-bottom:64px;}
 </header>
 
 <div class="menuPanel" id="menuPanel">
-  <a href="https://ag223.gm1788.net/login?id=register" target="_blank"><span class="cta-main">立即註冊</span></a>
+  <a href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
   <a href="https://lin.ee/kGFQel1" target="_blank">聯繫客服</a>
 </div>
 
@@ -236,7 +227,7 @@ body{padding-bottom:64px;}
 
 <nav class="bottombar">
   <div class="bottombar-inner">
-    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank"><span class="cta-main">立即註冊</span><small><span class="cta-sub">領取168</span></small></a>
+    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊 <small>領取168</small></a>
   </div>
 </nav>
 
