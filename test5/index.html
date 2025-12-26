@@ -158,6 +158,28 @@ body{padding-bottom:64px;}
   font-weight:800;
 }
 
+
+/* CTA click feedback + clean text */
+.cta{cursor:pointer;}
+.cta:active{transform:scale(.98);filter:brightness(.98);}
+.cta.gold:active{filter:brightness(.95);box-shadow:0 10px 22px rgba(0,0,0,.18);}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000000;
+  font-weight:900;
+  text-shadow:none;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+  text-shadow:none;
+}
+
 </style>
 <link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
@@ -250,7 +272,7 @@ body{padding-bottom:64px;}
 
 <nav class="bottombar">
   <div class="bottombar-inner">
-    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank"><span class="cta-title">立即註冊</span><span class="cta-sub">領取168</span><small>領取168</small></a>
+    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank"><span class="cta-title">立即註冊</span><span class="cta-sub">領取168</span></a>
   </div>
 </nav>
 
