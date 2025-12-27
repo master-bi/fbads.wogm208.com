@@ -1,334 +1,296 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <!-- ✅ 連結預覽（不顯示在頁面） -->
-  <title>OFA168 - 值得信賴的遊戲平台</title>
-  <meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#000000" />
-  <link rel="canonical" href="https://fbads.wogm208.com/kh01/" />
+<title>OFA168 - A Trusted Gaming Platform</title>
+<meta name="description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
 
-  <!-- ✅ Open Graph（FB/LINE/Telegram 等） -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="OFA168 - 值得信賴的遊戲平台" />
-  <meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta property="og:url" content="https://fbads.wogm208.com/kh01/" />
-  <meta property="og:image" content="https://fbads.wogm208.com/kh01/assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="OFA168 - A Trusted Gaming Platform">
+<meta property="og:description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
+<meta property="og:url" content="https://fbads.wogm208.com/kh01">
+<meta property="og:image" content="https://fbads.wogm208.com/kh01/og.jpg">
 
-  <!-- ✅ Twitter/X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="OFA168 - 值得信賴的遊戲平台" />
-  <meta name="twitter:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。驚喜內容不時出現，等你一起來探索！" />
-  <meta name="twitter:image" content="https://fbads.wogm208.com/kh01/assets/og-image.png" />
+<style>
+:root{
+  --gold1:#FFE8A8;--gold2:#FFD24D;--gold3:#D9A514;
+  --line:#06C755;--text:#111827;--muted:#6b7280;
+  --shadow:0 14px 40px rgba(0,0,0,.15);
+  --radius:18px;--maxw:1080px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
 
-  <style>
-    :root{
-      --gold:#c91818;
-      --gold2:#ff4d4d;
-      --shadow: 0 18px 60px rgba(201,24,24,0.16);
-      --glow: 0 0 28px rgba(201,24,24,0.28), 0 0 70px rgba(201,24,24,0.10);
-      --radius: 22px;
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
-      background: radial-gradient(1200px 900px at 50% -10%, rgba(201,24,24,0.16), transparent 60%),
-                  radial-gradient(900px 700px at 20% 110%, rgba(201,24,24,0.10), transparent 55%),
-                  #000;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px 14px;
-      padding-bottom: calc(18px + env(safe-area-inset-bottom));
-      padding-top: calc(18px + env(safe-area-inset-top));
-    }
-    .stage{
-      width:min(440px, 100%);
-      aspect-ratio: 9 / 16;
-      max-height: calc(100vh - 36px);
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(16,16,16,0.86), rgba(0,0,0,0.66));
-      border: 1px solid rgba(201,24,24,0.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow), var(--glow);
-      overflow:hidden;
-      position:relative;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(135deg, rgba(255,77,77,0.38), rgba(154,123,47,0.08), rgba(255,77,77,0.20));
-      filter: blur(18px);
-      opacity: 0.35;
-      pointer-events:none;
-    }
-    .card > *{ position:relative; }
+.topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18);z-index:50}
+.topbar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand img{height:40px}
+.menuBtn{height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(217,165,20,.35);background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
+.hamburger{width:18px;height:12px;position:relative}
+.hamburger span{position:absolute;left:0;right:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:5px}.hamburger span:nth-child(3){bottom:0}
 
-    .logoWrap{ display:flex; justify-content:center; padding: 18px 14px; }
-    .logo{
-      width: min(340px, 88%);
-      height: auto;
-      display:block;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 24px rgba(201,24,24,0.22));
-      user-select:none;
-      -webkit-user-drag:none;
-    }
+.menuPanel{
+  position:fixed;top:64px;right:16px;width:220px;background:#fff;
+  border:1px solid rgba(217,165,20,.22);border-radius:14px;
+  box-shadow:var(--shadow);display:none;z-index:9999
+}
+.menuPanel a{display:block;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:800}
 
-    .promo{ padding: 14px; display:flex; flex-direction:column; gap: 12px; }
-    .promoTitle{
-      text-align:center;
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: var(--gold2);
-      font-size: 15px;
-    }
-    .promoRule{
-      width: 86px;
-      height: 2px;
-      margin: 8px auto 0;
-      background: linear-gradient(90deg, transparent, rgba(255,77,77,0.95), transparent);
-      border-radius: 999px;
-      opacity: 0.9;
-    }
+main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
 
-    .videoWrap{
-      width:100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      overflow:hidden;
-      border: 1px solid rgba(201,24,24,0.35);
-      background:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    video{
-      width:100%;
-      height:100%;
-      object-fit: contain;
-      display:block;
-      background:#000;
-    }
+.carousel{margin-top:16px;width:100%;aspect-ratio:1920/865;overflow:hidden}
+.slides{display:flex;height:100%;transition:.5s}
+.slide{min-width:100%}.slide img{width:100%;height:100%;object-fit:cover}
 
-    .ctaWrap{ margin-top:auto; padding: 0 14px 36px; }
-    .cta{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      padding: 18px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(242,210,122,0.85);
-      background: linear-gradient(135deg, rgba(242,210,122,0.98), rgba(214,178,90,0.92), rgba(154,123,47,0.92));
-      color: rgba(0,0,0,0.92);
-      font-weight: 900;
-      font-size: 22px;
-      letter-spacing: 0.4px;
-      cursor:pointer;
-      text-decoration:none;
-      box-shadow: 0 18px 50px rgba(214,178,90,0.22), 0 0 34px rgba(214,178,90,0.16);
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-      position: relative;
-      overflow: hidden;
-      touch-action: manipulation;
-      transform: translateY(0);
-      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
-    }
-    .cta small{ font-weight: 900; font-size: 14px; opacity: 0.88; }
+.marquee{margin-top:14px;overflow:hidden;border:1px solid rgba(217,165,20,.22);border-radius:14px}
+.marquee-track{display:inline-flex;gap:26px;padding:12px 16px;white-space:nowrap;animation:scroll 42s linear infinite}
 
-    .cta:active{
-      transform: translateY(1px) scale(0.99);
-      filter: brightness(0.98);
-    }
-
-    .ripple{
-      position:absolute;
-      border-radius: 999px;
-      transform: translate(-50%, -50%);
-      pointer-events:none;
-      background: rgba(255,255,255,0.35);
-      mix-blend-mode: overlay;
-      animation: ripple .55s ease-out forwards;
-    }
-    @keyframes ripple{
-      from{ width:0; height:0; opacity:0.55; }
-      to{ width:520px; height:520px; opacity:0; }
-    }
-
-    .footer{
-      text-align:center;
-      font-size:12px;
-      color: rgba(255,255,255,0.55);
-      padding: 0 14px 10px;
-    }
-/* ===== CTA 呼吸動畫（放大縮小＋亮度）===== */
-.cta{
-  transform-origin: center;
-  animation: ctaBreath 1.8s ease-in-out infinite;
-  will-change: transform, filter;
+.mq-item{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid rgba(217,165,20,.55);
+  border-radius:999px;
+  padding:6px 12px;
+  background:rgba(255,210,77,.08);
+}
+.mq-num{
+  color:var(--gold3);
+  font-weight:900;
 }
 
-/* 點擊時暫停呼吸，避免跟你原本 active 打架 */
-.cta:active{
-  animation-play-state: paused;
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.section{margin-top:28px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.section-head span{font-weight:900;color:#8a6b22}
+.section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold2),transparent)}
+.section-box{border:1px solid rgba(217,165,20,.22);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{display:flex;gap:14px;align-items:center}
+
+.card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
+.gameHero{
+  width:140px;
+  height:140px;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.gameMini{
+  position:absolute;top:-6px;right:-6px;
+  width:32px;height:32px;
+  background:#fff;border-radius:8px;padding:2px;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
 }
 
-@keyframes ctaBreath{
-  0%, 100%{
-    transform: scale(1);
-    filter: brightness(1);
-  }
-  50%{
-    transform: scale(1.045);
-    filter: brightness(1.06);
-  }
+.gameLogo{width:72px;height:72px;object-fit:contain}
+.meta p{margin:0;color:var(--muted);line-height:1.5}
+
+.offers{display:grid;gap:10px}
+@media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
+.offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
+
+.bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
+.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+.cta.gold{
+  flex:1;color:#fff;font-size:22px;position:relative;
+  background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
+  animation:breathe 1.8s ease-in-out infinite
+;justify-content:center;}
+.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:6px;}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
+  50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
 }
 
-/* 系統減少動效：自動停用 */
-@media (prefers-reduced-motion: reduce){
-  .cta{
-    animation: none !important;
-    filter: none !important;
-  }
-}
-/* ===== CTA 呼吸動畫 END ===== */
+body{padding-bottom:64px;}
 
-    @media (max-height: 680px){
-      .cta{ padding: 16px 16px; font-size: 20px; }
-      .cta small{ font-size: 13px; }
-      .logo{ width: min(320px, 86%); }
-    }
-  </style>
+
+.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;;margin-top:4px}
+
+
+/* CTA label inline */
+.bottom-bar .btn-primary, .bottom-bar a.primary, .bottom-bar button.primary, .bottom-bar .primary-btn, .bottom-bar a, .bottom-bar button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.bottom-bar span{display:inline;line-height:1;}
+
+
+
+/* tighten gap between offers and footer */
+.offers-section{padding-bottom:6px;}
+.offers-section .section-box{margin-bottom:0;}
+
+
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+
+
+
+.cta:active{transform:scale(.98)}
+
+/* ensure transparent areas show white, not black */
+.carousel, .slides, .slide, .hero, .heroWrap{background:#fff;}
+.slide img{background:transparent;}
+
+
+/* CTA text: center main + right label */
+.cta.gold{position:relative;}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000;
+  font-weight:900;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+}
+
+
+/* CTA click feedback + clean text */
+.cta{cursor:pointer;}
+.cta:active{transform:scale(.98);filter:brightness(.98);}
+.cta.gold:active{filter:brightness(.95);box-shadow:0 10px 22px rgba(0,0,0,.18);}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000000;
+  font-weight:900;
+  text-shadow:none;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+  text-shadow:none;
+}
+
+</style>
+<link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
-
 <body>
-  <main class="stage">
-    <section class="card">
-      <div class="logoWrap">
-        <img class="logo" src="assets/LOGO.png" alt="OFA168 LOGO" width="1263" height="340" loading="eager" decoding="async" />
-      </div>
-    </section>
 
-    <section class="card promo">
-      <div>
-        <div class="promoTitle" id="t_promo">最新優惠</div>
-        <div class="promoRule" aria-hidden="true"></div>
-      </div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><img src="./img/logo.webp" alt="OFA168"></div>
+    <button class="menuBtn" id="menuBtn">
+      <div class="hamburger"><span></span><span></span><span></span></div>Menu
+    </button>
+  </div>
+</header>
 
-      <div class="videoWrap" aria-label="promo video 1:1">
-        <video id="promoVideo" src="assets/promo.mp4" playsinline muted autoplay loop controls preload="metadata"></video>
-      </div>
-    </section>
+<div class="menuPanel" id="menuPanel">
+  <a href="https://fbads.ofa88kh.co/login?id=register" target="_blank">Sign Up Now</a>
+  <a href="https://t.me/gm5858168" target="_blank">Live Support</a>
+  <a href="https://t.me/+wQyBZc54C3RhOWFl" target="_blank">18+ Content</a>
+</div>
 
-    <div class="ctaWrap">
-      <a class="cta" id="ctaBtn" href="https://fbads.ofa88kh.co/login?id=register" target="_blank" rel="noopener noreferrer">
-        <span id="t_cta_main">立即加入</span> <small id="t_cta_sub">領取10體驗金</small>
-      </a>
+<main>
+  <div class="carousel"><div class="slides" id="slides">
+    <div class="slide"><img src="./img/banner1.webp" width="1400" height="631" fetchpriority="high" decoding="async"></div>
+    <div class="slide"><img src="./img/banner2.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+    <div class="slide"><img src="./img/banner3.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+  </div></div>
+
+  
+  <div class="marquee"><div class="marquee-track" id="marquee">
+    <span class="mq-item">Congratulations ***AX7 received a bonus 【<span class="mq-num">100</span>】</span>
+    <span class="mq-item">Congratulations ***K9M received a bonus 【<span class="mq-num">350</span>】</span>
+    <span class="mq-item">Congratulations ***Q3R slots winnings 【<span class="mq-num">2,680</span>】</span>
+    <span class="mq-item">Congratulations ***L8D received a bonus 【<span class="mq-num">200</span>】</span>
+    <span class="mq-item">Congratulations ***Z5P slots winnings 【<span class="mq-num">1,430</span>】</span>
+    <span class="mq-item">Congratulations ***M2A slots winnings 【<span class="mq-num">8,975</span>】</span>
+    <span class="mq-item">Congratulations ***R7K received a bonus 【<span class="mq-num">388</span>】</span>
+    <span class="mq-item">Congratulations ***C9E slots winnings 【<span class="mq-num">3,740</span>】</span>
+    <span class="mq-item">Congratulations ***W4N slots winnings 【<span class="mq-num">6,890</span>】</span>
+    <span class="mq-item">Congratulations ***J6S received a bonus 【<span class="mq-num">88</span>】</span>
+  </div></div>
+
+
+  
+  <section class="section">
+    <div class="section-head"><span>Popular Picks</span></div>
+    <div class="section-box">
+      <div class="grid">
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-live.webp" width="280" height="280" alt="真人">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Live Casino</strong>-Real-time interaction with full immersion. Smooth gameplay and detailed visuals make you feel like you’re right at the table.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-elec.webp" width="280" height="280" alt="電子">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="height:28px;max-height:28px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Slots Games</strong>-A wide variety of machines to choose from. Smooth transitions, fast-paced wins, and an exciting, lag-free experience.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-girl.webp" width="280" height="280" alt="美女直播廳">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-beauty.webp" style="height:40px;max-height:40px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Beauty Live Streaming</strong>-Real-time chat and interaction in a fun, lively atmosphere. Relax, play, and chat with ease.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <div class="footer">
-      © <span id="year"></span> OFA168 All Rights Reserved.
+
+
+  <section class="section offers-section">
+    <div class="section-head"><span>Promotions Zone</span></div>
+    <div class="section-box">
+      <div class="offers">
+        <div class="offer">Register and Get 10 Bonus Credits</div>
+        <div class="offer">Minimum Deposit $68 – Slots Turnover Only x1</div>
+        <div class="offer">Register to Receive Rewards – Total Bonus Up to $225</div>
+        <div class="offer">Easy Withdrawals – Minimum Withdrawal $140</div>
+        <div class="offer">Withdraw Up to $1400 – Fast and Secure Processing</div>
+        <div class="offer">Sports Betting Deposit Bonus up to 100%</div>
+        <div class="offer">1% Cashback – Available on Live Casino – Unlimited Cashback</div>
+        <div class="offer">Unlimited USDT Deposit Rewards</div>
+      </div>
     </div>
-  </main>
+  </section>
+</main>
 
-  <script>
-    // iOS autoplay fix
-    (function(){
-      const v = document.getElementById("promoVideo");
-      if(!v) return;
-      const tryPlay = () => v.play().catch(()=>{});
-      document.addEventListener("touchstart", tryPlay, { once:true, passive:true });
-      document.addEventListener("click", tryPlay, { once:true });
-    }());
+<nav class="bottombar">
+  <div class="bottombar-inner">
+    <a class="cta gold" href="https://fbads.ofa88kh.co/login?id=register" target="_blank"><span class="cta-title">Sign Up Now</span><span class="cta-sub">Claim 10 Bonus</span></a>
+  </div>
+</nav>
 
-    // Touch feedback (ripple + haptic)
-    (function(){
-      const btn = document.getElementById("ctaBtn");
-      if(!btn) return;
+<script>
+const btn=document.getElementById('menuBtn');
+const panel=document.getElementById('menuPanel');
+btn.onclick=(e)=>{e.stopPropagation();panel.style.display=panel.style.display==='block'?'none':'block'};
+document.onclick=()=>panel.style.display='none';
+let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
+const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
+</script>
 
-      const haptic = () => {
-        if (navigator.vibrate) navigator.vibrate(12);
-      };
+<footer class="site-footer">
+  Copyright © 2025 OFA168 All Rights Reserved.
+</footer>
 
-      const ripple = (ev) => {
-        const rect = btn.getBoundingClientRect();
-        const x = (ev.touches && ev.touches[0]) ? ev.touches[0].clientX : ev.clientX;
-        const y = (ev.touches && ev.touches[0]) ? ev.touches[0].clientY : ev.clientY;
-
-        const s = document.createElement("span");
-        s.className = "ripple";
-        s.style.left = (x - rect.left) + "px";
-        s.style.top  = (y - rect.top) + "px";
-        btn.appendChild(s);
-        setTimeout(() => s.remove(), 650);
-      };
-
-      btn.addEventListener("touchstart", (e)=>{ haptic(); ripple(e); }, { passive:true });
-      btn.addEventListener("mousedown", (e)=>{ ripple(e); });
-      btn.addEventListener("click", ()=>{ haptic(); });
-    })();
-
-    // ===== i18n (auto detect language) =====
-    const I18N = {
-      "zh-Hant": { promo:"最新優惠", ctaMain:"立即加入", ctaSub:"領取10體驗金" },
-      "zh-Hans": { promo:"最新优惠", ctaMain:"立即加入", ctaSub:"领取10体验金" },
-      "zh-HK":   { promo:"最新優惠", ctaMain:"立即加入", ctaSub:"領取10體驗金" },
-      "yue":     { promo:"最新優惠", ctaMain:"即刻加入", ctaSub:"領取10體驗金" },
-      "en":      { promo:"Latest Offer", ctaMain:"Join Now", ctaSub:"Get 10 Trial Bonus" },
-      "ms":      { promo:"Promosi Terkini", ctaMain:"Sertai Sekarang", ctaSub:"Dapatkan Bonus Cubaan 10" },
-      "km":      { promo:"ប្រូម៉ូសិនថ្មីៗ", ctaMain:"ចូលរួមឥឡូវនេះ", ctaSub:"ទទួលបានប្រាក់សាកល្បង 10" },
-      "vi":      { promo:"Ưu đãi mới nhất", ctaMain:"Tham gia ngay", ctaSub:"Nhận 10 tiền trải nghiệm" },
-      "ja":      { promo:"最新特典", ctaMain:"今すぐ参加", ctaSub:"10 体験ボーナスを受け取る" },
-      "th":      { promo:"โปรล่าสุด", ctaMain:"เข้าร่วมเลย", ctaSub:"รับโบนัสทดลอง 10" },
-      "fil":     { promo:"Pinakabagong Promo", ctaMain:"Sumali Na", ctaSub:"Kunin ang 10 Trial Bonus" }
-    };
-
-    function pickLang(){
-      const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
-      const raw = (langs[0] || "en").toLowerCase();
-
-      if (raw.startsWith("zh-hk") || raw.includes("hant-hk")) return "zh-HK";
-      if (raw.startsWith("yue")) return "yue";
-      if (raw.startsWith("zh")) {
-        if (raw.includes("hans") || raw.includes("cn") || raw.includes("sg")) return "zh-Hans";
-        if (raw.includes("hant") || raw.includes("tw") || raw.includes("hk") || raw.includes("mo")) return "zh-Hant";
-        return "zh-Hant";
-      }
-      if (raw.startsWith("en")) return "en";
-      if (raw.startsWith("ms")) return "ms";
-      if (raw.startsWith("km")) return "km";
-      if (raw.startsWith("vi")) return "vi";
-      if (raw.startsWith("ja")) return "ja";
-      if (raw.startsWith("th")) return "th";
-      if (raw.startsWith("fil") || raw.startsWith("tl")) return "fil";
-      return "en";
-    }
-
-    function applyLang(key){
-      const t = I18N[key] || I18N.en;
-      document.getElementById("t_promo").textContent = t.promo;
-      document.getElementById("t_cta_main").textContent = t.ctaMain;
-      document.getElementById("t_cta_sub").textContent = t.ctaSub;
-      document.documentElement.setAttribute("lang", key);
-    }
-
-    applyLang(pickLang());
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
