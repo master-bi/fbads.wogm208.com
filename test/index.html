@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>大老爺 - 值得信賴的遊戲平台</title>
+<meta name="description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="大老爺 - 值得信賴的遊戲平台">
+<meta property="og:description" content="這裡有超多有趣玩法，輕鬆體驗、樂趣不斷。多種模式自由選擇，享受獨一無二的互動體驗。">
+<meta property="og:url" content="https://fbads.wogm208.com/gm88">
+<meta property="og:image" content="https://fbads.wogm208.com/gm88/og.jpg">
+
+<style>
+:root{
+  --gold1:#FFE8A8;--gold2:#FFD24D;--gold3:#D9A514;
+  --line:#06C755;--text:#111827;--muted:#6b7280;
+  --shadow:0 14px 40px rgba(0,0,0,.15);
+  --radius:18px;--maxw:1080px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
+
+.topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18);z-index:50}
+.topbar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand img{height:40px}
+.menuBtn{height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(217,165,20,.35);background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
+.hamburger{width:18px;height:12px;position:relative}
+.hamburger span{position:absolute;left:0;right:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:5px}.hamburger span:nth-child(3){bottom:0}
+
+.menuPanel{
+  position:fixed;top:64px;right:16px;width:220px;background:#fff;
+  border:1px solid rgba(217,165,20,.22);border-radius:14px;
+  box-shadow:var(--shadow);display:none;z-index:9999
+}
+.menuPanel a{display:block;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:800}
+
+main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
+
+.carousel{margin-top:16px;width:100%;aspect-ratio:1920/865;overflow:hidden}
+.slides{display:flex;height:100%;transition:.5s}
+.slide{min-width:100%}.slide img{width:100%;height:100%;object-fit:cover}
+
+.marquee{margin-top:14px;overflow:hidden;border:1px solid rgba(217,165,20,.22);border-radius:14px}
+.marquee-track{display:inline-flex;gap:26px;padding:12px 16px;white-space:nowrap;animation:scroll 42s linear infinite}
+
+.mq-item{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid rgba(217,165,20,.55);
+  border-radius:999px;
+  padding:6px 12px;
+  background:rgba(255,210,77,.08);
+}
+.mq-num{
+  color:var(--gold3);
+  font-weight:900;
+}
+
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.section{margin-top:28px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.section-head span{font-weight:900;color:#8a6b22}
+.section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold2),transparent)}
+.section-box{border:1px solid rgba(217,165,20,.22);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{display:flex;gap:14px;align-items:center}
+
+.card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
+.gameHero{
+  width:140px;
+  height:140px;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.gameMini{
+  position:absolute;top:-6px;right:-6px;
+  width:32px;height:32px;
+  background:#fff;border-radius:8px;padding:2px;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+.gameLogo{width:72px;height:72px;object-fit:contain}
+.meta p{margin:0;color:var(--muted);line-height:1.5}
+
+.offers{display:grid;gap:10px}
+@media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
+.offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
+
+.bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
+.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+.cta.gold{
+  flex:1;color:#fff;font-size:22px;position:relative;
+  background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
+  animation:breathe 1.8s ease-in-out infinite
+;justify-content:center;}
+.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:6px;}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
+  50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
+}
+
+body{padding-bottom:64px;}
+
+
+.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;;margin-top:4px}
+
+
+/* CTA label inline */
+.bottom-bar .btn-primary, .bottom-bar a.primary, .bottom-bar button.primary, .bottom-bar .primary-btn, .bottom-bar a, .bottom-bar button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.bottom-bar span{display:inline;line-height:1;}
+
+
+
+/* tighten gap between offers and footer */
+.offers-section{padding-bottom:6px;}
+.offers-section .section-box{margin-bottom:0;}
+
+
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+
+
+
+.cta:active{transform:scale(.98)}
+
+/* ensure transparent areas show white, not black */
+.carousel, .slides, .slide, .hero, .heroWrap{background:#fff;}
+.slide img{background:transparent;}
+
+
+/* CTA text: center main + right label */
+.cta.gold{position:relative;}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000;
+  font-weight:900;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+}
+
+
+/* CTA click feedback + clean text */
+.cta{cursor:pointer;}
+.cta:active{transform:scale(.98);filter:brightness(.98);}
+.cta.gold:active{filter:brightness(.95);box-shadow:0 10px 22px rgba(0,0,0,.18);}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000000;
+  font-weight:900;
+  text-shadow:none;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+  text-shadow:none;
+}
+
+</style>
+<link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><img src="./img/logo.webp" alt="大老爺"></div>
+    <button class="menuBtn" id="menuBtn">
+      <div class="hamburger"><span></span><span></span><span></span></div>選單
+    </button>
+  </div>
+</header>
+
+<div class="menuPanel" id="menuPanel">
+  <a href="https://ag223.gm1788.net/login?id=register" target="_blank">立即註冊</a>
+  <a href="https://lin.ee/kGFQel1" target="_blank">聯繫客服</a>
+  <a href="https://t.me/+wQyBZc54C3RhOWFl" target="_blank">18+ Content</a>
+</div>
+
+<main>
+  <div class="carousel"><div class="slides" id="slides">
+    <div class="slide"><img src="./img/banner1.webp" width="1400" height="631" fetchpriority="high" decoding="async"></div>
+    <div class="slide"><img src="./img/banner2.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+    <div class="slide"><img src="./img/banner3.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+  </div></div>
+
+  
+  <div class="marquee"><div class="marquee-track" id="marquee">
+    <span class="mq-item">恭喜 09***58469 領取紅利【<span class="mq-num">168</span>】</span>
+    <span class="mq-item">恭喜 09***64518 領取紅利【<span class="mq-num">1,000</span>】</span>
+    <span class="mq-item">恭喜 09***84595 電子贏分【<span class="mq-num">38,452</span>】</span>
+    <span class="mq-item">恭喜 09***15431 領取紅利【<span class="mq-num">5,888</span>】</span>
+    <span class="mq-item">恭喜 09***65842 電子贏分【<span class="mq-num">50,985</span>】</span>
+    <span class="mq-item">恭喜 09***54894 電子贏分【<span class="mq-num">112,397</span>】</span>
+    <span class="mq-item">恭喜 09***78568 領取紅利【<span class="mq-num">5,000</span>】</span>
+    <span class="mq-item">恭喜 09***99852 電子贏分【<span class="mq-num">12,859</span>】</span>
+    <span class="mq-item">恭喜 09***36951 電子贏分【<span class="mq-num">253,381</span>】</span>
+    <span class="mq-item">恭喜 09***25619 領取紅利【<span class="mq-num">5,888</span>】</span>
+  </div></div>
+
+
+  
+  <section class="section">
+    <div class="section-head"><span>熱門推薦</span></div>
+    <div class="section-box">
+      <div class="grid">
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-live.webp" width="280" height="280" alt="真人">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">真人遊戲廳</strong>-真實互動、臨場感拉滿，節奏流暢、畫面細膩，讓你彷彿親臨現場。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-elec.webp" width="280" height="280" alt="電子">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">電子遊戲廳</strong>-多元機台任你選，轉場順暢不卡頓，中獎節奏快，刺激感十足。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-girl.webp" width="280" height="280" alt="美女直播廳">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-beauty.webp" style="height:40px;max-height:40px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">美女直播廳</strong>-即時互動聊天，娛樂氛圍滿滿，陪你輕鬆玩、開心聊。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section offers-section">
+    <div class="section-head"><span>優惠專區</span></div>
+    <div class="section-box">
+      <div class="offers">
+        <div class="offer">註冊就送168體驗金</div>
+        <div class="offer">登入簽到即送196</div>
+        <div class="offer">首存即享100%回饋</div>
+        <div class="offer">聖誕節儲值送5888</div>
+        <div class="offer">全民普發加碼5000</div>
+        <div class="offer">百家樂包賠 返水大升級</div>
+        <div class="offer">USDT儲值回饋無上限</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="bottombar">
+  <div class="bottombar-inner">
+    <a class="cta gold" href="https://ag223.gm1788.net/login?id=register" target="_blank"><span class="cta-title">立即註冊</span><span class="cta-sub">領取168</span></a>
+  </div>
+</nav>
+
+<script>
+const btn=document.getElementById('menuBtn');
+const panel=document.getElementById('menuPanel');
+btn.onclick=(e)=>{e.stopPropagation();panel.style.display=panel.style.display==='block'?'none':'block'};
+document.onclick=()=>panel.style.display='none';
+let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
+const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
+</script>
+
+<footer class="site-footer">
+  Copyright © 2025 大老爺 All Rights Reserved.
+</footer>
+
+<script>
+/** ===== Language detect + normalize =====
+ * 支援：
+ * zh-TW(繁中), zh-CN(簡中), zh-HK(香港/粵語), en, vi, th, km, ms, id, hi(印度/印地語), ja, my(緬甸), fil(菲律賓)
+ *
+ * 用法：
+ * - 自動偵測：依 navigator.languages
+ * - 手動指定：?lang=zh-TW (會寫入 localStorage)
+ * - 記住選擇：localStorage key = site_lang
+ */
+(function () {
+  const SUPPORTED = [
+    "zh-TW","zh-CN","zh-HK",
+    "en","vi","th","km","ms","id","hi","ja","my","fil"
+  ];
+
+  const ROUTE = {
+    "zh-TW": "/tw/",
+    "zh-CN": "/cn/",
+    "zh-HK": "/hk/",
+    "en": "/en/",
+    "vi": "/vi/",
+    "th": "/th/",
+    "km": "/km/",
+    "ms": "/ms/",
+    "id": "/id/",
+    "hi": "/hi/",
+    "ja": "/ja/",
+    "my": "/my/",
+    "fil": "/fil/"
+  };
+
+  function getQueryLang() {
+    try {
+      const u = new URL(location.href);
+      const v = (u.searchParams.get("lang") || "").trim();
+      if (v && SUPPORTED.includes(v)) return v;
+    } catch (e) {}
+    return "";
+  }
+
+  function pickLang() {
+    const langs = (navigator.languages && navigator.languages.length)
+      ? navigator.languages
+      : [navigator.language || "en"];
+
+    for (const raw of langs) {
+      const l = (raw || "").toLowerCase();
+
+      // Chinese family
+      if (l.startsWith("zh")) {
+        if (l.includes("hans")) return "zh-CN";
+        if (l.includes("hant")) {
+          if (l.includes("hk")) return "zh-HK";
+          return "zh-TW";
+        }
+        if (l.includes("cn") || l.includes("sg") || l.includes("my")) return "zh-CN";
+        if (l.includes("hk") || l.includes("mo")) return "zh-HK";
+        if (l.includes("tw")) return "zh-TW";
+        return "zh-TW";
+      }
+
+      // Common matches
+      if (l === "fil" || l.startsWith("fil-")) return "fil";
+      if (l === "tl"  || l.startsWith("tl-"))  return "fil"; // Tagalog -> Filipino
+      if (l === "vi"  || l.startsWith("vi-"))  return "vi";
+      if (l === "th"  || l.startsWith("th-"))  return "th";
+      if (l === "km"  || l.startsWith("km-"))  return "km";
+      if (l === "ms"  || l.startsWith("ms-"))  return "ms";
+      if (l === "id"  || l.startsWith("id-"))  return "id";
+      if (l === "hi"  || l.startsWith("hi-"))  return "hi";
+      if (l === "ja"  || l.startsWith("ja-"))  return "ja";
+      if (l === "my"  || l.startsWith("my-"))  return "my";
+      if (l === "en"  || l.startsWith("en-"))  return "en";
+    }
+    return "en";
+  }
+
+  // 1) URL ?lang= 覆蓋（並記住）
+  const queryLang = getQueryLang();
+  if (queryLang) localStorage.setItem("site_lang", queryLang);
+
+  // 2) localStorage 優先
+  const saved = localStorage.getItem("site_lang");
+  const detected = pickLang();
+  const finalLang = (saved && SUPPORTED.includes(saved)) ? saved : (queryLang || detected);
+
+  // 設定 <html lang="">
+  document.documentElement.lang = finalLang;
+
+  // 3) 若目前不是在語系資料夾，才做跳轉（避免迴圈）
+  const path = location.pathname;
+  const prefixes = Object.values(ROUTE);
+  const alreadyInLangFolder = prefixes.some(prefix => path.startsWith(prefix));
+
+  if (!alreadyInLangFolder) {
+    const target = ROUTE[finalLang] || ROUTE.en;
+    // 保留 querystring（但移除 lang 避免一直帶著）
+    let qs = "";
+    try {
+      const u = new URL(location.href);
+      u.searchParams.delete("lang");
+      qs = u.search ? u.search : "";
+    } catch (e) {}
+    location.replace(target + qs);
+  }
+})();
+</script>
+</body>
+</html>
