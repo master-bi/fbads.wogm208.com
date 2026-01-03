@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>立即加入</title>
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="img/top_img.webp" type="image/webp" fetchpriority="high">
+
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans TC", sans-serif; background: #fff; }
+    img { display: block; width: 100%; height: auto; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 12px; text-align: center; }
+    .hero { position: relative; }
+    .hero .cta { position: absolute; left: 0; right: 0; bottom: 0; }
+    .spacer { height: 16px; }
+    .pb-2 { padding-bottom: 1rem; }
+    .pb-4 { padding-bottom: 2rem; }
+
+    /* Video placeholder (loads iframe only on click) */
+    .video-wrap { margin: 10px 0 14px; }
+    .video-placeholder {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    }
+    .video-placeholder .label {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .video-placeholder .play {
+      width: 76px; height: 76px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      display: grid; place-items: center;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .video-placeholder svg { width: 28px; height: 28px; margin-left: 4px; fill: #fff; }
+    .video-iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <picture>
+      <source srcset="img/top_img.webp" type="image/webp">
+      <img src="img/top_img.png" alt="大老爺" fetchpriority="high" loading="eager" decoding="async">
+    </picture>
+
+    <div class="cta">
+      <a href="https://www.gm1688.net/">
+        <picture>
+          <source srcset="img/button.webp" type="image/webp">
+          <img src="img/button.png" alt="立即加入" loading="eager" decoding="async">
+        </picture>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="spacer"></div>
+
+    <picture>
+      <source srcset="img/text_img.webp" type="image/webp">
+      <img src="img/text_img.png" alt="" loading="lazy" decoding="async">
+    </picture>
+
+    <div class="video-wrap">
+      <div class="video-placeholder" id="videoBox" role="button" aria-label="點擊播放影片">
+        <div class="label">
+          <div class="play" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-2">
+      <a href="">
+        <picture><source srcset="img/content_01.webp" type="image/webp"><img src="img/content_01.png" alt="" loading="lazy" decoding="async"></picture>
+      </a>
+      <a href="">
+        <picture><source srcset="img/content_02.webp" type="image/webp"><img src="img/content_02.png" alt="" loading="lazy" decoding="async"></picture>
+      </a>
+      <a href="">
+        <picture><source srcset="img/content_03.webp" type="image/webp"><img src="img/content_03.png" alt="" loading="lazy" decoding="async"></picture>
+      </a>
+      <a href="">
+        <picture><source srcset="img/content_04.webp" type="image/webp"><img src="img/content_04.png" alt="" loading="lazy" decoding="async"></picture>
+      </a>
+
+      <picture>
+        <source srcset="img/pro_img.webp" type="image/webp">
+        <img src="img/pro_img.png" alt="" loading="lazy" decoding="async">
+      </picture>
+    </div>
+
+    <div class="pb-4">
+      <a href="https://www.gm1688.net/">
+        <picture>
+          <source srcset="img/button.webp" type="image/webp">
+          <img src="img/button.png" alt="立即加入" loading="lazy" decoding="async">
+        </picture>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var box = document.getElementById('videoBox');
+      if (!box) return;
+
+      // Delay loading until click
+      var src = "https://odysee.com/$/embed/1688:8?r=BooueV3MzaLXmUiDCupzR2aP7GXhHECL";
+
+      box.addEventListener('click', function () {
+        if (box.dataset.loaded === '1') return;
+        box.dataset.loaded = '1';
+
+        var iframe = document.createElement('iframe');
+        iframe.className = 'video-iframe';
+        iframe.src = src;
+        iframe.loading = 'lazy';
+        iframe.allowFullscreen = true;
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+
+        box.innerHTML = '';
+        box.appendChild(iframe);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
