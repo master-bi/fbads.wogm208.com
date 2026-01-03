@@ -11,7 +11,20 @@
 
   <style>
     :root { color-scheme: light; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans TC", sans-serif; background: #fff; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans TC", sans-serif;
+      /* Restore full-page background (WebP preferred, JPG fallback) */
+      background-color: #000;
+      background-image: image-set(
+        url("img/bg.webp") type("image/webp"),
+        url("img/bg.jpg") type("image/jpeg")
+      );
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      min-height: 100vh;
+    }
     img { display: block; width: 100%; height: auto; }
     /* Keep the whole page centered on desktop (avoid full-width stretching) */
     .page { max-width: 760px; margin: 0 auto; }
