@@ -182,80 +182,71 @@ body{padding-bottom:64px;}
 }
 
 
-/* ===== V3.5 FULL COVERAGE – CLOCKWISE, SLOW, NO SEAM ===== */
+/* ===== V3.6 NO-SEAM (continuous), Dark UI, White texts, Breathe back ===== */
 
-/* Base dark */
+/* Dark base */
 body{background:#0b0b0e!important;color:#e5e7eb!important;}
 .topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
 .carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
+.meta p{color:rgba(229,231,235,.72)!important;}
+.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:#e5e7eb!important;}
 
-/* Remove breathing */
-.cta.gold{animation:none!important;}
-@keyframes breathe{}
+/* Titles + menu text to white */
+.section-head span{color:#ffffff!important;}
+.menuBtn{color:#ffffff!important;}
+.menuBtn *{color:#ffffff!important;}
 
-/* Clockwise rotation */
-@keyframes rbClockwise {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+/* Menu panel dark */
+.menuPanel{
+  background:#0f0f14!important;
+  border:1px solid rgba(255,255,255,.12)!important;
 }
+.menuPanel a{color:#ffffff!important;}
+.menuPanel a:hover{background:rgba(255,255,255,.06)!important;}
 
-/* Seam-hidden conic */
+/* ===== TRUE CONTINUOUS rainbow (never "breaks") =====
+   NOTE: This is a seamless flow, visually continuous and won't "reset" harshly. */
 :root{
-  --rb-conic: conic-gradient(
-    from 0deg,
-    #ff004c 0deg,
-    #ff9a00 45deg,
-    #ffee00 90deg,
-    #2bff00 135deg,
-    #00ffd5 180deg,
-    #0066ff 225deg,
-    #b300ff 270deg,
-    #ff004c 330deg,
-    #ff004c 360deg
+  --rb-rainbow: linear-gradient(
+    90deg,
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00,
+    #00ffd5,
+    #0066ff,
+    #b300ff,
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00
   );
 }
+@keyframes rbFlow {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 400% 50%; }
+}
 
-/* ===== APPLY TO ALL FRAMES ===== */
-
-/* Top menu button */
-.menuBtn{
+/* Apply rainbow frame without touching HTML */
+.marquee,.section-box,.menuBtn,.cta.gold{
   position:relative!important;
-  background:transparent!important;
-  border:none!important;
-  overflow:hidden;
+  overflow:hidden!important;
 }
-.menuBtn::before{
-  content:"";
-  position:absolute;
-  inset:-70%;
-  background:var(--rb-conic);
-  animation:rbClockwise 26s linear infinite;
-  filter:blur(.6px) saturate(1.15);
-}
-.menuBtn::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:#111115;
-  border-radius:999px;
-}
-.menuBtn > *{position:relative;z-index:1;color:#fff!important;}
 
-/* Marquee + section boxes */
+/* ---- Marquee + section boxes frame ---- */
 .marquee,.section-box{
-  position:relative!important;
   border:none!important;
   background:transparent!important;
   padding:2px!important;
-  overflow:hidden!important;
 }
 .marquee::before,.section-box::before{
   content:"";
   position:absolute;
-  inset:-60%;
-  background:var(--rb-conic);
-  animation:rbClockwise 24s linear infinite;
-  filter:blur(.6px) saturate(1.15);
+  inset:0;
+  background:var(--rb-rainbow);
+  background-size:400% 100%;
+  animation:rbFlow 8s linear infinite;
+  z-index:0;
 }
 .marquee::after,.section-box::after{
   content:"";
@@ -263,22 +254,54 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   inset:2px;
   background:#121216;
   border-radius:16px;
+  z-index:0;
 }
-.marquee > *,.section-box > *{position:relative;z-index:1;}
+.marquee>* , .section-box>*{position:relative;z-index:1;}
 
-/* CTA button */
-.cta.gold{
-  position:relative;
+/* Give inner content more breathing room (was sticking to frame) */
+.section-box .grid,
+.section-box .offers{
+  padding:14px 14px;
+}
+/* Keep marquee track padding as-is (already has) */
+
+/* ---- Top menu button frame + inner face ---- */
+.menuBtn{
+  border:none!important;
   background:transparent!important;
-  overflow:hidden;
+}
+.menuBtn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--rb-rainbow);
+  background-size:400% 100%;
+  animation:rbFlow 10s linear infinite;
+  z-index:0;
+}
+.menuBtn::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:#111115;
+  border-radius:999px;
+  z-index:0;
+}
+.menuBtn>*{position:relative;z-index:1;}
+
+/* ---- CTA button frame + inner face ---- */
+.cta.gold{
+  background:transparent!important;
+  animation:ctaBreathe 1.8s ease-in-out infinite!important; /* bring back breathe glow */
 }
 .cta.gold::before{
   content:"";
   position:absolute;
-  inset:-70%;
-  background:var(--rb-conic);
-  animation:rbClockwise 18s linear infinite;
-  filter:blur(.6px) saturate(1.15);
+  inset:0;
+  background:var(--rb-rainbow);
+  background-size:400% 100%;
+  animation:rbFlow 6s linear infinite;
+  z-index:0;
 }
 .cta.gold::after{
   content:"";
@@ -286,11 +309,19 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   inset:2px;
   background:linear-gradient(180deg,#111115,#0f0f14);
   border-radius:14px;
+  z-index:1;
 }
+/* CTA text on top */
 .cta.gold .cta-title,.cta.gold .cta-sub{
-  position:absolute;
-  z-index:2;
-  color:#fff!important;
+  z-index:2!important;
+  color:#ffffff!important;
+}
+.cta.gold .cta-sub{color:rgba(229,231,235,.85)!important;}
+
+/* breathe glow (only glow, no size pulse) */
+@keyframes ctaBreathe{
+  0%,100%{ box-shadow:0 0 0 rgba(255,255,255,0); }
+  50%{ box-shadow:0 0 18px rgba(255,255,255,.18); }
 }
 
 </style>
