@@ -182,43 +182,52 @@ body{padding-bottom:64px;}
 }
 
 
-/* ===== V3.2 TRUE CONTINUOUS FLOW (no seam, no reset) ===== */
+/* ===== V3.4 CLOCKWISE SLOW — NO VISIBLE SEAM ===== */
 
-/* kill any old animation */
-*{
-  animation-timing-function: linear !important;
-}
-
-/* base dark */
+/* Dark base */
 body{background:#0b0b0e!important;color:#e5e7eb!important;}
 .topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
-.carousel,.slides,.slide{background:transparent!important;}
+.menuBtn,.menuPanel{background:#0f0f14!important;color:#e5e7eb!important;border-color:rgba(255,255,255,.15)!important;}
+.menuPanel a{color:#e5e7eb!important;}
+.carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
+.section-head span{color:#d1d5db!important;}
+.section-head::after{background:linear-gradient(90deg,rgba(255,255,255,.22),transparent)!important;}
+.meta p{color:rgba(229,231,235,.72)!important;}
+.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:#e5e7eb!important;}
 
-/* KEY: move gradient, NOT rotate element */
-@keyframes flow {
-  0% { background-position:   0% 50%; }
-  100%{ background-position: 400% 50%; }
+/* Kill any "breathing" */
+.cta.gold{animation:none!important;}
+@keyframes breathe{}
+
+/* Slow clockwise rotation */
+@keyframes rbClockwise {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-/* shared rainbow gradient */
+/* A conic gradient engineered to hide the 0/360 seam:
+   - first/last colors identical
+   - add a tiny smoothing band near 360deg */
 :root{
-  --rainbow: linear-gradient(
-    90deg,
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00,
-    #00ffd5,
-    #0066ff,
-    #b300ff,
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00
+  --rb-conic: conic-gradient(
+    from 0deg,
+    #ff004c 0deg,
+    #ff9a00 45deg,
+    #ffee00 90deg,
+    #2bff00 135deg,
+    #00ffd5 180deg,
+    #0066ff 225deg,
+    #b300ff 270deg,
+    #ff004c 330deg,
+    #ff004c 360deg
   );
 }
 
-/* cards + marquee */
+/* Apply to section boxes & marquee WITHOUT changing HTML */
+.section-box,
+.marquee{
+  position:relative noted!important;
+}
 .section-box,
 .marquee{
   position:relative!important;
@@ -226,25 +235,32 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   background:transparent!important;
   padding:2px!important;
   overflow:hidden!important;
+  border-radius:var(--radius)!important;
 }
 
+/* The rotating rainbow ring */
 .section-box::before,
 .marquee::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:var(--rainbow);
-  background-size:400% 100%;
-  animation:flow 6s linear infinite;
+  inset:-60%;
+  background:var(--rb-conic);
+  animation:rbClockwise 24s linear infinite; /* slower */
+  will-change:transform;
+  /* blur hides any microscopic seam on some GPUs */
+  filter: blur(0.6px) saturate(1.15);
+  z-index:0;
 }
 
+/* Inner panel */
 .section-box::after,
 .marquee::after{
   content:"";
   position:absolute;
   inset:2px;
   background:#121216;
-  border-radius:16px;
+  border-radius:calc(var(--radius) - 2px);
+  z-index:0;
 }
 
 .section-box > *,
@@ -253,20 +269,31 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   z-index:1;
 }
 
-/* CTA – same flow, faster */
+/* Marquee chips for dark */
+.mq-item{
+  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:#e5e7eb!important;
+}
+.mq-num{color:#fff!important;}
+
+/* ===== CTA rainbow ring (same no-seam conic) ===== */
 .cta.gold{
   position:relative;
   background:transparent!important;
   overflow:hidden;
+  box-shadow:0 10px 22px rgba(0,0,0,.35);
 }
 
 .cta.gold::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:var(--rainbow);
-  background-size:400% 100%;
-  animation:flow 3.5s linear infinite;
+  inset:-70%;
+  background:var(--rb-conic);
+  animation:rbClockwise 18s linear infinite; /* CTA a bit faster */
+  will-change:transform;
+  filter: blur(0.6px) saturate(1.15);
+  z-index:0;
 }
 
 .cta.gold::after{
@@ -275,30 +302,13 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   inset:2px;
   background:linear-gradient(180deg,#111115,#0f0f14);
   border-radius:14px;
+  z-index:1;
 }
 
 .cta.gold .cta-title,
 .cta.gold .cta-sub{
-  position:absolute;
-  z-index:2;
+  z-index:2!important;
   color:#fff!important;
-}
-
-
-/* ===== V3.3 CLOCKWISE SLOW CONTINUOUS ===== */
-
-/* clockwise continuous rotation (slow) */
-@keyframes clockwise {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* override previous flow animation */
-.section-box::before,
-.marquee::before,
-.cta.gold::before{
-  animation: clockwise 18s linear infinite !important;
-  transform-origin: 50% 50%;
 }
 
 </style>
