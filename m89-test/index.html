@@ -351,6 +351,19 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   fill:#ffffff!important;
 }
 
+
+/* ===== V36C: Ensure Menu text is above rainbow layers ===== */
+.menuBtn{
+  position:relative!important;
+  isolation:isolate;            /* create stacking context */
+  color:#ffffff!important;
+}
+/* push rainbow layers behind text */
+.menuBtn::before{ z-index:-2!important; }
+.menuBtn::after{  z-index:-1!important; }
+/* text node also stays above */
+.menuBtn{ z-index:0; }
+
 </style>
 <link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
