@@ -284,6 +284,23 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   color:#fff!important;
 }
 
+
+/* ===== V3.3 CLOCKWISE SLOW CONTINUOUS ===== */
+
+/* clockwise continuous rotation (slow) */
+@keyframes clockwise {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* override previous flow animation */
+.section-box::before,
+.marquee::before,
+.cta.gold::before{
+  animation: clockwise 18s linear infinite !important;
+  transform-origin: 50% 50%;
+}
+
 </style>
 <link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
