@@ -182,148 +182,34 @@ body{padding-bottom:64px;}
 }
 
 
-/* ===== V3 Dark Theme + Rainbow Flow (Guaranteed Motion) ===== */
-:root{
-  --bg-dark:#0b0b0e;
-  --panel-dark:#0f0f14;
-  --card-dark:#121216;
-  --text-dark:#e5e7eb;
-  --muted-dark:#9ca3af;
+/* ===== V3 Continuous Rainbow (NO breathing, seamless) ===== */
+
+/* disable old breathe */
+.cta.gold{animation:none!important;}
+@keyframes breathe{}
+
+/* continuous spin */
+@keyframes spin360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Dark backgrounds */
-body{background:var(--bg-dark)!important;color:var(--text-dark)!important;}
-.topbar{background:var(--panel-dark)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;}
-.menuBtn{background:var(--panel-dark)!important;color:var(--text-dark)!important;border:1px solid rgba(255,255,255,.14)!important;}
-.menuPanel{background:var(--panel-dark)!important;border:1px solid rgba(255,255,255,.12)!important;}
-.menuPanel a{color:var(--text-dark)!important;}
-.hamburger span{background:linear-gradient(90deg,#ff004c,#ff9a00,#ffee00,#2bff00,#00ffd5,#0066ff,#b300ff,#ff004c)!important;}
+/* Dark theme */
+body{background:#0b0b0e!important;color:#e5e7eb!important;}
+.topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
+.menuBtn,.menuPanel{background:#0f0f14!important;color:#e5e7eb!important;border-color:rgba(255,255,255,.15)!important;}
+.menuPanel a{color:#e5e7eb!important;}
+.carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
 
-.section-head span{color:#d1d5db!important;}
-.section-head::after{background:linear-gradient(90deg,rgba(255,255,255,.25),transparent)!important;}
-.meta p{color:var(--muted-dark)!important;}
-.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:var(--text-dark)!important;}
-
-.bottombar{background:var(--panel-dark)!important;border-top:1px solid rgba(255,255,255,.08)!important;}
-.site-footer{background:var(--panel-dark)!important;color:rgba(229,231,235,.65)!important;}
-
-/* keep carousel area dark (no white blocks) */
-.carousel, .slides, .slide, .hero, .heroWrap{background:transparent!important;}
-
-/* ===== Rainbow Border V3 (conic-gradient + spin) ===== */
-@keyframes rbSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-.rainbow-border{
-  position:relative;
-  border-radius:var(--radius);
-  padding:2px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-
-.rainbow-border::before{
-  content:"";
-  position:absolute;
-  inset:-60%;
-  background:conic-gradient(
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00,
-    #00ffd5,
-    #0066ff,
-    #b300ff,
-    #ff004c
-  );
-  animation:rbSpin 6s linear infinite;
-  will-change:transform;
-}
-
-.rainbow-border::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:var(--card-dark);
-  border-radius:calc(var(--radius) - 2px);
-  z-index:1;
-}
-
-.rainbow-border > .inner{
-  position:relative;
-  z-index:2;
-}
-
-/* Apply rainbow border to marquee + section boxes without changing HTML */
-.marquee,
-.section-box{
+/* Section & marquee rainbow border (continuous) */
+.section-box,.marquee{
+  position:relative!important;
   border:none!important;
-  background:transparent!important;
-  box-shadow:none!important;
-  position:relative;
-  border-radius:var(--radius);
   padding:2px!important;
-  overflow:hidden;
-}
-
-.marquee::before,
-.section-box::before{
-  content:"";
-  position:absolute;
-  inset:-60%;
-  background:conic-gradient(
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00,
-    #00ffd5,
-    #0066ff,
-    #b300ff,
-    #ff004c
-  );
-  animation:rbSpin 6s linear infinite;
-  will-change:transform;
-  z-index:0;
-}
-
-.marquee::after,
-.section-box::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:var(--card-dark);
-  border-radius:calc(var(--radius) - 2px);
-  z-index:0;
-}
-
-/* Lift actual content above inner background */
-.marquee > *,
-.section-box > *{
-  position:relative;
-  z-index:1;
-}
-
-/* Marquee chips tuning for dark */
-.mq-item{
-  border-color:rgba(255,255,255,.18)!important;
-  background:rgba(255,255,255,.06)!important;
-  color:var(--text-dark)!important;
-}
-.mq-num{color:#fff!important;}
-
-/* ===== Rainbow CTA Button (V3) ===== */
-@keyframes ctaSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-
-.cta.gold{
   background:transparent!important;
-  color:#ffffff!important;
   overflow:hidden;
-  position:relative;
-  box-shadow:0 10px 22px rgba(0,0,0,.35);
-  animation:none!important; /* disable breathe */
 }
-
-/* Outer rainbow ring */
-.cta.gold::before{
+.section-box::before,.marquee::before{
   content:"";
   position:absolute;
   inset:-70%;
@@ -337,40 +223,52 @@ body{background:var(--bg-dark)!important;color:var(--text-dark)!important;}
     #b300ff,
     #ff004c
   );
-  animation:ctaSpin 4.8s linear infinite;
+  animation:spin360 5s linear infinite;
   will-change:transform;
-  z-index:0;
 }
+.section-box::after,.marquee::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:#121216;
+  border-radius:16px;
+}
+.section-box>*,.marquee>*{position:relative;z-index:1;}
 
-/* Inner button face */
+/* CTA rainbow ring (continuous, no pulse) */
+.cta.gold{
+  position:relative;
+  background:transparent!important;
+  overflow:hidden;
+}
+.cta.gold::before{
+  content:"";
+  position:absolute;
+  inset:-80%;
+  background:conic-gradient(
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00,
+    #00ffd5,
+    #0066ff,
+    #b300ff,
+    #ff004c
+  );
+  animation:spin360 3.8s linear infinite;
+}
 .cta.gold::after{
   content:"";
   position:absolute;
   inset:2px;
   background:linear-gradient(180deg,#111115,#0f0f14);
   border-radius:14px;
-  z-index:1;
 }
-
-/* Ensure CTA text stays on top + readable */
-.cta.gold .cta-title,
-.cta.gold .cta-sub{
+.cta.gold .cta-title,.cta.gold .cta-sub{
   position:absolute;
   z-index:2;
-  text-shadow:none!important;
+  color:#fff!important;
 }
-.cta.gold .cta-title{
-  left:50%;
-  transform:translateX(-50%);
-  color:#ffffff!important;
-}
-.cta.gold .cta-sub{
-  right:18px;
-  color:rgba(229,231,235,.85)!important;
-}
-
-/* Press feedback */
-.cta.gold:active{transform:scale(.98);filter:brightness(.98);}
 
 </style>
 <link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
