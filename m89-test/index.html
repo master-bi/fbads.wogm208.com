@@ -182,38 +182,28 @@ body{padding-bottom:64px;}
 }
 
 
-/* ===== V3 Continuous Rainbow (NO breathing, seamless) ===== */
+/* ===== V3.2 TRUE CONTINUOUS FLOW (no seam, no reset) ===== */
 
-/* disable old breathe */
-.cta.gold{animation:none!important;}
-@keyframes breathe{}
-
-/* continuous spin */
-@keyframes spin360 {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* kill any old animation */
+*{
+  animation-timing-function: linear !important;
 }
 
-/* Dark theme */
+/* base dark */
 body{background:#0b0b0e!important;color:#e5e7eb!important;}
 .topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
-.menuBtn,.menuPanel{background:#0f0f14!important;color:#e5e7eb!important;border-color:rgba(255,255,255,.15)!important;}
-.menuPanel a{color:#e5e7eb!important;}
-.carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
+.carousel,.slides,.slide{background:transparent!important;}
 
-/* Section & marquee rainbow border (continuous) */
-.section-box,.marquee{
-  position:relative!important;
-  border:none!important;
-  padding:2px!important;
-  background:transparent!important;
-  overflow:hidden;
+/* KEY: move gradient, NOT rotate element */
+@keyframes flow {
+  0% { background-position:   0% 50%; }
+  100%{ background-position: 400% 50%; }
 }
-.section-box::before,.marquee::before{
-  content:"";
-  position:absolute;
-  inset:-70%;
-  background:conic-gradient(
+
+/* shared rainbow gradient */
+:root{
+  --rainbow: linear-gradient(
+    90deg,
     #ff004c,
     #ff9a00,
     #ffee00,
@@ -221,42 +211,64 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
     #00ffd5,
     #0066ff,
     #b300ff,
-    #ff004c
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00
   );
-  animation:spin360 5s linear infinite;
-  will-change:transform;
 }
-.section-box::after,.marquee::after{
+
+/* cards + marquee */
+.section-box,
+.marquee{
+  position:relative!important;
+  border:none!important;
+  background:transparent!important;
+  padding:2px!important;
+  overflow:hidden!important;
+}
+
+.section-box::before,
+.marquee::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--rainbow);
+  background-size:400% 100%;
+  animation:flow 6s linear infinite;
+}
+
+.section-box::after,
+.marquee::after{
   content:"";
   position:absolute;
   inset:2px;
   background:#121216;
   border-radius:16px;
 }
-.section-box>*,.marquee>*{position:relative;z-index:1;}
 
-/* CTA rainbow ring (continuous, no pulse) */
+.section-box > *,
+.marquee > *{
+  position:relative;
+  z-index:1;
+}
+
+/* CTA – same flow, faster */
 .cta.gold{
   position:relative;
   background:transparent!important;
   overflow:hidden;
 }
+
 .cta.gold::before{
   content:"";
   position:absolute;
-  inset:-80%;
-  background:conic-gradient(
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00,
-    #00ffd5,
-    #0066ff,
-    #b300ff,
-    #ff004c
-  );
-  animation:spin360 3.8s linear infinite;
+  inset:0;
+  background:var(--rainbow);
+  background-size:400% 100%;
+  animation:flow 3.5s linear infinite;
 }
+
 .cta.gold::after{
   content:"";
   position:absolute;
@@ -264,7 +276,9 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   background:linear-gradient(180deg,#111115,#0f0f14);
   border-radius:14px;
 }
-.cta.gold .cta-title,.cta.gold .cta-sub{
+
+.cta.gold .cta-title,
+.cta.gold .cta-sub{
   position:absolute;
   z-index:2;
   color:#fff!important;
