@@ -1,39 +1,224 @@
+
 <!doctype html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>M89 - Rainbow V3</title>
+
+<title>M89 - A Trusted Gaming Platform</title>
+<meta name="description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="M89 - A Trusted Gaming Platform">
+<meta property="og:description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
+<meta property="og:url" content="https://fbads.wogm208.com/m89">
+<meta property="og:image" content="https://fbads.wogm208.com/m89/m89-logo-blackgold.png">
 
 <style>
 :root{
-  --bg:#0b0b0e;
-  --card:#121216;
-  --radius:18px;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
+  --gold1:#FFE8A8;--gold2:#FFD24D;--gold3:#D9A514;
+  --line:#06C755;--text:#111827;--muted:#6b7280;
+  --shadow:0 14px 40px rgba(0,0,0,.15);
+  --radius:18px;--maxw:1080px;
 }
 *{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
 
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,"Segoe UI";
-  background:var(--bg);
-  color:var(--text);
-  padding-bottom:90px;
+.topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18);z-index:50}
+.topbar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand img{height:40px}
+.menuBtn{height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(217,165,20,.35);background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
+.hamburger{width:18px;height:12px;position:relative}
+.hamburger span{position:absolute;left:0;right:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
+.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:5px}.hamburger span:nth-child(3){bottom:0}
+
+.menuPanel{
+  position:fixed;top:64px;right:16px;width:220px;background:#fff;
+  border:1px solid rgba(217,165,20,.22);border-radius:14px;
+  box-shadow:var(--shadow);display:none;z-index:9999
+}
+.menuPanel a{display:block;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:800}
+
+main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
+
+.carousel{margin-top:16px;width:100%;aspect-ratio:1920/600;overflow:hidden}
+.slides{display:flex;height:100%;transition:.5s}
+.slide{min-width:100%}.slide img{width:100%;height:100%;object-fit:cover}
+
+.marquee{margin-top:14px;overflow:hidden;border:1px solid rgba(217,165,20,.22);border-radius:14px}
+.marquee-track{display:inline-flex;gap:26px;padding:12px 16px;white-space:nowrap;animation:scroll 42s linear infinite}
+
+.mq-item{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid rgba(217,165,20,.55);
+  border-radius:999px;
+  padding:6px 12px;
+  background:rgba(255,210,77,.08);
+}
+.mq-num{
+  color:var(--gold3);
+  font-weight:900;
 }
 
-/* ===== Rainbow Border V3 (Guaranteed Motion) ===== */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.section{margin-top:28px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.section-head span{font-weight:900;color:#8a6b22}
+.section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold2),transparent)}
+.section-box{border:1px solid rgba(217,165,20,.22);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{display:flex;gap:14px;align-items:center}
+
+.card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
+.gameHero{
+  width:140px;
+  height:140px;
+  object-fit:contain;
+  flex:0 0 auto;
 }
+.gameMini{
+  position:absolute;top:-6px;right:-6px;
+  width:32px;height:32px;
+  background:#fff;border-radius:8px;padding:2px;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+
+.gameLogo{width:72px;height:72px;object-fit:contain}
+.meta p{margin:0;color:var(--muted);line-height:1.5}
+
+.offers{display:grid;gap:10px}
+@media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
+.offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
+
+.bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
+.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+.cta.gold{
+  flex:1;color:#fff;font-size:22px;position:relative;
+  background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
+  animation:breathe 1.8s ease-in-out infinite
+;justify-content:center;}
+.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:6px;}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
+  50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
+}
+
+body{padding-bottom:64px;}
+
+
+.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;;margin-top:4px}
+
+
+/* CTA label inline */
+.bottom-bar .btn-primary, .bottom-bar a.primary, .bottom-bar button.primary, .bottom-bar .primary-btn, .bottom-bar a, .bottom-bar button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.bottom-bar span{display:inline;line-height:1;}
+
+
+
+/* tighten gap between offers and footer */
+.offers-section{padding-bottom:6px;}
+.offers-section .section-box{margin-bottom:0;}
+
+
+.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+
+
+
+.cta:active{transform:scale(.98)}
+
+/* ensure transparent areas show white, not black */
+.carousel, .slides, .slide, .hero, .heroWrap{background:#fff;}
+.slide img{background:transparent;}
+
+
+/* CTA text: center main + right label */
+.cta.gold{position:relative;}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000;
+  font-weight:900;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+}
+
+
+/* CTA click feedback + clean text */
+.cta{cursor:pointer;}
+.cta:active{transform:scale(.98);filter:brightness(.98);}
+.cta.gold:active{filter:brightness(.95);box-shadow:0 10px 22px rgba(0,0,0,.18);}
+.cta.gold .cta-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#000000;
+  font-weight:900;
+  text-shadow:none;
+}
+.cta.gold .cta-sub{
+  position:absolute;
+  right:18px;
+  color:#8b6a2b;
+  font-size:12px;
+  font-weight:800;
+  text-shadow:none;
+}
+
+
+/* ===== V3 Dark Theme + Rainbow Flow (Guaranteed Motion) ===== */
+:root{
+  --bg-dark:#0b0b0e;
+  --panel-dark:#0f0f14;
+  --card-dark:#121216;
+  --text-dark:#e5e7eb;
+  --muted-dark:#9ca3af;
+}
+
+/* Dark backgrounds */
+body{background:var(--bg-dark)!important;color:var(--text-dark)!important;}
+.topbar{background:var(--panel-dark)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;}
+.menuBtn{background:var(--panel-dark)!important;color:var(--text-dark)!important;border:1px solid rgba(255,255,255,.14)!important;}
+.menuPanel{background:var(--panel-dark)!important;border:1px solid rgba(255,255,255,.12)!important;}
+.menuPanel a{color:var(--text-dark)!important;}
+.hamburger span{background:linear-gradient(90deg,#ff004c,#ff9a00,#ffee00,#2bff00,#00ffd5,#0066ff,#b300ff,#ff004c)!important;}
+
+.section-head span{color:#d1d5db!important;}
+.section-head::after{background:linear-gradient(90deg,rgba(255,255,255,.25),transparent)!important;}
+.meta p{color:var(--muted-dark)!important;}
+.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:var(--text-dark)!important;}
+
+.bottombar{background:var(--panel-dark)!important;border-top:1px solid rgba(255,255,255,.08)!important;}
+.site-footer{background:var(--panel-dark)!important;color:rgba(229,231,235,.65)!important;}
+
+/* keep carousel area dark (no white blocks) */
+.carousel, .slides, .slide, .hero, .heroWrap{background:transparent!important;}
+
+/* ===== Rainbow Border V3 (conic-gradient + spin) ===== */
+@keyframes rbSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
 .rainbow-border{
   position:relative;
   border-radius:var(--radius);
   padding:2px;
   overflow:hidden;
+  box-shadow:var(--shadow);
 }
 
 .rainbow-border::before{
@@ -50,14 +235,15 @@ body{
     #b300ff,
     #ff004c
   );
-  animation:spin 6s linear infinite;
+  animation:rbSpin 6s linear infinite;
+  will-change:transform;
 }
 
 .rainbow-border::after{
   content:"";
   position:absolute;
   inset:2px;
-  background:var(--card);
+  background:var(--card-dark);
   border-radius:calc(var(--radius) - 2px);
   z-index:1;
 }
@@ -65,102 +251,238 @@ body{
 .rainbow-border > .inner{
   position:relative;
   z-index:2;
-  padding:16px;
 }
 
-/* ===== Layout ===== */
-main{max-width:1080px;margin:0 auto;padding:0 16px}
-.section{margin-top:28px}
-.section-head{font-weight:900;margin-bottom:12px}
-
-.grid{display:grid;gap:14px}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
-
-.card{display:flex;gap:14px;align-items:center}
-.card img{width:120px;height:120px;object-fit:contain}
-
-.offer{padding:12px;border-radius:14px;background:#0f0f14;font-weight:800}
-
-/* ===== Bottom CTA ===== */
-.bottombar{
-  position:fixed;
-  left:0;right:0;bottom:0;
-  background:#0f0f14;
-  border-top:1px solid rgba(255,255,255,.08);
+/* Apply rainbow border to marquee + section boxes without changing HTML */
+.marquee,
+.section-box{
+  border:none!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  position:relative;
+  border-radius:var(--radius);
+  padding:2px!important;
+  overflow:hidden;
 }
-.bottombar-inner{max-width:1080px;margin:0 auto;padding:12px 16px}
 
-.cta{
-  height:56px;
-  border-radius:16px;
-  font-size:22px;
-  font-weight:900;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#000;
-  text-decoration:none;
-  background:linear-gradient(180deg,#ffeaa7,#ffd24d,#d9a514);
+.marquee::before,
+.section-box::before{
+  content:"";
+  position:absolute;
+  inset:-60%;
+  background:conic-gradient(
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00,
+    #00ffd5,
+    #0066ff,
+    #b300ff,
+    #ff004c
+  );
+  animation:rbSpin 6s linear infinite;
+  will-change:transform;
+  z-index:0;
 }
+
+.marquee::after,
+.section-box::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:var(--card-dark);
+  border-radius:calc(var(--radius) - 2px);
+  z-index:0;
+}
+
+/* Lift actual content above inner background */
+.marquee > *,
+.section-box > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Marquee chips tuning for dark */
+.mq-item{
+  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(255,255,255,.06)!important;
+  color:var(--text-dark)!important;
+}
+.mq-num{color:#fff!important;}
+
+/* ===== Rainbow CTA Button (V3) ===== */
+@keyframes ctaSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+.cta.gold{
+  background:transparent!important;
+  color:#ffffff!important;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 10px 22px rgba(0,0,0,.35);
+  animation:none!important; /* disable breathe */
+}
+
+/* Outer rainbow ring */
+.cta.gold::before{
+  content:"";
+  position:absolute;
+  inset:-70%;
+  background:conic-gradient(
+    #ff004c,
+    #ff9a00,
+    #ffee00,
+    #2bff00,
+    #00ffd5,
+    #0066ff,
+    #b300ff,
+    #ff004c
+  );
+  animation:ctaSpin 4.8s linear infinite;
+  will-change:transform;
+  z-index:0;
+}
+
+/* Inner button face */
+.cta.gold::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:linear-gradient(180deg,#111115,#0f0f14);
+  border-radius:14px;
+  z-index:1;
+}
+
+/* Ensure CTA text stays on top + readable */
+.cta.gold .cta-title,
+.cta.gold .cta-sub{
+  position:absolute;
+  z-index:2;
+  text-shadow:none!important;
+}
+.cta.gold .cta-title{
+  left:50%;
+  transform:translateX(-50%);
+  color:#ffffff!important;
+}
+.cta.gold .cta-sub{
+  right:18px;
+  color:rgba(229,231,235,.85)!important;
+}
+
+/* Press feedback */
+.cta.gold:active{transform:scale(.98);filter:brightness(.98);}
+
 </style>
+<link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
 </head>
-
 <body>
 
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><img src="./img/logo.webp" alt="M89"></div>
+    <button class="menuBtn" id="menuBtn">
+      <div class="hamburger"><span></span><span></span><span></span></div>Menu
+    </button>
+  </div>
+</header>
+
+<div class="menuPanel" id="menuPanel">
+  <a href="https://fbads.m8989.net/login?id=register" target="_blank">Sign Up Now</a>
+  <a href="https://t.me/Anne_M89" target="_blank">Live Support-TG</a>
+  <a href="https://wa.link/51uhyc" target="_blank">Live Support-WA</a>
+  <a href="https://t.me/+wQyBZc54C3RhOWFl" target="_blank">18+ Content</a>
+</div>
+
 <main>
+  <div class="carousel"><div class="slides" id="slides">
+    <div class="slide"><img src="./img/banner1.webp" width="1400" height="631" fetchpriority="high" decoding="async"></div>
+    <div class="slide"><img src="./img/banner2.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+    <div class="slide"><img src="./img/banner3.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
+  </div></div>
 
+  
+  <div class="marquee"><div class="marquee-track" id="marquee">
+    <span class="mq-item">Congratulations ***3949 received a bonus 【<span class="mq-num">100</span>】</span>
+    <span class="mq-item">Congratulations ***2342 received a bonus 【<span class="mq-num">350</span>】</span>
+    <span class="mq-item">Congratulations ***2342 slots winnings 【<span class="mq-num">2,680</span>】</span>
+    <span class="mq-item">Congratulations ***1254 received a bonus 【<span class="mq-num">200</span>】</span>
+    <span class="mq-item">Congratulations ***6905 slots winnings 【<span class="mq-num">18,430</span>】</span>
+    <span class="mq-item">Congratulations ***5049 slots winnings 【<span class="mq-num">8,975</span>】</span>
+    <span class="mq-item">Congratulations ***5566 received a bonus 【<span class="mq-num">388</span>】</span>
+    <span class="mq-item">Congratulations ***3098 slots winnings 【<span class="mq-num">3,740</span>】</span>
+    <span class="mq-item">Congratulations ***0311 slots winnings 【<span class="mq-num">6,890</span>】</span>
+    <span class="mq-item">Congratulations ***5947 received a bonus 【<span class="mq-num">88</span>】</span>
+  </div></div>
+
+
+  
   <section class="section">
-    <div class="section-head">Popular Picks</div>
-    <div class="rainbow-border">
-      <div class="inner">
-        <div class="grid">
-          <div class="card">
-            <img src="./img/card-live.webp">
-            <div>
-              <strong>Live Casino</strong>
-              <p style="margin:6px 0 0;color:var(--muted)">Real-time immersive gaming</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/card-elec.webp">
-            <div>
-              <strong>Slots Games</strong>
-              <p style="margin:6px 0 0;color:var(--muted)">Fast-paced slot experience</p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/card-girl.webp">
-            <div>
-              <strong>Beauty Live</strong>
-              <p style="margin:6px 0 0;color:var(--muted)">Chat & play in real time</p>
-            </div>
+    <div class="section-head"><span>Popular Picks</span></div>
+    <div class="section-box">
+      <div class="grid">
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-live.webp" width="280" height="280" alt="真人">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Live Casino</strong>-Real-time interaction with full immersion. Smooth gameplay and detailed visuals make you feel like you’re right at the table.</p>
           </div>
         </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-elec.webp" width="280" height="280" alt="電子">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="height:28px;max-height:28px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Slots Games</strong>-A wide variety of machines to choose from. Smooth transitions, fast-paced wins, and an exciting, lag-free experience.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="gameHero" src="./img/card-girl.webp" width="280" height="280" alt="美女直播廳">
+          <div class="meta">
+            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Beauty Live Streaming</strong>-Real-time chat and interaction in a fun, lively atmosphere. Relax, play, and chat with ease.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-head">Promotions Zone</div>
-    <div class="rainbow-border">
-      <div class="inner">
-        <div class="grid">
-          <div class="offer">Register & Get 20 Bonus</div>
-          <div class="offer">Slots Deposit 1x Turnover</div>
-          <div class="offer">Live Casino 100% Bonus</div>
-          <div class="offer">VIP Cashback 1.2%</div>
-        </div>
+
+
+  <section class="section offers-section">
+    <div class="section-head"><span>Promotions Zone</span></div>
+    <div class="section-box">
+      <div class="offers">
+        <div class="offer">Register and Get 20 Bonus Credits</div>
+        <div class="offer">Slots First Deposit — Only 1x Turnover</div>
+        <div class="offer">Live Casino First Deposit 100% + Reload Bonus 200</div>
+        <div class="offer">Sports First Deposit 100%</div>
+        <div class="offer">Monthly Rewards Up to 888</div>
+        <div class="offer">Weekend Deposit Bonus: Get 180</div>
+        <div class="offer">VIP Cashback 1.2% — No Maximum Limit</div>
+        <div class="offer">USDT Deposit Bonus — No Maximum Limit</div>
       </div>
     </div>
   </section>
-
 </main>
 
 <nav class="bottombar">
   <div class="bottombar-inner">
-    <a class="cta" href="#">Sign Up Now · Get $20</a>
+    <a class="cta gold" href="https://fbads.m8989.net/login?id=register" target="_blank"><span class="cta-title">Sign Up Now</span><span class="cta-sub">Get $20</span></a>
   </div>
 </nav>
+
+<script>
+const btn=document.getElementById('menuBtn');
+const panel=document.getElementById('menuPanel');
+btn.onclick=(e)=>{e.stopPropagation();panel.style.display=panel.style.display==='block'?'none':'block'};
+document.onclick=()=>panel.style.display='none';
+let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
+const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
+</script>
+
+<footer class="site-footer">
+  Copyright © 2026 M89 All Rights Reserved.
+</footer>
 
 </body>
 </html>
