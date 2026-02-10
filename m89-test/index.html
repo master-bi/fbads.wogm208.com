@@ -10,14 +10,17 @@
   --bg:#0b0b0e;
   --card:#121216;
   --radius:18px;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
 }
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:system-ui,-apple-system,"Segoe UI";
   background:var(--bg);
-  color:#e5e7eb;
-  padding-bottom:64px;
+  color:var(--text);
+  padding-bottom:90px;
 }
 
 /* ===== Rainbow Border V3 (Guaranteed Motion) ===== */
@@ -36,7 +39,7 @@ body{
 .rainbow-border::before{
   content:"";
   position:absolute;
-  inset:-50%;
+  inset:-60%;
   background:conic-gradient(
     #ff004c,
     #ff9a00,
@@ -65,36 +68,99 @@ body{
   padding:16px;
 }
 
-/* demo blocks */
-.section{
-  max-width:900px;
-  margin:24px auto;
+/* ===== Layout ===== */
+main{max-width:1080px;margin:0 auto;padding:0 16px}
+.section{margin-top:28px}
+.section-head{font-weight:900;margin-bottom:12px}
+
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
+
+.card{display:flex;gap:14px;align-items:center}
+.card img{width:120px;height:120px;object-fit:contain}
+
+.offer{padding:12px;border-radius:14px;background:#0f0f14;font-weight:800}
+
+/* ===== Bottom CTA ===== */
+.bottombar{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  background:#0f0f14;
+  border-top:1px solid rgba(255,255,255,.08);
 }
-.section h2{
-  margin:0 0 12px;
+.bottombar-inner{max-width:1080px;margin:0 auto;padding:12px 16px}
+
+.cta{
+  height:56px;
+  border-radius:16px;
+  font-size:22px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#000;
+  text-decoration:none;
+  background:linear-gradient(180deg,#ffeaa7,#ffd24d,#d9a514);
 }
 </style>
 </head>
 
 <body>
 
-<div class="section">
-  <h2>Popular Picks</h2>
-  <div class="rainbow-border">
-    <div class="inner">
-      這是 V3 彩虹流水邊框（一定會動）
-    </div>
-  </div>
-</div>
+<main>
 
-<div class="section">
-  <h2>Promotions Zone</h2>
-  <div class="rainbow-border">
-    <div class="inner">
-      旋轉是用 conic-gradient + transform，不吃瀏覽器 bug
+  <section class="section">
+    <div class="section-head">Popular Picks</div>
+    <div class="rainbow-border">
+      <div class="inner">
+        <div class="grid">
+          <div class="card">
+            <img src="./img/card-live.webp">
+            <div>
+              <strong>Live Casino</strong>
+              <p style="margin:6px 0 0;color:var(--muted)">Real-time immersive gaming</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./img/card-elec.webp">
+            <div>
+              <strong>Slots Games</strong>
+              <p style="margin:6px 0 0;color:var(--muted)">Fast-paced slot experience</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./img/card-girl.webp">
+            <div>
+              <strong>Beauty Live</strong>
+              <p style="margin:6px 0 0;color:var(--muted)">Chat & play in real time</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">Promotions Zone</div>
+    <div class="rainbow-border">
+      <div class="inner">
+        <div class="grid">
+          <div class="offer">Register & Get 20 Bonus</div>
+          <div class="offer">Slots Deposit 1x Turnover</div>
+          <div class="offer">Live Casino 100% Bonus</div>
+          <div class="offer">VIP Cashback 1.2%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bottombar">
+  <div class="bottombar-inner">
+    <a class="cta" href="#">Sign Up Now · Get $20</a>
   </div>
-</div>
+</nav>
 
 </body>
 </html>
