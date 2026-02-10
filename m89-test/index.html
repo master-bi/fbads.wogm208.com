@@ -182,32 +182,24 @@ body{padding-bottom:64px;}
 }
 
 
-/* ===== V3.4 CLOCKWISE SLOW — NO VISIBLE SEAM ===== */
+/* ===== V3.5 FULL COVERAGE – CLOCKWISE, SLOW, NO SEAM ===== */
 
-/* Dark base */
+/* Base dark */
 body{background:#0b0b0e!important;color:#e5e7eb!important;}
 .topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
-.menuBtn,.menuPanel{background:#0f0f14!important;color:#e5e7eb!important;border-color:rgba(255,255,255,.15)!important;}
-.menuPanel a{color:#e5e7eb!important;}
 .carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
-.section-head span{color:#d1d5db!important;}
-.section-head::after{background:linear-gradient(90deg,rgba(255,255,255,.22),transparent)!important;}
-.meta p{color:rgba(229,231,235,.72)!important;}
-.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:#e5e7eb!important;}
 
-/* Kill any "breathing" */
+/* Remove breathing */
 .cta.gold{animation:none!important;}
 @keyframes breathe{}
 
-/* Slow clockwise rotation */
+/* Clockwise rotation */
 @keyframes rbClockwise {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
-/* A conic gradient engineered to hide the 0/360 seam:
-   - first/last colors identical
-   - add a tiny smoothing band near 360deg */
+/* Seam-hidden conic */
 :root{
   --rb-conic: conic-gradient(
     from 0deg,
@@ -223,91 +215,81 @@ body{background:#0b0b0e!important;color:#e5e7eb!important;}
   );
 }
 
-/* Apply to section boxes & marquee WITHOUT changing HTML */
-.section-box,
-.marquee{
-  position:relative noted!important;
+/* ===== APPLY TO ALL FRAMES ===== */
+
+/* Top menu button */
+.menuBtn{
+  position:relative!important;
+  background:transparent!important;
+  border:none!important;
+  overflow:hidden;
 }
-.section-box,
-.marquee{
+.menuBtn::before{
+  content:"";
+  position:absolute;
+  inset:-70%;
+  background:var(--rb-conic);
+  animation:rbClockwise 26s linear infinite;
+  filter:blur(.6px) saturate(1.15);
+}
+.menuBtn::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  background:#111115;
+  border-radius:999px;
+}
+.menuBtn > *{position:relative;z-index:1;color:#fff!important;}
+
+/* Marquee + section boxes */
+.marquee,.section-box{
   position:relative!important;
   border:none!important;
   background:transparent!important;
   padding:2px!important;
   overflow:hidden!important;
-  border-radius:var(--radius)!important;
 }
-
-/* The rotating rainbow ring */
-.section-box::before,
-.marquee::before{
+.marquee::before,.section-box::before{
   content:"";
   position:absolute;
   inset:-60%;
   background:var(--rb-conic);
-  animation:rbClockwise 24s linear infinite; /* slower */
-  will-change:transform;
-  /* blur hides any microscopic seam on some GPUs */
-  filter: blur(0.6px) saturate(1.15);
-  z-index:0;
+  animation:rbClockwise 24s linear infinite;
+  filter:blur(.6px) saturate(1.15);
 }
-
-/* Inner panel */
-.section-box::after,
-.marquee::after{
+.marquee::after,.section-box::after{
   content:"";
   position:absolute;
   inset:2px;
   background:#121216;
-  border-radius:calc(var(--radius) - 2px);
-  z-index:0;
+  border-radius:16px;
 }
+.marquee > *,.section-box > *{position:relative;z-index:1;}
 
-.section-box > *,
-.marquee > *{
-  position:relative;
-  z-index:1;
-}
-
-/* Marquee chips for dark */
-.mq-item{
-  border-color:rgba(255,255,255,.18)!important;
-  background:rgba(255,255,255,.06)!important;
-  color:#e5e7eb!important;
-}
-.mq-num{color:#fff!important;}
-
-/* ===== CTA rainbow ring (same no-seam conic) ===== */
+/* CTA button */
 .cta.gold{
   position:relative;
   background:transparent!important;
   overflow:hidden;
-  box-shadow:0 10px 22px rgba(0,0,0,.35);
 }
-
 .cta.gold::before{
   content:"";
   position:absolute;
   inset:-70%;
   background:var(--rb-conic);
-  animation:rbClockwise 18s linear infinite; /* CTA a bit faster */
-  will-change:transform;
-  filter: blur(0.6px) saturate(1.15);
-  z-index:0;
+  animation:rbClockwise 18s linear infinite;
+  filter:blur(.6px) saturate(1.15);
 }
-
 .cta.gold::after{
   content:"";
   position:absolute;
   inset:2px;
   background:linear-gradient(180deg,#111115,#0f0f14);
   border-radius:14px;
-  z-index:1;
 }
-
-.cta.gold .cta-title,
-.cta.gold .cta-sub{
-  z-index:2!important;
+.cta.gold .cta-title,.cta.gold .cta-sub{
+  position:absolute;
+  z-index:2;
   color:#fff!important;
 }
 
