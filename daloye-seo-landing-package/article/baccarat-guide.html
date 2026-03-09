@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>百家樂玩法規則與新手教學｜大老爺娛樂城</title>
+  <meta name="description" content="整理百家樂的基本規則、下注方式與新手常見觀念，帶你快速理解玩法重點與入門流程。" />
+  <style>
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#faf7ef;
+  --text:#1b1b1b;
+  --muted:#6e6e6e;
+  --gold:#d4af37;
+  --gold-deep:#b88a0f;
+  --line:rgba(212,175,55,.22);
+  --shadow:0 12px 30px rgba(20,20,20,.08);
+  --radius:20px;
+  --header-h:72px;
+  --footer-h:76px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(212,175,55,.12), transparent 32%),
+    linear-gradient(180deg,#fff 0%,#fffdf7 40%,#ffffff 100%);
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.container{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+.site-header{
+  position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
+  backdrop-filter: blur(12px);
+  background:rgba(255,255,255,.84);
+  border-bottom:1px solid rgba(212,175,55,.18);
+}
+.header-inner{
+  height:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.brand-logo{
+  width:126px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,#fff7d3,#f2d173);
+  color:#5f4500;display:flex;align-items:center;justify-content:center;
+  font-weight:900;letter-spacing:.08em;box-shadow:0 8px 20px rgba(212,175,55,.22)
+}
+.menu-btn{
+  width:46px;height:46px;border:none;border-radius:14px;background:#fff;box-shadow:var(--shadow);
+  display:grid;place-items:center;cursor:pointer;border:1px solid rgba(212,175,55,.18)
+}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{
+  display:block;width:20px;height:2px;background:#222;border-radius:999px;position:relative;content:"";
+}
+.menu-btn span::before{position:absolute;top:-6px;left:0}
+.menu-btn span::after{position:absolute;top:6px;left:0}
+.menu-panel{
+  position:fixed;top:calc(var(--header-h) + 8px);right:16px;z-index:1001;
+  width:min(280px,calc(100% - 32px));background:#fff;border:1px solid rgba(212,175,55,.18);border-radius:22px;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);padding:14px;display:none
+}
+.menu-panel.open{display:block}
+.menu-list{display:grid;gap:10px}
+.menu-link{
+  padding:14px 16px;border-radius:16px;background:linear-gradient(180deg,#fff,#fcf8ed);
+  border:1px solid rgba(212,175,55,.16);font-weight:700
+}
+.page{
+  padding-top:calc(var(--header-h) + 20px);
+  padding-bottom:calc(var(--footer-h) + 26px);
+}
+.hero{padding:18px 0 12px}
+.hero-box{
+  position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
+  border:1px solid rgba(212,175,55,.18);background:#fff
+}
+.slide-track{display:flex;transition:transform .55s ease}
+.slide{
+  min-width:100%;position:relative;aspect-ratio:16/9;background:#f5f5f5
+}
+.slide::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.42))
+}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide-content{
+  position:absolute;left:22px;right:22px;bottom:22px;z-index:2;color:#fff
+}
+.slide-kicker{
+  display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);font-size:12px;font-weight:700;backdrop-filter:blur(8px)
+}
+.slide h1,.slide h2{margin:10px 0 8px;line-height:1.2}
+.slide p{margin:0 0 16px;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 18px;border-radius:16px;font-weight:800;border:none;cursor:pointer
+}
+.btn-gold{
+  color:#4a3500;background:linear-gradient(135deg,#f7e8aa,#d4af37 60%,#b9870f);
+  box-shadow:0 10px 22px rgba(212,175,55,.28)
+}
+.btn-outline{
+  background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4)
+}
+.slider-dots{
+  position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:3
+}
+.dot{width:9px;height:9px;border-radius:999px;background:rgba(255,255,255,.45);cursor:pointer}
+.dot.active{width:24px;background:#fff}
+.section{padding:16px 0}
+.section-title{
+  margin:0 0 14px;font-size:clamp(1.25rem,2vw,1.9rem);line-height:1.2
+}
+.section-sub{margin:-4px 0 16px;color:var(--muted)}
+.notice{
+  overflow:hidden;border-radius:18px;background:linear-gradient(90deg,#fffdf6,#fff7db 55%,#fffdf8);
+  border:1px solid rgba(212,175,55,.2);box-shadow:var(--shadow)
+}
+.notice-row{display:flex;align-items:center;gap:12px;padding:14px 16px;white-space:nowrap}
+.notice-tag{
+  flex:0 0 auto;padding:8px 12px;border-radius:999px;background:linear-gradient(135deg,#e9c85c,#b88a0f);color:#fff;font-weight:800;font-size:12px
+}
+.marquee-wrap{overflow:hidden;position:relative;flex:1}
+.marquee{
+  display:inline-block;padding-left:100%;
+  animation:marquee 15s linear infinite;
+  font-weight:800;color:#5b4407
+}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.grid{display:grid;gap:16px}
+.provider-card,.promo-card,.article-card,.about-card,.link-box{
+  background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)
+}
+.provider-card{
+  display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden
+}
+.provider-media img{width:100%;height:100%;object-fit:cover;min-height:220px}
+.provider-content{padding:18px}
+.provider-mini{
+  width:84px;height:34px;border-radius:10px;background:linear-gradient(135deg,#fff4c9,#d7b043);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:12px;font-weight:900;color:#6b4b00
+}
+.provider-content h3{margin:0 0 8px;font-size:1.1rem}
+.provider-content p{margin:0;color:var(--muted)}
+.promo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.promo-card{overflow:hidden}
+.promo-card img{aspect-ratio:16/10;object-fit:cover;background:#f6f3ea}
+.promo-body{padding:16px}
+.promo-body h3{margin:0 0 8px;font-size:1.05rem}
+.promo-body p{margin:0;color:var(--muted)}
+.article-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.article-card{padding:18px}
+.article-card .eyebrow{
+  display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--surface-2);
+  border:1px solid rgba(212,175,55,.18);font-size:12px;font-weight:800;color:#7b5b00
+}
+.article-card h3{margin:12px 0 8px;font-size:1.05rem;line-height:1.35}
+.article-card p{margin:0 0 16px;color:var(--muted)}
+.link-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.readmore{font-weight:800;color:#8a6700}
+.about-card{padding:22px}
+.about-card p{margin:0 0 12px;color:#3f3f3f}
+.about-card p:last-child{margin-bottom:0}
+.link-box{padding:18px}
+.inline-links{display:flex;flex-wrap:wrap;gap:10px}
+.inline-links a{
+  padding:10px 14px;border-radius:999px;background:var(--surface-2);border:1px solid rgba(212,175,55,.18);font-weight:700;color:#7c5f09
+}
+.site-footer{padding:10px 0 24px;text-align:center;color:#8a8a8a;font-size:14px}
+.bottom-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:999;background:rgba(255,255,255,.9);
+  border-top:1px solid rgba(212,175,55,.18);backdrop-filter:blur(12px)
+}
+.bottom-inner{display:grid;grid-template-columns:2fr 1fr;gap:10px;padding:10px 16px;max-width:var(--max);margin:0 auto}
+.bottom-btn{
+  min-height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:.02em
+}
+.bottom-register{
+  background:linear-gradient(135deg,#f7e8aa,#d4af37 60%,#bc8a10);color:#4b3600;
+  box-shadow:0 10px 22px rgba(212,175,55,.25)
+}
+.bottom-ai{
+  color:#fff;background:linear-gradient(135deg,#7f5cff,#00c2ff 50%,#00f0b5);
+  box-shadow:0 10px 22px rgba(44,144,255,.28);position:relative;overflow:hidden
+}
+.bottom-ai::before{
+  content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg, transparent 0 25%, rgba(255,255,255,.25) 30%, transparent 35% 100%);
+  animation:spin 4s linear infinite
+}
+.bottom-ai span{position:relative;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.breadcrumbs{color:#8f8f8f;font-size:14px;margin:2px 0 14px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;color:#8f8f8f;font-size:14px;margin-bottom:18px}
+.content-card{
+  background:rgba(255,255,255,.94);border:1px solid rgba(212,175,55,.18);border-radius:26px;
+  box-shadow:var(--shadow);padding:24px
+}
+.content-card h1{line-height:1.2;margin:0 0 12px}
+.content-card h2{margin:28px 0 10px;line-height:1.3}
+.content-card h3{margin:18px 0 8px;line-height:1.35}
+.content-card p{margin:0 0 14px}
+.content-card ul{margin:0 0 14px;padding-left:20px}
+.content-card li{margin:0 0 8px}
+.cta-box{
+  margin-top:28px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#fff7da,#fff 60%);
+  border:1px solid rgba(212,175,55,.25)
+}
+.related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.related-grid a{
+  display:block;padding:14px 16px;border-radius:18px;background:var(--surface-2);border:1px solid rgba(212,175,55,.18);font-weight:700
+}
+@media (max-width:960px){
+  .promo-grid,.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .provider-card{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  :root{--header-h:68px;--footer-h:80px}
+  .container{width:min(calc(100% - 20px),var(--max))}
+  .slide{aspect-ratio:4/5}
+  .slide-content{left:16px;right:16px;bottom:18px}
+  .provider-content,.promo-body,.article-card,.about-card,.content-card,.link-box{padding:16px}
+  .promo-grid,.article-grid,.related-grid{grid-template-columns:1fr}
+  .brand-logo{width:112px;height:36px;font-size:13px}
+}
+</style>
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/index.html" aria-label="回到首頁">
+      <div class="brand-logo">大老爺娛樂城</div>
+    </a>
+    <button class="menu-btn" aria-label="開啟選單"><span></span></button>
+  </div>
+</header>
+<div class="menu-panel" aria-label="網站選單">
+  <nav class="menu-list">
+    <a class="menu-link" href="#">立即註冊</a>
+    <a class="menu-link" href="#">聯繫客服</a>
+    <a class="menu-link" href="#">更多優惠</a>
+    <a class="menu-link" href="#">深夜影片</a>
+  </nav>
+</div>
+
+  <main class="page">
+    <section class="section">
+      <div class="container">
+        <div class="breadcrumbs"><a href="/index.html">首頁</a> / <span>百家樂玩法規則與新手教學</span></div>
+        <article class="content-card">
+          <div class="meta">
+            <span>品牌：大老爺娛樂城</span>
+            <span>分類：SEO 教學文章</span>
+            <span>適合閱讀：新手入門</span>
+          </div>
+          <h1>百家樂玩法規則與新手教學</h1>
+          <p>百家樂是許多線上娛樂平台中最受關注的熱門項目之一，規則相對直觀、節奏也很明快，因此成為不少新手初次接觸時的首選。在大老爺娛樂城的教學內容中，百家樂通常會以清楚的介面與簡潔的下注區域呈現，讓玩家能先理解基礎規則，再逐步建立自己的操作節奏。</p>
+<h2>百家樂的核心規則是什麼？</h2>
+<p>百家樂主要圍繞三個常見下注選項：莊、閒與和局。每一局會根據雙方牌點的結果判定勝負，玩家在開局前先選擇下注方向，之後系統依規則發牌並計算點數。</p>
+<p>牌點的計算方式不複雜，A 計 1 點，2 至 9 依牌面計算，10、J、Q、K 則為 0 點。若總點數超過 10，通常只取個位數作為最終點數，例如 15 點視為 5 點。</p>
+<p>這種規則設計讓百家樂的入門門檻較低，即使沒有太多桌遊經驗，也能在短時間內理解遊戲流程。</p>
+<h2>新手最先要理解的下注區域</h2>
+<p>對新手來說，先看懂版面會比急著下任何判斷更重要。一般來說，畫面會清楚區分莊區、閒區與和局區，部分介面也會補充歷史紀錄或路單資訊，幫助玩家觀察每局結果。</p>
+<p>剛開始接觸時，建議先熟悉每個按鈕與下注位置的功能，例如下注確認、取消、限額顯示與倒數時間，這能避免操作時因節奏太快而感到慌亂。</p>
+<p>了解版面後，再去認識不同下注項目的特性，會比單純記規則更有效。</p>
+<h2>進場前可以先建立哪些觀念？</h2>
+<p>第一，先把百家樂視為規則明確的娛樂項目，而不是需要急著追求複雜技巧的內容。理解節奏、熟悉介面與建立自己的操作習慣，通常比記一堆術語更重要。</p>
+<p>第二，閱讀規則與介面提示時，先掌握固定不變的內容，例如牌點計算、下注區域與判定方式，這些都是每次進場都會用到的基礎。</p>
+<p>第三，若是第一次接觸線上娛樂平台，建議先從教學文章與簡單版面開始認識，逐步累積熟悉度，體驗會更自然。</p>
+<h2>百家樂介面中常見的輔助資訊</h2>
+<p>不少玩家會注意畫面中的歷史結果區，這類資訊主要幫助使用者快速回顧前幾局的開出方向與呈現方式。雖然它能提升閱讀感與觀察便利性，但新手仍然應把重點放在理解規則與熟悉節奏上。</p>
+<p>另外，部分平台會在介面中標註開牌流程、倒數秒數或桌面狀態，這些資訊都能幫助玩家掌握節奏。對新手來說，能看懂介面提示，往往比盯著每一筆變化更有幫助。</p>
+<h2>新手入門建議：從簡單到熟悉</h2>
+<p>入門時，不妨先花一些時間熟悉百家樂的單局流程：看下注區、理解倒數、等待結果，再回頭對照規則。這樣的學習方式通常比一次塞入大量資訊更容易吸收。</p>
+<p>如果你正在找一個介面清楚、教學入口明顯的品牌首頁，大老爺娛樂城的文章導覽與遊戲分類方式，會更適合從基礎規則開始認識。</p>
+<h2>結語</h2>
+<p>百家樂之所以受到許多玩家關注，在於它的規則明確、畫面簡單且節奏乾淨。對新手而言，只要先掌握牌點計算、版面結構與單局流程，就能建立相對穩固的入門基礎。後續再透過更多教學文章與相關內容延伸閱讀，就能更完整地理解這項熱門玩法。</p>
+          <div class="cta-box">
+            <h3 style="margin-top:0">想從首頁快速找到更多教學與入口？</h3>
+            <p>回到大老爺娛樂城首頁，即可查看活動資訊、遊戲分類、品牌介紹與更多延伸文章內容，建立更完整的閱讀動線。</p>
+            <div class="hero-actions" style="margin-top:12px">
+              <a class="btn btn-gold" href="#">立即註冊</a>
+              <a class="btn" style="background:#111;color:#fff" href="/index.html">返回首頁</a>
+            </div>
+          </div>
+          <h2>相關文章</h2>
+          <div class="related-grid">
+            <a href="/article/slots-guide.html">電子遊戲玩法與熱門特色介紹</a><a href="/article/sports-guide.html">體育賽事玩法與基礎觀念解析</a><a href="/article/chess-guide.html">棋牌遊戲規則與常見玩法整理</a><a href="/article/beginner-guide.html">娛樂城新手入門完整指南</a><a href="/article/safety-guide.html">線上娛樂平台安全性與公平性說明</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container">Copyright © 2004-2026 大老爺 All Rights Reserved.</div>
+    </footer>
+  </main>
+  
+<div class="bottom-bar">
+  <div class="bottom-inner">
+    <a class="bottom-btn bottom-register" href="#">立即註冊</a>
+    <a class="bottom-btn bottom-ai" href="#"><span>AI賽事分析</span></a>
+  </div>
+</div>
+
+  <script>
+const menuBtn = document.querySelector('.menu-btn');
+const menuPanel = document.querySelector('.menu-panel');
+if(menuBtn && menuPanel){
+  menuBtn.addEventListener('click', ()=> menuPanel.classList.toggle('open'));
+  document.addEventListener('click', (e)=>{
+    if(!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) menuPanel.classList.remove('open');
+  });
+}
+
+const track = document.querySelector('.slide-track');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+function goSlide(i){
+  if(!track) return;
+  currentSlide = i;
+  track.style.transform = `translateX(-${i*100}%)`;
+  dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
+}
+dots.forEach((d,idx)=> d.addEventListener('click', ()=> goSlide(idx)));
+if(track){
+  setInterval(()=> goSlide((currentSlide + 1) % dots.length), 4500);
+}
+
+const codeEl = document.querySelector('[data-rand-code]');
+const amtEl = document.querySelector('[data-rand-amount]');
+function randDigits(len=5){
+  let s = '';
+  for(let i=0;i<len;i++) s += Math.floor(Math.random()*10);
+  return s;
+}
+function randAmount(){
+  const n = Math.floor(Math.random() * (1000000 - 30000 + 1)) + 30000;
+  return n.toLocaleString('en-US');
+}
+function tickNotice(){
+  if(codeEl) codeEl.textContent = randDigits(5);
+  if(amtEl) amtEl.textContent = randAmount();
+}
+tickNotice();
+setInterval(tickNotice, 1800);
+</script>
+</body>
+</html>

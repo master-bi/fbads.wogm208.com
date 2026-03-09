@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大老爺娛樂城｜線上娛樂平台首頁・真人百家樂・電子遊戲・體育教學</title>
+  <meta name="description" content="大老爺娛樂城整合真人百家樂、電子遊戲、體育賽事與棋牌遊戲等內容，提供清楚的首頁導覽、活動入口與新手教學文章，打造兼具品牌感與閱讀體驗的線上娛樂平台。" />
+  <meta name="keywords" content="大老爺娛樂城,線上娛樂平台,真人百家樂,電子遊戲,體育賽事,棋牌遊戲,娛樂城推薦,新手教學" />
+  <style>
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#faf7ef;
+  --text:#1b1b1b;
+  --muted:#6e6e6e;
+  --gold:#d4af37;
+  --gold-deep:#b88a0f;
+  --line:rgba(212,175,55,.22);
+  --shadow:0 12px 30px rgba(20,20,20,.08);
+  --radius:20px;
+  --header-h:72px;
+  --footer-h:76px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(212,175,55,.12), transparent 32%),
+    linear-gradient(180deg,#fff 0%,#fffdf7 40%,#ffffff 100%);
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.container{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+.site-header{
+  position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
+  backdrop-filter: blur(12px);
+  background:rgba(255,255,255,.84);
+  border-bottom:1px solid rgba(212,175,55,.18);
+}
+.header-inner{
+  height:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.brand-logo{
+  width:126px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,#fff7d3,#f2d173);
+  color:#5f4500;display:flex;align-items:center;justify-content:center;
+  font-weight:900;letter-spacing:.08em;box-shadow:0 8px 20px rgba(212,175,55,.22)
+}
+.menu-btn{
+  width:46px;height:46px;border:none;border-radius:14px;background:#fff;box-shadow:var(--shadow);
+  display:grid;place-items:center;cursor:pointer;border:1px solid rgba(212,175,55,.18)
+}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{
+  display:block;width:20px;height:2px;background:#222;border-radius:999px;position:relative;content:"";
+}
+.menu-btn span::before{position:absolute;top:-6px;left:0}
+.menu-btn span::after{position:absolute;top:6px;left:0}
+.menu-panel{
+  position:fixed;top:calc(var(--header-h) + 8px);right:16px;z-index:1001;
+  width:min(280px,calc(100% - 32px));background:#fff;border:1px solid rgba(212,175,55,.18);border-radius:22px;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);padding:14px;display:none
+}
+.menu-panel.open{display:block}
+.menu-list{display:grid;gap:10px}
+.menu-link{
+  padding:14px 16px;border-radius:16px;background:linear-gradient(180deg,#fff,#fcf8ed);
+  border:1px solid rgba(212,175,55,.16);font-weight:700
+}
+.page{
+  padding-top:calc(var(--header-h) + 20px);
+  padding-bottom:calc(var(--footer-h) + 26px);
+}
+.hero{padding:18px 0 12px}
+.hero-box{
+  position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);
+  border:1px solid rgba(212,175,55,.18);background:#fff
+}
+.slide-track{display:flex;transition:transform .55s ease}
+.slide{
+  min-width:100%;position:relative;aspect-ratio:16/9;background:#f5f5f5
+}
+.slide::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.42))
+}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide-content{
+  position:absolute;left:22px;right:22px;bottom:22px;z-index:2;color:#fff
+}
+.slide-kicker{
+  display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);font-size:12px;font-weight:700;backdrop-filter:blur(8px)
+}
+.slide h1,.slide h2{margin:10px 0 8px;line-height:1.2}
+.slide p{margin:0 0 16px;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 18px;border-radius:16px;font-weight:800;border:none;cursor:pointer
+}
+.btn-gold{
+  color:#4a3500;background:linear-gradient(135deg,#f7e8aa,#d4af37 60%,#b9870f);
+  box-shadow:0 10px 22px rgba(212,175,55,.28)
+}
+.btn-outline{
+  background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4)
+}
+.slider-dots{
+  position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:3
+}
+.dot{width:9px;height:9px;border-radius:999px;background:rgba(255,255,255,.45);cursor:pointer}
+.dot.active{width:24px;background:#fff}
+.section{padding:16px 0}
+.section-title{
+  margin:0 0 14px;font-size:clamp(1.25rem,2vw,1.9rem);line-height:1.2
+}
+.section-sub{margin:-4px 0 16px;color:var(--muted)}
+.notice{
+  overflow:hidden;border-radius:18px;background:linear-gradient(90deg,#fffdf6,#fff7db 55%,#fffdf8);
+  border:1px solid rgba(212,175,55,.2);box-shadow:var(--shadow)
+}
+.notice-row{display:flex;align-items:center;gap:12px;padding:14px 16px;white-space:nowrap}
+.notice-tag{
+  flex:0 0 auto;padding:8px 12px;border-radius:999px;background:linear-gradient(135deg,#e9c85c,#b88a0f);color:#fff;font-weight:800;font-size:12px
+}
+.marquee-wrap{overflow:hidden;position:relative;flex:1}
+.marquee{
+  display:inline-block;padding-left:100%;
+  animation:marquee 15s linear infinite;
+  font-weight:800;color:#5b4407
+}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.grid{display:grid;gap:16px}
+.provider-card,.promo-card,.article-card,.about-card,.link-box{
+  background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)
+}
+.provider-card{
+  display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden
+}
+.provider-media img{width:100%;height:100%;object-fit:cover;min-height:220px}
+.provider-content{padding:18px}
+.provider-mini{
+  width:84px;height:34px;border-radius:10px;background:linear-gradient(135deg,#fff4c9,#d7b043);
+  display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:12px;font-weight:900;color:#6b4b00
+}
+.provider-content h3{margin:0 0 8px;font-size:1.1rem}
+.provider-content p{margin:0;color:var(--muted)}
+.promo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.promo-card{overflow:hidden}
+.promo-card img{aspect-ratio:16/10;object-fit:cover;background:#f6f3ea}
+.promo-body{padding:16px}
+.promo-body h3{margin:0 0 8px;font-size:1.05rem}
+.promo-body p{margin:0;color:var(--muted)}
+.article-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.article-card{padding:18px}
+.article-card .eyebrow{
+  display:inline-flex;padding:7px 11px;border-radius:999px;background:var(--surface-2);
+  border:1px solid rgba(212,175,55,.18);font-size:12px;font-weight:800;color:#7b5b00
+}
+.article-card h3{margin:12px 0 8px;font-size:1.05rem;line-height:1.35}
+.article-card p{margin:0 0 16px;color:var(--muted)}
+.link-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.readmore{font-weight:800;color:#8a6700}
+.about-card{padding:22px}
+.about-card p{margin:0 0 12px;color:#3f3f3f}
+.about-card p:last-child{margin-bottom:0}
+.link-box{padding:18px}
+.inline-links{display:flex;flex-wrap:wrap;gap:10px}
+.inline-links a{
+  padding:10px 14px;border-radius:999px;background:var(--surface-2);border:1px solid rgba(212,175,55,.18);font-weight:700;color:#7c5f09
+}
+.site-footer{padding:10px 0 24px;text-align:center;color:#8a8a8a;font-size:14px}
+.bottom-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:999;background:rgba(255,255,255,.9);
+  border-top:1px solid rgba(212,175,55,.18);backdrop-filter:blur(12px)
+}
+.bottom-inner{display:grid;grid-template-columns:2fr 1fr;gap:10px;padding:10px 16px;max-width:var(--max);margin:0 auto}
+.bottom-btn{
+  min-height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:.02em
+}
+.bottom-register{
+  background:linear-gradient(135deg,#f7e8aa,#d4af37 60%,#bc8a10);color:#4b3600;
+  box-shadow:0 10px 22px rgba(212,175,55,.25)
+}
+.bottom-ai{
+  color:#fff;background:linear-gradient(135deg,#7f5cff,#00c2ff 50%,#00f0b5);
+  box-shadow:0 10px 22px rgba(44,144,255,.28);position:relative;overflow:hidden
+}
+.bottom-ai::before{
+  content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg, transparent 0 25%, rgba(255,255,255,.25) 30%, transparent 35% 100%);
+  animation:spin 4s linear infinite
+}
+.bottom-ai span{position:relative;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.breadcrumbs{color:#8f8f8f;font-size:14px;margin:2px 0 14px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;color:#8f8f8f;font-size:14px;margin-bottom:18px}
+.content-card{
+  background:rgba(255,255,255,.94);border:1px solid rgba(212,175,55,.18);border-radius:26px;
+  box-shadow:var(--shadow);padding:24px
+}
+.content-card h1{line-height:1.2;margin:0 0 12px}
+.content-card h2{margin:28px 0 10px;line-height:1.3}
+.content-card h3{margin:18px 0 8px;line-height:1.35}
+.content-card p{margin:0 0 14px}
+.content-card ul{margin:0 0 14px;padding-left:20px}
+.content-card li{margin:0 0 8px}
+.cta-box{
+  margin-top:28px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#fff7da,#fff 60%);
+  border:1px solid rgba(212,175,55,.25)
+}
+.related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.related-grid a{
+  display:block;padding:14px 16px;border-radius:18px;background:var(--surface-2);border:1px solid rgba(212,175,55,.18);font-weight:700
+}
+@media (max-width:960px){
+  .promo-grid,.article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .provider-card{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  :root{--header-h:68px;--footer-h:80px}
+  .container{width:min(calc(100% - 20px),var(--max))}
+  .slide{aspect-ratio:4/5}
+  .slide-content{left:16px;right:16px;bottom:18px}
+  .provider-content,.promo-body,.article-card,.about-card,.content-card,.link-box{padding:16px}
+  .promo-grid,.article-grid,.related-grid{grid-template-columns:1fr}
+  .brand-logo{width:112px;height:36px;font-size:13px}
+}
+</style>
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/index.html" aria-label="回到首頁">
+      <div class="brand-logo">大老爺娛樂城</div>
+    </a>
+    <button class="menu-btn" aria-label="開啟選單"><span></span></button>
+  </div>
+</header>
+<div class="menu-panel" aria-label="網站選單">
+  <nav class="menu-list">
+    <a class="menu-link" href="#">立即註冊</a>
+    <a class="menu-link" href="#">聯繫客服</a>
+    <a class="menu-link" href="#">更多優惠</a>
+    <a class="menu-link" href="#">深夜影片</a>
+  </nav>
+</div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <div class="slide-track">
+            <article class="slide">
+              <img src="/img/banner-01.jpg" alt="大老爺娛樂城首頁主視覺輪播圖 1" onerror="this.onerror=null;this.src='/img/banner-01.jpg.svg';" />
+              <div class="slide-content">
+                <span class="slide-kicker">品牌首頁</span>
+                <h1>大老爺娛樂城線上娛樂平台</h1>
+                <p>以白金質感風格整合活動導流、遊戲分類與 SEO 教學入口，打造更清楚的首頁體驗。</p>
+                <div class="hero-actions">
+                  <a class="btn btn-gold" href="#">立即註冊</a>
+                  <a class="btn btn-outline" href="#articles">閱讀熱門攻略</a>
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="/img/banner-02.jpg" alt="大老爺娛樂城首頁主視覺輪播圖 2" onerror="this.onerror=null;this.src='/img/banner-02.jpg.svg';" />
+              <div class="slide-content">
+                <span class="slide-kicker">內容分類</span>
+                <h2>真人百家樂、電子遊戲、體育賽事一次掌握</h2>
+                <p>首頁保留簡潔導覽，同時延伸文章教學與內鏈結構，讓新手更快理解平台內容。</p>
+                <div class="hero-actions">
+                  <a class="btn btn-gold" href="#">更多優惠</a>
+                  <a class="btn btn-outline" href="#providers">查看遊戲商介紹</a>
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="/img/banner-03.jpg" alt="大老爺娛樂城首頁主視覺輪播圖 3" onerror="this.onerror=null;this.src='/img/banner-03.jpg.svg';" />
+              <div class="slide-content">
+                <span class="slide-kicker">SEO 入口中心</span>
+                <h2>從首頁導覽到文章教學，建立更完整的閱讀動線</h2>
+                <p>結合品牌信任感、活動節奏與文章入口設計，讓首頁同時具備轉化與內容承接功能。</p>
+                <div class="hero-actions">
+                  <a class="btn btn-gold" href="#">AI賽事分析</a>
+                  <a class="btn btn-outline" href="#about">關於大老爺娛樂城</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="notice" aria-label="即時公告">
+          <div class="notice-row">
+            <div class="notice-tag">即時快訊</div>
+            <div class="marquee-wrap">
+              <div class="marquee">恭喜VIP玩家【09***<span data-rand-code>58469</span>】贏得【<span data-rand-amount>214,225</span>】　恭喜VIP玩家【09***<span data-rand-code>39021</span>】贏得【<span data-rand-amount>96,000</span>】　恭喜VIP玩家【09***<span data-rand-code>77502</span>】贏得【<span data-rand-amount>320,500</span>】</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="providers" class="section">
+      <div class="container">
+        <h2 class="section-title">熱門遊戲商與內容分類</h2>
+        <p class="section-sub">首頁以卡片形式快速呈現真人娛樂、電子遊戲與體育電競內容，兼顧品牌感與閱讀效率。</p>
+        <div class="grid">
+          
+          <article class="provider-card">
+            <div class="provider-media">
+              <img src="/img/provider-01.jpg" alt="真人百家樂專區" onerror="this.onerror=null;this.src='/img/provider-01.jpg.svg';" />
+            </div>
+            <div class="provider-content">
+              <div class="provider-mini">
+                <img src="/img/provider-logo-01.png" alt="真人百家樂專區 小標誌" style="max-width:100%;max-height:100%" onerror="this.onerror=null;this.src='/img/provider-logo-01.png.svg';" />
+              </div>
+              <h3>真人百家樂專區</h3>
+              <p>匯集沉浸式真人桌遊體驗，畫面流暢、節奏明快，讓玩家在行動裝置與桌機端都能感受接近現場的互動氛圍。</p>
+            </div>
+          </article>
+          
+          <article class="provider-card">
+            <div class="provider-media">
+              <img src="/img/provider-02.jpg" alt="熱門電子遊戲館" onerror="this.onerror=null;this.src='/img/provider-02.jpg.svg';" />
+            </div>
+            <div class="provider-content">
+              <div class="provider-mini">
+                <img src="/img/provider-logo-02.png" alt="熱門電子遊戲館 小標誌" style="max-width:100%;max-height:100%" onerror="this.onerror=null;this.src='/img/provider-logo-02.png.svg';" />
+              </div>
+              <h3>熱門電子遊戲館</h3>
+              <p>整合多元主題與高人氣玩法，從經典機台到創新特效內容一應俱全，帶來更豐富的娛樂選擇與節奏感。</p>
+            </div>
+          </article>
+          
+          <article class="provider-card">
+            <div class="provider-media">
+              <img src="/img/provider-03.jpg" alt="體育與電競賽事" onerror="this.onerror=null;this.src='/img/provider-03.jpg.svg';" />
+            </div>
+            <div class="provider-content">
+              <div class="provider-mini">
+                <img src="/img/provider-logo-03.png" alt="體育與電競賽事 小標誌" style="max-width:100%;max-height:100%" onerror="this.onerror=null;this.src='/img/provider-logo-03.png.svg';" />
+              </div>
+              <h3>體育與電競賽事</h3>
+              <p>追蹤熱門賽事動態與多元玩法分類，版面清晰易懂，適合新手快速上手，也能滿足進階玩家的操作習慣。</p>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">精選優惠活動</h2>
+        <p class="section-sub">以簡潔卡片呈現活動資訊，保留品牌質感，同時讓首頁具備更明確的導流與轉化功能。</p>
+        <div class="grid promo-grid">
+          
+          <article class="promo-card">
+            <img src="/img/promo-01.jpg" alt="新會員迎賓禮遇" onerror="this.onerror=null;this.src='/img/promo-01.jpg.svg';" />
+            <div class="promo-body">
+              <h3>新會員迎賓禮遇</h3>
+              <p>首次加入即可解鎖專屬新手禮，快速體驗平台內容與多元遊戲節奏。</p>
+            </div>
+          </article>
+          
+          <article class="promo-card">
+            <img src="/img/promo-02.jpg" alt="首儲加碼回饋" onerror="this.onerror=null;this.src='/img/promo-02.jpg.svg';" />
+            <div class="promo-body">
+              <h3>首儲加碼回饋</h3>
+              <p>完成首筆儲值即可享有專屬回饋方案，讓初次體驗更具彈性與延展性。</p>
+            </div>
+          </article>
+          
+          <article class="promo-card">
+            <img src="/img/promo-03.jpg" alt="每日簽到回饋" onerror="this.onerror=null;this.src='/img/promo-03.jpg.svg';" />
+            <div class="promo-body">
+              <h3>每日簽到回饋</h3>
+              <p>每日登入簽到即可累積回饋，讓日常參與也能持續感受平台誠意。</p>
+            </div>
+          </article>
+          
+          <article class="promo-card">
+            <img src="/img/promo-04.jpg" alt="VIP 專屬禮遇" onerror="this.onerror=null;this.src='/img/promo-04.jpg.svg';" />
+            <div class="promo-body">
+              <h3>VIP 專屬禮遇</h3>
+              <p>會員等級越高，可解鎖更多專屬活動、個人化服務與節慶驚喜。</p>
+            </div>
+          </article>
+          
+          <article class="promo-card">
+            <img src="/img/promo-05.jpg" alt="節慶限時活動" onerror="this.onerror=null;this.src='/img/promo-05.jpg.svg';" />
+            <div class="promo-body">
+              <h3>節慶限時活動</h3>
+              <p>搭配熱門節慶推出主題活動與限定獎勵，提升每次參與的趣味與期待感。</p>
+            </div>
+          </article>
+          
+          <article class="promo-card">
+            <img src="/img/promo-06.jpg" alt="賽事期間特別加碼" onerror="this.onerror=null;this.src='/img/promo-06.jpg.svg';" />
+            <div class="promo-body">
+              <h3>賽事期間特別加碼</h3>
+              <p>熱門賽事期間推出限時福利與主題回饋，讓觀賽與互動體驗更加完整。</p>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="articles" class="section">
+      <div class="container">
+        <h2 class="section-title">熱門攻略與新手必讀</h2>
+        <p class="section-sub">首頁作為 SEO 內容樞紐，透過文章入口串接百家樂、電子遊戲、體育賽事與平台安全等主題。</p>
+        <div class="grid article-grid">
+          
+          <article class="article-card">
+            <span class="eyebrow">百家樂</span>
+            <h3>百家樂玩法規則與新手教學</h3>
+            <p>從基本下注區域、開牌規則到常見名詞整理，帶你快速掌握百家樂的核心玩法與入門觀念。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/baccarat-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <span class="eyebrow">電子遊戲</span>
+            <h3>電子遊戲玩法與熱門特色介紹</h3>
+            <p>整理電子遊戲常見主題、畫面機制與遊玩節奏，協助新手更快找到適合自己的類型。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/slots-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <span class="eyebrow">體育教學</span>
+            <h3>體育賽事玩法與基礎觀念解析</h3>
+            <p>從常見賽事項目、基本盤口觀念到新手閱讀方式，建立更完整的體育玩法理解。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/sports-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <span class="eyebrow">棋牌規則</span>
+            <h3>棋牌遊戲規則與常見玩法整理</h3>
+            <p>彙整棋牌遊戲的基礎規則、常見桌型與入門注意事項，讓操作更清楚、上手更順。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/chess-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <span class="eyebrow">新手必讀</span>
+            <h3>娛樂城新手入門完整指南</h3>
+            <p>第一次接觸線上娛樂平台時，從註冊、介面、常見功能到遊戲分類，一次建立完整認識。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/beginner-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+          <article class="article-card">
+            <span class="eyebrow">平台安全</span>
+            <h3>線上娛樂平台安全性與公平性說明</h3>
+            <p>帶你了解平台常見的系統機制、服務品質與公平性概念，建立更安心的使用觀念。</p>
+            <div class="link-row">
+              <a class="readmore" href="/article/safety-guide.html">閱讀更多 →</a>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">關於大老爺娛樂城</h2>
+        <div class="about-card">
+          <p>大老爺娛樂城深耕亞太地區線上娛樂平台市場多年，持續以穩健的技術架構與服務品質，打造兼具流暢體驗、內容多元與操作便利的品牌首頁。從整體介面規劃到會員使用流程，皆以清晰、直觀與穩定為核心方向。</p><p>平台整合專業研發與客服支援機制，持續優化載入速度、頁面操作與內容呈現，讓玩家不論在手機或桌機端，都能獲得更順暢一致的使用感受。對於初次接觸線上娛樂平台的用戶，也能透過清楚的導覽與教學入口快速上手。</p><p>內容規劃涵蓋真人百家樂、棋牌遊戲、電子遊戲以及體育與電競賽事等多元類型，兼顧即時互動、娛樂性與題材豐富度，讓不同偏好的玩家都能找到適合自己的體驗方向。</p><p>大老爺娛樂城同時重視服務品質與會員回饋，提供全年無休的支援機制，協助處理常見操作問題，並不定期推出活動與專屬禮遇，持續提升整體品牌信任感與使用體驗。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">延伸閱讀</h2>
+        <div class="link-box">
+          <div class="inline-links">
+            <a href="/article/baccarat-guide.html">百家樂玩法規則與新手教學</a><a href="/article/slots-guide.html">電子遊戲玩法與熱門特色介紹</a><a href="/article/sports-guide.html">體育賽事玩法與基礎觀念解析</a><a href="/article/chess-guide.html">棋牌遊戲規則與常見玩法整理</a><a href="/article/beginner-guide.html">娛樂城新手入門完整指南</a><a href="/article/safety-guide.html">線上娛樂平台安全性與公平性說明</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">Copyright © 2004-2026 大老爺 All Rights Reserved.</div>
+    </footer>
+  </main>
+  
+<div class="bottom-bar">
+  <div class="bottom-inner">
+    <a class="bottom-btn bottom-register" href="#">立即註冊</a>
+    <a class="bottom-btn bottom-ai" href="#"><span>AI賽事分析</span></a>
+  </div>
+</div>
+
+  <script>
+const menuBtn = document.querySelector('.menu-btn');
+const menuPanel = document.querySelector('.menu-panel');
+if(menuBtn && menuPanel){
+  menuBtn.addEventListener('click', ()=> menuPanel.classList.toggle('open'));
+  document.addEventListener('click', (e)=>{
+    if(!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) menuPanel.classList.remove('open');
+  });
+}
+
+const track = document.querySelector('.slide-track');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+function goSlide(i){
+  if(!track) return;
+  currentSlide = i;
+  track.style.transform = `translateX(-${i*100}%)`;
+  dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
+}
+dots.forEach((d,idx)=> d.addEventListener('click', ()=> goSlide(idx)));
+if(track){
+  setInterval(()=> goSlide((currentSlide + 1) % dots.length), 4500);
+}
+
+const codeEl = document.querySelector('[data-rand-code]');
+const amtEl = document.querySelector('[data-rand-amount]');
+function randDigits(len=5){
+  let s = '';
+  for(let i=0;i<len;i++) s += Math.floor(Math.random()*10);
+  return s;
+}
+function randAmount(){
+  const n = Math.floor(Math.random() * (1000000 - 30000 + 1)) + 30000;
+  return n.toLocaleString('en-US');
+}
+function tickNotice(){
+  if(codeEl) codeEl.textContent = randDigits(5);
+  if(amtEl) amtEl.textContent = randAmount();
+}
+tickNotice();
+setInterval(tickNotice, 1800);
+</script>
+</body>
+</html>
