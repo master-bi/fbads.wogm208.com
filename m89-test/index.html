@@ -1,480 +1,621 @@
-
-<!doctype html>
-<html lang="zh-Hant">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameAds Pro | Gaming Advertising That Performs</title>
+  <meta name="description" content="GameAds Pro specializes in high-performance advertising for gaming brands. Reach the right players and maximize ROI with data-driven campaigns." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111830;
+      --card: rgba(255,255,255,0.06);
+      --text: #f5f7ff;
+      --muted: #b7c0e0;
+      --line: rgba(255,255,255,0.12);
+      --accent: #7c5cff;
+      --accent-2: #1ed6a8;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1140px;
+    }
 
-<title>M89 - A Trusted Gaming Platform</title>
-<meta name="description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
+    * { box-sizing: border-box; }
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="M89 - A Trusted Gaming Platform">
-<meta property="og:description" content="Enjoy a wide variety of exciting gameplay options. Easy to get started and endless fun. Choose from multiple modes and enjoy a truly unique interactive experience.">
-<meta property="og:url" content="https://fbads.wogm208.com/m89">
-<meta property="og:image" content="https://fbads.wogm208.com/m89/m89-logo-blackgold.png">
+    html { scroll-behavior: smooth; }
 
-<style>
-:root{
-  --gold1:#FFE8A8;--gold2:#FFD24D;--gold3:#D9A514;
-  --line:#06C755;--text:#111827;--muted:#6b7280;
-  --shadow:0 14px 40px rgba(0,0,0,.15);
-  --radius:18px;--maxw:1080px;
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI";background:#fff;color:var(--text)}
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(30,214,168,0.18), transparent 30%),
+        linear-gradient(180deg, #090d1a 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-.topbar{position:sticky;top:0;height:64px;background:#fff;border-bottom:1px solid rgba(217,165,20,.18);z-index:50}
-.topbar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
-.brand img{height:40px}
-.menuBtn{height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(217,165,20,.35);background:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
-.hamburger{width:18px;height:12px;position:relative}
-.hamburger span{position:absolute;left:0;right:0;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold3),var(--gold2))}
-.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:5px}.hamburger span:nth-child(3){bottom:0}
+    a { color: inherit; text-decoration: none; }
 
-.menuPanel{
-  position:fixed;top:64px;right:16px;width:220px;background:#fff;
-  border:1px solid rgba(217,165,20,.22);border-radius:14px;
-  box-shadow:var(--shadow);display:none;z-index:9999
-}
-.menuPanel a{display:block;padding:12px 14px;text-decoration:none;color:var(--text);font-weight:800}
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
 
-main{max-width:var(--maxw);margin:0 auto;padding:0 16px 120px}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
 
-.carousel{margin-top:16px;width:100%;aspect-ratio:1920/600;overflow:hidden}
-.slides{display:flex;height:100%;transition:.5s}
-.slide{min-width:100%}.slide img{width:100%;height:100%;object-fit:cover}
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
 
-.marquee{margin-top:14px;overflow:hidden;border:1px solid rgba(217,165,20,.22);border-radius:14px}
-.marquee-track{display:inline-flex;gap:26px;padding:12px 16px;white-space:nowrap;animation:scroll 42s linear infinite}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
 
-.mq-item{
-  display:inline-flex;
-  align-items:center;
-  border:1px solid rgba(217,165,20,.55);
-  border-radius:999px;
-  padding:6px 12px;
-  background:rgba(255,210,77,.08);
-}
-.mq-num{
-  color:var(--gold3);
-  font-weight:900;
-}
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+      font-weight: 900;
+    }
 
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
 
-.section{margin-top:28px}
-.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.section-head span{font-weight:900;color:#8a6b22}
-.section-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold2),transparent)}
-.section-box{border:1px solid rgba(217,165,20,.22);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
 
-.grid{display:grid;gap:14px}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr 1fr}}
-.card{display:flex;gap:14px;align-items:center}
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #5f91ff);
+      color: white;
+      box-shadow: 0 14px 30px rgba(124, 92, 255, 0.28);
+    }
 
-.card-media{position:relative;width:96px;height:96px;flex:0 0 auto}
-.gameHero{
-  width:140px;
-  height:140px;
-  object-fit:contain;
-  flex:0 0 auto;
-}
-.gameMini{
-  position:absolute;top:-6px;right:-6px;
-  width:32px;height:32px;
-  background:#fff;border-radius:8px;padding:2px;
-  box-shadow:0 4px 10px rgba(0,0,0,.25);
-}
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(124, 92, 255, 0.35);
+    }
 
-.gameLogo{width:72px;height:72px;object-fit:contain}
-.meta p{margin:0;color:var(--muted);line-height:1.5}
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
 
-.offers{display:grid;gap:10px}
-@media(min-width:720px){.offers{grid-template-columns:1fr 1fr}}
-.offer{border:1px solid rgba(217,165,20,.18);border-radius:14px;padding:12px;font-weight:800}
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
 
-.bottombar{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid rgba(217,165,20,.18);z-index:60}
-.bottombar-inner{max-width:var(--maxw);height:100%;margin:0 auto;padding:10px 16px;display:flex}
-.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
-.cta.gold{
-  flex:1;color:#fff;font-size:22px;position:relative;
-  background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3));
-  animation:breathe 1.8s ease-in-out infinite
-;justify-content:center;}
-.cta.gold small{position:static;font-size:13px;color:rgba(255,255,255,.9);margin-left:6px;}
-@keyframes breathe{
-  0%,100%{box-shadow:0 0 0 rgba(255,210,77,0)}
-  50%{box-shadow:0 0 20px rgba(255,210,77,.65)}
-}
+    .hero {
+      padding: 84px 0 54px;
+    }
 
-body{padding-bottom:64px;}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 34px;
+      align-items: center;
+    }
 
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      color: #d8def7;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
 
-.site-footer{width:100%;text-align:center;font-size:10px;color:#d6d6d6;padding:6px 12px 10px;background:#fff;margin-bottom:6px;;margin-top:4px}
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -0.03em;
+    }
 
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin: 0 0 28px;
+    }
 
-/* CTA label inline */
-.bottom-bar .btn-primary, .bottom-bar a.primary, .bottom-bar button.primary, .bottom-bar .primary-btn, .bottom-bar a, .bottom-bar button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  white-space:nowrap;
-}
-.bottom-bar span{display:inline;line-height:1;}
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
 
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
 
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
 
-/* tighten gap between offers and footer */
-.offers-section{padding-bottom:6px;}
-.offers-section .section-box{margin-bottom:0;}
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 5px;
+    }
 
+    .stat span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-.cta{height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 18px;font-weight:900;letter-spacing:.5px;text-decoration:none;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .12s ease, box-shadow .18s ease, filter .18s ease;}
+    .hero-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
 
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 170px;
+      height: 170px;
+      background: radial-gradient(circle, rgba(124,92,255,0.55), transparent 60%);
+      filter: blur(8px);
+    }
 
+    .screen {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #0c1327;
+      overflow: hidden;
+    }
 
-.cta:active{transform:scale(.98)}
+    .screen-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
 
-/* ensure transparent areas show white, not black */
-.carousel, .slides, .slide, .hero, .heroWrap{background:#fff;}
-.slide img{background:transparent;}
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+    }
 
+    .screen-body {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
 
-/* CTA text: center main + right label */
-.cta.gold{position:relative;}
-.cta.gold .cta-title{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  color:#000;
-  font-weight:900;
-}
-.cta.gold .cta-sub{
-  position:absolute;
-  right:18px;
-  color:#8b6a2b;
-  font-size:12px;
-  font-weight:800;
-}
+    .metric-box {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
+    .metric-title {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
 
-/* CTA click feedback + clean text */
-.cta{cursor:pointer;}
-.cta:active{transform:scale(.98);filter:brightness(.98);}
-.cta.gold:active{filter:brightness(.95);box-shadow:0 10px 22px rgba(0,0,0,.18);}
-.cta.gold .cta-title{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  color:#000000;
-  font-weight:900;
-  text-shadow:none;
-}
-.cta.gold .cta-sub{
-  position:absolute;
-  right:18px;
-  color:#8b6a2b;
-  font-size:12px;
-  font-weight:800;
-  text-shadow:none;
-}
+    .metric-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
 
+    .bars {
+      display: grid;
+      gap: 10px;
+    }
 
-/* ===== V3.6 NO-SEAM (continuous), Dark UI, White texts, Breathe back ===== */
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
 
-/* Dark base */
-body{background:#0b0b0e!important;color:#e5e7eb!important;}
-.topbar,.bottombar,.site-footer{background:#0f0f14!important;border-color:rgba(255,255,255,.08)!important;}
-.carousel,.slides,.slide,.hero,.heroWrap{background:transparent!important;}
-.meta p{color:rgba(229,231,235,.72)!important;}
-.offer{background:rgba(255,255,255,.04)!important;border-color:rgba(255,255,255,.10)!important;color:#e5e7eb!important;}
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
 
-/* Titles + menu text to white */
-.section-head span{color:#ffffff!important;}
-.menuBtn{color:#ffffff!important;}
-.menuBtn *{color:#ffffff!important;}
+    section {
+      padding: 36px 0;
+    }
 
-/* Menu panel dark */
-.menuPanel{
-  background:#0f0f14!important;
-  border:1px solid rgba(255,255,255,.12)!important;
-}
-.menuPanel a{color:#ffffff!important;}
-.menuPanel a:hover{background:rgba(255,255,255,.06)!important;}
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
 
-/* ===== TRUE CONTINUOUS rainbow (never "breaks") =====
-   NOTE: This is a seamless flow, visually continuous and won't "reset" harshly. */
-:root{
-  --rb-rainbow: linear-gradient(
-    90deg,
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00,
-    #00ffd5,
-    #0066ff,
-    #b300ff,
-    #ff004c,
-    #ff9a00,
-    #ffee00,
-    #2bff00
-  );
-}
-@keyframes rbFlow {
-  0%   { background-position:   0% 50%; }
-  100% { background-position: 400% 50%; }
-}
+    .section-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
 
-/* Apply rainbow frame without touching HTML */
-.marquee,.section-box,.menuBtn,.cta.gold{
-  position:relative!important;
-  overflow:hidden!important;
-}
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
 
-/* ---- Marquee + section boxes frame ---- */
-.marquee,.section-box{
-  border:none!important;
-  background:transparent!important;
-  padding:2px!important;
-}
-.marquee::before,.section-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:var(--rb-rainbow);
-  background-size:400% 100%;
-  animation:rbFlow 8s linear infinite;
-  z-index:0;
-}
-.marquee::after,.section-box::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:#121216;
-  border-radius:16px;
-  z-index:0;
-}
-.marquee>* , .section-box>*{position:relative;z-index:1;}
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-/* Give inner content more breathing room (was sticking to frame) */
-.section-box .grid,
-.section-box .offers{
-  padding:14px 14px;
-}
-/* Keep marquee track padding as-is (already has) */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
 
-/* ---- Top menu button frame + inner face ---- */
-.menuBtn{
-  border:none!important;
-  background:transparent!important;
-}
-.menuBtn::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:var(--rb-rainbow);
-  background-size:400% 100%;
-  animation:rbFlow 10s linear infinite;
-  z-index:0;
-}
-.menuBtn::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:#111115;
-  border-radius:999px;
-  z-index:0;
-}
-.menuBtn>*{position:relative;z-index:1;}
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(124,92,255,0.22), rgba(30,214,168,0.18));
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 1.3rem;
+    }
 
-/* ---- CTA button frame + inner face ---- */
-.cta.gold{
-  background:transparent!important;
-  animation:ctaBreathe 1.8s ease-in-out infinite!important; /* bring back breathe glow */
-}
-.cta.gold::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:var(--rb-rainbow);
-  background-size:400% 100%;
-  animation:rbFlow 6s linear infinite;
-  z-index:0;
-}
-.cta.gold::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  background:linear-gradient(180deg,#111115,#0f0f14);
-  border-radius:14px;
-  z-index:1;
-}
-/* CTA text on top */
-.cta.gold .cta-title,.cta.gold .cta-sub{
-  z-index:2!important;
-  color:#ffffff!important;
-}
-.cta.gold .cta-sub{color:rgba(229,231,235,.85)!important;}
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
 
-/* breathe glow (only glow, no size pulse) */
-@keyframes ctaBreathe{
-  0%,100%{ box-shadow:0 0 0 rgba(255,255,255,0); }
-  50%{ box-shadow:0 0 18px rgba(255,255,255,.18); }
-}
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
 
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
 
-/* ===== V3.6a Text Color Fix ===== */
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+    }
 
-/* Section titles back to gold/orange */
-.section-head span{
-  color:#FFD24D!important; /* original gold-orange */
-}
+    .check-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
 
-/* Card titles + menu label to white */
-.meta strong,
-.meta strong *,
-.menuBtn,
-.menuBtn span,
-.menuBtn div{
-  color:#ffffff!important;
-}
+    .cta {
+      margin: 28px 0 60px;
+    }
 
+    .cta-box {
+      border-radius: 28px;
+      padding: 34px;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,0.20), rgba(95,145,255,0.12)),
+        rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-/* ===== FIX Menu Button Text to Pure White ===== */
-.menuBtn,
-.menuBtn *,
-.menuBtn span,
-.menuBtn div{
-  color:#ffffff!important;
-  fill:#ffffff!important;
-}
+    .cta-box h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
 
+    .cta-box p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 700px;
+    }
 
-/* ===== V36C: Ensure Menu text is above rainbow layers ===== */
-.menuBtn{
-  position:relative!important;
-  isolation:isolate;            /* create stacking context */
-  color:#ffffff!important;
-}
-/* push rainbow layers behind text */
-.menuBtn::before{ z-index:-2!important; }
-.menuBtn::after{  z-index:-1!important; }
-/* text node also stays above */
-.menuBtn{ z-index:0; }
+    footer {
+      padding: 24px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
 
-</style>
-<link rel="preload" as="image" href="./img/banner1.webp" fetchpriority="high">
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .cta-box {
+        padding: 26px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <a href="https://t.me/gadspro2000" target="_blank" rel="noopener noreferrer" style="position:fixed; right:20px; bottom:20px; z-index:99; display:inline-flex; align-items:center; gap:10px; padding:14px 18px; border-radius:999px; background:linear-gradient(135deg, var(--accent), #5f91ff); color:#fff; font-weight:800; box-shadow:0 18px 35px rgba(0,0,0,0.32); border:1px solid rgba(255,255,255,0.14);">✈ Telegram</a>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge">G</span>
+        <span>GameAds Pro</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://t.me/gadspro2000" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand"><img src="./img/logo.webp" alt="M89"></div>
-    <button class="menuBtn" id="menuBtn">
-      <div class="hamburger"><span></span><span></span><span></span></div>Menu
-    </button>
-  </div>
-</header>
-
-<div class="menuPanel" id="menuPanel">
-  <a href="https://fbads.m8989.net/login?id=register" target="_blank">Sign Up Now</a>
-  <a href="https://t.me/Anne_M89" target="_blank">Live Support-TG</a>
-  <a href="https://wa.link/51uhyc" target="_blank">Live Support-WA</a>
-  <a href="https://t.me/+wQyBZc54C3RhOWFl" target="_blank">18+ Content</a>
-</div>
-
-<main>
-  <div class="carousel"><div class="slides" id="slides">
-    <div class="slide"><img src="./img/banner1.webp" width="1400" height="631" fetchpriority="high" decoding="async"></div>
-    <div class="slide"><img src="./img/banner2.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
-    <div class="slide"><img src="./img/banner3.webp" width="1400" height="631" loading="lazy" decoding="async"></div>
-  </div></div>
-
-  
-  <div class="marquee"><div class="marquee-track" id="marquee">
-    <span class="mq-item">Congratulations ***3949 received a bonus 【<span class="mq-num">100</span>】</span>
-    <span class="mq-item">Congratulations ***2342 received a bonus 【<span class="mq-num">350</span>】</span>
-    <span class="mq-item">Congratulations ***2342 slots winnings 【<span class="mq-num">2,680</span>】</span>
-    <span class="mq-item">Congratulations ***1254 received a bonus 【<span class="mq-num">200</span>】</span>
-    <span class="mq-item">Congratulations ***6905 slots winnings 【<span class="mq-num">18,430</span>】</span>
-    <span class="mq-item">Congratulations ***5049 slots winnings 【<span class="mq-num">8,975</span>】</span>
-    <span class="mq-item">Congratulations ***5566 received a bonus 【<span class="mq-num">388</span>】</span>
-    <span class="mq-item">Congratulations ***3098 slots winnings 【<span class="mq-num">3,740</span>】</span>
-    <span class="mq-item">Congratulations ***0311 slots winnings 【<span class="mq-num">6,890</span>】</span>
-    <span class="mq-item">Congratulations ***5947 received a bonus 【<span class="mq-num">88</span>】</span>
-  </div></div>
-
-
-  
-  <section class="section">
-    <div class="section-head"><span>Popular Picks</span></div>
-    <div class="section-box">
-      <div class="grid">
-
-        <div class="card">
-          <img class="gameHero" src="./img/card-live.webp" width="280" height="280" alt="真人">
-          <div class="meta">
-            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Live Casino</strong>-Real-time interaction with full immersion. Smooth gameplay and detailed visuals make you feel like you’re right at the table.</p>
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">🚀 Growth Marketing for Gaming Brands</div>
+        <h1>Scale your game with ads that actually perform.</h1>
+        <p>
+          We specialize in high-performance advertising for gaming brands. From precise targeting to creative optimization,
+          we help you reach the right players and maximize your ROI.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Let’s Work Together</a>
+          <a href="#services" class="btn btn-secondary">View Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>Multi-Platform</strong>
+            <span>Facebook, TikTok, and Google campaign management</span>
+          </div>
+          <div class="stat">
+            <strong>Data-Driven</strong>
+            <span>Performance insights backed by strategy and testing</span>
+          </div>
+          <div class="stat">
+            <strong>Conversion-Focused</strong>
+            <span>Built to improve acquisition quality and ROI</span>
           </div>
         </div>
+      </div>
 
-        <div class="card">
-          <img class="gameHero" src="./img/card-elec.webp" width="280" height="280" alt="電子">
-          <div class="meta">
-            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-elec.webp" style="height:28px;max-height:28px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Slots Games</strong>-A wide variety of machines to choose from. Smooth transitions, fast-paced wins, and an exciting, lag-free experience.</p>
+      <div class="hero-card">
+        <div class="screen">
+          <div class="screen-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="screen-body">
+            <div class="metric-box">
+              <div class="metric-title">Campaign Performance</div>
+              <div class="metric-value">ROI Growth 📈</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-title">Top Channels</div>
+              <div class="bars">
+                <div class="bar"><span style="width: 88%"></span></div>
+                <div class="bar"><span style="width: 74%"></span></div>
+                <div class="bar"><span style="width: 67%"></span></div>
+              </div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-title">Focus</div>
+              <div class="metric-value">Right Players. Better Results.</div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </header>
 
-        <div class="card">
-          <img class="gameHero" src="./img/card-girl.webp" width="280" height="280" alt="美女直播廳">
-          <div class="meta">
-            <p style="margin:0;color:var(--muted);line-height:1.5;"><img src="./img/game-mt-live.webp" style="height:18px;max-height:18px;width:auto;display:block;margin:0 0 6px 0;"><strong style="font-weight:900;color:var(--text);">Beauty Live Streaming</strong>-Real-time chat and interaction in a fun, lively atmosphere. Relax, play, and chat with ease.</p>
-          </div>
-        </div>
-
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>What we do</h2>
+        <p>Performance marketing tailored for gaming brands that want stronger player acquisition, better conversion quality, and scalable growth.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Precise Audience Targeting</h3>
+          <p>We build campaigns around the right players using strategic targeting, segmentation, and testing to improve acquisition efficiency.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📊</div>
+          <h3>Data-Driven Strategy</h3>
+          <p>Every campaign is guided by performance signals, creative insights, and continuous optimization so decisions are based on results, not guesses.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Creative Optimization</h3>
+          <p>We refine ad messaging and creatives to improve engagement, conversion rates, and overall campaign performance across every major channel.</p>
+        </article>
       </div>
     </div>
   </section>
 
-
-
-  <section class="section offers-section">
-    <div class="section-head"><span>Promotions Zone</span></div>
-    <div class="section-box">
-      <div class="offers">
-        <div class="offer">Register and Get 20 Bonus Credits</div>
-        <div class="offer">Slots First Deposit — Only 1x Turnover</div>
-        <div class="offer">Live Casino First Deposit 100% + Reload Bonus 200</div>
-        <div class="offer">Sports First Deposit 100%</div>
-        <div class="offer">Monthly Rewards Up to 888</div>
-        <div class="offer">Weekend Deposit Bonus: Get 180</div>
-        <div class="offer">VIP Cashback 1.2% — No Maximum Limit</div>
-        <div class="offer">USDT Deposit Bonus — No Maximum Limit</div>
+  <section id="why-us">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why GameAds Pro</h2>
+        <p>We focus on the channels, strategy, and campaign structure that matter most for gaming growth.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Multi-Platform Ads</h3>
+          <ul class="check-list">
+            <li>Facebook ads for broad reach and retargeting</li>
+            <li>TikTok ads for creative-first user acquisition</li>
+            <li>Google ads for intent and scalable demand capture</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Built for Performance</h3>
+          <ul class="check-list">
+            <li>Conversion-focused campaign structures</li>
+            <li>Ongoing testing and optimization</li>
+            <li>Clear direction for ROI improvement</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Simple, Professional Delivery</h3>
+          <ul class="check-list">
+            <li>Clean brand presentation</li>
+            <li>Clear value proposition</li>
+            <li>Designed to convert visitors into leads</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
-</main>
 
-<nav class="bottombar">
-  <div class="bottombar-inner">
-    <a class="cta gold" href="https://fbads.m8989.net/login?id=register" target="_blank"><span class="cta-title">Sign Up Now</span><span class="cta-sub">Get $20</span></a>
-  </div>
-</nav>
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Get in touch</h2>
+        <p>Tell us about your game, target market, and ad goals. We’ll help you plan a campaign that fits your growth objectives.</p>
+      </div>
+      <div class="grid-3" style="grid-template-columns: 1.1fr 0.9fr; align-items: start;">
+        <div class="card">
+          <h3>Send your project details</h3>
+          <form action="https://formsubmit.co/gadspro2000@gmail.com" method="POST" style="display:grid; gap:14px; margin-top:16px;">
+            <input type="hidden" name="_subject" value="New Lead from GameAds Pro Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#fff; font:inherit;">
+            <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#fff; font:inherit;">
+            <input type="text" name="company" placeholder="Game / Brand Name" style="width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#fff; font:inherit;">
+            <textarea name="message" rows="6" placeholder="Tell us about your game, target countries, budget, and goals" required style="width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); color:#fff; font:inherit; resize:vertical;"></textarea>
+            <button type="submit" class="btn btn-primary" style="border:none; width:fit-content;">Send Inquiry</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Contact channels</h3>
+          <ul class="check-list" style="margin-top:16px;">
+            <li>Email: gadspro2000@gmail.com</li>
+            <li>Telegram: @gadspro2000</li>
+            <li>Fast response for campaign inquiries</li>
+          </ul>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;">
+            <a class="btn btn-primary" href="https://t.me/gadspro2000" target="_blank" rel="noopener noreferrer">Message on Telegram</a>
+            <a class="btn btn-secondary" href="mailto:gadspro2000@gmail.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-const btn=document.getElementById('menuBtn');
-const panel=document.getElementById('menuPanel');
-btn.onclick=(e)=>{e.stopPropagation();panel.style.display=panel.style.display==='block'?'none':'block'};
-document.onclick=()=>panel.style.display='none';
-let i=0;setInterval(()=>{const s=document.getElementById('slides');i=(i+1)%3;s.style.transform=`translateX(-${i*100}%)`},4500);
-const m=document.getElementById('marquee');m.innerHTML+=m.innerHTML;
-</script>
+  <section class="cta" id="cta-end">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>Let’s scale your game to the next level 🚀</h2>
+          <p>Ready to grow your gaming brand with smarter advertising? Let’s build high-performance campaigns that reach the right players and deliver stronger results.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:gadspro2000@gmail.com">Contact Us</a>
+      </div>
+    </div>
+  </section>
 
-<footer class="site-footer">
-  Copyright © 2026 M89 All Rights Reserved.
-</footer>
-
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 GameAds Pro. All rights reserved.</div>
+      <div>Gaming performance marketing • Facebook • TikTok • Google</div>
+    </div>
+        <div>Telegram: @gadspro2000</div>
+    </div>
+  </footer>
 </body>
 </html>
